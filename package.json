@@ -22,6 +22,9 @@
     "build-storybook": "build-storybook",
     "build-tailwind": "NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify"
   },
+  "publishConfig": {
+    "@willikay11:registry": "https://npm.pkg.github.com"
+  },
   "peerDependencies": {
     "react": ">=16"
   },
