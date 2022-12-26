@@ -45,14 +45,17 @@ const Number = ({ min, max, prefixIcon }: NumberInputProps) => {
 export interface TextInputProps {
     prefixIcon?: ReactNode;
     suffixIcon?: ReactNode;
+    clearIcon?: ReactNode;
 }
 
-const Text = ({ prefixIcon, suffixIcon }: TextInputProps) => {
+const Text = ({ prefixIcon, suffixIcon, clearIcon }: TextInputProps) => {
+    const [currentText, setCurrentText] = useState<string>('');
     return (
         <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
             {prefixIcon && <div>{prefixIcon}</div>}
-            <input type="text" className="ml-2 outline-0 w-full" />
-            {suffixIcon && <div>{suffixIcon}</div>}
+            <input type="text" value={currentText} onChange={(e) => setCurrentText(e.target.value)} className="ml-2 outline-0 w-full" />
+            {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
+            {clearIcon && <div className="cursor-pointer" onClick={() => setCurrentText('')} >{clearIcon}</div>}
         </div>
     );
 }
