@@ -1,23 +1,61 @@
 import React, { ReactNode } from "react";
 
+export enum ButtonTypes {
+    link = 'link',
+    primary = 'primary',
+    danger = 'danger',
+    default = 'default',
+    primary_blue_600 = 'primary-blue-600',
+    primary_gray_800 = 'primary-gray-800',
+    primary_orange_200 = 'primary-orange-200',
+}
+
 export interface ButtonProps {
     children: ReactNode;
     onClick: () => void;
-    type?: 'primary' | 'danger';
+    type?: ButtonTypes.default | ButtonTypes.primary | ButtonTypes.danger | ButtonTypes.link | ButtonTypes.primary_blue_600 | ButtonTypes.primary_gray_800 | ButtonTypes.primary_orange_200;
     loading?: boolean;
     ghost?: boolean;
     htmlType?: 'button' | 'submit' | 'reset';
     block?: boolean;
+    prefixIcon?: ReactNode;
 }
 
-export const Button = ({children, type = 'primary', loading = false, htmlType = 'button', block = false, ghost = false, onClick}: ButtonProps) => {
+export const Button = ({children, type = ButtonTypes.default, loading = false, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon}: ButtonProps) => {
     let width = 'w-auto'
     let color = 'orange-600'
-    let bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`;
+    let bg = `bg-white text-gray-800 border border-gray-200`;
+    let padding = 'px-4';
 
-    if (type === 'danger') {
-        let color = 'red-600'
+    if (type === ButtonTypes.primary) {
+        color = 'orange-600'
+        bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`;
+    }
+
+    if (type === ButtonTypes.danger) {
+        color = 'red-600'
         bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`
+    }
+
+    if (type === ButtonTypes.link) {
+        color = 'blue-600'
+        bg = `bg-white text-${color}`
+        padding = 'pl-px-0';
+    }
+
+    if (type === ButtonTypes.primary_blue_600) {
+        color = 'blue-600'
+        bg = `bg-${color} text-white`;
+    }
+
+    if (type === ButtonTypes.primary_gray_800) {
+        color = 'gray-800'
+        bg = `bg-${color} text-white`;
+    }
+
+    if (type === ButtonTypes.primary_orange_200) {
+        color = 'orange-200'
+        bg = `bg-${color} text-orange-600`;
     }
 
     if (block) {
@@ -41,7 +79,8 @@ export const Button = ({children, type = 'primary', loading = false, htmlType = 
     }
 
     return (
-        <button type={htmlType} disabled={loading} onClick={onClick} className={`${bg} h-50  py-2.5 px-4 rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'}  ${width} `}>
+        <button type={htmlType} disabled={loading} onClick={onClick} className={`${bg} flex items-center justify-center h-50 py-2.5 ${padding} rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'}  ${width} `}>
+            {prefixIcon && <div className="mr-2">{prefixIcon}</div>}
             {content}
         </button>
     );
