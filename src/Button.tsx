@@ -1,9 +1,16 @@
 import React, { ReactNode } from "react";
 
+export enum ButtonTypes {
+    link = 'link',
+    primary = 'primary',
+    danger = 'danger',
+    default = 'default',
+}
+
 export interface ButtonProps {
     children: ReactNode;
     onClick: () => void;
-    type?: 'default' | 'primary' | 'danger';
+    type?: ButtonTypes.default | ButtonTypes.primary | ButtonTypes.danger | ButtonTypes.link;
     loading?: boolean;
     ghost?: boolean;
     htmlType?: 'button' | 'submit' | 'reset';
@@ -11,19 +18,26 @@ export interface ButtonProps {
     prefixIcon?: ReactNode;
 }
 
-export const Button = ({children, type = 'default', loading = false, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon}: ButtonProps) => {
+export const Button = ({children, type = ButtonTypes.default, loading = false, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon}: ButtonProps) => {
     let width = 'w-auto'
     let color = 'orange-600'
     let bg = `bg-white text-gray-800 border border-gray-200`;
+    let padding = 'px-4';
 
-    if (type === 'primary') {
+    if (type === ButtonTypes.primary) {
         color = 'orange-600'
         bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`;
     }
 
-    if (type === 'danger') {
+    if (type === ButtonTypes.danger) {
         color = 'red-600'
         bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`
+    }
+
+    if (type === ButtonTypes.link) {
+        color = 'blue-600'
+        bg = `bg-white text-${color}`
+        padding = 'pl-px-0';
     }
 
     if (block) {
@@ -47,7 +61,7 @@ export const Button = ({children, type = 'default', loading = false, htmlType = 
     }
 
     return (
-        <button type={htmlType} disabled={loading} onClick={onClick} className={`${bg} flex items-center justify-center h-50 py-2.5 px-4 rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'}  ${width} `}>
+        <button type={htmlType} disabled={loading} onClick={onClick} className={`${bg} flex items-center justify-center h-50 py-2.5 ${padding} rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'}  ${width} `}>
             {prefixIcon && <div className="mr-2">{prefixIcon}</div>}
             {content}
         </button>

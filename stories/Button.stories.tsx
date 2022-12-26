@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Button, ButtonProps, IconContainer } from "../src";
-import { RiAncientPavilionFill } from "react-icons/ri";
+import {Button, ButtonProps, ButtonTypes, IconContainer} from "../src";
+import {RiAddFill, RiAncientPavilionFill} from "react-icons/ri";
 
 const meta: Meta = {
     title: 'General/Button',
@@ -14,7 +14,7 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} >Click Me!</But
 
 export const Default = Template.bind({});
 Default.args = {
-    type: 'default',
+    type: ButtonTypes.default,
     block: false,
     loading: false,
     onClick: () => console.log('Button Clicked'),
@@ -22,7 +22,7 @@ Default.args = {
 
 export const Primary = Template.bind({});
 Primary.args = {
-    type: 'primary',
+    type: ButtonTypes.primary,
     block: false,
     loading: false,
     onClick: () => console.log('Button Clicked'),
@@ -30,7 +30,7 @@ Primary.args = {
 
 export const Danger = Template.bind({});
 Danger.args = {
-    type: 'danger',
+    type: ButtonTypes.danger,
     block: false,
     loading: false,
     onClick: () => console.log('Button Clicked'),
@@ -38,7 +38,7 @@ Danger.args = {
 
 export const PrefixIcon = Template.bind({});
 PrefixIcon.args = {
-    type: 'default',
+    type: ButtonTypes.default,
     block: false,
     loading: false,
     onClick: () => console.log('Button Clicked'),
@@ -47,8 +47,17 @@ PrefixIcon.args = {
 
 export const Block = Template.bind({});
 Block.args = {
-    type: 'primary',
+    type: ButtonTypes.primary,
     block: true,
     loading: false,
     onClick: () => console.log('Button Clicked'),
+}
+
+export const Link = Template.bind({});
+Link.args = {
+    type: ButtonTypes.link,
+    block: false,
+    loading: false,
+    onClick: () => console.log('Button Clicked'),
+    prefixIcon: <RiAddFill />
 }
