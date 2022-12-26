@@ -3,20 +3,24 @@ import React, { ReactNode } from "react";
 export interface ButtonProps {
     children: ReactNode;
     onClick: () => void;
-    type?: 'primary' | 'danger';
+    type?: 'default' | 'primary' | 'danger';
     loading?: boolean;
     ghost?: boolean;
     htmlType?: 'button' | 'submit' | 'reset';
     block?: boolean;
 }
 
-export const Button = ({children, type = 'primary', loading = false, htmlType = 'button', block = false, ghost = false, onClick}: ButtonProps) => {
+export const Button = ({children, type = 'default', loading = false, htmlType = 'button', block = false, ghost = false, onClick}: ButtonProps) => {
     let width = 'w-auto'
     let color = 'orange-600'
-    let bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`;
+    let bg = `bg-white text-gray-800 border border-gray-200`;
 
+    if (type === 'primary') {
+        color = 'orange-600'
+        bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`;
+    }
     if (type === 'danger') {
-        let color = 'red-600'
+        color = 'red-600'
         bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`
     }
 

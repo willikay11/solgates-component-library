@@ -13,7 +13,7 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} >Click Me!</But
 
 export const Default = Template.bind({});
 Default.args = {
-    type: 'danger',
+    type: 'default',
     ghost: true,
     block: false,
     loading: false,
