@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Button, ButtonProps} from "../src";
+import { Button, ButtonProps, IconContainer } from "../src";
+import { RiAncientPavilionFill } from "react-icons/ri";
 
 const meta: Meta = {
     title: 'General/Button',
@@ -17,5 +18,6 @@ Default.args = {
     ghost: true,
     block: false,
     loading: false,
-    onClick: () => console.log('Button Clicked')
+    onClick: () => console.log('Button Clicked'),
+    prefixIcon: <IconContainer><RiAncientPavilionFill color="#DB4437" /></IconContainer>
 }
