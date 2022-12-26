@@ -13,10 +13,11 @@ const Template: Story<TabsProps> = (args) => <Tabs {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    defaultActiveKey: '1',
+    defaultActiveKey: 2,
     items: [
-        { label: 'Tab 1', key: '1', content: <p>Content 1</p>},
-        { label: 'Tab 2', key: '2', content: <p>Content 2</p>},
-        { label: 'Tab 3', key: '3', content: <p>Content 3</p>},
-    ]
+        { label: 'Tab 1', content: <p>Content 1</p>},
+        { label: 'Tab 2', content: <p>Content 2</p>},
+        { label: 'Tab 3', content: <p>Content 3</p>},
+    ],
+    onChange: (activeKey) => console.log('Active key: ', activeKey),
 };
