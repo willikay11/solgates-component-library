@@ -13,9 +13,9 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} >Click Me!</But
 
 export const Default = Template.bind({});
 Default.args = {
-    type: 'primary',
-    ghost: false,
-    block: true,
+    type: 'danger',
+    ghost: true,
+    block: false,
     loading: false,
     onClick: () => console.log('Button Clicked')
 }
