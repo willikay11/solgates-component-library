@@ -15,9 +15,40 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} >Click Me!</But
 export const Default = Template.bind({});
 Default.args = {
     type: 'default',
-    ghost: true,
+    block: false,
+    loading: false,
+    onClick: () => console.log('Button Clicked'),
+}
+
+export const Primary = Template.bind({});
+Primary.args = {
+    type: 'primary',
+    block: false,
+    loading: false,
+    onClick: () => console.log('Button Clicked'),
+}
+
+export const Danger = Template.bind({});
+Danger.args = {
+    type: 'danger',
+    block: false,
+    loading: false,
+    onClick: () => console.log('Button Clicked'),
+}
+
+export const PrefixIcon = Template.bind({});
+PrefixIcon.args = {
+    type: 'default',
     block: false,
     loading: false,
     onClick: () => console.log('Button Clicked'),
     prefixIcon: <IconContainer><RiAncientPavilionFill color="#DB4437" /></IconContainer>
+}
+
+export const Block = Template.bind({});
+Block.args = {
+    type: 'primary',
+    block: true,
+    loading: false,
+    onClick: () => console.log('Button Clicked'),
 }
