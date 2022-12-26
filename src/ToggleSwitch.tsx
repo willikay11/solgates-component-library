@@ -10,7 +10,7 @@ export const ToggleSwitch = ({ enabled, onChange }: ToggleSwitchProps) => (
     <Switch
         checked={enabled}
         onChange={onChange}
-        className={`${enabled ? 'bg-green-500' : 'bg-gray-400'}
+        className={`${enabled ? 'bg-orange-600' : 'bg-gray-200'}
           relative inline-flex flex-shrink-0 h-7 w-14 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
     >
         <span className="sr-only">Use setting</span>
