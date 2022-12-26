@@ -19,6 +19,7 @@ export const Button = ({children, type = 'default', loading = false, htmlType = 
         color = 'orange-600'
         bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`;
     }
+
     if (type === 'danger') {
         color = 'red-600'
         bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`
