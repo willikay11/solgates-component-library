@@ -5,12 +5,15 @@ export enum ButtonTypes {
     primary = 'primary',
     danger = 'danger',
     default = 'default',
+    primary_blue_600 = 'primary-blue-600',
+    primary_gray_800 = 'primary-gray-800',
+    primary_orange_200 = 'primary-orange-200',
 }
 
 export interface ButtonProps {
     children: ReactNode;
     onClick: () => void;
-    type?: ButtonTypes.default | ButtonTypes.primary | ButtonTypes.danger | ButtonTypes.link;
+    type?: ButtonTypes.default | ButtonTypes.primary | ButtonTypes.danger | ButtonTypes.link | ButtonTypes.primary_blue_600 | ButtonTypes.primary_gray_800 | ButtonTypes.primary_orange_200;
     loading?: boolean;
     ghost?: boolean;
     htmlType?: 'button' | 'submit' | 'reset';
@@ -38,6 +41,21 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
         color = 'blue-600'
         bg = `bg-white text-${color}`
         padding = 'pl-px-0';
+    }
+
+    if (type === ButtonTypes.primary_blue_600) {
+        color = 'blue-600'
+        bg = `bg-${color} text-white`;
+    }
+
+    if (type === ButtonTypes.primary_gray_800) {
+        color = 'gray-800'
+        bg = `bg-${color} text-white`;
+    }
+
+    if (type === ButtonTypes.primary_orange_200) {
+        color = 'orange-200'
+        bg = `bg-${color} text-orange-600`;
     }
 
     if (block) {

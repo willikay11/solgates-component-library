@@ -61,3 +61,11 @@ Link.args = {
     onClick: () => console.log('Button Clicked'),
     prefixIcon: <RiAddFill />
 }
+
+export const Primary_Blue = Template.bind({});
+Primary_Blue.args = {
+    type: ButtonTypes.primary_blue_600,
+    block: false,
+    loading: false,
+    onClick: () => console.log('Button Clicked'),
+}
