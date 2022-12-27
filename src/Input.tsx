@@ -99,7 +99,7 @@ const Select = ({ items, arrowIcon, selectedIcon }: SelectInputProps) => {
                                 key={item.value}
                                 className={({ active }) =>
                                     `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
-                                        active ? 'bg-orange-200 text-orange-600' : 'text-gray-900'
+                                        active ? 'bg-orange-100 text-orange-600' : 'text-gray-900'
                                     }`
                                 }
                                 value={item.value}
@@ -108,7 +108,7 @@ const Select = ({ items, arrowIcon, selectedIcon }: SelectInputProps) => {
                                 {({ selected }) => (
                                     <>
                                       <span
-                                          className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}
+                                          className={`block truncate ${selected ? 'font-medium text-orange-600' : 'font-normal'}`}
                                       >
                                         {item.label}
                                       </span>
