@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 
 export interface TagProps {
     text: string | ReactNode,
-    closeIcon: ReactNode,
+    closeIcon?: ReactNode,
     tagColor?: string,
     textColor?: string,
 }

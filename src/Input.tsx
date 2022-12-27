@@ -1,5 +1,6 @@
 import React, { ReactNode, useState, Fragment } from "react";
 import { Listbox, Transition } from '@headlessui/react'
+import { Tag } from "./Tag";
 
 export interface PasswordInputProps {
     iconRender: (visible: boolean) => ReactNode,
@@ -76,19 +77,38 @@ export interface SelectInputProps {
 
 const Select = ({ items, arrowIcon, selectedIcon, multiple = false }: SelectInputProps) => {
     const [selectedItem, setSelectedItem] = useState<selectItem>(items[0]);
+    const [multipleSelectedItems, setMultipleSelectedItem] = useState<selectItem[]>([]);
     return (
-        <Listbox multiple={multiple} onChange={(value) => {
-            const foundItem = items.filter(item => item.value === value);
-            if (foundItem) {
-                setSelectedItem(foundItem[0]);
+        <Listbox multiple={multiple} onChange={(value: any) => {
+            if (multiple) {
+                const selectedItems: [string] = value;
+                const foundItems: selectItem[] = [];
+                selectedItems.forEach(selectedItem => {
+                    const foundItem = items.filter(item => item.value === selectedItem);
+                    foundItems.push(foundItem[0]);
+                });
+                setMultipleSelectedItem(foundItems);
+            } else {
+                const foundItem = items.filter(item => item.value === value);
+                if (foundItem) {
+                    setSelectedItem(foundItem[0]);
+                }
             }
         }}>
             <div className="relative w-full">
-                <Listbox.Button className="relative w-full cursor-pointer rounded bg-white py-2 pl-3 pr-10 text-left border border-gray-200 hover:border-orange-500 focus:border-orange-500 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                    <span className="block truncate">{selectedItem?.label}</span>
-                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                        {arrowIcon}
-                    </span>
+                <Listbox.Button className="relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-10 text-left border border-gray-200 hover:border-orange-500 focus:border-orange-500 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                    {
+                        multiple ? (
+                            multipleSelectedItems.map(selectedItem => <Tag text={selectedItem.label} />)
+                        ) : (
+                            <>
+                                <span className="block truncate">{selectedItem?.label}</span>
+                                <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                                    {arrowIcon}
+                                </span>
+                            </>
+                        )
+                    }
                 </Listbox.Button>
                 <Transition
                     as={Fragment}
