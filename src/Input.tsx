@@ -66,15 +66,18 @@ interface selectItem {
     value: string,
     disabled?: boolean,
 }
+
 export interface SelectInputProps {
     items: selectItem[],
     arrowIcon: ReactNode,
     selectedIcon: ReactNode,
+    multiple?: boolean,
 }
-const Select = ({ items, arrowIcon, selectedIcon }: SelectInputProps) => {
+
+const Select = ({ items, arrowIcon, selectedIcon, multiple = false }: SelectInputProps) => {
     const [selectedItem, setSelectedItem] = useState<selectItem>(items[0]);
     return (
-        <Listbox onChange={(value) => {
+        <Listbox multiple={multiple} onChange={(value) => {
             const foundItem = items.filter(item => item.value === value);
             if (foundItem) {
                 setSelectedItem(foundItem[0]);

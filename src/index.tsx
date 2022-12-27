@@ -3,3 +3,4 @@ export * from './Tabs';
 export * from './Button';
 export * from './IconContainer';
 export * from './Input';
+export * from './Tag';

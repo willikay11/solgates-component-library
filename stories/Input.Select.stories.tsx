@@ -16,6 +16,7 @@ export const Default = Template.bind({});
 Default.args = {
     arrowIcon: <RiArrowDownSLine size={18} />,
     selectedIcon: <RiCheckFill size={18} />,
+    multiple: true,
     items: [
         {
             label: 'Lucy',
