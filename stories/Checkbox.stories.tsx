@@ -15,5 +15,6 @@ export const Default = Template.bind({});
 Default.args = {
     name: 'checkbox',
     id: 'checkbox',
-    label: <label>Accept terms & conditions</label>
+    label: <label>Accept terms & conditions</label>,
+    disabled: true
 }

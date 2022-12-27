@@ -3,13 +3,14 @@ import React, {ReactNode} from "react";
 export interface CheckboxProps {
   name: string,
   id: string,
-  label?: ReactNode
+  label?: ReactNode,
+  disabled?: boolean,
 }
 
-export const Checkbox = ({id, name, label }: CheckboxProps) => {
+export const Checkbox = ({id, name, label, disabled = false }: CheckboxProps) => {
   return(
       <div className="flex items-center">
-        <input type="checkbox" id={id} name={name} value="" className="cursor-pointer opacity-0 absolute h-8 w-8"/>
+        <input disabled={disabled} type="checkbox" id={id} name={name} value="" className={`${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} opacity-0 absolute h-8 w-8`} />
         <div
             className="bg-white border-2 rounded-md border-orange-600 w-4 h-4 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-orange-600">
           <svg className="fill-current hidden w-3 h-3 text-orange-600 pointer-events-none" version="1.1"
