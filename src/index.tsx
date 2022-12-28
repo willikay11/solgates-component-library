@@ -6,3 +6,4 @@ export * from './Input';
 export * from './Checkbox';
 export * from './Tag';
 export * from './Card';
+export * from './RadioButton';
