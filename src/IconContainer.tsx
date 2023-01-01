@@ -1,11 +1,12 @@
 import React, {ReactNode} from "react";
 
 export interface IconContainerProps {
-    children: ReactNode
+    children: ReactNode,
+    size?: string,
 }
 
-export const IconContainer = ({ children}: IconContainerProps) => {
+export const IconContainer = ({ children, size = '9' }: IconContainerProps) => {
   return(
-      <div className="w-8 h-[1.875rem] rounded bg-gray-50 flex items-center justify-center p-2.5">{children}</div>
+      <div className={`w-${size} h-${size} rounded bg-gray-50 flex items-center justify-center p-2.5`}>{children}</div>
   )
 }

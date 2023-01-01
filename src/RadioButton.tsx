@@ -26,23 +26,23 @@ export const RadioButton = ({ label, options, selectedIcon, unSelectedIcon }: Ra
                   className={({ active, checked }) =>
                       `${
                           active
-                              ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300'
+                              ? 'ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300'
                               : ''
                       }
                       ${
                           checked ? 'bg-blue-50 border-blue-600 bg-opacity-75 text-white' : 'bg-white'
                       }
-                      relative flex cursor-pointer px-5 py-4 mb-2 rounded bg-white border border-gray-200 outline-0`
+                      relative flex cursor-pointer px-5 py-4 mb-2 rounded bg-white border border-gray-200`
                   }
               >
                   {({ checked }) => (
                       <>
-                          <div className="flex w-full items-center justify-between">
-                              <div className="flex items-center">
-                                  <div className="text-sm">
+                          <div className="flex flex-row w-full items-center justify-between">
+                              <div className="flex flex-1 items-center">
+                                  <div className="flex flex-1">
                                       <RadioGroup.Label
-                                          as="p"
-                                          className={`font-medium text-gray-600`}
+                                          as="div"
+                                          className="flex flex-1"
                                       >
                                           {option.leftContent}
                                       </RadioGroup.Label>
