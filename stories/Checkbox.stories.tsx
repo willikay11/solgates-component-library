@@ -16,5 +16,5 @@ Default.args = {
     name: 'checkbox',
     id: 'checkbox',
     label: <label>Accept terms & conditions</label>,
-    disabled: true
+    disabled: false
 }
