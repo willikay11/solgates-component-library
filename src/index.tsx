@@ -8,3 +8,4 @@ export * from './Tag';
 export * from './Card';
 export * from './RadioButton';
 export * from './Dropdown';
+export * from './Collapsible';
