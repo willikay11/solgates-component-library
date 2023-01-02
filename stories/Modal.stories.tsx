@@ -19,7 +19,7 @@ Default.args = {
     open: true,
     onClose: () => console.log(false),
     children: <div className="flex flex-col justify-center items-center">
-        <IconContainer bgColor="bg-red-50">
+        <IconContainer bgColor="bg-red-50" borderRadius="rounded-full">
             <RiErrorWarningLine color={colors.red["500"]} />
         </IconContainer>
 
