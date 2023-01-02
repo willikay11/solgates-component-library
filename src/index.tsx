@@ -7,3 +7,4 @@ export * from './Checkbox';
 export * from './Tag';
 export * from './Card';
 export * from './RadioButton';
+export * from './Dropdown';
