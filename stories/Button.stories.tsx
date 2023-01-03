@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {Button, ButtonProps, ButtonTypes, IconContainer} from "../src";
-import {RiAddFill, RiAncientPavilionFill} from "react-icons/ri";
+import { Button, ButtonProps, ButtonTypes, IconContainer } from "../src";
+import { RiAddFill, RiAncientPavilionFill } from "react-icons/ri";
 
 const meta: Meta = {
     title: 'General/Button',
@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} >Click Me!</Button>;
+const Template: Story<ButtonProps> = (args) => <Button {...args} ></Button>;
 
 export const Default = Template.bind({});
 Default.args = {

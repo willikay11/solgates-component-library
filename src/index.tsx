@@ -10,3 +10,4 @@ export * from './RadioButton';
 export * from './Dropdown';
 export * from './Collapsible';
 export * from './Modal';
+export * from './ProductTile';

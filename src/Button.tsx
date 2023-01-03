@@ -19,9 +19,10 @@ export interface ButtonProps {
     htmlType?: 'button' | 'submit' | 'reset';
     block?: boolean;
     prefixIcon?: ReactNode;
+    className?: string;
 }
 
-export const Button = ({children, type = ButtonTypes.default, loading = false, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon}: ButtonProps) => {
+export const Button = ({children, type = ButtonTypes.default, loading = false, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon, className}: ButtonProps) => {
     let width = 'w-auto'
     let color = 'orange-600'
     let bg = `bg-white text-gray-800 border border-gray-200`;
@@ -79,7 +80,7 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
     }
 
     return (
-        <button type={htmlType} disabled={loading} onClick={onClick} className={`${bg} flex items-center justify-center h-50 py-2.5 ${padding} rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'}  ${width} `}>
+        <button type={htmlType} disabled={loading} onClick={onClick} className={`${bg} inline-flex items-center justify-center h-50 py-2.5 ${padding} rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'}  ${width} ${className}`}>
             {prefixIcon && <div className="mr-2">{prefixIcon}</div>}
             {content}
         </button>
