@@ -15,10 +15,11 @@ export interface ProductTileProps {
   name?: string;
   shop?: string;
   price?: string;
-  addedToWishList?: boolean
+  addedToWishList?: boolean;
+  onClick?: () => void;
 }
 
-export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, shop, price, addedToWishList }: ProductTileProps) => {
+export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, shop, price, addedToWishList, onClick }: ProductTileProps) => {
   const [inWishList] = useState<boolean>(addedToWishList || false);
 
   return(
@@ -32,7 +33,7 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, shop
                 ) : type === PRODUCT_TYPE.COLLECTION ?(
                     <div className="absolute z-20 top-3 left-3">
                         <p className="text-base leading-6 font-bold text-gray-800">{name}</p>
-                        <Button onClick={() => console.log('clicked')} type={ButtonTypes.link} className="bg-transparent py-0">Shop Collection <RiArrowRightLine /></Button>
+                        <Button onClick={() => onClick?.()} type={ButtonTypes.link} className="bg-transparent py-0">Shop Collection <RiArrowRightLine /></Button>
                     </div>
                 ) : null
             }
@@ -41,7 +42,7 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, shop
             type === PRODUCT_TYPE.PRODUCTS && (
                 <>
                     <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">{name}</p>
-                    <p className="text-xs leading-4 font-normal mt-1.5 text-gray-500">Dutch Green | <Button onClick={() => console.log('clicked')} className="py-0" type={ButtonTypes.link}>{shop}</Button></p>
+                    <p className="text-xs leading-4 font-normal mt-1.5 text-gray-500">Dutch Green | <Button onClick={() => onClick?.()} className="py-0" type={ButtonTypes.link}>{shop}</Button></p>
                     <p className="text-xs leading-4 font-semibold mt-1.5 text-gray-800">{price}</p>
                 </>
             )
