@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {Button, ButtonTypes} from "./Button";
-import {RiHeart3Fill, RiHeart3Line, RiArrowRightLine } from "react-icons/all";
+import { Button, ButtonTypes} from "./Button";
+import { RiHeart3Fill, RiHeart3Line, RiArrowRightLine } from "react-icons/all";
 import colors from "tailwindcss/colors";
 
 export enum PRODUCT_TYPE {
