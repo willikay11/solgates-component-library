@@ -9,7 +9,7 @@ export interface CheckboxProps {
 
 export const Checkbox = ({id, name, label, disabled = false }: CheckboxProps) => {
   return(
-      <div className="flex items-center">
+      <div className="flex items-start">
         <input disabled={disabled} type="checkbox" id={id} name={name} value="" className={`${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} opacity-0 absolute h-8 w-8`} />
         <div
             className="bg-white border-2 rounded-md border-orange-600 w-4 h-4 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-orange-600">

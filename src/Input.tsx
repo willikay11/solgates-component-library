@@ -12,9 +12,9 @@ const Password = ({ prefixIcon, iconRender, placeholder }: PasswordInputProps) =
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
     return (
-        <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500">
+        <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
             {prefixIcon && <div>{prefixIcon}</div>}
-            <input type={isPasswordVisible ? 'text' : "password"} placeholder={placeholder} className="ml-2 outline-0 w-full" />
+            <input type={isPasswordVisible ? 'text' : "password"} placeholder={placeholder} className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500" />
             {iconRender && <div onClick={() => setIsPasswordVisible(!isPasswordVisible)}>{iconRender(isPasswordVisible)}</div>}
         </div>
     );
@@ -76,10 +76,11 @@ export interface SelectInputProps {
     items: selectItem[],
     arrowIcon: ReactNode,
     selectedIcon: ReactNode,
+    prefixIcon?: ReactNode;
     multiple?: boolean,
 }
 
-const Select = ({ items, arrowIcon, selectedIcon, multiple = false }: SelectInputProps) => {
+const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon }: SelectInputProps) => {
     const [selectedItem, setSelectedItem] = useState<selectItem>(items[0]);
     const [multipleSelectedItems, setMultipleSelectedItem] = useState<selectItem[]>([]);
     return (
@@ -106,7 +107,8 @@ const Select = ({ items, arrowIcon, selectedIcon, multiple = false }: SelectInpu
                             multipleSelectedItems.map(selectedItem => <Tag text={selectedItem.label} />)
                         ) : (
                             <>
-                                <span className="block truncate">{selectedItem?.label}</span>
+                                {prefixIcon}
+                                <span className="ml-2 truncate">{selectedItem?.label}</span>
                                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                     {arrowIcon}
                                 </span>
