@@ -12,3 +12,4 @@ export * from './Collapsible';
 export * from './Modal';
 export * from './ProductTile';
 export * from './PageBanner';
+export * from './ShoppingCart';

@@ -5,15 +5,16 @@ import { Tag } from "./Tag";
 export interface PasswordInputProps {
     iconRender: (visible: boolean) => ReactNode,
     prefixIcon?: ReactNode;
+    placeholder?: string;
 }
 
-const Password = ({ prefixIcon, iconRender }: PasswordInputProps) => {
+const Password = ({ prefixIcon, iconRender, placeholder }: PasswordInputProps) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
     return (
-        <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
+        <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500">
             {prefixIcon && <div>{prefixIcon}</div>}
-            <input type={isPasswordVisible ? 'text' : "password"} className="ml-2 outline-0 w-full" />
+            <input type={isPasswordVisible ? 'text' : "password"} placeholder={placeholder} className="ml-2 outline-0 w-full" />
             {iconRender && <div onClick={() => setIsPasswordVisible(!isPasswordVisible)}>{iconRender(isPasswordVisible)}</div>}
         </div>
     );
@@ -21,11 +22,12 @@ const Password = ({ prefixIcon, iconRender }: PasswordInputProps) => {
 
 export interface TextAreaInputProps {
     rows: number;
+    placeholder?: string;
 }
 
-const TextArea = ({ rows }: TextAreaInputProps) => {
+const TextArea = ({ rows, placeholder }: TextAreaInputProps) => {
     return (
-        <textarea className="w-full p-2.5 rounded bg-white border border-gray-200 outline-0 focus:border-orange-500 hover:border-orange-500" rows={rows} />
+        <textarea placeholder={placeholder} className="w-full p-2.5 rounded bg-white border border-gray-200 outline-0 focus:border-orange-500 hover:border-orange-500 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500" rows={rows} />
     );
 }
 
@@ -33,13 +35,14 @@ export interface NumberInputProps {
     min: number;
     max: number;
     prefixIcon?: ReactNode;
+    placeholder?: string;
 }
 
-const Number = ({ min, max, prefixIcon }: NumberInputProps) => {
+const Number = ({ min, max, prefixIcon, placeholder }: NumberInputProps) => {
     return (
       <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
         {prefixIcon && <div>{prefixIcon}</div>}
-        <input type="number" min={min} max={max} className="ml-2 outline-0 w-full" />
+        <input type="number" placeholder={placeholder} min={min} max={max} className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500" />
       </div>
     );
 }
@@ -48,14 +51,15 @@ export interface TextInputProps {
     prefixIcon?: ReactNode;
     suffixIcon?: ReactNode;
     clearIcon?: ReactNode;
+    placeholder?: string;
 }
 
-const Text = ({ prefixIcon, suffixIcon, clearIcon }: TextInputProps) => {
+const Text = ({ prefixIcon, suffixIcon, clearIcon, placeholder }: TextInputProps) => {
     const [currentText, setCurrentText] = useState<string>('');
     return (
         <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
             {prefixIcon && <div>{prefixIcon}</div>}
-            <input type="text" value={currentText} onChange={(e) => setCurrentText(e.target.value)} className="ml-2 outline-0 w-full" />
+            <input type="text" placeholder={placeholder} value={currentText} onChange={(e) => setCurrentText(e.target.value)} className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500" />
             {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
             {clearIcon && <div className="cursor-pointer" onClick={() => setCurrentText('')} >{clearIcon}</div>}
         </div>
