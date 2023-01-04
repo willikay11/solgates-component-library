@@ -11,13 +11,13 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<CardProps> = (args) => <div className="w-96"><Card {...args} /></div>;
+const Template: Story<CardProps> = (args) => <div className="sm:w-full md:w-full lg:w-96 xl:w-72 2xl:w-64"><Card {...args} /></div>;
 
 export const Default = Template.bind({});
 Default.args = {
     title: "Card title",
     children: <div className="w-full">
-        <div className="grid gap-2 grid-cols-2 mb-2">
+        <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mb-2">
             <Input.Text placeholder="First Name" prefixIcon={<IconContainer><RiUser6Line color={colors.green["500"]} /></IconContainer>} />
             <Input.Text placeholder="Last Name" prefixIcon={<IconContainer><RiUser6Line color={colors.green["500"]} /></IconContainer>} />
         </div>
