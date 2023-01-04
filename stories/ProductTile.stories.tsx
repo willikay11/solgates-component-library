@@ -9,9 +9,13 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ProductTileProps> = (args) => <div className="grid gap-4 grid-cols-4">
-    <ProductTile {...args} />
-</div>;
+const Template: Story<ProductTileProps> = (args) =>
+    <div className="grid gap-2 grid-cols-2 md:gap-2 md:grid-cols-3 lg:gap-4 lg:grid-cols-4">
+        <ProductTile {...args} />
+        <ProductTile {...args} />
+        <ProductTile {...args} />
+        <ProductTile {...args} />
+    </div>;
 
 export const Products = Template.bind({});
 Products.args = {

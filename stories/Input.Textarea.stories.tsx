@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import { Input, TextAreaInputProps } from "../src";
 
 const meta: Meta = {
-    title: 'Data Entry/Input/TextArea',
+    title: 'Data Entry/TextArea',
     component: Input.Password
 }
 

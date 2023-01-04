@@ -4,7 +4,7 @@ import { Input, SelectInputProps } from "../src";
 import {RiArrowDownSLine, RiCheckFill} from "react-icons/all";
 
 const meta: Meta = {
-    title: 'Data Entry/Input/Select',
+    title: 'Data Entry/Select',
     component: Input.Select
 }
 

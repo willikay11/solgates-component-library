@@ -5,7 +5,7 @@ import {RiCheckboxBlankCircleLine, RiRadioButtonLine, RiShoppingBag2Line} from "
 import colors from "tailwindcss/colors";
 
 const meta: Meta = {
-    title: 'Data Entry/Input/Radio Button',
+    title: 'Data Entry/Radio Button',
     component: RadioButton
 }
 

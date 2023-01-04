@@ -11,7 +11,10 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<CardProps> = (args) => <div className="sm:w-full md:w-full lg:w-96 xl:w-72 2xl:w-64"><Card {...args} /></div>;
+const Template: Story<CardProps> = (args) =>
+    <div className="sm:w-full md:w-full lg:w-96 xl:w-72 2xl:w-64">
+        <Card {...args} />
+    </div>;
 
 export const Default = Template.bind({});
 Default.args = {
