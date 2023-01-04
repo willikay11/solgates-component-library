@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from '@headlessui/react'
-import {RiUser6Line} from "react-icons/ri";
+import { RiUser6Line, RiHeart3Line, RiShoppingBagLine, RiSearch2Line } from "react-icons/ri";
+import { Input } from "./Input";
+import colors from "tailwindcss/colors";
 
 interface item {
     key: string | number,
@@ -75,8 +77,15 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                         )
                     }
                 </div>
-                <div className="col-end-11 inline-flex items-center justify-end">
-                    <RiUser6Line />
+                <div className="col-span-2 inline-flex items-center justify-end">
+                    <RiUser6Line className="mr-[10px]" color={colors.gray["600"]} size={18} />
+                    <RiHeart3Line className="mr-[10px]" color={colors.gray["600"]} size={18} />
+                    <RiShoppingBagLine className="mr-[10px]" color={colors.gray["600"]} size={18} />
+                    <Input.Text
+                        className="h-[36px] rounded-[68px] w-[135px] bg-gray-50"
+                        placeholder="Search"
+                        prefixIcon={<RiSearch2Line color={colors.gray["400"]} />}
+                    />
                 </div>
             </div>
         </div>
