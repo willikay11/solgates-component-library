@@ -7,7 +7,7 @@ export * from './Checkbox';
 export * from './Tag';
 export * from './Card';
 export * from './RadioButton';
-export * from './Dropdown';
+export * from './SolgatesMenu';
 export * from './Collapsible';
 export * from './Modal';
 export * from './ProductTile';
