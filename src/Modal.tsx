@@ -1,13 +1,27 @@
 import React, {Fragment, ReactNode} from "react";
 import { Dialog, Transition } from '@headlessui/react'
 
+export enum MODAL_POSITION {
+    CENTER = 'center',
+    BOTTOM = 'bottom',
+    TOP = 'top',
+}
 export interface ModalProps {
     open: boolean,
     onClose: () => void,
     children: ReactNode,
+    position?: MODAL_POSITION.CENTER | MODAL_POSITION.BOTTOM | MODAL_POSITION.TOP
 }
 
-export const Modal = ({ open, onClose, children }: ModalProps) => {
+export const Modal = ({ open, onClose, children, position }: ModalProps) => {
+  let positionClass = "inset-0";
+
+  if (position === MODAL_POSITION.TOP) {
+      positionClass = 'top-0 left-0 right-0'
+  } else if (position === MODAL_POSITION.BOTTOM) {
+      positionClass = 'bottom-0 left-0 right-0'
+  }
+
   return (
       <Transition appear show={open} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={onClose}>
@@ -23,7 +37,7 @@ export const Modal = ({ open, onClose, children }: ModalProps) => {
                   <div className="fixed inset-0 bg-black bg-opacity-25" />
               </Transition.Child>
 
-              <div className="fixed inset-0 overflow-y-auto">
+              <div className={`fixed ${positionClass} overflow-y-auto`}>
                   <div className="flex min-h-full items-center justify-center p-4 text-center">
                       <Transition.Child
                           as={Fragment}
