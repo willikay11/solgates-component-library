@@ -1,5 +1,5 @@
-import React, {Fragment, useState} from "react";
-import {Menu, Transition} from '@headlessui/react'
+import React, {Fragment, useState, useRef} from "react";
+import {Menu, Transition, Disclosure} from '@headlessui/react'
 import {RiHeart3Line, RiMenu4Fill, RiSearch2Line, RiShoppingBagLine, RiUser6Line} from "react-icons/ri";
 import {Input} from "./Input";
 import colors from "tailwindcss/colors";
@@ -29,11 +29,53 @@ export interface SolgatesMenuProps {
 }
 
 export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
+    const buttonRefs = useRef<HTMLButtonElement[]>([]);
+    const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
+
+    const clickRecent = (index: any) => {
+        const clickedButton = buttonRefs.current[index];
+        if (clickedButton === openedRef.current) {
+            openedRef.current = null;
+            return;
+        }
+        if (Boolean(openedRef.current?.getAttribute("data-value"))) {
+            openedRef.current?.click();
+        }
+        openedRef.current = clickedButton;
+    };
+
     return (
         <>
             <Modal open={openMobileMenu} onClose={() => setOpenMobileMenu(false)} position={MODAL_POSITION.BOTTOM}>
-                <p>Here</p>
+                {
+                    menus.map((menu, index) => (
+                        <Disclosure>
+                            {({ open }) => (
+                                <>
+                                    <Disclosure.Button
+                                        data-value={open}
+                                        ref={(ref: any) => {
+                                            buttonRefs.current[index] = ref;
+                                        }}
+                                        onClick={() => clickRecent(index)}
+                                        className="flex py-2 outline-none">
+                                        {menu.label}
+                                    </Disclosure.Button>
+                                    <Disclosure.Panel className="text-gray-500">
+                                        {
+                                            menu.category.map((category) => (
+                                                <Disclosure.Button key={category.key} className="flex py-2 outline-none">
+                                                    {category.label}
+                                                </Disclosure.Button>
+                                            ))
+                                        }
+                                    </Disclosure.Panel>
+                                </>
+                            )}
+                        </Disclosure>
+                    ))
+                }
             </Modal>
             <div className="fixed relative w-full h-[60px] md:h-[120px] lg:h-[120px] items-center border-b border-gray-100">
                 <div className="bg-gray-100 flex py-[2px] lg:grid lg:grid-cols-12 w-full">
