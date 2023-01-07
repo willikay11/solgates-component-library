@@ -26,7 +26,8 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
     let width = 'w-auto'
     let color = 'orange-600'
     let bg = `bg-white text-gray-800 border border-gray-200`;
-    let padding = 'px-4';
+    let padding = 'py-2.5 px-4';
+    let height = 'h-[50px]';
 
     if (type === ButtonTypes.primary) {
         color = 'orange-600'
@@ -39,9 +40,10 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
     }
 
     if (type === ButtonTypes.link) {
-        color = 'blue-600'
-        bg = `bg-white text-${color}`
-        padding = 'pl-px-0';
+        color = 'blue-600';
+        bg = `bg-white text-${color}`;
+        padding = 'p-0';
+        height = 'h-auto';
     }
 
     if (type === ButtonTypes.primary_blue_600) {
@@ -80,7 +82,7 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
     }
 
     return (
-        <button type={htmlType} disabled={loading} onClick={onClick} className={`${bg} text-xs inline-flex items-center justify-center h-[50px] py-2.5 ${padding} rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'} ${width} ${className}`}>
+        <button type={htmlType} disabled={loading} onClick={onClick} className={`${bg} text-xs inline-flex items-center justify-center ${height} ${padding} rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'} ${width} ${className}`}>
             {prefixIcon && <div className="mr-2">{prefixIcon}</div>}
             {content}
         </button>
