@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Tag, TagProps } from "../src";
-import { RiCloseLine } from "react-icons/all";
+import { Tag, TagProps, User6Line } from "../src";
+import colors from "tailwindcss/colors";
 
 const meta: Meta = {
     title: 'Data Display/Tags',
@@ -15,5 +15,5 @@ const Template: Story<TagProps> = (args) => <Tag {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     text: 'John',
-    closeIcon: <RiCloseLine />
+    closeIcon: <User6Line color={colors.red["500"]} />
 };

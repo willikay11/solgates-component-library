@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {IconContainer, Input, PasswordInputProps} from "../src";
-import {RiEyeCloseLine, RiEyeLine, RiPlaneFill} from "react-icons/all";
+import {IconContainer, Input, PasswordInputProps, User6Line} from "../src";
+import colors from "tailwindcss/colors";
 
 const meta: Meta = {
     title: 'Data Entry/Password',
@@ -14,6 +14,6 @@ const Template: Story<PasswordInputProps> = (args) => <Input.Password {...args} 
 
 export const Default = Template.bind({});
 Default.args = {
-    prefixIcon: <IconContainer><RiPlaneFill /></IconContainer>,
-    iconRender: (visible) => visible ? <RiEyeLine /> : <RiEyeCloseLine />
+    prefixIcon: <IconContainer><User6Line color={colors.red["500"]} /></IconContainer>,
+    iconRender: (visible) => visible ? <User6Line color={colors.red["500"]} /> : <User6Line color={colors.red["500"]} />
 }
