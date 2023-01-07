@@ -172,7 +172,7 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                 </div>
                 <div className="flex md:hidden lg:hidden items-center h-[40px]">
                     <div className="flex flex-1" onClick={() => setOpenMobileMenu(true)}>
-                        <Menu4Line className="cursor-pointer" color={colors.gray["600"]} />
+                        <Menu4Line className="cursor-pointer" size={14} color={colors.gray["600"]} />
                     </div>
                     <div className="flex flex-1 justify-center">
                         <img src={logoUrl} className="w-[60px]" />
