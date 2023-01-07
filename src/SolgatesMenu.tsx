@@ -6,18 +6,17 @@ import colors from "tailwindcss/colors";
 import {Modal, MODAL_POSITION} from "./Modal";
 
 interface item {
-    key: string | number,
     label: string,
     onClick: () => void
 }
 
 interface category {
-    key: string | number,
     label: string,
     items: item[]
 }
 
 interface menu {
+    key: number,
     label: string;
     gap: number,
     category: category[]
@@ -33,12 +32,17 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
     const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
 
+    const calculateKey = (menuKey: number, multiplicationFactor: number, currentKey: number) => {
+        return (menuKey * multiplicationFactor) + currentKey;
+    }
+
     const clickRecent = (index: any) => {
         const clickedButton = buttonRefs.current[index];
         if (clickedButton === openedRef.current) {
             openedRef.current = null;
             return;
         }
+
         if (Boolean(openedRef.current?.getAttribute("data-value"))) {
             openedRef.current?.click();
         }
@@ -49,25 +53,47 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
         <>
             <Modal open={openMobileMenu} onClose={() => setOpenMobileMenu(false)} position={MODAL_POSITION.BOTTOM}>
                 {
-                    menus.map((menu, index) => (
+                    menus.map((menu) => (
                         <Disclosure>
                             {({ open }) => (
                                 <>
                                     <Disclosure.Button
                                         data-value={open}
                                         ref={(ref: any) => {
-                                            buttonRefs.current[index] = ref;
+                                            buttonRefs.current[menu.key] = ref;
                                         }}
-                                        onClick={() => clickRecent(index)}
+                                        onClick={() => clickRecent(menu.key)}
                                         className="flex py-2 outline-none">
                                         {menu.label}
                                     </Disclosure.Button>
-                                    <Disclosure.Panel className="text-gray-500">
+                                    <Disclosure.Panel className="ml-[10px] text-gray-500">
                                         {
-                                            menu.category.map((category) => (
-                                                <Disclosure.Button key={category.key} className="flex py-2 outline-none">
-                                                    {category.label}
-                                                </Disclosure.Button>
+                                            menu.category.map((category, index) => (
+                                                <Disclosure>
+                                                    {({ open }) => {
+                                                        const key = calculateKey(menu.key, 100, index);
+                                                        return <>
+                                                            <Disclosure.Button
+                                                                data-value={open}
+                                                                ref={(ref: any) => {
+                                                                    buttonRefs.current[key] = ref;
+                                                                }}
+                                                                onClick={() => clickRecent(key)}
+                                                                key={key} className="flex py-2 outline-none"
+                                                            >
+                                                                {category.label}
+                                                            </Disclosure.Button>
+                                                            <Disclosure.Panel className="ml-[10px] text-gray-500">
+                                                                {category.items.map((item) => (
+                                                                    <button className="text-xs leading-4 font-normal text-gray-600" onClick={item.onClick}>
+                                                                        {item.label}
+                                                                    </button>
+                                                                ))}
+                                                            </Disclosure.Panel>
+                                                        </>
+                                                    }}
+
+                                                </Disclosure>
                                             ))
                                         }
                                     </Disclosure.Panel>
@@ -109,18 +135,19 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                                                 <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
                                                     <div className={`grid gap-${menu?.gap} grid-cols-4 w-full`}>
                                                         {
-                                                            menu?.category?.map((category) => (
-                                                                <div key={category.key}>
+                                                            menu?.category?.map((category, index) => {
+                                                                const key = calculateKey(menu.key, 100, index);
+                                                                return <div key={key}>
                                                                     <p className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500">{category.label}</p>
                                                                     {category.items.map((item) => (
-                                                                        <Menu.Item key={item.key}>
+                                                                        <Menu.Item key={key}>
                                                                             <button className="text-xs leading-4 font-medium text-gray-800 hover:underline" onClick={item.onClick}>
                                                                                 {item.label}
                                                                             </button>
                                                                         </Menu.Item>
                                                                     ))}
                                                                 </div>
-                                                            ))
+                                                            })
                                                         }
                                                     </div>
                                                 </div>
@@ -137,7 +164,7 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                         <RiShoppingBagLine className="mr-[10px]" color={colors.gray["600"]} size={18} />
                         <RiSearch2Line className="mr-[10px] lg:hidden" color={colors.gray["600"]} size={18} />
                         <Input.Text
-                            className="md:hidden lg:block h-[36px] rounded-[68px] w-[135px] bg-gray-50"
+                            className="md:hidden lg:flex h-[36px] rounded-[68px] w-[135px] bg-gray-50"
                             placeholder="Search"
                             prefixIcon={<RiSearch2Line color={colors.gray["400"]} />}
                         />
