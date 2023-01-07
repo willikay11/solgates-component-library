@@ -1,8 +1,6 @@
-import React, {Fragment, useState, useRef} from "react";
+import React, {Fragment, useState, useRef, ReactNode} from "react";
 import {Menu, Transition, Disclosure} from '@headlessui/react'
-import {RiHeart3Line, RiMenu4Fill, RiSearch2Line, RiShoppingBagLine, RiUser6Line} from "react-icons/ri";
 import {Input} from "./Input";
-import colors from "tailwindcss/colors";
 import {Modal, MODAL_POSITION} from "./Modal";
 
 interface item {
@@ -25,9 +23,23 @@ interface menu {
 export interface SolgatesMenuProps {
     logoUrl: string;
     menus: menu[],
+    wishList: {
+        icon: ReactNode,
+        content: ReactNode,
+    },
+    user: {
+        icon: ReactNode,
+        content: ReactNode,
+    },
+    cart: {
+        icon: ReactNode,
+        content: ReactNode,
+    },
+    searchIcon: ReactNode,
+    mobileMenuIcon: ReactNode,
 }
 
-export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
+export const SolgatesMenu = ({ menus, logoUrl, mobileMenuIcon, searchIcon, user, cart, wishList }: SolgatesMenuProps) => {
     const buttonRefs = useRef<HTMLButtonElement[]>([]);
     const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -159,29 +171,29 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                         }
                     </div>
                     <div className="col-span-2 inline-flex items-center justify-end">
-                        <RiUser6Line className="mr-[10px]" color={colors.gray["600"]} size={18} />
-                        <RiHeart3Line className="mr-[10px]" color={colors.gray["600"]} size={18} />
-                        <RiShoppingBagLine className="mr-[10px]" color={colors.gray["600"]} size={18} />
-                        <RiSearch2Line className="mr-[10px] lg:hidden" color={colors.gray["600"]} size={18} />
+                        {user.icon}
+                        {wishList.icon}
+                        {cart.icon}
+                        {searchIcon}
                         <Input.Text
                             className="md:hidden lg:flex h-[36px] rounded-[68px] w-[135px] bg-gray-50"
                             placeholder="Search"
-                            prefixIcon={<RiSearch2Line color={colors.gray["400"]} />}
+                            prefixIcon={searchIcon}
                         />
                     </div>
                 </div>
                 <div className="flex md:hidden lg:hidden items-center h-[40px]">
-                    <div className="flex flex-1">
-                        <RiMenu4Fill className="cursor-pointer" onClick={() => setOpenMobileMenu(true)} />
+                    <div className="flex flex-1" onClick={() => setOpenMobileMenu(true)}>
+                        {mobileMenuIcon}
                     </div>
                     <div className="flex flex-1 justify-center">
                         <img src={logoUrl} className="w-[60px]" />
                     </div>
                     <div className="flex flex-1 justify-end">
-                        <RiUser6Line className="mr-[10px]" color={colors.gray["600"]} size={14} />
-                        <RiHeart3Line className="mr-[10px]" color={colors.gray["600"]} size={14} />
-                        <RiShoppingBagLine className="mr-[10px]" color={colors.gray["600"]} size={14} />
-                        <RiSearch2Line color={colors.gray["600"]} size={14} />
+                        {user.icon}
+                        {wishList.icon}
+                        {cart.icon}
+                        {searchIcon}
                     </div>
                 </div>
             </div>

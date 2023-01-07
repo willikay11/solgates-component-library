@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { SolgatesMenu, SolgatesMenuProps } from "../src";
+import colors from "tailwindcss/colors";
+import {RiHeart3Line, RiMenu4Fill, RiSearch2Line, RiShoppingBagLine, RiUser6Line} from "react-icons/ri";
 
 const meta: Meta = {
     title: 'Navigation/Solgates Menu',
@@ -219,5 +221,19 @@ Default.args = {
                 }
             ]
         }
-    ]
+    ],
+    wishList: {
+        icon: <RiHeart3Line className="mr-[10px]" color={colors.gray["600"]} size={14} />,
+        content: <p>WishList</p>
+    },
+    user: {
+        icon: <RiUser6Line className="mr-[10px]" color={colors.gray["600"]} size={14} />,
+        content: <p>WishList</p>
+    },
+    cart: {
+        icon: <RiShoppingBagLine className="mr-[10px]" color={colors.gray["600"]} size={14} />,
+        content: <p>Cart</p>
+    },
+    searchIcon: <RiSearch2Line className="mr-[10px] lg:hidden" color={colors.gray["600"]} size={18} />,
+    mobileMenuIcon: <RiMenu4Fill className="cursor-pointer" />
 };
