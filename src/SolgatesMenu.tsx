@@ -54,7 +54,7 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
             <Modal open={openMobileMenu} onClose={() => setOpenMobileMenu(false)} position={MODAL_POSITION.BOTTOM}>
                 {
                     menus.map((menu) => (
-                        <Disclosure>
+                        <Disclosure key={menu.key}>
                             {({ open }) => (
                                 <>
                                     <Disclosure.Button
@@ -69,7 +69,7 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                                     <Disclosure.Panel className="ml-[10px] text-gray-500">
                                         {
                                             menu.category.map((category, index) => (
-                                                <Disclosure>
+                                                <Disclosure key={`${category.label}-${index}`}>
                                                     {({ open }) => {
                                                         const key = calculateKey(menu.key, 100, index);
                                                         return <>
@@ -84,8 +84,8 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                                                                 {category.label}
                                                             </Disclosure.Button>
                                                             <Disclosure.Panel className="ml-[10px] text-gray-500">
-                                                                {category.items.map((item) => (
-                                                                    <button className="text-xs leading-4 font-normal text-gray-600" onClick={item.onClick}>
+                                                                {category.items.map((item, index) => (
+                                                                    <button key={`${item.label}-${index}`} className="text-xs leading-4 font-normal text-gray-600" onClick={item.onClick}>
                                                                         {item.label}
                                                                     </button>
                                                                 ))}
@@ -115,7 +115,7 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                         <img src={logoUrl} className="w-[90px] mr-[30px]" />
                         {
                             menus.map((menu) =>
-                                <Menu as="div" className="inline-flex text-left mr-[20px] h-full">
+                                <Menu key={menu.key} as="div" className="inline-flex text-left mr-[20px] h-full">
                                     <div>
                                         <Menu.Button className="inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
                                             {menu.label}
