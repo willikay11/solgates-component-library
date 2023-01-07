@@ -13,17 +13,18 @@ export interface ProductTileProps {
   imageUrl: string;
   type?: PRODUCT_TYPE.PRODUCTS | PRODUCT_TYPE.PRODUCT | PRODUCT_TYPE.COLLECTION;
   name?: string;
-  shop?: string;
+  smallDescription?: string;
+  buttonName?: string;
   price?: string;
   addedToWishList?: boolean;
   onClick?: () => void;
 }
 
-export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, shop, price, addedToWishList, onClick }: ProductTileProps) => {
+export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick }: ProductTileProps) => {
   const [inWishList] = useState<boolean>(addedToWishList || false);
 
   return(
-      <div className="group/product-tile w-full h-auto rounded cursor-pointer">
+      <div className="group/product-tile w-full h-auto rounded cursor-pointer" onClick={() => onClick?.()}>
         <div className="w-full relative rounded bg-gray-100 flex justify-center items-center">
             <img src={imageUrl} alt={name} />
             {
@@ -42,7 +43,10 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, shop
             type === PRODUCT_TYPE.PRODUCTS && (
                 <>
                     <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">{name}</p>
-                    <p className="text-xs leading-4 font-normal mt-1.5 text-gray-500">Dutch Green | <Button onClick={() => onClick?.()} className="py-0" type={ButtonTypes.link}>{shop}</Button></p>
+                    <div>
+                        {smallDescription && <span className="text-xs leading-4 font-normal mt-1.5 text-gray-500">{smallDescription} | </span>}
+                        {buttonName && <Button onClick={() => onClick?.()} className="py-0" type={ButtonTypes.link}>{buttonName}</Button>}
+                    </div>
                     <p className="text-xs leading-4 font-semibold mt-1.5 text-gray-800">{price}</p>
                 </>
             )
