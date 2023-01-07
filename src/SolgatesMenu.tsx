@@ -130,7 +130,7 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                                         leaveFrom="transform opacity-100 scale-100"
                                         leaveTo="transform opacity-0 scale-95"
                                     >
-                                        <Menu.Items className="absolute right-0 top-[114px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                                        <Menu.Items className="z-50 absolute right-0 top-[114px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
                                             <div className={`grid grid-cols-12 my-[30px]`}>
                                                 <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
                                                     <div className={`grid gap-${menu?.gap} grid-cols-4 w-full`}>
