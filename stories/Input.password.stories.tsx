@@ -4,7 +4,7 @@ import {IconContainer, Input, PasswordInputProps} from "../src";
 import {RiEyeCloseLine, RiEyeLine, RiPlaneFill} from "react-icons/all";
 
 const meta: Meta = {
-    title: 'Data Entry/Input/Password',
+    title: 'Data Entry/Password',
     component: Input.Password
 }
 

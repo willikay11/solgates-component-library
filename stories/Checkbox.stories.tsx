@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import { Checkbox, CheckboxProps } from "../src";
 
 const meta: Meta = {
-    title: 'Data Entry/Input/Checkbox',
+    title: 'Data Entry/Checkbox',
     component: Checkbox
 }
 
@@ -15,6 +15,6 @@ export const Default = Template.bind({});
 Default.args = {
     name: 'checkbox',
     id: 'checkbox',
-    label: <label>Accept terms & conditions</label>,
+    label: <label className="text-xs leading-4 text-gray-800 font-normal">Accept terms & conditions</label>,
     disabled: false
 }

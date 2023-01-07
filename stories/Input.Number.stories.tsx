@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import { Input, NumberInputProps } from "../src";
 
 const meta: Meta = {
-    title: 'Data Entry/Input/Number',
+    title: 'Data Entry/Number',
     component: Input.Number
 }
 

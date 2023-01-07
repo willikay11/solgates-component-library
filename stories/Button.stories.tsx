@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} ></Button>;
+const Template: Story<ButtonProps> = (args) => <Button {...args} >Click Me</Button>;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -65,6 +65,22 @@ Link.args = {
 export const Primary_Blue = Template.bind({});
 Primary_Blue.args = {
     type: ButtonTypes.primary_blue_600,
+    block: false,
+    loading: false,
+    onClick: () => console.log('Button Clicked'),
+}
+
+export const Gray_800 = Template.bind({});
+Gray_800.args = {
+    type: ButtonTypes.primary_gray_800,
+    block: false,
+    loading: false,
+    onClick: () => console.log('Button Clicked'),
+}
+
+export const Orange_200 = Template.bind({});
+Orange_200.args = {
+    type: ButtonTypes.primary_orange_200,
     block: false,
     loading: false,
     onClick: () => console.log('Button Clicked'),

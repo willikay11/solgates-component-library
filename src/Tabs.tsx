@@ -17,17 +17,20 @@ export const Tabs = ({ defaultActiveKey, items, onChange }: TabsProps) => {
     return (
         <Tab.Group defaultIndex={defaultActiveKey} onChange={(index) => onChange?.(index)}>
             <Tab.List>
-                {items.map(item => (
-                    <Tab className="outline-0" disabled={item.disabled}>
-                        {({ selected }) => (
-                            <button
-                                className={`${selected ? 'text-orange-500 border-b-orange-500' : 'text-gray-500'} px-4 pb-2.5 font-medium border-b`}
-                            >
-                                {item.label}
-                            </button>
-                        )}
-                    </Tab>
-                ))}
+                <div className="flex">
+                    {items.map(item => (
+                        <Tab className="outline-0 mb-2.5 flex flex-row flex-1" disabled={item.disabled}>
+                            {({ selected }) => (
+                                <button
+                                    className={`${selected ? 'text-orange-500 border-b-orange-500' : 'text-gray-500'} px-4 pb-2.5 font-normal border-b w-full`}
+                                >
+                                    {item.label}
+                                </button>
+                            )}
+                        </Tab>
+                    ))}
+                </div>
+
             </Tab.List>
             <Tab.Panels>
                 { items.map(item => (

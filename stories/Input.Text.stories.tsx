@@ -4,7 +4,7 @@ import { IconContainer, Input, TextInputProps } from "../src";
 import { RiCloseCircleLine, RiEdit2Line, RiPlaneFill } from "react-icons/all";
 
 const meta: Meta = {
-    title: 'Data Entry/Input/Text',
+    title: 'Data Entry/Text',
     component: Input.Text
 }
 
