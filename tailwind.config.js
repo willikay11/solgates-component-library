@@ -8,6 +8,9 @@ module.exports = {
     extend: {},
     borderRadius: {
       DEFAULT: '5px',
+    },
+    margin: {
+      '50': '50px'
     }
   },
   variants: {},
