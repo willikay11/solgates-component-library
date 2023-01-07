@@ -3,7 +3,7 @@ import {PRODUCT_TYPE, ProductTile} from "./ProductTile";
 import {Input} from "./Input";
 import {IconContainer} from "./IconContainer";
 import { User6Line } from "./Icons";
-import colors from "tailwindcss/colors";
+import colors from "./Colors"
 import {Button, ButtonTypes} from "./Button";
 
 interface Product {

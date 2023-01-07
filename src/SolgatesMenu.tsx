@@ -2,7 +2,7 @@ import React, { Fragment, useState, useRef } from "react";
 import {Menu, Transition, Disclosure} from '@headlessui/react'
 import { Heart3Line, Menu4Line, Search2Line, ShoppingBagLine, User6Line } from "./Icons";
 import {Input} from "./Input";
-import colors from "tailwindcss/colors";
+import colors from "./Colors";
 import {Modal, MODAL_POSITION} from "./Modal";
 
 interface item {

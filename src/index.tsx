@@ -14,3 +14,4 @@ export * from './ProductTile';
 export * from './PageBanner';
 export * from './ShoppingCart';
 export * from './Icons';
+export * from './Colors';
