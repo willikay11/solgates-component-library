@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {Button, ButtonTypes, Card, Checkbox, IconContainer, Input, Tabs, TabsProps} from "../src";
-import { RiEyeCloseLine, RiEyeLine, RiUser6Line, RiCheckFill, RiArrowDownSLine, RiGenderlessLine, RiMailOpenLine, RiLockLine, RiFacebookLine, RiGoogleLine } from "react-icons/ri";
+import {Button, ButtonTypes, Card, Checkbox, IconContainer, Input, Tabs, TabsProps, User6Line} from "../src";
 import colors from "tailwindcss/colors";
 
 const meta: Meta = {
@@ -12,11 +11,11 @@ const meta: Meta = {
 const signIn = (
     <div className="w-full">
         <div className="grid grid-cols-1 mb-2.5">
-            <Input.Text placeholder="Email" prefixIcon={<IconContainer><RiMailOpenLine color={colors.yellow["600"]} /></IconContainer>} />
+            <Input.Text placeholder="Email" prefixIcon={<IconContainer><User6Line color={colors.yellow["600"]} /></IconContainer>} />
         </div>
 
         <div className="grid grid-cols-1 mb-[15px]">
-            <Input.Password placeholder="Password" prefixIcon={<IconContainer><RiLockLine color={colors.blue["600"]} /></IconContainer>} iconRender={(visible) => visible ? <RiEyeLine /> : <RiEyeCloseLine />} />
+            <Input.Password placeholder="Password" prefixIcon={<IconContainer><User6Line color={colors.blue["600"]} /></IconContainer>} iconRender={(visible) => visible ? <User6Line color={colors.gray["500"]} /> : <User6Line color={colors.gray["500"]} />} />
         </div>
 
         <div className="grid grid-cols-1">
@@ -28,8 +27,8 @@ const signIn = (
 const signUp = (
     <div className="w-full">
         <div className="grid gap-2 grid-cols-2 mb-2.5">
-            <Input.Text placeholder="First Name" prefixIcon={<IconContainer><RiUser6Line color={colors.green["500"]} /></IconContainer>} />
-            <Input.Text placeholder="Last Name" prefixIcon={<IconContainer><RiUser6Line color={colors.green["500"]} /></IconContainer>} />
+            <Input.Text placeholder="First Name" prefixIcon={<IconContainer><User6Line color={colors.green["500"]} /></IconContainer>} />
+            <Input.Text placeholder="Last Name" prefixIcon={<IconContainer><User6Line color={colors.green["500"]} /></IconContainer>} />
         </div>
 
         <div className="grid grid-cols-1 mb-2.5">
@@ -38,18 +37,18 @@ const signUp = (
                     { label: 'Male', value: 'M'},
                     { label: 'Female', value: 'F'},
                 ]}
-              prefixIcon={<IconContainer><RiGenderlessLine color={colors.red["600"]} /></IconContainer>}
-              arrowIcon={<RiArrowDownSLine size={18} />}
-              selectedIcon={<RiCheckFill size={18} />}
+              prefixIcon={<IconContainer><User6Line color={colors.red["600"]} /></IconContainer>}
+              arrowIcon={<User6Line color={colors.gray["600"]} size={18} />}
+              selectedIcon={<User6Line color={colors.gray["600"]} size={18} />}
             />
         </div>
 
         <div className="grid grid-cols-1 mb-2.5">
-            <Input.Text placeholder="Email" prefixIcon={<IconContainer><RiMailOpenLine color={colors.yellow["600"]} /></IconContainer>} />
+            <Input.Text placeholder="Email" prefixIcon={<IconContainer><User6Line color={colors.yellow["600"]} /></IconContainer>} />
         </div>
 
         <div className="grid grid-cols-1 mb-[15px]">
-            <Input.Password placeholder="Password" prefixIcon={<IconContainer><RiLockLine color={colors.blue["600"]} /></IconContainer>} iconRender={(visible) => visible ? <RiEyeLine /> : <RiEyeCloseLine />} />
+            <Input.Password placeholder="Password" prefixIcon={<IconContainer><User6Line color={colors.blue["600"]} /></IconContainer>} iconRender={(visible) => visible ? <User6Line color={colors.gray["500"]} /> : <User6Line color={colors.gray["500"]} />} />
         </div>
 
         <div className="grid grid-cols-1 mb-[15px]">
@@ -59,8 +58,8 @@ const signUp = (
             <Button onClick={() => console.log('clicked')} type={ButtonTypes.primary} block>Sign Up</Button>
         </div>
         <div className="grid gap-2 grid-cols-2">
-            <Button onClick={() => console.log('clicked')} prefixIcon={<IconContainer><RiGoogleLine color="#DB4437" /></IconContainer>} block>Google</Button>
-            <Button onClick={() => console.log('clicked')} prefixIcon={<IconContainer><RiFacebookLine color="#3B5998" /></IconContainer>} block>Facebook</Button>
+            <Button onClick={() => console.log('clicked')} prefixIcon={<IconContainer><User6Line color="#DB4437" /></IconContainer>} block>Google</Button>
+            <Button onClick={() => console.log('clicked')} prefixIcon={<IconContainer><User6Line color="#3B5998" /></IconContainer>} block>Facebook</Button>
         </div>
     </div>
 );

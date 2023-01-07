@@ -1,7 +1,6 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
-import {Button, ButtonTypes, IconContainer, Modal, ModalProps} from "../src";
-import {RiErrorWarningLine} from "react-icons/ri";
+import {Button, ButtonTypes, IconContainer, Modal, ModalProps, User6Line} from "../src";
 import colors from "tailwindcss/colors";
 
 const meta: Meta = {
@@ -20,7 +19,7 @@ Default.args = {
     onClose: () => console.log(false),
     children: <div className="flex flex-col justify-center items-center">
         <IconContainer bgColor="bg-red-50" borderRadius="rounded-full">
-            <RiErrorWarningLine color={colors.red["500"]} />
+            <User6Line color={colors.red["500"]} />
         </IconContainer>
 
         <p className="text-xs leading-5 font-bold text-gray-800 mt-2.5">Kindly note</p>

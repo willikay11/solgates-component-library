@@ -1,7 +1,7 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
 import {Button, ButtonTypes, Card, CardProps, IconContainer, Input} from "../src";
-import {RiBuilding4Line, RiMapPinLine, RiPhoneLine, RiUser6Line} from "react-icons/ri";
+import {User6Line} from "../src";
 import colors from "tailwindcss/colors";
 
 const meta: Meta = {
@@ -21,20 +21,20 @@ Default.args = {
     title: "Card title",
     children: <div className="w-full">
         <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mb-2">
-            <Input.Text placeholder="First Name" prefixIcon={<IconContainer><RiUser6Line color={colors.green["500"]} /></IconContainer>} />
-            <Input.Text placeholder="Last Name" prefixIcon={<IconContainer><RiUser6Line color={colors.green["500"]} /></IconContainer>} />
+            <Input.Text placeholder="First Name" prefixIcon={<IconContainer><User6Line color={colors.green["500"]} /></IconContainer>} />
+            <Input.Text placeholder="Last Name" prefixIcon={<IconContainer><User6Line color={colors.green["500"]} /></IconContainer>} />
         </div>
 
         <div className="grid grid-cols-1 mb-2">
-            <Input.Text placeholder="Region" prefixIcon={<IconContainer><RiMapPinLine color={colors.blue["500"]} /></IconContainer>} />
+            <Input.Text placeholder="Region" prefixIcon={<IconContainer><User6Line color={colors.blue["500"]} /></IconContainer>} />
         </div>
 
         <div className="grid grid-cols-1 mb-2">
-            <Input.Text placeholder="Apartment/Office" prefixIcon={<IconContainer><RiBuilding4Line color={colors.cyan["500"]} /></IconContainer>} />
+            <Input.Text placeholder="Apartment/Office" prefixIcon={<IconContainer><User6Line color={colors.cyan["500"]} /></IconContainer>} />
         </div>
 
         <div className="grid grid-cols-1 mb-2">
-            <Input.Text placeholder="Phone" prefixIcon={<IconContainer><RiPhoneLine color={colors.blue["500"]} /></IconContainer>} />
+            <Input.Text placeholder="Phone" prefixIcon={<IconContainer><User6Line color={colors.blue["500"]} /></IconContainer>} />
         </div>
 
         <div className="grid grid-cols-1 mb-2">
