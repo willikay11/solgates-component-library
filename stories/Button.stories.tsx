@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Button, ButtonProps, ButtonTypes, IconContainer } from "../src";
-import { RiAddFill, RiAncientPavilionFill } from "react-icons/ri";
+import { Button, ButtonProps, ButtonTypes, IconContainer, User6Line } from "../src";
 
 const meta: Meta = {
     title: 'General/Button',
@@ -42,7 +41,7 @@ PrefixIcon.args = {
     block: false,
     loading: false,
     onClick: () => console.log('Button Clicked'),
-    prefixIcon: <IconContainer><RiAncientPavilionFill color="#DB4437" /></IconContainer>
+    prefixIcon: <IconContainer><User6Line color="#DB4437" /></IconContainer>
 }
 
 export const Block = Template.bind({});
@@ -59,7 +58,7 @@ Link.args = {
     block: false,
     loading: false,
     onClick: () => console.log('Button Clicked'),
-    prefixIcon: <RiAddFill />
+    prefixIcon: <User6Line color="#DB4437" />
 }
 
 export const Primary_Blue = Template.bind({});
