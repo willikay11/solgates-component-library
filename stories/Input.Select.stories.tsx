@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Input, SelectInputProps } from "../src";
-import {RiArrowDownSLine, RiCheckFill} from "react-icons/all";
+import { Input, SelectInputProps, User6Line } from "../src";
+import colors from "tailwindcss/colors";
 
 const meta: Meta = {
     title: 'Data Entry/Select',
@@ -14,8 +14,8 @@ const Template: Story<SelectInputProps> = (args) => <Input.Select {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    arrowIcon: <RiArrowDownSLine size={18} />,
-    selectedIcon: <RiCheckFill size={18} />,
+    arrowIcon: <User6Line color={colors.gray["600"]} size={18} />,
+    selectedIcon: <User6Line color={colors.gray["600"]} size={18} />,
     multiple: true,
     items: [
         {

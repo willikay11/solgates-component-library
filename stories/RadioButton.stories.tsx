@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {IconContainer, RadioButton, RadioButtonProps} from "../src";
-import {RiCheckboxBlankCircleLine, RiRadioButtonLine, RiShoppingBag2Line} from "react-icons/all";
+import {IconContainer, RadioButton, RadioButtonProps, User6Line} from "../src";
 import colors from "tailwindcss/colors";
 
 const meta: Meta = {
@@ -20,7 +19,7 @@ Default.args = {
         leftContent: <div className="flex flex-1">
             <div className="mr-2">
                 <IconContainer size="9">
-                    <RiShoppingBag2Line color={colors.red["500"]} />
+                    <User6Line color={colors.red["500"]} />
                 </IconContainer>
             </div>
             <div className="flex flex-col flex-grow">
@@ -34,7 +33,7 @@ Default.args = {
         leftContent: <div className="flex flex-1">
             <div className="mr-2">
                 <IconContainer size="9">
-                    <RiShoppingBag2Line color={colors.red["500"]} />
+                    <User6Line color={colors.red["500"]} />
                 </IconContainer>
             </div>
             <div className="flex flex-col flex-grow">
@@ -45,6 +44,6 @@ Default.args = {
         label: 'KES 500',
         value: 'KES 500'
     }],
-    selectedIcon: <RiRadioButtonLine size={18} color={colors.blue["600"]} />,
-    unSelectedIcon: <RiCheckboxBlankCircleLine size={18} color={colors.gray["200"]} />
+    selectedIcon: <User6Line size={18} color={colors.blue["600"]} />,
+    unSelectedIcon: <User6Line size={18} color={colors.gray["200"]} />
 }

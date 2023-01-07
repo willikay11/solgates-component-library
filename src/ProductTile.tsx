@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import { Button, ButtonTypes} from "./Button";
-import { RiHeart3Fill, RiHeart3Line, RiArrowRightLine } from "react-icons/all";
+import { Button, ButtonTypes } from "./Button";
+import { User6Line } from './Icons';
 import colors from "tailwindcss/colors";
 
 export enum PRODUCT_TYPE {
@@ -28,12 +28,12 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, shop
             <img src={imageUrl} alt={name} />
             {
                 type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
-                        <RiHeart3Fill color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
-                 : <RiHeart3Line className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" />
+                        <User6Line color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
+                 : <User6Line color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" />
                 ) : type === PRODUCT_TYPE.COLLECTION ?(
                     <div className="absolute z-20 top-3 left-3">
                         <p className="text-base leading-6 font-bold text-gray-800">{name}</p>
-                        <Button onClick={() => onClick?.()} type={ButtonTypes.link} className="bg-transparent py-0">Shop Collection <RiArrowRightLine /></Button>
+                        <Button onClick={() => onClick?.()} type={ButtonTypes.link} className="bg-transparent py-0">Shop Collection <User6Line color={colors.red["500"]} /></Button>
                     </div>
                 ) : null
             }

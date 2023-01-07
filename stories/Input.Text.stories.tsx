@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { IconContainer, Input, TextInputProps } from "../src";
-import { RiCloseCircleLine, RiEdit2Line, RiPlaneFill } from "react-icons/all";
+import { IconContainer, Input, TextInputProps, User6Line } from "../src";
+import colors from "tailwindcss/colors";
 
 const meta: Meta = {
     title: 'Data Entry/Text',
@@ -14,7 +14,7 @@ const Template: Story<TextInputProps> = (args) => <Input.Text {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    prefixIcon: <IconContainer><RiPlaneFill /></IconContainer>,
-    suffixIcon: <IconContainer><RiEdit2Line /></IconContainer>,
-    clearIcon: <RiCloseCircleLine />
+    prefixIcon: <IconContainer><User6Line color={colors.red["500"]} /></IconContainer>,
+    suffixIcon: <IconContainer><User6Line color={colors.red["500"]} /></IconContainer>,
+    clearIcon: <User6Line color={colors.red["500"]} />
 }

@@ -2,7 +2,7 @@ import React from "react";
 import {PRODUCT_TYPE, ProductTile} from "./ProductTile";
 import {Input} from "./Input";
 import {IconContainer} from "./IconContainer";
-import {RiGift2Line} from "react-icons/all";
+import { User6Line } from "./Icons";
 import colors from "tailwindcss/colors";
 import {Button, ButtonTypes} from "./Button";
 
@@ -39,7 +39,7 @@ export const ShoppingCart = ({ products }: ShoppingCartProps) => {
                   </div>
               ))
           }
-          <Input.Text placeholder="Discount Coupon" prefixIcon={<IconContainer><RiGift2Line color={colors.purple["500"]} /></IconContainer>} />
+          <Input.Text placeholder="Discount Coupon" prefixIcon={<IconContainer><User6Line color={colors.purple["500"]} /></IconContainer>} />
           <div className="flex justify-between mt-[15px]">
               <span className="text-xs leading-4 font-medium text-gray-800">Subtotal: </span>
               <span className="text-xs leading-4 font-semibold text-black">KSH 26,000 </span>
