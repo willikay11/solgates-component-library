@@ -15,19 +15,27 @@ interface Product {
     quantity: string;
 }
 
+export enum CART_TYPE {
+    full = 'full',
+    small = 'small'
+}
+
 export interface ShoppingCartProps {
     products: Product[],
+    showDiscount?: boolean,
+    type?: CART_TYPE.full | CART_TYPE.small
 }
-export const ShoppingCart = ({ products }: ShoppingCartProps) => {
+
+export const ShoppingCart = ({ products, showDiscount = false, type = CART_TYPE.full }: ShoppingCartProps) => {
   return (
       <div className="flex flex-col">
           {
               products.map((product) => (
                   <div key={product.id} className="grid gap-2 grid-cols-6 mb-[15px]">
-                      <div className="col-span-1">
+                      <div className={type === CART_TYPE.small ? 'col-span-2' : 'col-span-1'}>
                           <ProductTile type={PRODUCT_TYPE.PRODUCT} imageUrl={product?.imageUrl} />
                       </div>
-                      <div className="col-span-5">
+                      <div className={type === CART_TYPE.small ? 'col-span-4' : 'col-span-5'}>
                           <p className="text-xs leading-4 font-medium text-gray-800 mt-1.5">{product?.name}</p>
                           <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">{product?.size}</p>
                           <div className="flex flex-row justify-between mt-1.5">
@@ -39,16 +47,16 @@ export const ShoppingCart = ({ products }: ShoppingCartProps) => {
                   </div>
               ))
           }
-          <Input.Text placeholder="Discount Coupon" prefixIcon={<IconContainer><User6Line color={colors.purple["500"]} /></IconContainer>} />
+          { showDiscount && <Input.Text placeholder="Discount Coupon" prefixIcon={<IconContainer><User6Line color={colors.purple["500"]} /></IconContainer>} /> }
           <div className="flex justify-between mt-[15px]">
               <span className="text-xs leading-4 font-medium text-gray-800">Subtotal: </span>
               <span className="text-xs leading-4 font-semibold text-black">KSH 26,000 </span>
           </div>
 
-          <div className="flex justify-between mt-[5px]">
-              <span className="text-xs leading-4 font-medium text-gray-800">Discount (5%): </span>
-              <span className="text-xs leading-4 font-semibold text-black">KSH 6,000 </span>
-          </div>
+          {/*<div className="flex justify-between mt-[5px]">*/}
+          {/*    <span className="text-xs leading-4 font-medium text-gray-800">Discount (5%): </span>*/}
+          {/*    <span className="text-xs leading-4 font-semibold text-black">KSH 6,000 </span>*/}
+          {/*</div>*/}
 
           <div className="flex justify-between my-[15px]">
               <span className="text-xs leading-4 font-medium text-gray-800">Total: </span>
