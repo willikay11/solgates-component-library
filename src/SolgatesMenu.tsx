@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, {Fragment, useState, useRef, ReactNode} from "react";
 import {Menu, Transition, Disclosure} from '@headlessui/react'
 import { Heart3Line, Menu4Line, Search2Line, ShoppingBagLine, User6Line } from "./Icons";
 import {Input} from "./Input";
@@ -25,9 +25,12 @@ interface menu {
 export interface SolgatesMenuProps {
     logoUrl: string;
     menus: menu[],
+    userContent: ReactNode,
+    wishListContent: ReactNode,
+    shoppingCartContent: ReactNode
 }
 
-export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
+export const SolgatesMenu = ({ menus, logoUrl, userContent, wishListContent, shoppingCartContent }: SolgatesMenuProps) => {
     const buttonRefs = useRef<HTMLButtonElement[]>([]);
     const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -159,9 +162,66 @@ export const SolgatesMenu = ({ menus, logoUrl }: SolgatesMenuProps) => {
                         }
                     </div>
                     <div className="col-span-2 inline-flex items-center justify-end">
-                        <User6Line className="mr-[10px]" color={colors.gray["600"]} size={18} />
-                        <Heart3Line className="mr-[10px]" color={colors.gray["600"]} size={18} />
-                        <ShoppingBagLine className="mr-[10px]" color={colors.gray["600"]} size={18} />
+                        <Menu>
+                            <div className="relative flex items-center">
+                                <Menu.Button>
+                                    <User6Line className="mr-[10px] cursor-pointer" color={colors.gray["600"]} size={18} />
+                                </Menu.Button>
+                                <Transition
+                                    as={Fragment}
+                                    enter="transition ease-out duration-100"
+                                    enterFrom="transform opacity-0 scale-95"
+                                    enterTo="transform opacity-100 scale-100"
+                                    leave="transition ease-in duration-75"
+                                    leaveFrom="transform opacity-100 scale-100"
+                                    leaveTo="transform opacity-0 scale-95"
+                                >
+                                    <Menu.Items className="min-w-[220px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                                        {userContent}
+                                    </Menu.Items>
+                                </Transition>
+                            </div>
+                        </Menu>
+                        <Menu>
+                            <div className="relative flex items-center">
+                                <Menu.Button>
+                                    <Heart3Line className="mr-[10px] cursor-pointer" color={colors.gray["600"]} size={18} />
+                                </Menu.Button>
+                                <Transition
+                                    as={Fragment}
+                                    enter="transition ease-out duration-100"
+                                    enterFrom="transform opacity-0 scale-95"
+                                    enterTo="transform opacity-100 scale-100"
+                                    leave="transition ease-in duration-75"
+                                    leaveFrom="transform opacity-100 scale-100"
+                                    leaveTo="transform opacity-0 scale-95"
+                                >
+                                    <Menu.Items className="min-w-[220px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                                        {wishListContent}
+                                    </Menu.Items>
+                                </Transition>
+                            </div>
+                        </Menu>
+                        <Menu>
+                            <div className="relative flex items-center">
+                                <Menu.Button>
+                                    <ShoppingBagLine className="mr-[10px] cursor-pointer" color={colors.gray["600"]} size={18} />
+                                </Menu.Button>
+                                <Transition
+                                    as={Fragment}
+                                    enter="transition ease-out duration-100"
+                                    enterFrom="transform opacity-0 scale-95"
+                                    enterTo="transform opacity-100 scale-100"
+                                    leave="transition ease-in duration-75"
+                                    leaveFrom="transform opacity-100 scale-100"
+                                    leaveTo="transform opacity-0 scale-95"
+                                >
+                                    <Menu.Items className="min-w-[320px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                                        {shoppingCartContent}
+                                    </Menu.Items>
+                                </Transition>
+                            </div>
+                        </Menu>
                         <Search2Line className="mr-[10px] lg:hidden" color={colors.gray["600"]} size={18} />
                         <Input.Text
                             className="md:hidden lg:flex h-[36px] rounded-[68px] w-[135px] bg-gray-50"

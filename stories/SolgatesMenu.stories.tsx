@@ -1,6 +1,16 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { SolgatesMenu, SolgatesMenuProps } from "../src";
+import {Meta, Story} from '@storybook/react';
+import {
+    Button,
+    ButtonTypes,
+    CART_TYPE,
+    IconContainer,
+    ShoppingCart,
+    SolgatesMenu,
+    SolgatesMenuProps,
+    User6Line
+} from "../src";
+import colors from "tailwindcss/colors";
 
 const meta: Meta = {
     title: 'Navigation/Solgates Menu',
@@ -220,4 +230,49 @@ Default.args = {
             ]
         }
     ],
+    userContent:
+        <div className="flex flex-col">
+            <Button
+                onClick={() => console.log('clicked')}
+                style={{ justifyContent: 'start', color: colors.gray["800"], marginBottom: 5 }}
+                type={ButtonTypes.link}
+                prefixIcon={<IconContainer><User6Line size={14} color={colors.green["500"]} /></IconContainer>}>
+                My Account
+            </Button>
+
+            <Button
+                onClick={() => console.log('clicked')}
+                style={{ justifyContent: 'start', color: colors.gray["800"], marginBottom: 5 }}
+                type={ButtonTypes.link}
+                prefixIcon={<IconContainer><User6Line size={14} color={colors.green["500"]} /></IconContainer>}>
+                My Account
+            </Button>
+
+            <Button
+                onClick={() => console.log('clicked')}
+                style={{ justifyContent: 'start', color: colors.gray["800"], marginBottom: 5 }}
+                type={ButtonTypes.link}
+                prefixIcon={<IconContainer><User6Line size={14} color={colors.green["500"]} /></IconContainer>}>
+                My Account
+            </Button>
+
+            <Button
+                onClick={() => console.log('clicked')}
+                style={{ justifyContent: 'start', color: colors.gray["800"], marginBottom: 5 }}
+                type={ButtonTypes.link}
+                prefixIcon={<IconContainer><User6Line size={14} color={colors.green["500"]} /></IconContainer>}>
+                My Account
+            </Button>
+        </div>,
+    wishListContent: <div></div>,
+    shoppingCartContent:
+        <div>
+            <ShoppingCart
+                products={[
+                    { id: '1', name: 'Jordans', imageUrl: 'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg', size: 'Size 8.5', price: 'KES 20,000', quantity: '1'},
+                    { id: '2', name: 'Jordans', imageUrl: 'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg', size: 'Size 8.5', price: 'KES 20,000', quantity: '1'},
+                ]}
+                type={CART_TYPE.small}
+            />
+        </div>
 };
