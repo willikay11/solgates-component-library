@@ -10,8 +10,7 @@ export interface CollapsibleProps {
 
 export const Collapsible = ({ closeIcon, openIcon, panelTitle, panelContent }: CollapsibleProps) => {
   return(
-      <div className="w-full">
-        <div className="w-full max-w-md rounded-2xl bg-white p-2">
+      <div className="w-full max-w-md rounded-2xl bg-white">
           <Disclosure>
             {({ open }) => (
                 <div className="rounded bg-white border border-gray-200">
@@ -28,6 +27,5 @@ export const Collapsible = ({ closeIcon, openIcon, panelTitle, panelContent }: C
             )}
           </Disclosure>
         </div>
-      </div>
   )
 }
