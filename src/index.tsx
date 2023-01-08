@@ -17,3 +17,4 @@ export * from './Icons';
 export * from './Colors';
 export * from './Carousel';
 export * from './InformationBanner';
+export * from './BreadCrumbs';

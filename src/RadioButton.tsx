@@ -18,7 +18,7 @@ export const RadioButton = ({ label, options, selectedIcon, unSelectedIcon }: Ra
     let [plan, setPlan] = useState('startup')
     return(
       <RadioGroup value={plan} onChange={setPlan}>
-          <RadioGroup.Label>{label}</RadioGroup.Label>
+          <RadioGroup.Label className="text-xs leading-4 font-medium text-gray-800 mb-[5px]">{label}</RadioGroup.Label>
           { options.map(option => (
               <RadioGroup.Option
                   key={option.value}

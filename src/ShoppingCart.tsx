@@ -23,10 +23,11 @@ export enum CART_TYPE {
 export interface ShoppingCartProps {
     products: Product[],
     showDiscount?: boolean,
-    type?: CART_TYPE.full | CART_TYPE.small
+    type?: CART_TYPE.full | CART_TYPE.small,
+    showCheckoutButton?: boolean,
 }
 
-export const ShoppingCart = ({ products, showDiscount = false, type = CART_TYPE.full }: ShoppingCartProps) => {
+export const ShoppingCart = ({ products, showDiscount = false, type = CART_TYPE.full, showCheckoutButton = true }: ShoppingCartProps) => {
   return (
       <div className="flex flex-col">
           {
@@ -63,7 +64,7 @@ export const ShoppingCart = ({ products, showDiscount = false, type = CART_TYPE.
               <span className="text-xs leading-4 font-semibold text-black">KSH 20,000 </span>
           </div>
 
-          <Button onClick={() => console.log('clicked')} type={ButtonTypes.primary} block>Checkout</Button>
+          { showCheckoutButton && <Button onClick={() => console.log('clicked')} type={ButtonTypes.primary} block>Checkout</Button> }
       </div>
   );
 }
