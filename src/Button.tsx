@@ -37,7 +37,7 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
 
     if (type === ButtonTypes.danger) {
         color = 'red-600'
-        bg = ghost ? `bg-white text-${color} border border-${color}` : `bg-${color} text-white`
+        bg = ghost ? `bg-white text-red-600 border border-red-600` : `bg-red-600 text-white`
     }
 
     if (type === ButtonTypes.link) {
