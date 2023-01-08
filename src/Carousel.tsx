@@ -76,19 +76,19 @@ export const Carousel = () => {
         }
     };
 
-    const isDisabled = (direction: 'prev' | 'next') => {
-        if (direction === 'prev') {
-            return currentIndex <= 0;
-        }
-
-        if (direction === 'next' && carousel.current !== null) {
-            return (
-                carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
-            );
-        }
-
-        return false;
-    };
+    // const isDisabled = (direction: 'prev' | 'next') => {
+    //     if (direction === 'prev') {
+    //         return currentIndex <= 0;
+    //     }
+    //
+    //     if (direction === 'next' && carousel.current !== null) {
+    //         return (
+    //             carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
+    //         );
+    //     }
+    //
+    //     return false;
+    // };
 
     useEffect(() => {
         if (carousel !== null && carousel.current !== null) {
