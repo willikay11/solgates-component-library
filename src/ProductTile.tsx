@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import colors from "./Colors";
 import { Button, ButtonTypes } from "./Button";
-import { User6Line } from './Icons';
+import {Heart3Line, Heart3LineFill, ArrowRightLine} from './Icons';
 
 export enum PRODUCT_TYPE {
    PRODUCTS = 'products',
@@ -24,18 +24,18 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, butt
   const [inWishList] = useState<boolean>(addedToWishList || false);
 
   return(
-      <div className="group/product-tile w-full h-auto rounded cursor-pointer" onClick={() => onClick?.()}>
-        <div className="w-full relative rounded bg-gray-100 flex justify-center items-center">
+      <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded cursor-pointer`} onClick={() => onClick?.()}>
+        <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  relative rounded bg-gray-100 flex justify-center items-center`}>
             <img src={imageUrl} alt={name} className="w-full" />
             {
                 type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
-                        <User6Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
+                        <Heart3LineFill size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
                         :
-                        <User6Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" />
+                        <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" />
                 ) : type === PRODUCT_TYPE.COLLECTION ?(
                     <div className="absolute z-20 top-3 left-3">
                         <p className="text-base leading-6 font-bold text-gray-800">{name}</p>
-                        <Button onClick={() => onClick?.()} type={ButtonTypes.link} className="bg-transparent py-0">Shop Collection <User6Line color={colors.red["500"]} /></Button>
+                        <Button onClick={() => onClick?.()} type={ButtonTypes.link} className="bg-transparent py-0">Shop Collection <ArrowRightLine size={14} color={colors.blue["500"]} /></Button>
                     </div>
                 ) : null
             }
