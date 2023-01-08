@@ -2,7 +2,9 @@
 module.exports = {
   mode: 'aot',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './stories/*'],
-  content: [],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
