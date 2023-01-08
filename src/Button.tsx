@@ -49,17 +49,17 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
 
     if (type === ButtonTypes.primary_blue_600) {
         color = 'blue-600'
-        bg = `bg-${color} text-white`;
+        bg = `bg-blue-600 text-white`;
     }
 
     if (type === ButtonTypes.primary_gray_800) {
         color = 'gray-800'
-        bg = `bg-${color} text-white`;
+        bg = `bg-gray-800 text-white`;
     }
 
     if (type === ButtonTypes.primary_orange_200) {
         color = 'orange-200'
-        bg = `bg-${color} text-orange-600`;
+        bg = `bg-orange-200 text-orange-600`;
     }
 
     if (block) {
