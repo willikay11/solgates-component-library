@@ -25,7 +25,7 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, butt
 
   return(
       <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded cursor-pointer`} onClick={() => onClick?.()}>
-        <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  relative rounded bg-gray-100 flex justify-center items-center`}>
+        <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center`}>
             <img src={imageUrl} alt={name} className="w-full" />
             {
                 type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
