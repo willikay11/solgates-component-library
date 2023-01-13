@@ -52,7 +52,6 @@ export const RadioButton = ({ label, options, selectedIcon, unSelectedIcon }: Ra
                               <span className={`font-semibold text-xs leading-4 mr-2 ${checked ? 'text-blue-600' : 'text-gray-800'}`}>{option.label}</span>
                               {checked ? selectedIcon : unSelectedIcon}
                               </div>
-
                           </div>
                       </>
                   )}

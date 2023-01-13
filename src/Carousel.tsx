@@ -1,8 +1,7 @@
-import React from "react";
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { Button } from "./Button";
 
-const data = {
-    "resources": [
+const data = [
         {
             "title": "Find me on Twitter",
             "link": "https://twitter.com/kendalmintcode",
@@ -48,130 +47,81 @@ const data = {
             "link": "https://twitter.com/kendalmintcode",
             "imageUrl": "https://placeimg.com/300/300/tech"
         }
-    ]
-}
+    ];
 
 export interface CarouselProps {
-
+    itemsVisible: {
+        mobile: number;
+        tablet: number;
+        large: number;
+    }
 }
 
-export const Carousel = () => {
-    const maxScrollWidth = useRef(0);
-    // const [visibleCarouselWidth, setVisibleCarouselWidth] = useState(0);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const carousel = useRef<HTMLDivElement>(null);
+export const Carousel = ({ itemsVisible }: CarouselProps) => {
+    let viewableItemCount = 4;
+    const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
+    const [gridPercentage, setGridPercentage] = useState<number>(25);
 
-    const movePrev = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex((prevState) => prevState - 1);
+    const handleWindowSizeChange = () => {
+        if (window.innerWidth <= 640) {
+            setGridPercentage(100/itemsVisible.mobile);
+            viewableItemCount = itemsVisible.mobile;
         }
-    };
-
-    const moveNext = () => {
-        if (
-            carousel.current !== null &&
-            carousel.current.offsetWidth * currentIndex <= maxScrollWidth.current
-        ) {
-            setCurrentIndex((prevState) => prevState + 1);
+        if (window.innerWidth > 640) {
+            setGridPercentage(100/itemsVisible.tablet);
+            viewableItemCount = itemsVisible.tablet;
         }
-    };
-
-    // const isDisabled = (direction: 'prev' | 'next') => {
-    //     if (direction === 'prev') {
-    //         return currentIndex <= 0;
-    //     }
-    //
-    //     if (direction === 'next' && carousel.current !== null) {
-    //         return (
-    //             carousel.current.offsetWidth * currentIndex >= maxScrollWidth.current
-    //         );
-    //     }
-    //
-    //     return false;
-    // };
+        if (window.innerWidth > 1024 ) {
+            setGridPercentage(100/itemsVisible.large);
+            viewableItemCount = itemsVisible.large;
+        }
+    }
 
     useEffect(() => {
-        if (carousel !== null && carousel.current !== null) {
-            carousel.current.scrollLeft = carousel.current.offsetWidth * currentIndex;
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
         }
-    }, [currentIndex]);
-
-    useEffect(() => {
-        maxScrollWidth.current = carousel.current
-            ? carousel.current.scrollWidth - carousel.current.offsetWidth
-            : 0;
     }, []);
 
+    const handleClickScroll = (type: 'prev' | 'next') => {
+        let scrollTo = lastVisibleItem;
+        if (type === 'prev') {
+            if (lastVisibleItem !== 0) {
+                scrollTo = lastVisibleItem - 1;
+            }
+        } else {
+            if (lastVisibleItem < data.length - viewableItemCount && lastVisibleItem !== data.length - 1) {
+                scrollTo = lastVisibleItem + 1;
+            }
+        }
+        setLastVisibleItem(scrollTo);
+        const element = document.getElementById(`item${scrollTo}`);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+        }
+    };
+
     return (
-        <div className="carousel my-12 mx-auto">
-            <h2 className="text-4xl leading-8 font-semibold mb-12 text-slate-700">
-                Our epic carousel
-            </h2>
-            <div className="relative overflow-hidden">
-                <div className="flex justify-between absolute top left w-full h-full">
-                    <button
-                        onClick={movePrev}
-                        className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-                        // disabled={isDisabled('prev')}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-12 w-20 -ml-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M15 19l-7-7 7-7"
-                            />
-                        </svg>
-                        <span className="sr-only">Prev</span>
-                    </button>
-                    <button
-                        onClick={moveNext}
-                        className="hover:bg-blue-900/75 text-white w-10 h-full text-center opacity-75 hover:opacity-100 disabled:opacity-25 disabled:cursor-not-allowed z-10 p-0 m-0 transition-all ease-in-out duration-300"
-                        // disabled={isDisabled('next')}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-12 w-20 -ml-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M9 5l7 7-7 7"
-                            />
-                        </svg>
-                        <span className="sr-only">Next</span>
-                    </button>
-                </div>
-                <div
-                    ref={carousel}
-                    className="carousel-container relative flex gap-2 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
-                >
-                    {data.resources.map((resource, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className={`carousel-item text-center relative w-96 h-64 snap-start`}
-                            >
-                                <div className={`w-96 h-full bg-orange-600`} >
-                                    {resource.title}
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
+        <div className="block">
+            <div id="carousel-item"
+                 className="grid overflow-auto gap-2"
+                 style={{ gridTemplateColumns: `repeat(${data.length}, ${gridPercentage}%)` }}
+            >
+                {
+                    data.map((item, index) => (
+                        <div key={index} id={`item${index}`} style={{ transition: '250ms all'}}>
+                            <img width="100%" src={item.imageUrl} />
+                        </div>
+                    ))
+                }
+            </div>
+            <div>
+                <Button onClick={() => handleClickScroll('prev')}>prev</Button>
+                <Button onClick={() => handleClickScroll('next')}>next</Button>
             </div>
         </div>
-    );
+    )
 };
 
 export default Carousel;

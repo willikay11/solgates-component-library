@@ -15,4 +15,10 @@ const Template: Story<CarouselProps> = (args) =>
     </div>;
 
 export const Default = Template.bind({});
-Default.args = {}
+Default.args = {
+    itemsVisible: {
+        mobile: 2,
+        tablet: 3,
+        large: 4
+    }
+}

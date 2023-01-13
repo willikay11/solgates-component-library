@@ -230,7 +230,7 @@ export const SolgatesMenu = ({ menus, logoUrl, userContent, wishListContent, sho
                         />
                     </div>
                 </div>
-                <div className="flex md:hidden lg:hidden items-center h-[40px]">
+                <div className="mx-3 flex md:hidden lg:hidden items-center h-[40px]">
                     <div className="flex flex-1" onClick={() => setOpenMobileMenu(true)}>
                         <Menu4Line className="cursor-pointer" size={14} color={colors.gray["600"]} />
                     </div>
