@@ -66,7 +66,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
         setLastVisibleItem(scrollTo);
          const element = document.getElementById(`item${scrollTo}`);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+            element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
     };
 
@@ -85,13 +85,13 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
                 <p className="text-xl leading-7 font-normal text-gray-800">{title}</p>
                 <div className={`${arrowPosition === ARROW_POSITION.topRight ? 'inline-flex' : 'hidden'}`}>
                     <button
-                        className="rounded bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+                        className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
                         onClick={() => handleClickScroll('prev')}
                     >
                         <ArrowLeftSLine size={14} color={colors.orange["600"]} />
                     </button>
                     <button
-                        className="rounded bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+                        className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
                         onClick={() => handleClickScroll('next')}
                     >
                         <ArrowRightSLine size={14} color={colors.orange["600"]} />
@@ -112,13 +112,13 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
             </div>
             <div className={`flex flex-row ${position}`}>
                 <button
-                    className="rounded bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+                    className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
                     onClick={() => handleClickScroll('prev')}
                 >
                     <ArrowLeftSLine size={14} color={colors.orange["600"]} />
                 </button>
                 <button
-                    className="rounded bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+                    className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
                     onClick={() => handleClickScroll('next')}
                 >
                     <ArrowRightSLine size={14} color={colors.orange["600"]} />
