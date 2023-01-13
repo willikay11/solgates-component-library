@@ -49,4 +49,16 @@ const ArrowRightLine = ({ color, size, className }: IconProps) =>
         <path fill={color} d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
     </svg>
 
-export { Heart3Line, Heart3LineFill, Menu4Line, Search2Line, ShoppingBagLine, User6Line, ArrowRightLine }
+const ArrowLeftSLine = ({ color, size, className }: IconProps) =>
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size}>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill={color} d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z"/>
+    </svg>
+
+const ArrowRightSLine = ({ color, size, className }: IconProps) =>
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size}>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill={color} d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"/>
+    </svg>
+
+export { Heart3Line, Heart3LineFill, Menu4Line, Search2Line, ShoppingBagLine, User6Line, ArrowRightLine, ArrowLeftSLine, ArrowRightSLine }
