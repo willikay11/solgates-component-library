@@ -1,79 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "./Button";
+import React, { useState, useEffect, ReactNode } from "react";
+import {ArrowLeftSLine, ArrowRightSLine} from './Icons';
+import colors from "./Colors";
 
-const data = [
-        {
-            "title": "Find me on Twitter",
-            "link": "https://twitter.com/kendalmintcode",
-            "imageUrl": "https://placeimg.com/300/300/any"
-        },
-        {
-            "title": "Welcome to Ark Labs",
-            "link": "https://ark-labs.co.uk",
-            "imageUrl": "https://placeimg.com/300/300/animals"
-        },
-        {
-            "title": "Some sort of third title",
-            "link": "https://twitter.com/kendalmintcode",
-            "imageUrl": "https://placeimg.com/300/300/architecture"
-        },
-        {
-            "title": "A personal site perhaps?",
-            "link": "https://robkendal.co.uk",
-            "imageUrl": "https://placeimg.com/300/300/nature"
-        },
-        {
-            "title": "Super item number five",
-            "link": "https://twitter.com/kendalmintcode",
-            "imageUrl": "https://placeimg.com/300/300/people"
-        },
-        {
-            "title": "Super item number six",
-            "link": "https://twitter.com/kendalmintcode",
-            "imageUrl": "https://placeimg.com/300/300/tech"
-        },
-        {
-            "title": "Super item number seven",
-            "link": "https://twitter.com/kendalmintcode",
-            "imageUrl": "https://placeimg.com/300/300/animals"
-        },
-        {
-            "title": "Super item number eight",
-            "link": "https://twitter.com/kendalmintcode",
-            "imageUrl": "https://placeimg.com/300/300/people"
-        },
-        {
-            "title": "Super item number the last",
-            "link": "https://twitter.com/kendalmintcode",
-            "imageUrl": "https://placeimg.com/300/300/tech"
-        }
-    ];
-
+export enum ARROW_POSITION {
+    bottomLeft = "bottomLeft",
+    bottomRight = "bottomLeft",
+    topRight = "topRight"
+}
+interface CarouselItem {
+    item: ReactNode
+}
 export interface CarouselProps {
+    title?: string;
     itemsVisible: {
         mobile: number;
         tablet: number;
         large: number;
-    }
+    },
+    arrowPosition: ARROW_POSITION.bottomLeft | ARROW_POSITION.bottomRight | ARROW_POSITION.topRight,
+    items: CarouselItem[]
 }
 
-export const Carousel = ({ itemsVisible }: CarouselProps) => {
-    let viewableItemCount = 4;
+export const Carousel = ({ itemsVisible, items, arrowPosition, title }: CarouselProps) => {
+    const [viewableItemCount, setViewableItemCount] = useState(4);
     const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
     const [gridPercentage, setGridPercentage] = useState<number>(25);
 
     const handleWindowSizeChange = () => {
         if (window.innerWidth <= 640) {
             setGridPercentage(100/itemsVisible.mobile);
-            viewableItemCount = itemsVisible.mobile;
+            setViewableItemCount(itemsVisible.mobile);
         }
         if (window.innerWidth > 640) {
             setGridPercentage(100/itemsVisible.tablet);
-            viewableItemCount = itemsVisible.tablet;
+            setViewableItemCount(itemsVisible.tablet);
         }
         if (window.innerWidth > 1024 ) {
             setGridPercentage(100/itemsVisible.large);
-            viewableItemCount = itemsVisible.large;
+            setViewableItemCount(itemsVisible.large);
         }
     }
 
@@ -84,6 +48,10 @@ export const Carousel = ({ itemsVisible }: CarouselProps) => {
         }
     }, []);
 
+    useEffect(() => {
+        handleWindowSizeChange();
+    }, [])
+
     const handleClickScroll = (type: 'prev' | 'next') => {
         let scrollTo = lastVisibleItem;
         if (type === 'prev') {
@@ -91,34 +59,70 @@ export const Carousel = ({ itemsVisible }: CarouselProps) => {
                 scrollTo = lastVisibleItem - 1;
             }
         } else {
-            if (lastVisibleItem < data.length - viewableItemCount && lastVisibleItem !== data.length - 1) {
+            if (lastVisibleItem < items.length - viewableItemCount && lastVisibleItem !== items.length - 1) {
                 scrollTo = lastVisibleItem + 1;
             }
         }
         setLastVisibleItem(scrollTo);
-        const element = document.getElementById(`item${scrollTo}`);
+         const element = document.getElementById(`item${scrollTo}`);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth', inline: 'start' });
         }
     };
 
+    let position = 'justify-start';
+
+    if (arrowPosition === ARROW_POSITION.bottomRight) {
+        position = 'justify-end'
+    }
+
+    if (arrowPosition === ARROW_POSITION.topRight) {
+        position = 'hidden'
+    }
     return (
         <div className="block">
+            <div className={`flex flex-row justify-between mb-2.5`}>
+                <p className="text-xl leading-7 font-normal text-gray-800">{title}</p>
+                <div className={`${arrowPosition === ARROW_POSITION.topRight ? 'inline-flex' : 'hidden'}`}>
+                    <button
+                        className="rounded bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+                        onClick={() => handleClickScroll('prev')}
+                    >
+                        <ArrowLeftSLine size={14} color={colors.orange["600"]} />
+                    </button>
+                    <button
+                        className="rounded bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+                        onClick={() => handleClickScroll('next')}
+                    >
+                        <ArrowRightSLine size={14} color={colors.orange["600"]} />
+                    </button>
+                </div>
+            </div>
             <div id="carousel-item"
-                 className="grid overflow-auto gap-2"
-                 style={{ gridTemplateColumns: `repeat(${data.length}, ${gridPercentage}%)` }}
+                 className="grid overflow-auto gap-2 pb-4"
+                 style={{ gridTemplateColumns: `repeat(${items.length}, ${gridPercentage}%)` }}
             >
                 {
-                    data.map((item, index) => (
+                    items.map((item, index) => (
                         <div key={index} id={`item${index}`} style={{ transition: '250ms all'}}>
-                            <img width="100%" src={item.imageUrl} />
+                            {item.item}
                         </div>
                     ))
                 }
             </div>
-            <div>
-                <Button onClick={() => handleClickScroll('prev')}>prev</Button>
-                <Button onClick={() => handleClickScroll('next')}>next</Button>
+            <div className={`flex flex-row ${position}`}>
+                <button
+                    className="rounded bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+                    onClick={() => handleClickScroll('prev')}
+                >
+                    <ArrowLeftSLine size={14} color={colors.orange["600"]} />
+                </button>
+                <button
+                    className="rounded bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+                    onClick={() => handleClickScroll('next')}
+                >
+                    <ArrowRightSLine size={14} color={colors.orange["600"]} />
+                </button>
             </div>
         </div>
     )
