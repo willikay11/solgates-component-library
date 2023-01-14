@@ -13,6 +13,8 @@ const guid = () => {
     return s4();
 }
 
+const id = guid();
+
 export enum ARROW_POSITION {
     bottomLeft = "bottomLeft",
     bottomRight = "bottomLeft",
@@ -36,8 +38,6 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
     const [viewableItemCount, setViewableItemCount] = useState(4);
     const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
     const [gridPercentage, setGridPercentage] = useState<number>(25);
-    const id = guid();
-
 
     const handleWindowSizeChange = () => {
         if (window.innerWidth <= 640) {
