@@ -30,11 +30,6 @@ export interface ProductTileProps {
 export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick }: ProductTileProps) => {
   const [inWishList] = useState<boolean>(addedToWishList || false);
 
-  // return (
-  //     <CloudimageProvider config={cloudImageConfig}>
-  //         <Img src={imageUrl} doNotReplaceURL alt="Demo image" />
-  //     </CloudimageProvider>
-  // )
     return(
       <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded cursor-pointer`} onClick={() => onClick?.()}>
         <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center`}>
