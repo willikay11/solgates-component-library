@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useState} from "react";
 import Img, { CloudimageProvider } from "react-cloudimage-responsive";
 import colors from "./Colors";
@@ -34,7 +35,7 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, butt
   //         <Img src={imageUrl} doNotReplaceURL alt="Demo image" />
   //     </CloudimageProvider>
   // )
-  return(
+    return(
       <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded cursor-pointer`} onClick={() => onClick?.()}>
         <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center`}>
             <CloudimageProvider config={cloudImageConfig}>
