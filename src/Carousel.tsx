@@ -2,6 +2,17 @@ import React, { useState, useEffect, ReactNode } from "react";
 import {ArrowLeftSLine, ArrowRightSLine} from './Icons';
 import colors from "./Colors";
 
+//generates random id;
+const guid = () => {
+    let s4 = () => {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+    return s4();
+}
+
 export enum ARROW_POSITION {
     bottomLeft = "bottomLeft",
     bottomRight = "bottomLeft",
@@ -25,6 +36,8 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
     const [viewableItemCount, setViewableItemCount] = useState(4);
     const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
     const [gridPercentage, setGridPercentage] = useState<number>(25);
+    const id = guid();
+
 
     const handleWindowSizeChange = () => {
         if (window.innerWidth <= 640) {
@@ -48,6 +61,8 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
         }
     }, []);
 
+    console.log(guid());
+
     useEffect(() => {
         handleWindowSizeChange();
     }, [])
@@ -64,7 +79,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
             }
         }
         setLastVisibleItem(scrollTo);
-         const element = document.getElementById(`item${scrollTo}`);
+         const element = document.getElementById(`${id}-${scrollTo}`);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
@@ -79,6 +94,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
     if (arrowPosition === ARROW_POSITION.topRight) {
         position = 'hidden'
     }
+
     return (
         <div className="block">
             <div className={`flex flex-row justify-between mb-2.5`}>
@@ -104,7 +120,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
             >
                 {
                     items.map((item, index) => (
-                        <div key={index} id={`item${index}`} style={{ transition: '250ms all'}}>
+                        <div key={index} id={`${id}-${index}`} style={{ transition: '250ms all'}}>
                             {item.item}
                         </div>
                     ))
