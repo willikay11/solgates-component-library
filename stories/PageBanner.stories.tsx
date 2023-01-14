@@ -9,10 +9,15 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<PageBannerProps> = (args) => <div className="flex flex-row h-96"><PageBanner {...args} /></div>;
+const Template: Story<PageBannerProps> = (args) =>
+    <div className="flex flex-row h-32 md:h-64 lg:h-96">
+        <PageBanner {...args} />
+    </div>;
 
 export const Default = Template.bind({});
 Default.args = {
-    imageUrl: 'https://www.converse.com.au/media/wysiwyg/EDITORIAL_DESKTOP_3C70_Suede.jpg',
-    title: 'Checkout'
+    imageUrl: 'solgates-banner-1.jpeg',
+    title: 'Checkout',
+    name: 'Children Tees',
+    buttonName: 'Shop'
 }
