@@ -1,7 +1,13 @@
 import React, {useState} from "react";
+import Img, { CloudimageProvider } from "react-cloudimage-responsive";
 import colors from "./Colors";
 import { Button, ButtonTypes } from "./Button";
 import {Heart3Line, Heart3LineFill, ArrowRightLine} from './Icons';
+
+const cloudImageConfig = {
+    token: 'cyqqqhlxia',
+    baseURL: 'https://cyqqqhlxia.cloudimg.io/_solgates_/'
+};
 
 export enum PRODUCT_TYPE {
    PRODUCTS = 'products',
@@ -23,10 +29,18 @@ export interface ProductTileProps {
 export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick }: ProductTileProps) => {
   const [inWishList] = useState<boolean>(addedToWishList || false);
 
+  // return (
+  //     <CloudimageProvider config={cloudImageConfig}>
+  //         <Img src={imageUrl} doNotReplaceURL alt="Demo image" />
+  //     </CloudimageProvider>
+  // )
   return(
       <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded cursor-pointer`} onClick={() => onClick?.()}>
         <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center`}>
-            <img src={imageUrl} alt={name} className="w-full" />
+            <CloudimageProvider config={cloudImageConfig}>
+                <Img src={imageUrl} doNotReplaceURL alt="Demo image" />
+            </CloudimageProvider>
+            {/*<img src={imageUrl} alt={name} className="w-full" />*/}
             {
                 type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
                         <Heart3LineFill size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />

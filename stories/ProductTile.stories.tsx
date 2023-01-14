@@ -10,7 +10,7 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<ProductTileProps> = (args) =>
-    <div className="grid gap-2 grid-cols-2 md:gap-2 md:grid-cols-3 lg:gap-4 lg:grid-cols-4 h-64">
+    <div className="grid gap-2 grid-cols-2 md:gap-2 md:grid-cols-3 lg:gap-4 lg:grid-cols-4 h-screen">
         <ProductTile {...args} />
         <ProductTile {...args} />
         <ProductTile {...args} />
@@ -20,7 +20,7 @@ const Template: Story<ProductTileProps> = (args) =>
 
 export const Products = Template.bind({});
 Products.args = {
-    imageUrl: '',
+    imageUrl: 'high-tops-are-back.png',
     name: 'Air Jordan 1 Retro High OG',
     smallDescription: 'Dutch Green',
     buttonName: 'Nike',
@@ -29,13 +29,13 @@ Products.args = {
 
 export const Product = Template.bind({});
 Product.args = {
-    imageUrl: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/23696ebc-18fc-46f9-8a88-c854930ad24c/air-jordan-1-retro-high-womens-shoes-W1tGx4.png',
+    imageUrl: 'high-tops-are-back.png',
     type: PRODUCT_TYPE.PRODUCT,
 };
 
 export const Collection = Template.bind({});
 Collection.args = {
     type: PRODUCT_TYPE.COLLECTION,
-    imageUrl: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/23696ebc-18fc-46f9-8a88-c854930ad24c/air-jordan-1-retro-high-womens-shoes-W1tGx4.png',
+    imageUrl: 'high-tops-are-back.png',
     name: 'Jordans'
 };
