@@ -23,12 +23,13 @@ export const PageBanner = ({ imageUrl, title,name, buttonName, onClick }: PageBa
               <BackgroundImg
                   src={imageUrl}
                   doNotReplaceURL
-                  className="relative flex rounded justify-center items-center bg-cover bg-center h-full"
+                  className="relative rounded bg-cover bg-center w-full h-full"
               >
-                  { title && <p className="z-20 text-6xl leading-none font-extrabold text-white">{title}</p>}
               </BackgroundImg>
+              { title && <div className="flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0" style={{ background: 'linear-gradient(0deg, rgba(31, 41, 55, 0.4), rgba(31, 41, 55, 0.4))' }}>
+                  <p className="absolute text-6xl leading-none font-extrabold text-white">{title}</p>
+              </div> }
           </CloudimageProvider>
-          { title && <div className="z-10 rounded absolute top-0 bottom-0 left-0 right-0" style={{ background: 'linear-gradient(0deg, rgba(31, 41, 55, 0.4), rgba(31, 41, 55, 0.4))' }} /> }
 
           {(name || buttonName) && <div className="mt-2.5">
               <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">{name}</p>

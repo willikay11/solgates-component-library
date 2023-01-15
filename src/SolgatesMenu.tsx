@@ -116,7 +116,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                 </div>
                 <div className="hidden md:grid lg:grid grid-cols-12 w-full" style={{ height: 'calc(120px - 20px)'}}>
                     <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-6 inline-flex">
-                        <img src={logoUrl} className="w-[90px] mr-[30px]" onClick={() => onLogoClick} />
+                        <img src={logoUrl} className="w-[90px] mr-[30px] cursor-pointer" onClick={() => onLogoClick()} />
                         {
                             menus.map((menu) =>
                                 <Menu key={menu.key} as="div" className="inline-flex text-left mr-[20px] h-full">
