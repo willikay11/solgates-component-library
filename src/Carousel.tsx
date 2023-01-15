@@ -9,7 +9,6 @@ const guid = () => {
             .toString(16)
             .substring(1);
     }
-    //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
     return s4();
 }
 

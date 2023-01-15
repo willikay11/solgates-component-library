@@ -26,11 +26,12 @@ export interface SolgatesMenuProps {
     logoUrl: string;
     menus: menu[],
     userContent: ReactNode,
-    wishListContent: ReactNode,
+    onLogoClick: () => void,
+    onClickWishList: () => void,
     shoppingCartContent: ReactNode
 }
 
-export const SolgatesMenu = ({ menus, logoUrl, userContent, wishListContent, shoppingCartContent }: SolgatesMenuProps) => {
+export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClickWishList, shoppingCartContent }: SolgatesMenuProps) => {
     const buttonRefs = useRef<HTMLButtonElement[]>([]);
     const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -115,7 +116,7 @@ export const SolgatesMenu = ({ menus, logoUrl, userContent, wishListContent, sho
                 </div>
                 <div className="hidden md:grid lg:grid grid-cols-12 w-full" style={{ height: 'calc(120px - 20px)'}}>
                     <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-6 inline-flex">
-                        <img src={logoUrl} className="w-[90px] mr-[30px]" />
+                        <img src={logoUrl} className="w-[90px] mr-[30px]" onClick={() => onLogoClick} />
                         {
                             menus.map((menu) =>
                                 <Menu key={menu.key} as="div" className="inline-flex text-left mr-[20px] h-full">
@@ -184,28 +185,22 @@ export const SolgatesMenu = ({ menus, logoUrl, userContent, wishListContent, sho
                         </Menu>
                         <Menu>
                             <div className="relative flex items-center">
-                                <Menu.Button>
-                                    <Heart3Line className="mr-[10px] cursor-pointer" color={colors.gray["600"]} size={18} />
-                                </Menu.Button>
-                                <Transition
-                                    as={Fragment}
-                                    enter="transition ease-out duration-100"
-                                    enterFrom="transform opacity-0 scale-95"
-                                    enterTo="transform opacity-100 scale-100"
-                                    leave="transition ease-in duration-75"
-                                    leaveFrom="transform opacity-100 scale-100"
-                                    leaveTo="transform opacity-0 scale-95"
-                                >
-                                    <Menu.Items className="min-w-[220px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
-                                        {wishListContent}
-                                    </Menu.Items>
-                                </Transition>
+                                <div className="cursor-pointer" onClick={onClickWishList}>
+                                    <Heart3Line
+                                        className="mr-[10px] cursor-pointer"
+                                        color={colors.gray["600"]}
+                                        size={18}
+                                    />
+                                </div>
                             </div>
                         </Menu>
                         <Menu>
                             <div className="relative flex items-center">
                                 <Menu.Button>
-                                    <ShoppingBagLine className="mr-[10px] cursor-pointer" color={colors.gray["600"]} size={18} />
+                                    <ShoppingBagLine
+                                        className="mr-[10px] cursor-pointer"
+                                        color={colors.gray["600"]}
+                                        size={18} />
                                 </Menu.Button>
                                 <Transition
                                     as={Fragment}
