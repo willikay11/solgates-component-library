@@ -19,7 +19,8 @@ interface menu {
     key: number,
     label: string;
     gap: number,
-    category: category[]
+    onClickMenu: () => void,
+    category?: category[]
 }
 
 export interface SolgatesMenuProps {
@@ -72,7 +73,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                     </Disclosure.Button>
                                     <Disclosure.Panel className="ml-[10px] text-gray-500">
                                         {
-                                            menu.category.map((category, index) => (
+                                            menu?.category?.map((category, index) => (
                                                 <Disclosure key={`${category.label}-${index}`}>
                                                     {({ open }) => {
                                                         const key = calculateKey(menu.key, 100, index);
@@ -118,48 +119,55 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                     <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-6 inline-flex">
                         <img src={logoUrl} className="w-[90px] mr-[30px] cursor-pointer" onClick={() => onLogoClick()} />
                         {
-                            menus.map((menu) =>
-                                <Menu key={menu.key} as="div" className="inline-flex text-left mr-[20px] h-full">
-                                    <div>
-                                        <Menu.Button className="inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
-                                            {menu.label}
-                                        </Menu.Button>
-                                    </div>
-                                    <Transition
-                                        as={Fragment}
-                                        enter="transition ease-out duration-100"
-                                        enterFrom="transform opacity-0 scale-95"
-                                        enterTo="transform opacity-100 scale-100"
-                                        leave="transition ease-in duration-75"
-                                        leaveFrom="transform opacity-100 scale-100"
-                                        leaveTo="transform opacity-0 scale-95"
-                                    >
-                                        <Menu.Items className="z-50 absolute right-0 top-[114px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
-                                            <div className={`grid grid-cols-12 my-[30px]`}>
-                                                <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
-                                                    <div className={`grid gap-${menu?.gap} grid-cols-4 w-full`}>
-                                                        {
-                                                            menu?.category?.map((category, index) => {
-                                                                const key = calculateKey(menu.key, 100, index);
-                                                                return <div key={key}>
-                                                                    <p className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500">{category.label}</p>
-                                                                    {category.items.map((item) => (
-                                                                        <Menu.Item key={key}>
-                                                                            <button className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full" onClick={item.onClick}>
-                                                                                {item.label}
-                                                                            </button>
-                                                                        </Menu.Item>
-                                                                    ))}
-                                                                </div>
-                                                            })
-                                                        }
+                            menus.map((menu) => {
+                                if (menu?.category?.length) {
+                                    return  <Menu key={menu.key} as="div" className="inline-flex text-left mr-[20px] h-full">
+                                        <div>
+                                            <Menu.Button className="inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
+                                                {menu.label}
+                                            </Menu.Button>
+                                        </div>
+                                        <Transition
+                                            as={Fragment}
+                                            enter="transition ease-out duration-100"
+                                            enterFrom="transform opacity-0 scale-95"
+                                            enterTo="transform opacity-100 scale-100"
+                                            leave="transition ease-in duration-75"
+                                            leaveFrom="transform opacity-100 scale-100"
+                                            leaveTo="transform opacity-0 scale-95"
+                                        >
+                                            <Menu.Items className="z-50 absolute right-0 top-[114px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                                                <div className={`grid grid-cols-12 my-[30px]`}>
+                                                    <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
+                                                        <div className={`grid gap-${menu?.gap} grid-cols-4 w-full`}>
+                                                            {
+                                                                menu?.category?.map((category, index) => {
+                                                                    const key = calculateKey(menu.key, 100, index);
+                                                                    return <div key={key}>
+                                                                        <p className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500">{category.label}</p>
+                                                                        {category.items.map((item) => (
+                                                                            <Menu.Item key={key}>
+                                                                                <button className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full" onClick={item.onClick}>
+                                                                                    {item.label}
+                                                                                </button>
+                                                                            </Menu.Item>
+                                                                        ))}
+                                                                    </div>
+                                                                })
+                                                            }
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </Menu.Items>
-                                    </Transition>
-                                </Menu>
-                            )
+                                            </Menu.Items>
+                                        </Transition>
+                                    </Menu>
+                                }
+                                return (
+                                    <button onClick={() => menu?.onClickMenu?.()} className="inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
+                                        {menu.label}
+                                    </button>
+                                );
+                            })
                         }
                     </div>
                     <div className="col-span-2 inline-flex items-center justify-end">
