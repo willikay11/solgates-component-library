@@ -163,7 +163,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                     </Menu>
                                 }
                                 return (
-                                    <button onClick={() => menu?.onClickMenu?.()} className="inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
+                                    <button onClick={() => menu?.onClickMenu?.()} className="mr-[20px] inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
                                         {menu.label}
                                     </button>
                                 );
