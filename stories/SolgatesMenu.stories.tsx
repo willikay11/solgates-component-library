@@ -37,6 +37,10 @@ Default.args = {
                         {
                             label: "All men's Shoes",
                             onClick: () => console.log('Clicked')
+                        },
+                        {
+                            label: "All men's Shoes",
+                            onClick: () => console.log('Clicked')
                         }
                     ]
                 },
