@@ -24,6 +24,7 @@ const Template: Story<SolgatesMenuProps> = (args) => <SolgatesMenu {...args}/>;
 export const Default = Template.bind({});
 Default.args = {
     logoUrl: "https://user-images.githubusercontent.com/19513808/210572075-f131c86f-8117-4d0e-b839-ec79fdae516c.svg",
+    onLogoClick: () => console.log('Clicked logo'),
     menus: [
         {
             key: 1,
@@ -264,7 +265,7 @@ Default.args = {
                 My Account
             </Button>
         </div>,
-    wishListContent: <div></div>,
+    onClickWishList: () => console.log('clicked wishlist'),
     shoppingCartContent:
         <div>
             <ShoppingCart
