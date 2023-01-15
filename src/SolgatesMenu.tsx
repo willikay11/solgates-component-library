@@ -145,7 +145,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                                                     <p className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500">{category.label}</p>
                                                                     {category.items.map((item) => (
                                                                         <Menu.Item key={key}>
-                                                                            <button className="text-xs leading-4 font-medium text-gray-800 hover:underline" onClick={item.onClick}>
+                                                                            <button className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full" onClick={item.onClick}>
                                                                                 {item.label}
                                                                             </button>
                                                                         </Menu.Item>
