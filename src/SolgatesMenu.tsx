@@ -163,7 +163,11 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                     </Menu>
                                 }
                                 return (
-                                    <button onClick={() => menu?.onClickMenu?.()} className="mr-[20px] inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
+                                    <button
+                                        key={menu.key}
+                                        onClick={() => menu?.onClickMenu?.()}
+                                        className="mr-[20px] inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600"
+                                    >
                                         {menu.label}
                                     </button>
                                 );
@@ -229,7 +233,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                         <Input.Text
                             className="md:hidden lg:flex h-[36px] rounded-[68px] w-[135px] bg-gray-50"
                             placeholder="Search"
-                            prefixIcon={<Search2Line color={colors.gray["400"]} />}
+                            prefixIcon={<Search2Line size={14} color={colors.gray["400"]} />}
                         />
                     </div>
                 </div>
