@@ -1,6 +1,15 @@
 import React, {Fragment, useState, useRef, ReactNode} from "react";
 import {Menu, Transition, Disclosure} from '@headlessui/react'
-import { Heart3Line, Menu4Line, Search2Line, ShoppingBagLine, User6Line } from "./Icons";
+import {
+    Heart3Line,
+    Menu4Line,
+    PhoneLine,
+    QuestionLine,
+    Search2Line,
+    Shop2Line,
+    ShoppingBagLine,
+    User6Line
+} from "./Icons";
 import {Input} from "./Input";
 import colors from "./Colors";
 import {Modal, MODAL_POSITION} from "./Modal";
@@ -19,7 +28,7 @@ interface menu {
     key: number,
     label: string;
     gap: number,
-    onClickMenu: () => void,
+    onClickMenu?: () => void,
     category?: category[]
 }
 
@@ -29,10 +38,12 @@ export interface SolgatesMenuProps {
     userContent: ReactNode,
     onLogoClick: () => void,
     onClickWishList: () => void,
-    shoppingCartContent: ReactNode
+    onOpenShopClick: () => void,
+    shoppingCartContent: ReactNode,
+    phoneNumber: string,
 }
 
-export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClickWishList, shoppingCartContent }: SolgatesMenuProps) => {
+export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClickWishList, shoppingCartContent, phoneNumber, onOpenShopClick }: SolgatesMenuProps) => {
     const buttonRefs = useRef<HTMLButtonElement[]>([]);
     const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -108,14 +119,28 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                     ))
                 }
             </Modal>
-            <div className="fixed relative w-full h-[60px] md:h-[120px] lg:h-[120px] items-center border-b border-gray-100">
-                <div className="bg-gray-100 flex py-[2px] lg:grid lg:grid-cols-12 w-full">
+            <div className="fixed relative w-full h-[60px] md:h-[128px] lg:h-[128px] items-center border-b border-gray-100">
+                <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
                     <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-8 flex w-full items-center justify-center md:justify-end lg:justify-end">
-                        <span className="text-[10px] text-gray-600 mr-2">Help</span>
-                        <span className="text-[10px] text-gray-600 mr-2">Open Shop</span>
+                        <span className="inline-flex text-[10px] text-gray-600 mr-2">
+                            <PhoneLine color={colors.gray["400"]} size={14} className="mr-2" />
+                            {phoneNumber}
+                        </span>
+                        <div className="border-[1px] border-gray-300 h-full rounded mr-2" />
+                        <span className="inline-flex text-[10px] text-gray-600 mr-2">
+                            <QuestionLine color={colors.gray["400"]} size={14} className="mr-2" />
+                            Help
+                        </span>
+                        <div className="border-[1px] border-gray-300 h-full rounded mr-2" />
+                        <span className="inline-flex text-[10px] text-gray-600 mr-2 cursor-pointer"
+                              onClick={() => onOpenShopClick()}
+                        >
+                            <Shop2Line color={colors.gray["400"]} size={14} className="mr-2" />
+                            Open Shop
+                        </span>
                     </div>
                 </div>
-                <div className="hidden md:grid lg:grid grid-cols-12 w-full" style={{ height: 'calc(120px - 20px)'}}>
+                <div className="hidden md:grid lg:grid grid-cols-12 w-full" style={{ height: 'calc(128px - 25px)'}}>
                     <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-6 inline-flex">
                         <img src={logoUrl} className="w-[90px] mr-[30px] cursor-pointer" onClick={() => onLogoClick()} />
                         {
@@ -123,7 +148,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                 if (menu?.category?.length) {
                                     return  <Menu key={menu.key} as="div" className="inline-flex text-left mr-[20px] h-full">
                                         <div>
-                                            <Menu.Button className="inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
+                                            <Menu.Button className="inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
                                                 {menu.label}
                                             </Menu.Button>
                                         </div>
@@ -136,7 +161,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                             leaveFrom="transform opacity-100 scale-100"
                                             leaveTo="transform opacity-0 scale-95"
                                         >
-                                            <Menu.Items className="z-50 absolute right-0 top-[114px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                                            <Menu.Items className="z-50 absolute right-0 top-[120px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
                                                 <div className={`grid grid-cols-12 my-[30px]`}>
                                                     <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
                                                         <div className={`grid gap-${menu?.gap} grid-cols-4 w-full`}>
@@ -163,7 +188,11 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                     </Menu>
                                 }
                                 return (
-                                    <button onClick={() => menu?.onClickMenu?.()} className="mr-[20px] inline-flex justify-center items-center h-full bg-white py-2 text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
+                                    <button
+                                        key={menu.key}
+                                        onClick={() => menu?.onClickMenu?.()}
+                                        className="mr-[20px] inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600"
+                                    >
                                         {menu.label}
                                     </button>
                                 );
@@ -229,7 +258,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                         <Input.Text
                             className="md:hidden lg:flex h-[36px] rounded-[68px] w-[135px] bg-gray-50"
                             placeholder="Search"
-                            prefixIcon={<Search2Line color={colors.gray["400"]} />}
+                            prefixIcon={<Search2Line size={14} color={colors.gray["400"]} />}
                         />
                     </div>
                 </div>

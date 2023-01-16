@@ -25,6 +25,7 @@ export const Default = Template.bind({});
 Default.args = {
     logoUrl: "https://user-images.githubusercontent.com/19513808/210572075-f131c86f-8117-4d0e-b839-ec79fdae516c.svg",
     onLogoClick: () => console.log('Clicked logo'),
+    phoneNumber: '+254 706020966',
     menus: [
         {
             key: 1,
@@ -270,6 +271,7 @@ Default.args = {
             </Button>
         </div>,
     onClickWishList: () => console.log('clicked wishlist'),
+    onOpenShopClick: () => console.log('clicked open shop'),
     shoppingCartContent:
         <div>
             <ShoppingCart

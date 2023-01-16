@@ -13,8 +13,12 @@ const Password = ({ prefixIcon, iconRender, placeholder }: PasswordInputProps) =
 
     return (
         <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
-            {prefixIcon && <div>{prefixIcon}</div>}
-            <input type={isPasswordVisible ? 'text' : "password"} placeholder={placeholder} className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500" />
+            {prefixIcon && <div className="flex">{prefixIcon}</div>}
+            <input
+                type={isPasswordVisible ? 'text' : "password"}
+                placeholder={placeholder}
+                className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800"
+            />
             {iconRender && <div onClick={() => setIsPasswordVisible(!isPasswordVisible)}>{iconRender(isPasswordVisible)}</div>}
         </div>
     );
@@ -27,7 +31,11 @@ export interface TextAreaInputProps {
 
 const TextArea = ({ rows, placeholder }: TextAreaInputProps) => {
     return (
-        <textarea placeholder={placeholder} className="w-full p-2.5 rounded bg-white border border-gray-200 outline-0 focus:border-orange-500 hover:border-orange-500 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500" rows={rows} />
+        <textarea
+            placeholder={placeholder}
+            className="w-full p-2.5 rounded bg-white border border-gray-200 outline-0 focus:border-orange-500 hover:border-orange-500 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800"
+            rows={rows}
+        />
     );
 }
 
@@ -41,8 +49,13 @@ export interface NumberInputProps {
 const Number = ({ min, max, prefixIcon, placeholder }: NumberInputProps) => {
     return (
       <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
-        {prefixIcon && <div>{prefixIcon}</div>}
-        <input type="number" placeholder={placeholder} min={min} max={max} className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500" />
+        {prefixIcon && <div className="flex">{prefixIcon}</div>}
+        <input
+            type="number"
+            placeholder={placeholder}
+            min={min}
+            max={max}
+            className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800" />
       </div>
     );
 }
@@ -59,8 +72,14 @@ const Text = ({ prefixIcon, suffixIcon, clearIcon, placeholder, className }: Tex
     const [currentText, setCurrentText] = useState<string>('');
     return (
         <div className={`flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center ${className}`}>
-            {prefixIcon && <div>{prefixIcon}</div>}
-            <input type="text" placeholder={placeholder} value={currentText} onChange={(e) => setCurrentText(e.target.value)} className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent`} />
+            {prefixIcon && <div className="flex">{prefixIcon}</div>}
+            <input
+                type="text"
+                placeholder={placeholder}
+                value={currentText}
+                onChange={(e) => setCurrentText(e.target.value)}
+                className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-xs text-gray-800`}
+            />
             {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
             {clearIcon && <div className="cursor-pointer" onClick={() => setCurrentText('')} >{clearIcon}</div>}
         </div>
