@@ -95,7 +95,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
     }
 
     return (
-        <div className="block">
+        <div className="block w-full">
             <div className={`flex flex-row justify-between mb-2.5`}>
                 <p className="text-xl leading-7 font-normal text-gray-800">{title}</p>
                 <div className={`${arrowPosition === ARROW_POSITION.topRight ? 'inline-flex' : 'hidden'}`}>
