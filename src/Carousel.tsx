@@ -3,16 +3,16 @@ import {ArrowLeftSLine, ArrowRightSLine} from './Icons';
 import colors from "./Colors";
 
 //generates random id;
-const guid = () => {
-    let s4 = () => {
-        return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-    }
-    return s4();
-}
+// const guid = () => {
+//     let s4 = () => {
+//         return Math.floor((1 + Math.random()) * 0x10000)
+//             .toString(16)
+//             .substring(1);
+//     }
+//     return s4();
+// }
 
-const id = guid();
+// const id = guid();
 
 export enum ARROW_POSITION {
     bottomLeft = "bottomLeft",
@@ -23,6 +23,7 @@ interface CarouselItem {
     item: ReactNode
 }
 export interface CarouselProps {
+    id: string;
     title?: string;
     itemsVisible: {
         mobile: number;
@@ -33,7 +34,7 @@ export interface CarouselProps {
     items: CarouselItem[]
 }
 
-export const Carousel = ({ itemsVisible, items, arrowPosition, title }: CarouselProps) => {
+export const Carousel = ({ itemsVisible, items, arrowPosition, title, id }: CarouselProps) => {
     const [viewableItemCount, setViewableItemCount] = useState(4);
     const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
     const [gridPercentage, setGridPercentage] = useState<number>(25);
@@ -60,8 +61,6 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
         }
     }, []);
 
-    console.log(guid());
-
     useEffect(() => {
         handleWindowSizeChange();
     }, [])
@@ -78,7 +77,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title }: Carousel
             }
         }
         setLastVisibleItem(scrollTo);
-         const element = document.getElementById(`${id}-${scrollTo}`);
+        const element = document.getElementById(`${id}-${scrollTo}`);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         }

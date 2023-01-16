@@ -10,12 +10,19 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<CarouselProps> = (args) =>
-    <div className="w-full">
-        <Carousel {...args} />
-    </div>;
+    <>
+        <div className="w-full">
+            <Carousel {...args} />
+        </div>
+
+        <div className="w-full">
+            <Carousel {...args} />
+        </div>
+    </>;
 
 export const Default = Template.bind({});
 Default.args = {
+    id: 'a',
     title: 'Popular Right Now',
     arrowPosition: ARROW_POSITION.topRight,
     itemsVisible: {
