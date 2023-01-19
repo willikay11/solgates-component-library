@@ -25,6 +25,7 @@ Products.args = {
     smallDescription: 'Dutch Green',
     buttonName: 'Nike',
     price: 'KSH 12,200',
+    releaseDate: 'Apr 20'
 };
 
 export const Product = Template.bind({});

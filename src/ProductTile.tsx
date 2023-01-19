@@ -13,21 +13,23 @@ const cloudImageConfig = {
 export enum PRODUCT_TYPE {
    PRODUCTS = 'products',
    PRODUCT = 'product',
-   COLLECTION = 'collection'
+   COLLECTION = 'collection',
+   RELEASES = 'releases'
 }
 
 export interface ProductTileProps {
   imageUrl: string;
-  type?: PRODUCT_TYPE.PRODUCTS | PRODUCT_TYPE.PRODUCT | PRODUCT_TYPE.COLLECTION;
+  type?: PRODUCT_TYPE.PRODUCTS | PRODUCT_TYPE.PRODUCT | PRODUCT_TYPE.COLLECTION | PRODUCT_TYPE.RELEASES;
   name?: string;
   smallDescription?: string;
   buttonName?: string;
   price?: string;
   addedToWishList?: boolean;
   onClick?: () => void;
+  releaseDate?: string;
 }
 
-export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick }: ProductTileProps) => {
+export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick, releaseDate }: ProductTileProps) => {
   const [inWishList] = useState<boolean>(addedToWishList || false);
 
     return(
@@ -42,10 +44,14 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, butt
                         <Heart3LineFill size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
                         :
                         <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" />
-                ) : type === PRODUCT_TYPE.COLLECTION ?(
+                ) : type === PRODUCT_TYPE.COLLECTION ? (
                     <div className="absolute z-20 top-3 left-3">
                         <p className="text-base leading-6 font-bold text-gray-800">{name}</p>
                         <Button onClick={() => onClick?.()} type={ButtonTypes.link} className="bg-transparent py-0">Shop Collection <ArrowRightLine size={14} color={colors.blue["500"]} /></Button>
+                    </div>
+                ) : type === PRODUCT_TYPE.RELEASES ? (
+                    <div className="absolute z-20 top-3 right-3 bg-gray-200 rounded p-2.5">
+                        <span className="text-xs leading-4 font-medium text-gray-800">{releaseDate}</span>
                     </div>
                 ) : null
             }
