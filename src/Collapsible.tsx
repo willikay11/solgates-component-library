@@ -11,7 +11,6 @@ export interface CollapsibleProps {
 }
 
 export const Collapsible = ({ closeIcon, openIcon, panelTitle, panelContent, open = false, bordered = true }: CollapsibleProps) => {
-    console.log(bordered);
    return(
       <div className="w-full max-w-md rounded-2xl bg-white">
           <Disclosure defaultOpen={open}>
