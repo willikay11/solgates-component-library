@@ -43,6 +43,12 @@ const User6Line = ({ color = 'currentColor', size, className }: IconProps) =>
         <path fill={color} d="M12 17c3.662 0 6.865 1.575 8.607 3.925l-1.842.871C17.347 20.116 14.847 19 12 19c-2.847 0-5.347 1.116-6.765 2.796l-1.841-.872C5.136 18.574 8.338 17 12 17zm0-15a5 5 0 0 1 5 5v3a5 5 0 0 1-4.783 4.995L12 15a5 5 0 0 1-5-5V7a5 5 0 0 1 4.783-4.995L12 2zm0 2a3 3 0 0 0-2.995 2.824L9 7v3a3 3 0 0 0 5.995.176L15 10V7a3 3 0 0 0-3-3z"/>
     </svg>
 
+const ArrowLeftLine = ({ color = 'currentColor', size, className }: IconProps) =>
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size}>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill={color} d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z"/>
+    </svg>
+
 const ArrowRightLine = ({ color = 'currentColor', size, className }: IconProps) =>
     <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size}>
         <path fill="none" d="M0 0h24v24H0z"/>
@@ -98,6 +104,7 @@ export {
     Search2Line,
     ShoppingBagLine,
     User6Line,
+    ArrowLeftLine,
     ArrowRightLine,
     ArrowLeftSLine,
     ArrowRightSLine,

@@ -19,3 +19,4 @@ export * from './Carousel';
 export * from './InformationBanner';
 export * from './BreadCrumbs';
 export * from './Sidebar';
+export * from './Table';
