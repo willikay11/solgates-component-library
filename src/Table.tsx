@@ -14,7 +14,7 @@ interface column {
     title: string,
     dataIndex: string,
     key: string,
-    render?: (val: any) => ReactNode
+    render?: (val: any, record: any) => ReactNode
 }
 
 export interface TableProps {
@@ -37,7 +37,7 @@ export const Table = ({ columns, data, tableTitle, extraContent }: TableProps) =
         if (columns.length) {
             const newColumns = columns.map((column) => (
                 columnHelper.accessor(column.dataIndex, {
-                    cell: info => column?.render?.(info.getValue()) || info.getValue(),
+                    cell: info => column?.render?.(info.getValue(), info?.row?.original) || info.getValue(),
                     header: () => <span>{column.title}</span>,
                 })
             ));
@@ -52,7 +52,7 @@ export const Table = ({ columns, data, tableTitle, extraContent }: TableProps) =
     }, [data])
 
   return(
-      <div className="rounded border-[1px] border-gray-200">
+      <div className="rounded border-[1px] border-gray-200 bg-white">
           {
               (tableTitle || extraContent) && <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px] justify-between">
                   <span className="text-sm leading-4 font-semibold text-gray-800">{tableTitle}</span>
