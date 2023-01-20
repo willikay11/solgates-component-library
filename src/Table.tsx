@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import {
     createColumnHelper,
     flexRender,
@@ -8,84 +8,56 @@ import {
 import {ArrowRightLine, ArrowLeftLine} from "./Icons";
 import colors from "./Colors";
 
-type Person = {
-    firstName: string
-    lastName: string
-    age: number
-    visits: number
-    status: string
-    progress: number
+const columnHelper = createColumnHelper<any>()
+
+interface column {
+    title: string,
+    dataIndex: string,
+    key: string,
+    render?: () => ReactNode
 }
 
-const defaultData: Person[] = [
-    {
-        firstName: 'tanner',
-        lastName: 'linsley',
-        age: 24,
-        visits: 100,
-        status: 'In Relationship',
-        progress: 50,
-    },
-    {
-        firstName: 'tandy',
-        lastName: 'miller',
-        age: 40,
-        visits: 40,
-        status: 'Single',
-        progress: 80,
-    },
-    {
-        firstName: 'joe',
-        lastName: 'dirte',
-        age: 45,
-        visits: 20,
-        status: 'Complicated',
-        progress: 10,
-    },
-]
-
-const columnHelper = createColumnHelper<Person>()
-
-const columns = [
-    columnHelper.accessor('firstName', {
-        cell: info => info.getValue(),
-        header: () => <span>First Name</span>,
-    }),
-    columnHelper.accessor(row => row.lastName, {
-        id: 'lastName',
-        cell: info => <i>{info.getValue()}</i>,
-        header: () => <span>Last Name</span>,
-    }),
-    columnHelper.accessor('age', {
-        header: () => 'Age',
-    }),
-    columnHelper.accessor('visits', {
-        header: () => <span>Visits</span>,
-    }),
-    columnHelper.accessor('status', {
-        header: 'Status',
-    }),
-    columnHelper.accessor('progress', {
-        header: 'Profile Progress',
-    }),
-]
 export interface TableProps {
+    columns: column[],
+    data: any[],
+    tableTitle?: string;
 }
 
-export const Table = ({  }: TableProps) => {
-    const [data] = React.useState(() => [...defaultData])
-
+export const Table = ({ columns, data, tableTitle }: TableProps) => {
+    const [tableData, setTableData] = useState<any[]>([])
+    const [tableColumns, setNewColumns] = useState<any[]>([]);
     const table = useReactTable({
-        data,
-        columns,
+        data: tableData,
+        columns: tableColumns,
         getCoreRowModel: getCoreRowModel(),
-    })
+    });
+
+    useEffect(() => {
+        if (columns.length) {
+            const newColumns = columns.map((column) => (
+                columnHelper.accessor(column.dataIndex, {
+                    cell: info => info.getValue(),
+                    header: () => <span>{column.title}</span>,
+                })
+            ));
+            setNewColumns(newColumns);
+        }
+    }, [columns])
+
+    useEffect(() => {
+        if (data.length) {
+            setTableData(data);
+        }
+    }, [data])
 
   return(
       <div className="rounded border-[1px] border-gray-200">
-          <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px]">
-              <span className="text-sm leading-4 font-semibold text-gray-800">Recent Orders</span>
-          </div>
+          {
+              tableTitle && <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px]">
+                  <span className="text-sm leading-4 font-semibold text-gray-800">{tableTitle}</span>
+              </div>
+          }
+
           <table className="w-full">
               <thead>
               {table.getHeaderGroups().map(headerGroup => (
