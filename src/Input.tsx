@@ -1,6 +1,9 @@
-import React, { ReactNode, useState, Fragment } from "react";
-import { Listbox, Transition } from '@headlessui/react'
-import { Tag } from "./Tag";
+import React, {Fragment, ReactNode, useState, useRef} from "react";
+import {Listbox, Transition} from '@headlessui/react'
+import {Tag} from "./Tag";
+import {Button, ButtonTypes} from "./Button";
+import {AddLine, Minus} from "./Icons";
+import Colors from "./Colors";
 
 export interface PasswordInputProps {
     iconRender: (visible: boolean) => ReactNode,
@@ -40,22 +43,33 @@ const TextArea = ({ rows, placeholder }: TextAreaInputProps) => {
 }
 
 export interface NumberInputProps {
-    min: number;
-    max: number;
+    min?: number;
+    max?: number;
     prefixIcon?: ReactNode;
     placeholder?: string;
 }
 
 const Number = ({ min, max, prefixIcon, placeholder }: NumberInputProps) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const increase = () => {
+        inputRef?.current?.stepUp();
+    }
+
+    const decrease = () => {
+        inputRef?.current?.stepDown();
+    }
     return (
       <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
+        <Button onClick={() => decrease()} type={ButtonTypes.link}><Minus color={Colors.gray["500"]} size={14} /></Button>
         <input
+            ref={inputRef}
             type="number"
             placeholder={placeholder}
             min={min}
             max={max}
             className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800" />
+          <Button onClick={() => increase()} type={ButtonTypes.link}><AddLine color={Colors.gray["800"]} size={14} /></Button>
       </div>
     );
 }
@@ -182,5 +196,5 @@ export const Input = {
     TextArea: TextArea,
     Number: Number,
     Text: Text,
-    Select: Select
+    Select: Select,
 };

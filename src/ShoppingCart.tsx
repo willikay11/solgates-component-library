@@ -40,7 +40,8 @@ export const ShoppingCart = ({ products, showDiscount = false, type = CART_TYPE.
                           <p className="text-xs leading-4 font-medium text-gray-800 mt-1.5">{product?.name}</p>
                           <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">{product?.size}</p>
                           <div className="flex flex-row justify-between mt-1.5">
-                              <span>{product?.quantity}</span>
+                              {/*<span>{product?.quantity}</span>*/}
+                              <Input.Number min={1}/>
                               <span className="text-xs leading-4 font-semibold text-black">{product?.price}</span>
                           </div>
                       </div>

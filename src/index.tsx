@@ -18,3 +18,8 @@ export * from './Colors';
 export * from './Carousel';
 export * from './InformationBanner';
 export * from './BreadCrumbs';
+export * from './Sidebar';
+export * from './Table';
+export * from './PopOver';
+export * from './Statistics';
+export * from './List';

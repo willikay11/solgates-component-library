@@ -14,8 +14,8 @@ const Template: Story<CollapsibleProps> = (args) => <Collapsible {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    openIcon: <User6Line color={colors.red["500"]} />,
-    closeIcon: <User6Line color={colors.red["500"]} />,
+    openIcon: <User6Line size={14} color={colors.red["500"]} />,
+    closeIcon: <User6Line size={14} color={colors.red["500"]} />,
     panelTitle: 'Condition',
     panelContent: <div className="grid grid-cols-1">
         <>
