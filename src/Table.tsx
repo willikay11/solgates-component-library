@@ -21,9 +21,10 @@ export interface TableProps {
     columns: column[],
     data: any[],
     tableTitle?: string;
+    extraContent: ReactNode,
 }
 
-export const Table = ({ columns, data, tableTitle }: TableProps) => {
+export const Table = ({ columns, data, tableTitle, extraContent }: TableProps) => {
     const [tableData, setTableData] = useState<any[]>([])
     const [tableColumns, setNewColumns] = useState<any[]>([]);
     const table = useReactTable({
@@ -53,8 +54,9 @@ export const Table = ({ columns, data, tableTitle }: TableProps) => {
   return(
       <div className="rounded border-[1px] border-gray-200">
           {
-              tableTitle && <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px]">
+              (tableTitle || extraContent) && <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px] justify-between">
                   <span className="text-sm leading-4 font-semibold text-gray-800">{tableTitle}</span>
+                  {extraContent}
               </div>
           }
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import {Table, TableProps, Tag,} from "../src";
+import {Meta, Story} from '@storybook/react';
+import {Button, ButtonTypes, Table, TableProps, Tag} from "../src";
 
 const meta: Meta = {
     title: 'Data Display/Table',
@@ -14,6 +14,7 @@ const Template: Story<TableProps> = (args) => <Table {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     tableTitle: 'Recent Orders',
+    extraContent: <Button onClick={() => console.log('clicked')} type={ButtonTypes.link}>View Orders</Button>,
     columns: [
         {
             key: '1',
@@ -39,7 +40,7 @@ Default.args = {
             key: '5',
             title: 'Payment',
             dataIndex: 'payment',
-            render: (val) => <Tag text={val} />
+            render: (val) => <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
         },
         {
             key: '6',
