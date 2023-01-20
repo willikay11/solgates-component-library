@@ -97,6 +97,18 @@ const Minus = ({ color = 'currentColor', size, className }: IconProps) =>
         <path color={color} d="M5 11h14v2H5z"/>
     </svg>
 
+const ArrowDownSLine = ({ color = 'currentColor', size, className }: IconProps) =>
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size}>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path color={color} d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z"/>
+    </svg>
+
+const Checkline = ({ color = 'currentColor', size, className }: IconProps) =>
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size}>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path color={color} d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"/>
+    </svg>
+
 export {
     Heart3Line,
     Heart3LineFill,
@@ -112,5 +124,7 @@ export {
     QuestionLine,
     PhoneLine,
     AddLine,
-    Minus
+    Minus,
+    ArrowDownSLine,
+    Checkline
 }
