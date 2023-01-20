@@ -20,3 +20,4 @@ export * from './InformationBanner';
 export * from './BreadCrumbs';
 export * from './Sidebar';
 export * from './Table';
+export * from './PopOver'

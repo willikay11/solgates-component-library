@@ -1,6 +1,7 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
-import {Button, ButtonTypes, Table, TableProps, Tag} from "../src";
+import {ArrowRightLine, Button, ButtonTypes, Table, TableProps, Tag} from "../src";
+import colors from "tailwindcss/colors";
 
 const meta: Meta = {
     title: 'Data Display/Table',
@@ -56,7 +57,8 @@ Default.args = {
         {
             key: '8',
             title: 'Action',
-            dataIndex: 'action'
+            dataIndex: 'action',
+            render: () => <ArrowRightLine size={14} color={colors.gray["500"]} />
         },
     ],
     data: [
@@ -98,7 +100,7 @@ Default.args = {
             payment: 'Unpaid',
             status: 'Pending',
             amount: 'KSH 84,131.00',
-            action: '...'
+            action: ''
         },
     ]
 };
