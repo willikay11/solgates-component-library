@@ -14,7 +14,7 @@ interface column {
     title: string,
     dataIndex: string,
     key: string,
-    render?: () => ReactNode
+    render?: (val: any) => ReactNode
 }
 
 export interface TableProps {
@@ -36,7 +36,7 @@ export const Table = ({ columns, data, tableTitle }: TableProps) => {
         if (columns.length) {
             const newColumns = columns.map((column) => (
                 columnHelper.accessor(column.dataIndex, {
-                    cell: info => info.getValue(),
+                    cell: info => column?.render?.(info.getValue()) || info.getValue(),
                     header: () => <span>{column.title}</span>,
                 })
             ));
@@ -108,7 +108,7 @@ export const Table = ({ columns, data, tableTitle }: TableProps) => {
               ))}
               </tfoot>
           </table>
-          <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px] justify-between">
+          <div className="flex flex-row  p-[15px] justify-between">
               <div>
                   <span className="text-xs leading-4 font-normal text-gray-500 mr-1">Showing</span>
                   <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">1</span>
@@ -120,7 +120,7 @@ export const Table = ({ columns, data, tableTitle }: TableProps) => {
               </div>
 
               <div>
-                  <button className="mr-2.5"><ArrowLeftLine color={colors.orange["600"]} size={14} /></button>
+                  <button className="mr-2.5"><ArrowLeftLine color={colors.gray["600"]} size={14} /></button>
                   <button><ArrowRightLine color={colors.orange["600"]} size={14} /></button>
               </div>
           </div>

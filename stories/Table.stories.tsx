@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {Table, TableProps,} from "../src";
+import {Table, TableProps, Tag,} from "../src";
 
 const meta: Meta = {
     title: 'Data Display/Table',
@@ -38,12 +38,14 @@ Default.args = {
         {
             key: '5',
             title: 'Payment',
-            dataIndex: 'payment'
+            dataIndex: 'payment',
+            render: (val) => <Tag text={val} />
         },
         {
             key: '6',
             title: 'Delivery Status',
-            dataIndex: 'status'
+            dataIndex: 'status',
+            render: (val) => <Tag text={val} />
         },
         {
             key: '7',
@@ -57,6 +59,36 @@ Default.args = {
         },
     ],
     data: [
+        {
+            orderId: 'AQ90123',
+            items: '2',
+            date: '32 mins ago',
+            customer: 'William Kamau',
+            payment: 'Unpaid',
+            status: 'Pending',
+            amount: 'KSH 84,131.00',
+            action: '...'
+        },
+        {
+            orderId: 'AQ90123',
+            items: '2',
+            date: '32 mins ago',
+            customer: 'William Kamau',
+            payment: 'Unpaid',
+            status: 'Pending',
+            amount: 'KSH 84,131.00',
+            action: '...'
+        },
+        {
+            orderId: 'AQ90123',
+            items: '2',
+            date: '32 mins ago',
+            customer: 'William Kamau',
+            payment: 'Unpaid',
+            status: 'Pending',
+            amount: 'KSH 84,131.00',
+            action: '...'
+        },
         {
             orderId: 'AQ90123',
             items: '2',
