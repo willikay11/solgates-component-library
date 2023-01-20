@@ -12,8 +12,8 @@ export interface SidebarProps {
 }
 
 export const Sidebar = ({ menus }: SidebarProps) => {
-  const pathName = document.location.pathname;
-  console.log('pathName: ', pathName.split('/'));
+  // const pathName = document.location.pathname;
+  // console.log('pathName: ', pathName.split('/'));
 
   return(
       <div className="w-full h-full border-r-[1px] border-gray-200">
