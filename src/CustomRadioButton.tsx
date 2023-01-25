@@ -7,14 +7,14 @@ interface radioOption {
     leftContent: ReactNode,
 }
 
-export interface RadioButtonProps {
+export interface CustomRadioButtonProps {
     label: string | ReactNode,
     selectedIcon: ReactNode,
     unSelectedIcon: ReactNode,
     options: radioOption[]
 }
 
-export const RadioButton = ({ label, options, selectedIcon, unSelectedIcon }: RadioButtonProps) => {
+export const CustomRadioButton = ({ label, options, selectedIcon, unSelectedIcon }: CustomRadioButtonProps) => {
     let [plan, setPlan] = useState('startup')
     return(
       <RadioGroup value={plan} onChange={setPlan}>

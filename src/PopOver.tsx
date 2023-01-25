@@ -9,11 +9,10 @@ export interface PopOverProps {
 export const PopOver = ({ children, content }: PopOverProps) => {
   return(
       <div className="w-full max-w-sm px-4 bg-white">
-          <Popover className="relative">
+          <Popover>
               {({  }) => (
                   <>
-                      <Popover.Button
-                      >
+                      <Popover.Button className="focus-visible:outline-0">
                           {children}
                       </Popover.Button>
                       <Transition
@@ -25,8 +24,8 @@ export const PopOver = ({ children, content }: PopOverProps) => {
                           leaveFrom="opacity-100 translate-y-0"
                           leaveTo="opacity-0 translate-y-1"
                       >
-                          <Popover.Panel className="absolute z-20 h-48">
-                              <div className="overflow-hidden p-2.5 rounded shadow-lg ring-1 ring-black ring-opacity-5">
+                          <Popover.Panel className="absolute z-20 bg-white">
+                              <div className="overflow-hidden p-2.5 rounded shadow-lg">
                                   {content}
                               </div>
                           </Popover.Panel>
