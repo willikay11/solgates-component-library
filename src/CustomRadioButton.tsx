@@ -15,7 +15,7 @@ export interface CustomRadioButtonProps {
 }
 
 export const CustomRadioButton = ({ label, options, selectedIcon, unSelectedIcon }: CustomRadioButtonProps) => {
-    let [plan, setPlan] = useState('startup')
+    let [plan, setPlan] = useState<string>('')
     return(
       <RadioGroup value={plan} onChange={setPlan}>
           <RadioGroup.Label className="text-xs leading-4 font-medium text-gray-800 mb-[5px]">{label}</RadioGroup.Label>
