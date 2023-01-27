@@ -1,16 +1,16 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {IconContainer, RadioButton, RadioButtonProps, User6Line} from "../src";
+import {IconContainer, CustomRadioButton, CustomRadioButtonProps, User6Line} from "../src";
 import colors from "tailwindcss/colors";
 
 const meta: Meta = {
     title: 'Data Entry/Radio Button',
-    component: RadioButton
+    component: CustomRadioButton
 }
 
 export default meta;
 
-const Template: Story<RadioButtonProps> = (args) => <RadioButton {...args} />;
+const Template: Story<CustomRadioButtonProps> = (args) => <CustomRadioButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -191,10 +191,34 @@ const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon }
     );
 }
 
+export interface RadioButtonProps {
+    id: string;
+    name: string;
+    value: string;
+    label: string;
+}
+
+const RadioButton = ({ id, name, value, label }: RadioButtonProps) => {
+    return (
+        <>
+            <input
+                type="radio"
+                className="appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                id={id}
+                name={name}
+                value={value}
+            />
+            <label htmlFor="html" className="text-xs leading-4 font-normal text-gray-800">{label}</label>
+        </>
+
+    );
+}
+
 export const Input = {
     Password: Password,
     TextArea: TextArea,
     Number: Number,
     Text: Text,
     Select: Select,
+    RadioButton: RadioButton,
 };

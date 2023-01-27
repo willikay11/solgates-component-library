@@ -41,7 +41,7 @@ Default.args = {
             key: '5',
             title: 'Payment',
             dataIndex: 'payment',
-            render: (val, record) => <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
+            render: (val) => <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
         },
         {
             key: '6',
