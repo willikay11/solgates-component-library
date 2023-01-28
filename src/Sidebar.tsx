@@ -8,13 +8,11 @@ interface menu {
 }
 
 export interface SidebarProps {
+  selectedMenuKey: string,
   menus: menu[]
 }
 
-export const Sidebar = ({ menus }: SidebarProps) => {
-  // const pathName = document.location.pathname;
-  // console.log('pathName: ', pathName.split('/'));
-
+export const Sidebar = ({ menus, selectedMenuKey }: SidebarProps) => {
   return(
       <div className="w-full h-full border-r-[1px] border-gray-200">
         {
@@ -22,7 +20,7 @@ export const Sidebar = ({ menus }: SidebarProps) => {
               <button
                   key={menu.key}
                   onClick={() => menu?.onClick()}
-                  className="w-full text-gray-600 text-left mb-3.5 inline-flex text-xs leading-4 font-normal"
+                  className={`w-full text-left mb-3.5 inline-flex text-xs leading-4 font-normal ${selectedMenuKey === menu.key ? 'text-orange-600 border-r-[1px] border-orange-600' : 'text-gray-600'} hover:text-orange-600`}
               >
                 <span className="mr-2.5">{menu.icon}</span>{menu.title}
               </button>
