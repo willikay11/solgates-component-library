@@ -2,7 +2,7 @@ import React, {Fragment, ReactNode, useState, useRef} from "react";
 import {Listbox, Transition} from '@headlessui/react'
 import {Tag} from "./Tag";
 import {Button, ButtonTypes} from "./Button";
-import {AddLine, Minus} from "./Icons";
+import {AddLine, FileUpload, Minus} from "./Icons";
 import Colors from "./Colors";
 
 export interface PasswordInputProps {
@@ -214,6 +214,49 @@ const RadioButton = ({ id, name, value, label }: RadioButtonProps) => {
     );
 }
 
+export interface UploadProps {
+    id: string;
+    name: string;
+}
+
+const Upload = ({ id, name }: UploadProps) => {
+    const hiddenFileInput = React.useRef<HTMLInputElement>(null);
+
+    const handleClick = event => {
+        hiddenFileInput?.current?.click();
+    };
+
+    const handleChange = event => {
+        const fileUploaded = event.target.files[0];
+        // props.handleFile(fileUploaded);
+    };
+
+    return (
+        <>
+            <input
+                type="file"
+                id={id}
+                name={name}
+                ref={hiddenFileInput}
+                onChange={handleChange}
+                style={{display: 'none'}}
+            />
+            <div onClick={handleClick} className="flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer" style={{ border: '1px dashed #2563EB' }}>
+                <div className="flex justify-center col-span-12 mb-2">
+                    <FileUpload size={24} color={Colors.blue["600"]} />
+                </div>
+                <div className="col-span-12 flex justify-center mb-2">
+                    <span className="text-xs leading-4 font-medium text-blue-600">Upload an Image</span>
+                    <span className="text-xs leading-4 font-medium text-gray-500">&nbsp;or drag and drop</span>
+                </div>
+                <div className="col-span-12 flex justify-center mb-2">
+                    <span className="text-xs leading-4 font-normal text-gray-500">Png, Jpg, Gif up to 10MB</span>
+                </div>
+            </div>
+        </>
+    )
+}
+
 export const Input = {
     Password: Password,
     TextArea: TextArea,
@@ -221,4 +264,5 @@ export const Input = {
     Text: Text,
     Select: Select,
     RadioButton: RadioButton,
+    Upload: Upload
 };
