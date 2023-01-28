@@ -227,9 +227,18 @@ const Upload = ({ id, name }: UploadProps) => {
     };
 
     const handleChange = (event: any) => {
-        const uploadedImage = event.target.files?.[0];
-        if (uploadedImage !== undefined) {
-            setUploadedImages((prevState => [...prevState, uploadedImage]));
+        if (event.target.files?.length > 1) {
+            let uploadedImages = event.target.files;
+
+            uploadedImages = Object.keys(uploadedImages).map((item) => uploadedImages[item]);
+            setUploadedImages((prevState => [...prevState, ...uploadedImages]));
+
+        } else {
+            const uploadedImage = event.target.files?.[0];
+
+            if (uploadedImage !== undefined) {
+                setUploadedImages((prevState => [...prevState, uploadedImage]));
+            }
         }
     };
 
@@ -241,7 +250,9 @@ const Upload = ({ id, name }: UploadProps) => {
     return (
         <>
             <input
+                multiple
                 type="file"
+                accept="image/*"
                 id={id}
                 name={name}
                 ref={hiddenFileInput}
