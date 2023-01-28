@@ -2,8 +2,8 @@ import React, {Fragment, ReactNode, useState, useRef} from "react";
 import {Listbox, Transition} from '@headlessui/react'
 import {Tag} from "./Tag";
 import {Button, ButtonTypes} from "./Button";
-import {AddLine, Minus} from "./Icons";
-import Colors from "./Colors";
+import {AddCircle, AddLine, CloseLine, FileUpload, Minus} from "./Icons";
+import colors from "./Colors";
 
 export interface PasswordInputProps {
     iconRender: (visible: boolean) => ReactNode,
@@ -61,7 +61,7 @@ const Number = ({ min, max, prefixIcon, placeholder }: NumberInputProps) => {
     return (
       <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
-        <Button onClick={() => decrease()} type={ButtonTypes.link}><Minus color={Colors.gray["500"]} size={14} /></Button>
+        <Button onClick={() => decrease()} type={ButtonTypes.link}><Minus color={colors.gray["500"]} size={14} /></Button>
         <input
             ref={inputRef}
             type="number"
@@ -69,7 +69,7 @@ const Number = ({ min, max, prefixIcon, placeholder }: NumberInputProps) => {
             min={min}
             max={max}
             className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800" />
-          <Button onClick={() => increase()} type={ButtonTypes.link}><AddLine color={Colors.gray["800"]} size={14} /></Button>
+          <Button onClick={() => increase()} type={ButtonTypes.link}><AddLine color={colors.gray["800"]} size={14} /></Button>
       </div>
     );
 }
@@ -214,6 +214,98 @@ const RadioButton = ({ id, name, value, label }: RadioButtonProps) => {
     );
 }
 
+export interface UploadProps {
+    id: string;
+    name: string;
+}
+
+const Upload = ({ id, name }: UploadProps) => {
+    const hiddenFileInput = React.useRef<HTMLInputElement>(null);
+    const [uploadedImages, setUploadedImages] = useState<any[]>([])
+    const handleClick = () => {
+        hiddenFileInput?.current?.click();
+    };
+
+    const handleChange = (event: any) => {
+        if (event.target.files?.length > 1) {
+            let uploadedImages = event.target.files;
+
+            uploadedImages = Object.keys(uploadedImages).map((item) => uploadedImages[item]);
+            setUploadedImages((prevState => [...prevState, ...uploadedImages]));
+
+        } else {
+            const uploadedImage = event.target.files?.[0];
+
+            if (uploadedImage !== undefined) {
+                setUploadedImages((prevState => [...prevState, uploadedImage]));
+            }
+        }
+    };
+
+    const removeFile = (index: number) => {
+        const newFiles = uploadedImages.filter((__, fileIndex) => fileIndex !== index);
+        setUploadedImages(newFiles);
+    }
+
+    return (
+        <>
+            <input
+                multiple
+                type="file"
+                accept="image/*"
+                id={id}
+                name={name}
+                ref={hiddenFileInput}
+                onChange={handleChange}
+                style={{display: 'none'}}
+            />
+            {
+                uploadedImages.length > 0 ? (
+                    <div className="flex inline-flex flex-wrap">
+                        {
+                            uploadedImages.map((image, index) => (
+                                <div key={index} className="relative">
+                                    <img
+                                        width={100}
+                                        height={100}
+                                        src={URL.createObjectURL(image)}
+                                        alt="Thumb"
+                                        className="mr-2.5 mt-2 rounded"
+                                    />
+                                    <button
+                                        className="absolute bottom-[5px] right-[15px] p-1 rounded opacity-10 bg-gray-800"
+                                        onClick={() => removeFile(index)}
+                                    >
+                                        <CloseLine size={14} color={colors.white} />
+                                    </button>
+                                </div>
+                            ))
+                        }
+                        <div onClick={handleClick}
+                             className="flex flex-col w-[100px] h-[100px] bg-blue-50 rounded p-[15px] cursor-pointer items-center justify-center mt-2"
+                             style={{ border: '1px dashed #2563EB' }}>
+                            <AddCircle size={24} color={colors.blue["600"]} />
+                        </div>
+                    </div>
+                ) : (
+                    <div onClick={handleClick} className="flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer" style={{ border: '1px dashed #2563EB' }}>
+                        <div className="flex justify-center col-span-12 mb-2">
+                            <FileUpload size={24} color={colors.blue["600"]} />
+                        </div>
+                        <div className="col-span-12 flex justify-center mb-2">
+                            <span className="text-xs leading-4 font-medium text-blue-600">Upload an Image</span>
+                            <span className="text-xs leading-4 font-medium text-gray-500">&nbsp;or drag and drop</span>
+                        </div>
+                        <div className="col-span-12 flex justify-center mb-2">
+                            <span className="text-xs leading-4 font-normal text-gray-500">Png, Jpg, Gif up to 10MB</span>
+                        </div>
+                    </div>
+                )
+            }
+        </>
+    )
+}
+
 export const Input = {
     Password: Password,
     TextArea: TextArea,
@@ -221,4 +313,5 @@ export const Input = {
     Text: Text,
     Select: Select,
     RadioButton: RadioButton,
+    Upload: Upload
 };
