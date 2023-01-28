@@ -1,4 +1,4 @@
-import React, {Fragment, ReactNode, useState, useRef} from "react";
+import React, {Fragment, ReactNode, useState, useRef, useEffect} from "react";
 import {Listbox, Transition} from '@headlessui/react'
 import {Tag} from "./Tag";
 import {Button, ButtonTypes} from "./Button";
@@ -220,8 +220,12 @@ export interface UploadProps {
 }
 
 const Upload = ({ id, name }: UploadProps) => {
+    const formats = 'image/*';
     const hiddenFileInput = React.useRef<HTMLInputElement>(null);
-    const [uploadedImages, setUploadedImages] = useState<any[]>([])
+    const dropNDropInput = React.useRef<HTMLDivElement>(null);
+    const [uploadedImages, setUploadedImages] = useState<any[]>([]);
+    // const [dragging, setDragging] = useState<boolean>(false);
+
     const handleClick = () => {
         hiddenFileInput?.current?.click();
     };
@@ -247,12 +251,68 @@ const Upload = ({ id, name }: UploadProps) => {
         setUploadedImages(newFiles);
     }
 
+    const handleDragOver = (e: any) => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
+    const handleDrop = (e: any) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const {files} = e.dataTransfer;
+
+        //TODO: Add check for file types
+
+        if (files && files.length) {
+            const uploadedImages = Object.keys(files).map((item) => files[item]);
+            setUploadedImages((prevState => [...prevState, ...uploadedImages]));
+        }
+    };
+
+    // const handleDragEnter = (e: any) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //
+    //     setDragging(true);
+    // };
+    //
+    // const handleDragLeave = (e: any) => {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //
+    //     setDragging(false);
+    // };
+
+    useEffect(() => {
+        dropNDropInput?.current?.addEventListener('dragover', handleDragOver);
+        dropNDropInput?.current?.addEventListener('drop', handleDrop);
+
+        return () => {
+            dropNDropInput?.current?.removeEventListener('dragover', handleDragOver);
+            dropNDropInput?.current?.removeEventListener('drop', handleDrop);
+        };
+    }, []);
+
+    // useEffect(() => {
+    //     dropNDropInput?.current?.addEventListener('dragover', handleDragOver);
+    //     dropNDropInput?.current?.addEventListener('drop', handleDrop);
+    //     dropNDropInput?.current?.addEventListener('dragenter', handleDragEnter);
+    //     dropNDropInput?.current?.addEventListener('dragleave', handleDragLeave);
+    //
+    //     return () => {
+    //         dropNDropInput?.current?.removeEventListener('dragover', handleDragOver);
+    //         dropNDropInput?.current?.removeEventListener('drop', handleDrop);
+    //         dropNDropInput?.current?.removeEventListener('dragenter', handleDragEnter);
+    //         dropNDropInput?.current?.removeEventListener('dragleave', handleDragLeave);
+    //     };
+    // }, []);
     return (
         <>
             <input
                 multiple
                 type="file"
-                accept="image/*"
+                accept={formats}
                 id={id}
                 name={name}
                 ref={hiddenFileInput}
@@ -288,7 +348,12 @@ const Upload = ({ id, name }: UploadProps) => {
                         </div>
                     </div>
                 ) : (
-                    <div onClick={handleClick} className="flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer" style={{ border: '1px dashed #2563EB' }}>
+                    <div
+                        ref={dropNDropInput}
+                        onClick={handleClick}
+                        className="flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer"
+                        style={{ border: '1px dashed #2563EB' }}
+                    >
                         <div className="flex justify-center col-span-12 mb-2">
                             <FileUpload size={24} color={colors.blue["600"]} />
                         </div>

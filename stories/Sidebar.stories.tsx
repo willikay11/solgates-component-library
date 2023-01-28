@@ -18,6 +18,7 @@ const Template: Story<SidebarProps> = (args) =>
 
 export const Default = Template.bind({});
 Default.args = {
+    selectedMenuKey: '1',
     menus: [
         {
             key: '1',
