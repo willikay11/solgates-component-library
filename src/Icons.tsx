@@ -121,6 +121,12 @@ const AddCircle = ({ color = 'currentColor', size, className }: IconProps) =>
         <path color={color} d="M11 11V7h2v4h4v2h-4v4h-2v-4H7v-2h4zm1 11C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
     </svg>
 
+const CloseLine = ({ color = 'currentColor', size, className }: IconProps) =>
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size}>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path color={color} d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/>
+    </svg>
+
 export {
     Heart3Line,
     Heart3LineFill,
@@ -140,5 +146,6 @@ export {
     ArrowDownSLine,
     Checkline,
     FileUpload,
-    AddCircle
+    AddCircle,
+    CloseLine
 }
