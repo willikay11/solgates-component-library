@@ -2,7 +2,7 @@ import React, {Fragment, ReactNode, useState, useRef} from "react";
 import {Listbox, Transition} from '@headlessui/react'
 import {Tag} from "./Tag";
 import {Button, ButtonTypes} from "./Button";
-import {AddLine, FileUpload, Minus} from "./Icons";
+import {AddCircle, AddLine, FileUpload, Minus} from "./Icons";
 import Colors from "./Colors";
 
 export interface PasswordInputProps {
@@ -221,14 +221,16 @@ export interface UploadProps {
 
 const Upload = ({ id, name }: UploadProps) => {
     const hiddenFileInput = React.useRef<HTMLInputElement>(null);
-
-    const handleClick = event => {
+    const [uploadedImages, setUploadedImages] = useState<any[]>([])
+    const handleClick = () => {
         hiddenFileInput?.current?.click();
     };
 
-    const handleChange = event => {
-        const fileUploaded = event.target.files[0];
-        // props.handleFile(fileUploaded);
+    const handleChange = (event: any) => {
+        const uploadedImage = event.target.files?.[0];
+        if (uploadedImage !== undefined) {
+            setUploadedImages((prevState => [...prevState, uploadedImage]));
+        }
     };
 
     return (
@@ -241,18 +243,46 @@ const Upload = ({ id, name }: UploadProps) => {
                 onChange={handleChange}
                 style={{display: 'none'}}
             />
-            <div onClick={handleClick} className="flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer" style={{ border: '1px dashed #2563EB' }}>
-                <div className="flex justify-center col-span-12 mb-2">
-                    <FileUpload size={24} color={Colors.blue["600"]} />
-                </div>
-                <div className="col-span-12 flex justify-center mb-2">
-                    <span className="text-xs leading-4 font-medium text-blue-600">Upload an Image</span>
-                    <span className="text-xs leading-4 font-medium text-gray-500">&nbsp;or drag and drop</span>
-                </div>
-                <div className="col-span-12 flex justify-center mb-2">
-                    <span className="text-xs leading-4 font-normal text-gray-500">Png, Jpg, Gif up to 10MB</span>
-                </div>
-            </div>
+            {
+                uploadedImages.length > 0 ? (
+                    <div className="flex inline-flex flex-wrap">
+                        {
+                            uploadedImages.map((image) => (
+                                <>
+                                    <img
+                                        width={100}
+                                        height={100}
+                                        src={URL.createObjectURL(image)}
+                                        alt="Thumb"
+                                        className="relative mr-2.5 mt-2 rounded"
+                                    />
+                                    <button className="absolute bottom-0 right-0" onClick={() => console.log('remove image')}>
+                                        Remove
+                                    </button>
+                                </>
+                            ))
+                        }
+                        <div onClick={handleClick}
+                             className="flex flex-col w-[100px] h-[100px] bg-blue-50 rounded p-[15px] cursor-pointer items-center justify-center mt-2"
+                             style={{ border: '1px dashed #2563EB' }}>
+                            <AddCircle size={24} color={Colors.blue["600"]} />
+                        </div>
+                    </div>
+                ) : (
+                    <div onClick={handleClick} className="flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer" style={{ border: '1px dashed #2563EB' }}>
+                        <div className="flex justify-center col-span-12 mb-2">
+                            <FileUpload size={24} color={Colors.blue["600"]} />
+                        </div>
+                        <div className="col-span-12 flex justify-center mb-2">
+                            <span className="text-xs leading-4 font-medium text-blue-600">Upload an Image</span>
+                            <span className="text-xs leading-4 font-medium text-gray-500">&nbsp;or drag and drop</span>
+                        </div>
+                        <div className="col-span-12 flex justify-center mb-2">
+                            <span className="text-xs leading-4 font-normal text-gray-500">Png, Jpg, Gif up to 10MB</span>
+                        </div>
+                    </div>
+                )
+            }
         </>
     )
 }
