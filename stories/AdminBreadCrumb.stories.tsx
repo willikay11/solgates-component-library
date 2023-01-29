@@ -3,22 +3,22 @@ import { Meta, Story } from '@storybook/react';
 import { BreadCrumbs, BreadCrumbsProps } from "../src";
 
 const meta: Meta = {
-    title: 'Data Display/Normal Bread Crumbs',
-    component: BreadCrumbs.normal
+    title: 'Data Display/Admin Bread Crumbs',
+    component: BreadCrumbs.admin
 }
 
 export default meta;
 
-const Template: Story<BreadCrumbsProps> = (args) => <BreadCrumbs.normal {...args} />;
+const Template: Story<BreadCrumbsProps> = (args) => <BreadCrumbs.admin {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
     items: [{
-        title: 'Mens',
+        title: 'Orders/Sales',
         active: false,
-        onClick: () => console.log('clicked')
+        onClick: () => console.log('clicked 1')
     }, {
-        title: 'Shoes',
+        title: 'A0B1C003',
         active: true,
         onClick: () => console.log('clicked')
     }]
