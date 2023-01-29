@@ -20,11 +20,12 @@ interface column {
 export interface TableProps {
     columns: column[],
     data: any[],
-    tableTitle?: string;
     extraContent: ReactNode,
+    onRowClick?: (row: any) => void
+    tableTitle?: string;
 }
 
-export const Table = ({ columns, data, tableTitle, extraContent }: TableProps) => {
+export const Table = ({ columns, data, tableTitle, onRowClick, extraContent }: TableProps) => {
     const [tableData, setTableData] = useState<any[]>([])
     const [tableColumns, setNewColumns] = useState<any[]>([]);
     const table = useReactTable({
@@ -82,7 +83,8 @@ export const Table = ({ columns, data, tableTitle, extraContent }: TableProps) =
               <tbody>
               {table.getRowModel().rows.map(row => (
                   <tr key={row.id}
-                      className="text-xs leading-4 font-normal text-gray-800 border-b-[1px] border-gray-200"
+                      onClick={() => onRowClick?.(row)}
+                      className="text-xs leading-4 font-normal text-gray-800 border-b-[1px] border-gray-200 cursor-pointer"
                   >
                       {row.getVisibleCells().map((cell, index) => (
                           <td className={`py-[15px] ${index === 0 ? 'pl-[15px]' : row.getVisibleCells.length -1 === index ? '' : 'pr-[15px]'}`}
