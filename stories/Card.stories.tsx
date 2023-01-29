@@ -1,7 +1,6 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
-import {Button, ButtonTypes, Card, CardProps, IconContainer, Input} from "../src";
-import {User6Line} from "../src";
+import {Button, ButtonTypes, Card, CardProps, IconContainer, Input, User6Line} from "../src";
 import colors from "tailwindcss/colors";
 
 const meta: Meta = {
@@ -19,6 +18,7 @@ const Template: Story<CardProps> = (args) =>
 export const Default = Template.bind({});
 Default.args = {
     title: "Card title",
+    extraContent: <Button onClick={() => console.log('clicked')} type={ButtonTypes.link}>View</Button>,
     children: <div className="w-full">
         <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mb-2">
             <Input.Text placeholder="First Name" prefixIcon={<IconContainer><User6Line color={colors.green["500"]} /></IconContainer>} />
