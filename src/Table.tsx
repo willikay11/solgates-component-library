@@ -20,7 +20,7 @@ interface column {
 export interface TableProps {
     columns: column[],
     data: any[],
-    extraContent: ReactNode,
+    extraContent?: ReactNode,
     onRowClick?: (row: any) => void
     tableTitle?: string;
 }
@@ -83,7 +83,7 @@ export const Table = ({ columns, data, tableTitle, onRowClick, extraContent }: T
               <tbody>
               {table.getRowModel().rows.map(row => (
                   <tr key={row.id}
-                      onClick={() => onRowClick?.(row)}
+                      onClick={() => onRowClick?.(row?.original)}
                       className="text-xs leading-4 font-normal text-gray-800 border-b-[1px] border-gray-200 cursor-pointer"
                   >
                       {row.getVisibleCells().map((cell, index) => (
