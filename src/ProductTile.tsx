@@ -62,8 +62,9 @@ export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, butt
                 <div className="mt-2.5">
                     <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">{name}</p>
                     <div>
-                        {smallDescription && <span className="text-xs leading-4 font-normal mt-1.5 text-gray-500">{smallDescription} | </span>}
-                        {buttonName && <Button onClick={() => onClickShop?.()} className="py-0" type={ButtonTypes.link}>{buttonName}</Button>}
+                        {smallDescription && <span className="text-xs leading-4 font-normal mt-1.5 text-gray-500">{smallDescription}</span>}
+
+                        {buttonName && <><span className="text-xs leading-4 font-normal mt-1.5 text-gray-500"> | </span><Button onClick={() => onClickShop?.()} className="py-0" type={ButtonTypes.link}>{buttonName}</Button></>}
                     </div>
                     <p className="text-xs leading-4 font-semibold mt-1.5 text-gray-800">{price}</p>
                 </div>
