@@ -47,9 +47,12 @@ export interface NumberInputProps {
     max?: number;
     prefixIcon?: ReactNode;
     placeholder?: string;
+    border?: 'bordered' | 'borderless'
+    width?: string;
+    padding?: string;
 }
 
-const Number = ({ min, max, prefixIcon, placeholder }: NumberInputProps) => {
+const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width = '30px', padding = '10px' }: NumberInputProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const increase = () => {
         inputRef?.current?.stepUp();
@@ -59,7 +62,7 @@ const Number = ({ min, max, prefixIcon, placeholder }: NumberInputProps) => {
         inputRef?.current?.stepDown();
     }
     return (
-      <div className="flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center">
+      <div className={`flex h-[3.125rem] p-[${padding}] rounded bg-white ${border === 'bordered' ? 'border border-gray-200' : ''}  focus-within:border-orange-500 hover:border-orange-500 items-center`}>
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
         <Button onClick={() => decrease()} type={ButtonTypes.link}><Minus color={colors.gray["500"]} size={14} /></Button>
         <input
@@ -68,7 +71,7 @@ const Number = ({ min, max, prefixIcon, placeholder }: NumberInputProps) => {
             placeholder={placeholder}
             min={min}
             max={max}
-            className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800" />
+            className={`ml-2 w-[${width}] outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800`} />
           <Button onClick={() => increase()} type={ButtonTypes.link}><AddLine color={colors.gray["800"]} size={14} /></Button>
       </div>
     );
