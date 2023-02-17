@@ -19,7 +19,7 @@ export const Card = ({ title, children, type = CARD_TYPE.border, extraContent }:
   }
 
   return (
-      <div className={`p-[15px] rounded bg-white ${className} min-h-min`}>
+      <div className={`p-[15px] rounded bg-white ${className} h-fit`}>
           {
               title && <div className="flex flex-row items-center border-b-[1px] pb-[10px] mb-[10px] justify-between">
                   <span className="text-sm leading-5 font-bold text-gray-800">{title}</span>
