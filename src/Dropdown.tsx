@@ -15,7 +15,7 @@ export interface DropdownProps {
 
 export const Dropdown = ({ children, items }: DropdownProps) => {
     return (
-        <Popover className="relative">
+        <Popover className="relative flex items-center">
             {({ open }) => (
                 <>
                     <Popover.Button className="outline-0 inline-flex items-center">
@@ -36,7 +36,7 @@ export const Dropdown = ({ children, items }: DropdownProps) => {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                     >
-                        <Popover.Panel className="mt-3 w-fit min-w-[200px]">
+                        <Popover.Panel className="absolute mt-3 w-fit min-w-[200px]">
                             <div className="overflow-hidden rounded shadow-lg ring-1 ring-black ring-opacity-5">
                                 <div className="relative bg-white p-2">
                                     {items.map((item, index) => (
