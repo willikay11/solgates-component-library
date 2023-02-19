@@ -23,3 +23,4 @@ export * from './Table';
 export * from './PopOver';
 export * from './Statistics';
 export * from './List';
+export * from './Dropdown';
