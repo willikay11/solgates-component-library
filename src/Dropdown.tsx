@@ -36,7 +36,7 @@ export const Dropdown = ({ children, items }: DropdownProps) => {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                     >
-                        <Popover.Panel className="absolute mt-3 w-fit min-w-[200px]">
+                        <Popover.Panel className="absolute top-4 mt-3 w-fit min-w-[200px]">
                             <div className="overflow-hidden rounded shadow-lg ring-1 ring-black ring-opacity-5">
                                 <div className="relative bg-white p-2">
                                     {items.map((item, index) => (
