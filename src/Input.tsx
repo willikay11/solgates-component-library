@@ -50,9 +50,10 @@ export interface NumberInputProps {
     border?: 'bordered' | 'borderless'
     width?: string;
     padding?: string;
+    name?: string;
 }
 
-const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width = '30px', padding = '10px' }: NumberInputProps) => {
+const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width = '30px', padding = '10px', name }: NumberInputProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const increase = () => {
         inputRef?.current?.stepUp();
@@ -62,10 +63,11 @@ const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width 
         inputRef?.current?.stepDown();
     }
     return (
-      <div className={`flex h-[3.125rem] p-[${padding}] rounded bg-white ${border === 'bordered' ? 'border border-gray-200' : ''}  focus-within:border-orange-500 hover:border-orange-500 items-center`}>
+      <div className={`flex h-[3.125rem] p-[${padding}] rounded bg-white ${border === 'bordered' ? 'border border-gray-200' : ''}  focus-within:border-orange-500 hover:border-orange-500 items-center invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500`}>
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
         <Button onClick={() => decrease()} type={ButtonTypes.link}><Minus color={colors.gray["500"]} size={14} /></Button>
         <input
+            name={name}
             ref={inputRef}
             type="number"
             placeholder={placeholder}
@@ -78,28 +80,49 @@ const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width 
 }
 
 export interface TextInputProps {
+    name?: string;
     prefixIcon?: ReactNode;
     suffixIcon?: ReactNode;
     clearIcon?: ReactNode;
     placeholder?: string;
     className?: string;
+    error?: string
 }
 
-const Text = ({ prefixIcon, suffixIcon, clearIcon, placeholder, className }: TextInputProps) => {
+const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, className, error }: TextInputProps) => {
     const [currentText, setCurrentText] = useState<string>('');
     return (
-        <div className={`flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center ${className}`}>
-            {prefixIcon && <div className="flex">{prefixIcon}</div>}
-            <input
-                type="text"
-                placeholder={placeholder}
-                value={currentText}
-                onChange={(e) => setCurrentText(e.target.value)}
-                className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-xs text-gray-800`}
-            />
-            {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
-            {clearIcon && <div className="cursor-pointer" onClick={() => setCurrentText('')} >{clearIcon}</div>}
-        </div>
+        <>
+            <div className={`flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500 ${className}`}>
+                {prefixIcon && <div className="flex">{prefixIcon}</div>}
+                <input
+                    name={name}
+                    type="text"
+                    placeholder={placeholder}
+                    value={currentText}
+                    onChange={(e) => setCurrentText(e.target.value)}
+                    className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-xs text-gray-800`}
+                    aria-invalid={
+                        Boolean(error) ||
+                        undefined
+                    }
+                    aria-errormessage={
+                        error
+                            ? `${name}-error`
+                            : undefined
+                    }
+                />
+                {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
+                {clearIcon && <div className="cursor-pointer" onClick={() => setCurrentText('')} >{clearIcon}</div>}
+            </div>
+            <p
+                className="form-validation-error"
+                role="alert"
+                id={`${name}-error`}
+            >
+                {error}
+            </p>
+        </>
     );
 }
 
@@ -115,6 +138,7 @@ export interface SelectInputProps {
     selectedIcon: ReactNode,
     prefixIcon?: ReactNode;
     multiple?: boolean,
+    name?: string;
 }
 
 const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon }: SelectInputProps) => {
@@ -138,7 +162,7 @@ const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon }
             }
         }}>
             <div className="relative w-full">
-                <Listbox.Button className="relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-10 text-left border border-gray-200 hover:border-orange-500 focus:border-orange-500 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                <Listbox.Button className="relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-10 text-left border border-gray-200 hover:border-orange-500 focus:border-orange-500 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300  invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500 sm:text-sm">
                     {
                         multiple ? (
                             multipleSelectedItems.map(selectedItem => <Tag text={selectedItem.label} />)
