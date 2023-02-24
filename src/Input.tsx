@@ -203,17 +203,14 @@ export interface RadioButtonProps {
 
 const RadioButton = ({ id, name, value, label }: RadioButtonProps) => {
     return (
-        <>
-            <input
-                type="radio"
-                className="appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                id={id}
-                name={name}
-                value={value}
-            />
-            <label htmlFor="html" className="text-xs leading-4 font-normal text-gray-800">{label}</label>
-        </>
-
+        <div className="flex items-center">
+            <input id={id} type="radio" name={name} value={value}
+                   className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 checked:text-orange-600 checked:hover:bg-orange-600 checked:active:bg-orange-600 checked:focus:bg-orange-600"
+                   aria-labelledby={id} aria-describedby={id} />
+                <label htmlFor={id} className="text-xs font-medium text-gray-800 ml-2 block">
+                    {label}
+                </label>
+        </div>
     );
 }
 
