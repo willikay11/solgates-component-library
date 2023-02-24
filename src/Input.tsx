@@ -335,7 +335,7 @@ const Upload = ({ id, name }: UploadProps) => {
         <>
             <input
                 multiple
-                type="file"
+                type="file[]"
                 accept={formats}
                 id={id}
                 name={name}
