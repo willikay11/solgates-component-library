@@ -5,9 +5,10 @@ import colors from "../Colors";
 export interface UploadProps {
     id: string;
     name: string;
+    error?: string;
 }
 
-export const Upload = ({ id, name }: UploadProps) => {
+export const Upload = ({ id, name, error }: UploadProps) => {
     const formats = 'image/*';
     const hiddenFileInput = React.useRef<HTMLInputElement>(null);
     const dropNDropInput = React.useRef<HTMLDivElement>(null);
@@ -17,6 +18,12 @@ export const Upload = ({ id, name }: UploadProps) => {
     const handleClick = () => {
         hiddenFileInput?.current?.click();
     };
+
+    let errorClassName = '';
+
+    if (Boolean(error)) {
+        errorClassName = 'bg-red-50 border-red-600 text-red-600 ring-red-600';
+    }
 
     const handleChange = (event: any) => {
         if (event.target.files?.length > 1) {
@@ -136,23 +143,32 @@ export const Upload = ({ id, name }: UploadProps) => {
                         </div>
                     </div>
                 ) : (
-                    <div
-                        ref={dropNDropInput}
-                        onClick={handleClick}
-                        className="flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer"
-                        style={{ border: '1px dashed #2563EB' }}
-                    >
-                        <div className="flex justify-center col-span-12 mb-2">
-                            <FileUpload size={24} color={colors.blue["600"]} />
+                    <>
+                        <div
+                            ref={dropNDropInput}
+                            onClick={handleClick}
+                            className={`flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer border-blue-600 border-[1px] border-dashed ${errorClassName}`}
+                            // style={{ border: '1px dashed #2563EB' }}
+                        >
+                            <div className="flex justify-center col-span-12 mb-2">
+                                <FileUpload size={24} color={colors.blue["600"]} />
+                            </div>
+                            <div className="col-span-12 flex justify-center mb-2">
+                                <span className="text-xs leading-4 font-medium text-blue-600">Upload an Image</span>
+                                <span className="text-xs leading-4 font-medium text-gray-500">&nbsp;or drag and drop</span>
+                            </div>
+                            <div className="col-span-12 flex justify-center mb-2">
+                                <span className="text-xs leading-4 font-normal text-gray-500">Png, Jpg, Gif up to 10MB</span>
+                            </div>
                         </div>
-                        <div className="col-span-12 flex justify-center mb-2">
-                            <span className="text-xs leading-4 font-medium text-blue-600">Upload an Image</span>
-                            <span className="text-xs leading-4 font-medium text-gray-500">&nbsp;or drag and drop</span>
-                        </div>
-                        <div className="col-span-12 flex justify-center mb-2">
-                            <span className="text-xs leading-4 font-normal text-gray-500">Png, Jpg, Gif up to 10MB</span>
-                        </div>
-                    </div>
+                        <p
+                            className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
+                            role="alert"
+                            id={`${name}-error`}
+                        >
+                            {error}
+                        </p>
+                    </>
                 )
             }
         </>
