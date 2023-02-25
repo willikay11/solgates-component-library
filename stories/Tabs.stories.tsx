@@ -52,7 +52,7 @@ const signUp = (
         </div>
 
         <div className="grid grid-cols-1 mb-[15px]">
-            <Checkbox name="a" id="a" label={<span className="text-xs leading-4 text-gray-500 font-normal">By signing up, you agree to the Terms of Service and Privacy Policy</span>}/>
+            <Checkbox name="a" id="a" value="yes" label={<span className="text-xs leading-4 text-gray-500 font-normal">By signing up, you agree to the Terms of Service and Privacy Policy</span>}/>
         </div>
         <div className="grid grid-cols-1 mb-[15px]">
             <Button onClick={() => console.log('clicked')} type={ButtonTypes.primary} block>Sign Up</Button>

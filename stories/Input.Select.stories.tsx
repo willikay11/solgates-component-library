@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Input, SelectInputProps, User6Line } from "../src";
+import { Input, User6Line } from "../src";
 import colors from "tailwindcss/colors";
+import {SelectInputProps} from "../src/Input/Select";
 
 const meta: Meta = {
     title: 'Data Entry/Select',

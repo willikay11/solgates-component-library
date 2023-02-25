@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Input, TextAreaInputProps } from "../src";
+import { Input } from "../src";
+import {TextAreaInputProps} from "../src/Input/textarea";
 
 const meta: Meta = {
     title: 'Data Entry/TextArea',
@@ -13,5 +14,6 @@ const Template: Story<TextAreaInputProps> = (args) => <Input.TextArea {...args} 
 
 export const Default = Template.bind({});
 Default.args = {
+    error: 'Error',
     rows: 7
 }
