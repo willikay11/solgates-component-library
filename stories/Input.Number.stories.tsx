@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Input, NumberInputProps } from "../src";
+import { Input, } from "../src";
+import {NumberInputProps} from "../src/Input/Number";
 
 const meta: Meta = {
     title: 'Data Entry/Number',

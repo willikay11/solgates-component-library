@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {IconContainer, Input, PasswordInputProps, User6Line} from "../src";
+import {IconContainer, Input, User6Line} from "../src";
 import colors from "tailwindcss/colors";
+import {PasswordInputProps} from "../src/Input/Password";
 
 const meta: Meta = {
     title: 'Data Entry/Password',

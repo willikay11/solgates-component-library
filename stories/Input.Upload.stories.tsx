@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Input, UploadProps } from "../src";
+import { Input } from "../src";
+import {UploadProps} from "../src/Input/Upload";
 
 const meta: Meta = {
     title: 'Data Entry/File Upload',

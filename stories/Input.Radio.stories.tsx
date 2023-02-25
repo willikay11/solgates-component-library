@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {Input, RadioButtonProps} from "../src";
+import {Input} from "../src";
+import {RadioButtonProps} from "../src/Input/RadioButton";
 
 const meta: Meta = {
     title: 'Data Entry/Radio',
