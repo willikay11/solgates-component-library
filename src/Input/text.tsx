@@ -12,9 +12,15 @@ export interface TextInputProps {
 
 export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, className, error }: TextInputProps) => {
     const [currentText, setCurrentText] = useState<string>('');
+    let errorClassName = '';
+
+    if (Boolean(error)) {
+        errorClassName = 'border-red-600 text-red-600 ring-red-600';
+    }
+
     return (
         <>
-            <div className={`flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500 ${className}`}>
+            <div className={`flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center ${errorClassName} ${className}`}>
                 {prefixIcon && <div className="flex">{prefixIcon}</div>}
                 <input
                     name={name}
@@ -37,7 +43,7 @@ export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, cla
                 {clearIcon && <div className="cursor-pointer" onClick={() => setCurrentText('')} >{clearIcon}</div>}
             </div>
             <p
-                className="form-validation-error"
+                className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
                 role="alert"
                 id={`${name}-error`}
             >
