@@ -14,6 +14,9 @@ const Template: Story<NumberInputProps> = (args) => <Input.Number {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+    error: 'Error',
+    width: 'w-full',
+    padding: 'pl-2 pr-2',
     min: 10,
     max: 20
 }
