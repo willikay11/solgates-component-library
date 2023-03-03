@@ -5,6 +5,7 @@ import {Upload} from "./Upload";
 import {Select} from "./Select";
 import {Number} from "./Number";
 import {Password} from "./Password";
+import {Error} from "./Error";
 
 export const Input = {
     Password: Password,
@@ -13,5 +14,6 @@ export const Input = {
     Text: Text,
     Select: Select,
     RadioButton: RadioButton,
-    Upload: Upload
+    Upload: Upload,
+    Error: Error
 };
