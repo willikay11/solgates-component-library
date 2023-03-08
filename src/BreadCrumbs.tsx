@@ -5,7 +5,7 @@ import colors from "./Colors";
 interface BreadCrumb {
     title: string,
     active: boolean,
-    onClick: () => void,
+    onClick?: () => void,
 }
 export interface BreadCrumbsProps {
     items: BreadCrumb[]
@@ -24,8 +24,8 @@ const AdminBreadCrumbs = ({ items }: BreadCrumbsProps) => {
         <div className="inline-flex items-center">
             { items.map((item, index) => (
                 <div className="inline-flex items-center" key={index}>
-                    {index === 0 && <div className="mr-3 cursor-pointer" onClick={() => item.onClick()}><ArrowLeftLine size={16} color={colors.gray["500"]} /></div>}
-                    <span className={`text-lg leading-7 ${item.active ? 'font-semibold text-orange-600' : 'font-medium text-gray-600 hover:text-orange-600 mr-2'}`} onClick={() => item.onClick()}>{item.title}</span>
+                    {index === 0 && <div className="mr-3 cursor-pointer" onClick={() => item?.onClick?.()}><ArrowLeftLine size={16} color={colors.gray["500"]} /></div>}
+                    <span className={`text-lg leading-7 ${item.active ? 'font-semibold text-orange-600' : 'cursor-pointer font-medium text-gray-600 hover:text-orange-600 mr-2'}`} onClick={() => item?.onClick?.()}>{item.title}</span>
                     {
                         index < items.length - 1 && <ArrowRightSLine size={16} color={colors.gray["500"]} className="mr-2" />
                     }
