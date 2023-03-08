@@ -25,7 +25,7 @@ const AdminBreadCrumbs = ({ items }: BreadCrumbsProps) => {
             { items.map((item, index) => (
                 <div className="inline-flex items-center" key={index}>
                     {index === 0 && <div className="mr-3 cursor-pointer" onClick={() => item.onClick()}><ArrowLeftLine size={16} color={colors.gray["500"]} /></div>}
-                    <span className={`text-lg leading-7 ${item.active ? 'font-semibold text-orange-600' : 'font-medium text-gray-600 mr-2'}`}>{item.title}</span>
+                    <span className={`text-lg leading-7 ${item.active ? 'font-semibold text-orange-600' : 'font-medium text-gray-600 hover:text-orange-600 mr-2'}`} onClick={() => item.onClick()}>{item.title}</span>
                     {
                         index < items.length - 1 && <ArrowRightSLine size={16} color={colors.gray["500"]} className="mr-2" />
                     }

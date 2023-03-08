@@ -12,7 +12,7 @@ export enum ButtonTypes {
 
 export interface ButtonProps {
     children: ReactNode;
-    onClick: () => void;
+    onClick?: (event: React.MouseEvent) => void;
     type?: ButtonTypes.default | ButtonTypes.primary | ButtonTypes.danger | ButtonTypes.link | ButtonTypes.primary_blue_600 | ButtonTypes.primary_gray_800 | ButtonTypes.primary_orange_200;
     loading?: boolean;
     ghost?: boolean;
@@ -86,7 +86,7 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
         <button
             type={htmlType}
             disabled={loading}
-            onClick={onClick}
+            onClick={(event) => onClick?.(event)}
             style={{ ...style }}
             className={`${bg} text-xs inline-flex items-center justify-center ${height} ${padding} rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'} ${width} ${className}`}>
             {prefixIcon && <div className="mr-2">{prefixIcon}</div>}
