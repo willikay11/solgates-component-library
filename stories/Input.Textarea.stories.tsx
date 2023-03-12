@@ -14,6 +14,5 @@ const Template: Story<TextAreaInputProps> = (args) => <Input.TextArea {...args} 
 
 export const Default = Template.bind({});
 Default.args = {
-    error: 'Error',
-    rows: 7
+    rows: 7,
 }

@@ -13,9 +13,10 @@ export interface NumberInputProps {
     padding?: string;
     name?: string;
     error?: string;
+    value?: string;
 }
 
-export const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width = 'w-[30px]', padding = 'p-[10px]', name, error }: NumberInputProps) => {
+export const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width = 'w-[30px]', padding = 'p-[10px]', name, value, error }: NumberInputProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const increase = () => {
         inputRef?.current?.stepUp();
@@ -39,6 +40,7 @@ export const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered',
                     name={name}
                     ref={inputRef}
                     type="number"
+                    value={value}
                     placeholder={placeholder}
                     min={min}
                     max={max}
