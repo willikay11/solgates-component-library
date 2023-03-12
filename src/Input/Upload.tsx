@@ -6,13 +6,14 @@ export interface UploadProps {
     id: string;
     name: string;
     error?: string;
+    imageUrls?: string[];
 }
 
-export const Upload = ({ id, name, error }: UploadProps) => {
+export const Upload = ({ id, name, error, imageUrls }: UploadProps) => {
     const formats = 'image/*';
     const hiddenFileInput = React.useRef<HTMLInputElement>(null);
     const dropNDropInput = React.useRef<HTMLDivElement>(null);
-    const [uploadedImages, setUploadedImages] = useState<any[]>([]);
+    const [uploadedImages, setUploadedImages] = useState<any[]>(imageUrls || []);
     // const [dragging, setDragging] = useState<boolean>(false);
 
     const handleClick = () => {
@@ -123,7 +124,7 @@ export const Upload = ({ id, name, error }: UploadProps) => {
                                     <img
                                         width={100}
                                         height={100}
-                                        src={URL.createObjectURL(image)}
+                                        src={(typeof image === 'string')? image : URL.createObjectURL(image)}
                                         alt="Thumb"
                                         className="mr-2.5 mt-2 rounded"
                                     />

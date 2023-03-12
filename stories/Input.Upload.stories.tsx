@@ -14,5 +14,4 @@ const Template: Story<UploadProps> = (args) => <Input.Upload {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    error: 'Errors'
 }
