@@ -8,9 +8,10 @@ export interface TextInputProps {
     placeholder?: string;
     className?: string;
     error?: string
+    value?: string;
 }
 
-export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, className, error }: TextInputProps) => {
+export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, className, error, value }: TextInputProps) => {
     const [currentText, setCurrentText] = useState<string>('');
     let errorClassName = '';
 
@@ -26,7 +27,7 @@ export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, cla
                     name={name}
                     type="text"
                     placeholder={placeholder}
-                    value={currentText}
+                    value={currentText || value}
                     onChange={(e) => setCurrentText(e.target.value)}
                     className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-xs text-gray-800`}
                     aria-invalid={

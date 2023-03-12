@@ -16,5 +16,5 @@ Default.args = {
     name: 'checkbox',
     id: 'checkbox',
     label: <label className="text-xs leading-4 text-gray-800 font-normal">Accept terms & conditions</label>,
-    disabled: false
+    disabled: false,
 }

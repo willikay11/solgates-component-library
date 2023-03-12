@@ -5,9 +5,10 @@ export interface PasswordInputProps {
     prefixIcon?: ReactNode;
     placeholder?: string;
     error?: string;
+    value?: string;
 }
 
-export const Password = ({ prefixIcon, iconRender, placeholder,error }: PasswordInputProps) => {
+export const Password = ({ prefixIcon, iconRender, placeholder, error, value }: PasswordInputProps) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
     let errorClassName = '';
@@ -23,6 +24,7 @@ export const Password = ({ prefixIcon, iconRender, placeholder,error }: Password
                 <input
                     type={isPasswordVisible ? 'text' : "password"}
                     placeholder={placeholder}
+                    value={value}
                     className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800"
                 />
                 {iconRender && <div onClick={() => setIsPasswordVisible(!isPasswordVisible)}>{iconRender(isPasswordVisible)}</div>}

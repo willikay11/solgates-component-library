@@ -15,13 +15,14 @@ export interface SelectInputProps {
     prefixIcon?: ReactNode;
     multiple?: boolean,
     name?: string;
+    value?: string;
 }
 
-export const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon }: SelectInputProps) => {
+export const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon, value }: SelectInputProps) => {
     const [selectedItem, setSelectedItem] = useState<selectItem>(items[0]);
     const [multipleSelectedItems, setMultipleSelectedItem] = useState<selectItem[]>([]);
     return (
-        <Listbox multiple={multiple} onChange={(value: any) => {
+        <Listbox multiple={multiple} value={value} onChange={(value: any) => {
             if (multiple) {
                 const selectedItems: [string] = value;
                 const foundItems: selectItem[] = [];
