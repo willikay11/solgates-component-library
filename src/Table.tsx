@@ -23,9 +23,12 @@ export interface TableProps {
     extraContent?: ReactNode,
     onRowClick?: (row: any) => void
     tableTitle?: string;
+    currentPage?: number;
+    pageSize?: number;
+    total?: number;
 }
 
-export const Table = ({ columns, data, tableTitle, onRowClick, extraContent }: TableProps) => {
+export const Table = ({ columns, data, tableTitle, onRowClick, extraContent, currentPage = 1, pageSize = 10, total = 0 }: TableProps) => {
     const [tableData, setTableData] = useState<any[]>([])
     const [tableColumns, setNewColumns] = useState<any[]>([]);
     const table = useReactTable({
@@ -115,11 +118,11 @@ export const Table = ({ columns, data, tableTitle, onRowClick, extraContent }: T
           <div className="flex flex-row  p-[15px] justify-between">
               <div>
                   <span className="text-xs leading-4 font-normal text-gray-500 mr-1">Showing</span>
-                  <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">1</span>
+                  <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">{currentPage * pageSize}</span>
                   <span className="text-xs leading-4 font-normal text-gray-500 mr-1">to</span>
-                  <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">15</span>
+                  <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">{pageSize}</span>
                   <span className="text-xs leading-4 font-normal text-gray-500 mr-1">of</span>
-                  <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">12</span>
+                  <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">{total}</span>
                   <span className="text-xs leading-4 font-normal text-gray-500 mr-1">results</span>
               </div>
 
