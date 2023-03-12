@@ -21,9 +21,11 @@ export interface ButtonProps {
     prefixIcon?: ReactNode;
     className?: string;
     style?: React.CSSProperties;
+    name?: string;
+    value?: string;
 }
 
-export const Button = ({children, type = ButtonTypes.default, loading = false, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon, className, style}: ButtonProps) => {
+export const Button = ({children, type = ButtonTypes.default, loading = false, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon, className, style, name, value}: ButtonProps) => {
     let width = 'w-auto'
     let color = 'orange-600'
     let bg = `bg-white text-gray-800 border border-gray-200`;
@@ -88,6 +90,8 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
             disabled={loading}
             onClick={(event) => onClick?.(event)}
             style={{ ...style }}
+            name={name}
+            value={value}
             className={`${bg} text-xs inline-flex items-center justify-center ${height} ${padding} rounded ${ loading ? 'cursor-not-allowed' : 'cursor-pointer'} ${width} ${className}`}>
             {prefixIcon && <div className="mr-2">{prefixIcon}</div>}
             {content}
