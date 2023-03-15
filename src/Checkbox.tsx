@@ -6,12 +6,12 @@ export interface CheckboxProps {
   value: string,
   label?: ReactNode,
   disabled?: boolean,
-  checked?: boolean,
-  defaultChecked?: boolean,
+  checked?: boolean | undefined,
+  defaultChecked?: boolean | undefined,
   onChange?: (event: any) => void;
 }
 
-export const Checkbox = ({id, name, label, value, disabled = false, checked = false, defaultChecked = false, onChange }: CheckboxProps) => {
+export const Checkbox = ({id, name, label, value, disabled = false, checked = undefined, defaultChecked = undefined, onChange }: CheckboxProps) => {
   return(
       <div className="flex items-start items-center">
         <input disabled={disabled} type="checkbox" checked={checked} defaultChecked={defaultChecked} id={id} name={name} value={value} onChange={(event) => onChange?.(event)} className={`${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} h-[14px] w-[14px] accent-orange-600 mr-1 border-gray-800`} />

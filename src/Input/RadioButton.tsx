@@ -5,12 +5,12 @@ export interface RadioButtonProps {
     name: string;
     value: string;
     label: string;
-    checked?: boolean;
-    defaultChecked?: boolean;
+    checked?: boolean | undefined;
+    defaultChecked?: boolean | undefined;
     onChange?: (event: any) => void;
 }
 
-export const RadioButton = ({ id, name, value, label, checked = false, defaultChecked = false, onChange }: RadioButtonProps) => {
+export const RadioButton = ({ id, name, value, label, checked = undefined, defaultChecked = undefined, onChange }: RadioButtonProps) => {
     return (
         <div className="flex items-center">
             <input id={id} type="radio" name={name} value={value} checked={checked} defaultChecked={defaultChecked} onChange={(event) => onChange?.(event)}
