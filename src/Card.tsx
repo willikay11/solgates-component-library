@@ -23,7 +23,7 @@ export const Card = ({ title, children, type = CARD_TYPE.border, extraContent }:
           {
               title && <div className="border-b-[1px] pt-[15px] pr-[15px] pl-[15px]">
                   <div className="flex flex-row items-center mb-[10px] justify-between">
-                      <span className="text-sm leading-5 font-bold text-gray-800">{title}</span>
+                      <span className="text-sm leading-5 font-semibold text-gray-800">{title}</span>
                       {extraContent}
                   </div>
               </div>
