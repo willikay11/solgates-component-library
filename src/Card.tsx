@@ -19,14 +19,18 @@ export const Card = ({ title, children, type = CARD_TYPE.border, extraContent }:
   }
 
   return (
-      <div className={`p-[15px] rounded bg-white ${className} h-fit`}>
+      <div className={`rounded bg-white ${className} h-fit`}>
           {
-              title && <div className="flex flex-row items-center border-b-[1px] pb-[10px] mb-[10px] justify-between">
-                  <span className="text-sm leading-5 font-bold text-gray-800">{title}</span>
-                  {extraContent}
+              title && <div className="border-b-[1px] pt-[15px] pr-[15px] pl-[15px]">
+                  <div className="flex flex-row items-center mb-[10px] justify-between">
+                      <span className="text-sm leading-5 font-bold text-gray-800">{title}</span>
+                      {extraContent}
+                  </div>
               </div>
           }
-          {children}
+          <div className="p-[15px]">
+              {children}
+          </div>
       </div>
   );
 }
