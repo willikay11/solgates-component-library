@@ -11,10 +11,10 @@ export interface CheckboxProps {
   onChange?: (event: any) => void;
 }
 
-export const Checkbox = ({id, name, label, value, disabled = false, checked = undefined, defaultChecked = undefined, onChange }: CheckboxProps) => {
+export const Checkbox = ({id, name, label, value, disabled = false, onChange }: CheckboxProps) => {
   return(
       <div className="flex items-start items-center">
-        <input disabled={disabled} type="checkbox" checked={checked} defaultChecked={defaultChecked} id={id} name={name} value={value} onChange={(event) => onChange?.(event)} className={`${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} h-[14px] w-[14px] accent-orange-600 mr-1 border-gray-800`} />
+        <input disabled={disabled} type="checkbox" id={id} name={name} value={value} onChange={(event) => onChange?.(event)} className={`${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} h-[14px] w-[14px] accent-orange-600 mr-1 border-gray-800`} />
           {label}
       </div>
   );
