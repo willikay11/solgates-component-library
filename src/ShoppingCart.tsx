@@ -34,7 +34,7 @@ export const ShoppingCart = ({ products, showDiscount = false, type = CART_TYPE.
               products.map((product) => (
                   <div key={product.id} className="grid gap-2 grid-cols-6 mb-[15px]">
                       <div className={type === CART_TYPE.small ? 'col-span-2' : 'col-span-1'}>
-                          <ProductTile type={PRODUCT_TYPE.PRODUCT} imageUrl={product?.imageUrl} />
+                          <ProductTile id="1" type={PRODUCT_TYPE.PRODUCT} imageUrl={product?.imageUrl} />
                       </div>
                       <div className={type === CART_TYPE.small ? 'col-span-4' : 'col-span-5'}>
                           <p className="text-xs leading-4 font-medium text-gray-800 mt-1.5">{product?.name}</p>

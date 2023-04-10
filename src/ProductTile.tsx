@@ -19,32 +19,34 @@ export enum PRODUCT_TYPE {
 
 export interface ProductTileProps {
   imageUrl: string;
+  id: string;
   type?: PRODUCT_TYPE.PRODUCTS | PRODUCT_TYPE.PRODUCT | PRODUCT_TYPE.COLLECTION | PRODUCT_TYPE.RELEASES;
   name?: string;
   smallDescription?: string;
   buttonName?: string;
   price?: string;
+  onAddToWishList?: (id: string) => void;
+  onRemoveFromWishlist?: (id: string) => void;
   addedToWishList?: boolean;
   onClick?: () => void;
   onClickShop?: () => void;
   releaseDate?: string;
 }
 
-export const ProductTile = ({ imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick, onClickShop, releaseDate }: ProductTileProps) => {
-  const [inWishList] = useState<boolean>(addedToWishList || false);
-
+export const ProductTile = ({ id, imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick, onClickShop, releaseDate, onAddToWishList, onRemoveFromWishlist }: ProductTileProps) => {
     return(
       <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded`}>
         <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`} onClick={() => onClick?.()}>
             <CloudimageProvider config={cloudImageConfig}>
                 <Img src={imageUrl} doNotReplaceURL alt="Demo image" />
             </CloudimageProvider>
-            {/*<img src={imageUrl} alt={name} className="w-full" />*/}
             {
-                type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
-                        <Heart3LineFill size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
+                type === PRODUCT_TYPE.PRODUCTS? (addedToWishList ?
+                        <div onClick={() => onAddToWishList?.(id)}>
+                            <Heart3LineFill size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
+                        </div>
                         :
-                        <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" />
+                        <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" onClick={() => onRemoveFromWishlist?.()} />
                 ) : type === PRODUCT_TYPE.COLLECTION ? (
                     <div className="absolute z-20 top-3 left-3">
                         <p className="text-base leading-6 font-bold text-gray-800">{name}</p>
