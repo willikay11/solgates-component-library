@@ -22,13 +22,14 @@ export enum CART_TYPE {
 
 export interface ShoppingCartProps {
     products: Product[],
+    onCheckOut: () => void,
     showDiscount?: boolean,
     currency?: string,
     type?: CART_TYPE.full | CART_TYPE.small,
     showCheckoutButton?: boolean,
 }
 
-export const ShoppingCart = ({ products, showDiscount = false, currency = 'KSH', type = CART_TYPE.full, showCheckoutButton = true }: ShoppingCartProps) => {
+export const ShoppingCart = ({ products, onCheckOut, showDiscount = false, currency = 'KSH', type = CART_TYPE.full, showCheckoutButton = true }: ShoppingCartProps) => {
    return (
       <div className="flex flex-col">
           {
@@ -68,7 +69,7 @@ export const ShoppingCart = ({ products, showDiscount = false, currency = 'KSH',
               <span className="text-xs leading-4 font-semibold text-black">{currency} {products?.reduce((total, product) => total + product.price, 0)?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </span>
           </div>
 
-          { showCheckoutButton && <Button onClick={() => console.log('clicked')} type={ButtonTypes.primary} block>Checkout</Button> }
+          { showCheckoutButton && <Button onClick={() => onCheckOut} type={ButtonTypes.primary} block>Checkout</Button> }
       </div>
   );
 }
