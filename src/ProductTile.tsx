@@ -34,6 +34,17 @@ export interface ProductTileProps {
 }
 
 export const ProductTile = ({ id, imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick, onClickShop, releaseDate, onAddToWishList, onRemoveFromWishlist }: ProductTileProps) => {
+  const [inWishList, setInWishlist] = useState<boolean>(addedToWishList );
+
+  const addToWishList = () => {
+      setInWishlist(true);
+      onAddToWishList?.(id);
+  }
+
+  const removeFromWishList = () => {
+      setInWishlist(false);
+      onRemoveFromWishlist?.(id);
+  }
     return(
       <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded`}>
         <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`} onClick={() => onClick?.()}>
@@ -41,12 +52,12 @@ export const ProductTile = ({ id, imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, 
                 <Img src={imageUrl} doNotReplaceURL alt="Demo image" />
             </CloudimageProvider>
             {
-                type === PRODUCT_TYPE.PRODUCTS? (addedToWishList ?
-                        <div onClick={() => onAddToWishList?.(id)}>
+                type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
+                        <div onClick={() => addToWishList()}>
                             <Heart3LineFill size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
                         </div>
                         :
-                        <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" onClick={() => onRemoveFromWishlist?.()} />
+                        <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" onClick={() => removeFromWishList()} />
                 ) : type === PRODUCT_TYPE.COLLECTION ? (
                     <div className="absolute z-20 top-3 left-3">
                         <p className="text-base leading-6 font-bold text-gray-800">{name}</p>
