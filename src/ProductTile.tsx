@@ -34,7 +34,7 @@ export interface ProductTileProps {
 }
 
 export const ProductTile = ({ id, imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick, onClickShop, releaseDate, onAddToWishList, onRemoveFromWishlist }: ProductTileProps) => {
-  const [inWishList, setInWishlist] = useState<boolean>(addedToWishList );
+  const [inWishList, setInWishlist] = useState<boolean>(addedToWishList || false);
 
   const addToWishList = () => {
       setInWishlist(true);
@@ -54,16 +54,28 @@ export const ProductTile = ({ id, imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, 
             {
                 type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
                         <div onClick={(event) => {
-                            event.stopPropagation();
-                            addToWishList()
-                        }}>
-                            <Heart3LineFill size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
+                                event.stopPropagation();
+                                removeFromWishList()
+                            }}
+                        >
+                            <Heart3LineFill
+                                size={14}
+                                color={colors.red["500"]}
+                                className="absolute z-20 top-3 right-3"
+                            />
                         </div>
                         :
-                        <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" onClick={(event) => {
-                            event.stopPropagation();
-                            removeFromWishList()
-                        }} />
+                        <div onClick={(event) => {
+                                event.stopPropagation();
+                                addToWishList()
+                            }}
+                        >
+                            <Heart3Line
+                                size={14}
+                                color={colors.red["500"]}
+                                className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible"
+                            />
+                        </div>
                 ) : type === PRODUCT_TYPE.COLLECTION ? (
                     <div className="absolute z-20 top-3 left-3">
                         <p className="text-base leading-6 font-bold text-gray-800">{name}</p>
