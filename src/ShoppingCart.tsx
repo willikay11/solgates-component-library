@@ -2,7 +2,7 @@ import React from "react";
 import {PRODUCT_TYPE, ProductTile} from "./ProductTile";
 import {Input} from "./Input";
 import {IconContainer} from "./IconContainer";
-import { User6Line } from "./Icons";
+import {GiftLine} from "./Icons";
 import colors from "./Colors"
 import {Button, ButtonTypes} from "./Button";
 
@@ -22,7 +22,7 @@ export enum CART_TYPE {
 
 export interface ShoppingCartProps {
     products: Product[],
-    onCheckOut: () => void,
+    onCheckOut?: () => void,
     showDiscount?: boolean,
     currency?: string,
     type?: CART_TYPE.full | CART_TYPE.small,
@@ -51,9 +51,13 @@ export const ShoppingCart = ({ products, onCheckOut, showDiscount = false, curre
                   </div>
               ))
           }
-          { showDiscount && <div className="mb-3">
-              <Input.Text placeholder="Discount Coupon" prefixIcon={<IconContainer><User6Line color={colors.purple["500"]} /></IconContainer>} />
-          </div> }
+          { showDiscount &&
+              <Input.Text
+                  placeholder="Discount Coupon"
+                  prefixIcon={
+                  <IconContainer><GiftLine size={14} color={colors.purple["500"]} /></IconContainer>}
+              />
+          }
           {/*<div className="flex justify-between">*/}
           {/*    <span className="text-xs leading-4 font-medium text-gray-800">Subtotal: </span>*/}
           {/*    <span className="text-xs leading-4 font-semibold text-black">KSH 26,000 </span>*/}
@@ -69,7 +73,7 @@ export const ShoppingCart = ({ products, onCheckOut, showDiscount = false, curre
               <span className="text-xs leading-4 font-semibold text-black">{currency} {products?.reduce((total, product) => total + product.price, 0)?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </span>
           </div>
 
-          { showCheckoutButton && <Button onClick={() => onCheckOut()} type={ButtonTypes.primary} block>Checkout</Button> }
+          { showCheckoutButton && <Button onClick={() => onCheckOut?.()} type={ButtonTypes.primary} block>Checkout</Button> }
       </div>
   );
 }
