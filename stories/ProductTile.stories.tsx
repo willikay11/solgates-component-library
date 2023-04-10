@@ -20,12 +20,15 @@ const Template: Story<ProductTileProps> = (args) =>
 
 export const Products = Template.bind({});
 Products.args = {
-    imageUrl: 'high-tops-are-back.png',
+    id: '1',
+    imageUrl: 'nike-blazer-77-1.webp',
     name: 'Air Jordan 1 Retro High OG',
     smallDescription: 'Dutch Green',
     buttonName: 'Nike',
     price: 'KSH 12,200',
-    releaseDate: 'Apr 20'
+    releaseDate: 'Apr 20',
+    addedToWishList: false,
+    onAddToWishList: () => { console.log('added to wishlist')}
 };
 
 export const Product = Template.bind({});
