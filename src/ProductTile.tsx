@@ -53,11 +53,17 @@ export const ProductTile = ({ id, imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, 
             </CloudimageProvider>
             {
                 type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
-                        <div onClick={() => addToWishList()}>
+                        <div onClick={(event) => {
+                            event.stopPropagation();
+                            addToWishList()
+                        }}>
                             <Heart3LineFill size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3" />
                         </div>
                         :
-                        <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" onClick={() => removeFromWishList()} />
+                        <Heart3Line size={14} color={colors.red["500"]} className="absolute z-20 top-3 right-3 invisible group-hover/product-tile:visible" onClick={(event) => {
+                            event.stopPropagation();
+                            removeFromWishList()
+                        }} />
                 ) : type === PRODUCT_TYPE.COLLECTION ? (
                     <div className="absolute z-20 top-3 left-3">
                         <p className="text-base leading-6 font-bold text-gray-800">{name}</p>
