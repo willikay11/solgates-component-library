@@ -69,7 +69,7 @@ export const ShoppingCart = ({ products, onCheckOut, showDiscount = false, curre
               <span className="text-xs leading-4 font-semibold text-black">{currency} {products?.reduce((total, product) => total + product.price, 0)?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </span>
           </div>
 
-          { showCheckoutButton && <Button onClick={() => onCheckOut} type={ButtonTypes.primary} block>Checkout</Button> }
+          { showCheckoutButton && <Button onClick={() => onCheckOut()} type={ButtonTypes.primary} block>Checkout</Button> }
       </div>
   );
 }
