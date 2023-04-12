@@ -18,11 +18,11 @@ export interface SelectInputProps {
     value?: string;
 }
 
-export const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon, value }: SelectInputProps) => {
+export const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon, value, name }: SelectInputProps) => {
     const [selectedItem, setSelectedItem] = useState<selectItem>(items[0]);
     const [multipleSelectedItems, setMultipleSelectedItem] = useState<selectItem[]>([]);
     return (
-        <Listbox multiple={multiple} value={value} onChange={(value: any) => {
+        <Listbox multiple={multiple} name={name} value={value} onChange={(value: any) => {
             if (multiple) {
                 const selectedItems: [string] = value;
                 const foundItems: selectItem[] = [];
