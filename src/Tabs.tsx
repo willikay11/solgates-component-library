@@ -18,14 +18,14 @@ export const Tabs = ({ defaultActiveKey, items, onChange }: TabsProps) => {
         <Tab.Group defaultIndex={defaultActiveKey} onChange={(index) => onChange?.(index)}>
             <Tab.List>
                 <div className="flex">
-                    {items.map(item => (
-                        <Tab className="outline-0 mb-2.5 flex flex-row flex-1" disabled={item.disabled}>
+                    {items.map((item, index) => (
+                        <Tab key={index} className="outline-0 mb-2.5 flex flex-row flex-1" disabled={item.disabled}>
                             {({ selected }) => (
-                                <button
+                                <div
                                     className={`${selected ? 'text-orange-500 border-b-orange-500' : 'text-gray-500'} px-4 pb-2.5 font-normal border-b w-full`}
                                 >
                                     {item.label}
-                                </button>
+                                </div>
                             )}
                         </Tab>
                     ))}
@@ -33,8 +33,8 @@ export const Tabs = ({ defaultActiveKey, items, onChange }: TabsProps) => {
 
             </Tab.List>
             <Tab.Panels>
-                { items.map(item => (
-                    <Tab.Panel>{item.content}</Tab.Panel>
+                { items.map((item, index) => (
+                    <Tab.Panel key={index}>{item.content}</Tab.Panel>
                 ))}
             </Tab.Panels>
         </Tab.Group>
