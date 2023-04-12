@@ -31,13 +31,15 @@ export const Password = ({ prefixIcon, name, iconRender, placeholder, error, val
                 />
                 {iconRender && <div onClick={() => setIsPasswordVisible(!isPasswordVisible)}>{iconRender(isPasswordVisible)}</div>}
             </div>
-            <p
-                className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
-                role="alert"
-                id={`${name}-error`}
-            >
-                {error}
-            </p>
+            {error &&
+                <p
+                    className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
+                    role="alert"
+                    id={`${name}-error`}
+                >
+                    {error}
+                </p>
+            }
         </>
     );
 };
