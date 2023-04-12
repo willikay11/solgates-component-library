@@ -45,13 +45,15 @@ export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, cla
                 {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
                 {clearIcon && <div className="cursor-pointer" onClick={() => setCurrentText('')} >{clearIcon}</div>}
             </div>
-            <p
-                className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
-                role="alert"
-                id={`${name}-error`}
-            >
-                {error}
-            </p>
+            {error &&
+                <p
+                    className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
+                    role="alert"
+                    id={`${name}-error`}
+                >
+                    {error}
+                </p>
+            }
         </>
     );
 }

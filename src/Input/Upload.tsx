@@ -162,13 +162,15 @@ export const Upload = ({ id, name, error, imageUrls }: UploadProps) => {
                                 <span className="text-xs leading-4 font-normal text-gray-500">Png, Jpg, Gif up to 10MB</span>
                             </div>
                         </div>
-                        <p
-                            className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
-                            role="alert"
-                            id={`${name}-error`}
-                        >
-                            {error}
-                        </p>
+                        {error &&
+                            <p
+                                className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
+                                role="alert"
+                                id={`${name}-error`}
+                            >
+                                {error}
+                            </p>
+                        }
                     </>
                 )
             }

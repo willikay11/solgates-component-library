@@ -49,13 +49,15 @@ export const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered',
                     className={`ml-2 ${width} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800`} />
                 <Button onClick={() => increase()} type={ButtonTypes.link}><AddLine color={colors.gray["800"]} size={14} /></Button>
             </div>
-            <p
-                className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
-                role="alert"
-                id={`${name}-error`}
-            >
-                {error}
-            </p>
+            {error &&
+                <p
+                    className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
+                    role="alert"
+                    id={`${name}-error`}
+                >
+                    {error}
+                </p>
+            }
         </>
     );
 }
