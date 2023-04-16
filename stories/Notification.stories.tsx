@@ -21,6 +21,7 @@ Default.args = {
     loading: false,
     onClick: () => {
         notification({
+            duration: 60000,
             type: 'info',
             title: 'This is a Title',
             message: `This is a notification type success`})

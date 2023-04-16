@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { ElementType } from '../global';
+import {CloseLine} from "../../Icons";
+import colors from "../../Colors";
+import generateUniqueId from "../utils/generateUniqueId";
 
 export interface NotificationProps {
     title?: React.ReactNode;
@@ -23,17 +26,22 @@ export const Notification: React.FC<NotificationProps> = ({
                                                               className = '',
                                                               ...rest
                                                           }) => {
+    const notificationId = generateUniqueId();
     return (
-        <div className="flex justify-start bg-white shadow-lg border-gray-100 border-[1px] mb-2 p-3.5 w-[400px]" {...rest}>
-            {icon}
-            <div className="ml-3.5">
+        <div id={notificationId} className="flex justify-between bg-white shadow-lg border-gray-100 border-[1px] mb-2 p-3.5 w-[400px]" {...rest}>
+            <div>{icon}</div>
+            <div className="flex-1 ml-3.5">
                 <div className="text-sm leading-5 font-semibold text-gray-800 mb-1">{title}</div>
                 <div className="text-sm leading-4 font-normal text-gray-600">{message}</div>
             </div>
             <div
-                className="notification-close"
-                onClick={() => onRemove && onRemove()}
-            />
+                className="cursor-pointer"
+                onClick={() => {
+                    document.getElementById(notificationId)?.remove();
+                }}
+            >
+                <CloseLine size={16} color={colors.gray["600"]} />
+            </div>
         </div>
     );
 };

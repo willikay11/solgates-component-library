@@ -19,7 +19,6 @@ function genericResolveProps(
     { render, icon: _icon, type = 'success', ...props }: any,
     Component: any,
 ) {
-    console.log(resolveIconBackgroundColor(type));
     const icon = _icon || (
         <div className={`h-[40px] w-[40px] rounded-full ${resolveIconBackgroundColor(type)} flex items-center justify-center`}
              style={{ borderRadius: '50%' }}>
