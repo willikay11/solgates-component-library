@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Button, ButtonProps, ButtonTypes } from "../src";
-import { notification } from "../src/Notification";
+import { Button, ButtonProps, ButtonTypes, notification } from "../src";
 
 const meta: Meta = {
     title: 'Data Display/Notification',
@@ -22,7 +21,7 @@ Default.args = {
     onClick: () => {
         notification({
             duration: 60000,
-            type: 'info',
+            type: 'success',
             title: 'This is a Title',
             message: `This is a notification type success`})
     },
