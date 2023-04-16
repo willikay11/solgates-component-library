@@ -1,9 +1,9 @@
 const resolve = {
-    topLeft: 'position-top-left',
-    topRight: 'position-top-right',
+    topLeft: 'absolute top-[16px] left-[16px]',
+    topRight: 'absolute top-[16px] right-[16px]',
     topCenter: 'position-top-center',
-    bottomRight: 'position-bottom-right',
-    bottomLeft: 'position-bottom-left',
+    bottomRight: 'absolute bottom-[16px] right-[16px]',
+    bottomLeft: 'absolute bottom-[16px] left-[16px]',
     bottomCenter: 'position-bottom-center'
 };
 

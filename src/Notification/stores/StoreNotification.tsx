@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import Store from './Store';
 import { Wrapper } from '../components/wrapper';
-import { PositionType, resolvePosition } from '../utils/resolvePosition';
+import { PositionType } from '../utils/resolvePosition';
 import { RootState } from '../global';
 
 let root: RootState = {
@@ -23,9 +23,9 @@ export default class StoreNotification extends Store {
     }
 
     render(position: PositionType) {
-        const positionClass = resolvePosition(position);
-        const elm = document.querySelector(
-            `.wrapper-notifications.${positionClass}`
+        // const positionClass = resolvePosition(position);
+        const elm = document.getElementById(
+            `notifications`
         );
 
         const instances = this.getInstances(position);

@@ -16,7 +16,7 @@ export type NotificationsProps = Omit<
 };
 
 export const notification = ({
-                                 duration = 20000,
+                                 duration = 60000,
                                  position = 'topRight',
                                  type = 'success',
                                  ...props
