@@ -16,13 +16,13 @@ export const NotificationIcon: React.FC<IconProps> = ({ type }) => {
             return <CheckDoubleLine size={18} color={colors.green["500"]} />;
 
         case 'info':
-            return <Information size={18} />;
+            return <Information size={18} color={colors.blue["500"]} />;
 
         case 'warning':
-            return <Error size={18} />;
+            return <Error size={18} color={colors.yellow["500"]}  />;
 
         case 'error':
-            return <Error size={18} />;
+            return <Error size={18} color={colors.red["500"]}  />;
 
         default:
             return <CheckDoubleLine size={18} />;

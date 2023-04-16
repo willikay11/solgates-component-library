@@ -5,6 +5,8 @@ import * as React from 'react';
 //     RenderNotificationProps
 // } from '../global';
 import {NotificationIcon} from "../components/notificationIcons";
+import {resolveIconColor} from "../utils/resolveIconColor";
+import {resolveIconBackgroundColor} from "../utils/resolveIconBackgroundColor";
 
 // type GenericResolveType = {
 //     icon?: React.ReactNode;
@@ -17,10 +19,11 @@ function genericResolveProps(
     { render, icon: _icon, type = 'success', ...props }: any,
     Component: any,
 ) {
+    console.log(resolveIconBackgroundColor(type));
     const icon = _icon || (
-        <div className="h-[40px] w-[40px] rounded-full bg-green-50 flex items-center justify-center"
+        <div className={`h-[40px] w-[40px] rounded-full ${resolveIconBackgroundColor(type)} flex items-center justify-center`}
              style={{ borderRadius: '50%' }}>
-            <div className="h-[25px] w-[25px] rounded-full bg-green-100 flex items-center justify-center"
+            <div className={`h-[25px] w-[25px] rounded-full ${resolveIconColor(type)} flex items-center justify-center`}
                  style={{ borderRadius: '50%' }}>
                 <NotificationIcon type={type} />
             </div>
