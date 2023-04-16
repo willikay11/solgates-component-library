@@ -16,7 +16,7 @@ export type NotificationsProps = Omit<
 };
 
 export const notification = ({
-                                 duration = 7000,
+                                 duration = 20000,
                                  position = 'topRight',
                                  type = 'success',
                                  ...props
@@ -24,10 +24,7 @@ export const notification = ({
     const resolveProps = genericResolveProps(
         { type, ...props },
         Notification,
-        'notification'
     );
-
-    console.log(resolveProps);
 
     store.subscribe({
         duration,

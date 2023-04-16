@@ -4,7 +4,7 @@ import Message, { MessageProps } from '../components/message';
 import { PositionType } from '../utils/resolvePosition';
 import { DurationType, RenderMessageProps } from '../global';
 import genericResolveProps from './genericResolveAction';
-import LoadingFilled from '../icons/loadingFilled';
+import {CheckDoubleLine} from "../../Icons";
 
 const store = new StoreMessage();
 
@@ -27,7 +27,6 @@ export const message = ({
     const resolveProps = genericResolveProps(
         { type, ...props },
         Message,
-        'message'
     );
 
     store.subscribe({
@@ -48,7 +47,7 @@ const messageLoading = ({
                             closable = false,
                             icon = (
                                 <div className={`icon-message`}>
-                                    <LoadingFilled />
+                                    <CheckDoubleLine />
                                 </div>
                             ),
                             ...props
@@ -57,7 +56,6 @@ const messageLoading = ({
         const resolveProps = genericResolveProps(
             { type, icon, ...props },
             Message,
-            'message'
         );
 
         store.subscribe({

@@ -24,11 +24,11 @@ export const Notification: React.FC<NotificationProps> = ({
                                                               ...rest
                                                           }) => {
     return (
-        <div className={className} {...rest}>
+        <div className="flex justify-start bg-white shadow-lg border-gray-100 border-[1px] p-3.5 w-[400px]" {...rest}>
             {icon}
-            <div>
-                <div className="notification-title">{title}</div>
-                <div className="notification-content">{message}</div>
+            <div className="ml-3.5">
+                <div className="text-sm leading-5 font-semibold text-gray-800 mb-1">{title}</div>
+                <div className="text-sm leading-4 font-normal text-gray-600">{message}</div>
             </div>
             <div
                 className="notification-close"
