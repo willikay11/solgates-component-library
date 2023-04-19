@@ -1,9 +1,7 @@
 // @ts-nocheck
-import React, {useState} from "react";
-import Img, { CloudimageProvider } from "react-cloudimage-responsive";
-import colors from "./Colors";
-import { Button, ButtonTypes } from "./Button";
-import {Heart3Line, Heart3LineFill, ArrowRightLine} from './Icons';
+import React, {useId, useState} from "react";
+import Img, {CloudimageProvider} from "react-cloudimage-responsive";
+import Carousel, {ARROW_POSITION} from "./Carousel";
 
 const cloudImageConfig = {
     token: 'cyqqqhlxia',
@@ -14,13 +12,14 @@ export enum PRODUCT_TYPE {
    PRODUCTS = 'products',
    PRODUCT = 'product',
    COLLECTION = 'collection',
-   RELEASES = 'releases'
+   RELEASES = 'releases',
+   CAROUSEL = 'carousel'
 }
 
 export interface ProductTileProps {
   imageUrl: string;
   id: string;
-  type?: PRODUCT_TYPE.PRODUCTS | PRODUCT_TYPE.PRODUCT | PRODUCT_TYPE.COLLECTION | PRODUCT_TYPE.RELEASES;
+  type?: PRODUCT_TYPE.PRODUCTS | PRODUCT_TYPE.PRODUCT | PRODUCT_TYPE.COLLECTION | PRODUCT_TYPE.RELEASES | PRODUCT_TYPE.CAROUSEL;
   name?: string;
   smallDescription?: string;
   buttonName?: string;
@@ -31,9 +30,25 @@ export interface ProductTileProps {
   onClick?: () => void;
   onClickShop?: () => void;
   releaseDate?: string;
+  carouselImages?: string[];
 }
 
-export const ProductTile = ({ id, imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, buttonName, smallDescription, price, addedToWishList, onClick, onClickShop, releaseDate, onAddToWishList, onRemoveFromWishlist }: ProductTileProps) => {
+export const ProductTile = ({
+  id,
+  imageUrl,
+  type = PRODUCT_TYPE.PRODUCTS,
+  name,
+  buttonName,
+  smallDescription,
+  price,
+  addedToWishList,
+  onClick,
+  onClickShop,
+  releaseDate,
+  onAddToWishList,
+  onRemoveFromWishlist,
+  carouselImages
+}: ProductTileProps) => {
   const [inWishList, setInWishlist] = useState<boolean>(addedToWishList || false);
 
   const addToWishList = () => {
@@ -48,11 +63,29 @@ export const ProductTile = ({ id, imageUrl, type = PRODUCT_TYPE.PRODUCTS, name, 
     return(
       <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded`}>
         <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`} onClick={() => onClick?.()}>
-            <CloudimageProvider config={cloudImageConfig}>
-                <Img src={imageUrl} doNotReplaceURL alt="Demo image" />
-            </CloudimageProvider>
             {
-                type === PRODUCT_TYPE.PRODUCTS? (inWishList ?
+                type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
+                    <Carousel
+                        id={useId()}
+                        itemsVisible={{ mobile: 1, tablet: 1, large: 1 }}
+                        arrowPosition={ARROW_POSITION.center}
+                        items={carouselImages.map((carouselImage, index) => {
+                            return {
+                                item:
+                                    <CloudimageProvider key={index} config={cloudImageConfig}>
+                                        <Img src={carouselImage} doNotReplaceURL alt="Product image" />
+                                    </CloudimageProvider>
+                            }
+                        })}
+                    />
+                ) : (
+                    <CloudimageProvider config={cloudImageConfig}>
+                        <Img src={imageUrl} doNotReplaceURL alt="Product image" />
+                    </CloudimageProvider>
+                )
+            }
+            {
+                type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL ? (inWishList ?
                         <div onClick={(event) => {
                                 event.stopPropagation();
                                 removeFromWishList()
