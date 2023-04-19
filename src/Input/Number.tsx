@@ -15,9 +15,10 @@ export interface NumberInputProps {
     error?: string;
     value?: string;
     defaultValue?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width = 'w-[30px]', padding = 'p-[10px]', name, value, defaultValue, error }: NumberInputProps) => {
+export const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered', width = 'w-[30px]', padding = 'p-[10px]', name, value, defaultValue, error, onChange }: NumberInputProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const increase = () => {
         inputRef?.current?.stepUp();
@@ -46,6 +47,9 @@ export const Number = ({ min, max, prefixIcon, placeholder, border = 'bordered',
                     placeholder={placeholder}
                     min={min}
                     max={max}
+                    onChange={(event) => {
+                        onChange?.(event)
+                    }}
                     className={`ml-2 ${width} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800`} />
                 <Button onClick={() => increase()} type={ButtonTypes.link}><AddLine color={colors.gray["800"]} size={14} /></Button>
             </div>

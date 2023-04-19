@@ -16,9 +16,10 @@ export interface SelectInputProps {
     multiple?: boolean,
     name?: string;
     value?: string;
+    onChange?: (selectedItem: selectItem | selectItem[]) => void
 }
 
-export const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon, value, name }: SelectInputProps) => {
+export const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefixIcon, value, name, onChange }: SelectInputProps) => {
     const [selectedItem, setSelectedItem] = useState<selectItem>(items[0]);
     const [multipleSelectedItems, setMultipleSelectedItem] = useState<selectItem[]>([]);
     return (
@@ -31,11 +32,13 @@ export const Select = ({ items, arrowIcon, selectedIcon, multiple = false, prefi
                     foundItems.push(foundItem[0]);
                 });
                 setMultipleSelectedItem(foundItems);
+                onChange?.(foundItems)
             } else {
                 const foundItem = items.filter(item => item.value === value);
                 if (foundItem) {
                     setSelectedItem(foundItem[0]);
                 }
+                onChange?.(foundItem)
             }
         }}>
             <div className="relative w-full">

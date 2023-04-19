@@ -10,9 +10,10 @@ export interface TextInputProps {
     error?: string
     value?: string;
     defaultValue?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, className, error, value, defaultValue }: TextInputProps) => {
+export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, className, error, value, defaultValue, onChange }: TextInputProps) => {
     const [currentText, setCurrentText] = useState<string>('');
     let errorClassName = '';
 
@@ -30,7 +31,11 @@ export const Text = ({ name, prefixIcon, suffixIcon, clearIcon, placeholder, cla
                     placeholder={placeholder}
                     value={currentText || value}
                     defaultValue={defaultValue}
-                    onChange={(e) => setCurrentText(e.target.value)}
+                    onChange={(e) => {
+                        setCurrentText(e.target.value);
+                        onChange?.(e)
+
+                    }}
                     className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-xs text-gray-800`}
                     aria-invalid={
                         Boolean(error) ||

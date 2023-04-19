@@ -33,6 +33,7 @@ Default.args = {
     items: [
         {
             item: <ProductTile
+                    id="1"
                     name = 'Air Jordan 1 Retro High OG'
                     smallDescription = 'Dutch Green'
                     buttonName = 'Nike'
@@ -42,6 +43,7 @@ Default.args = {
         },
         {
             item: <ProductTile
+                id="2"
                 name = 'Air Jordan 1 Retro High OG'
                 smallDescription = 'Dutch Green'
                 buttonName = 'Nike'
@@ -51,6 +53,7 @@ Default.args = {
         },
         {
             item: <ProductTile
+                id="3"
                 name = 'Air Jordan 1 Retro High OG'
                 smallDescription = 'Dutch Green'
                 buttonName = 'Nike'
@@ -60,6 +63,7 @@ Default.args = {
         },
         {
             item: <ProductTile
+                id="4"
                 name = 'Air Jordan 1 Retro High OG'
                 smallDescription = 'Dutch Green'
                 buttonName = 'Nike'
@@ -69,6 +73,7 @@ Default.args = {
         },
         {
             item: <ProductTile
+                id="5"
                 name = 'Air Jordan 1 Retro High OG'
                 smallDescription = 'Dutch Green'
                 buttonName = 'Nike'
@@ -78,6 +83,7 @@ Default.args = {
         },
         {
             item: <ProductTile
+                id="6"
                 name = 'Air Jordan 1 Retro High OG'
                 smallDescription = 'Dutch Green'
                 buttonName = 'Nike'
@@ -87,6 +93,7 @@ Default.args = {
         },
         {
             item: <ProductTile
+                id="7"
                 name = 'Air Jordan 1 Retro High OG'
                 smallDescription = 'Dutch Green'
                 buttonName = 'Nike'
@@ -96,6 +103,7 @@ Default.args = {
         },
         {
             item: <ProductTile
+                id="8"
                 name = 'Air Jordan 1 Retro High OG'
                 smallDescription = 'Dutch Green'
                 buttonName = 'Nike'
