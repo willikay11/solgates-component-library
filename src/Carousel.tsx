@@ -31,14 +31,15 @@ export interface CarouselProps {
         tablet: number;
         large: number;
     },
-    arrowPosition: ARROW_POSITION.bottomLeft | ARROW_POSITION.bottomRight | ARROW_POSITION.topRight | ARROW_POSITION.center,
-    items: CarouselItem[]
+    arrowPosition: ARROW_POSITION.bottomLeft | ARROW_POSITION.bottomRight | ARROW_POSITION.topRight | ARROW_POSITION.center;
+    items: CarouselItem[];
 }
 
 export const Carousel = ({ itemsVisible, items, arrowPosition, title, id }: CarouselProps) => {
     const [viewableItemCount, setViewableItemCount] = useState(4);
     const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
     const [gridPercentage, setGridPercentage] = useState<number>(25);
+    const [showButtons, setShowButtons] = useState<boolean>(arrowPosition !== ARROW_POSITION.center);
 
     const handleWindowSizeChange = () => {
         if (window.innerWidth <= 640) {
@@ -99,7 +100,9 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title, id }: Caro
     }
 
     return (
-        <div className="block w-full relative">
+        <div className="block w-full relative"
+             onMouseEnter={() => setShowButtons(true)}
+             onMouseLeave={() => setShowButtons(false)}>
             <div className={`flex flex-row justify-between mb-2.5`}>
                 {title && <p className="text-xl leading-7 font-normal text-gray-800">{title}</p>}
                 <div className={`${arrowPosition === ARROW_POSITION.topRight ? 'inline-flex' : 'hidden'}`}>
@@ -129,7 +132,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title, id }: Caro
                     ))
                 }
             </div>
-            <div className={`flex flex-row ${position}`}>
+            {showButtons && <div className={`flex flex-row ${position}`}>
                 <button
                     className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
                     onClick={() => handleClickScroll('prev')}
@@ -142,7 +145,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title, id }: Caro
                 >
                     <ArrowRightSLine size={14} color={colors.orange["600"]} />
                 </button>
-            </div>
+            </div>}
         </div>
     )
 };
