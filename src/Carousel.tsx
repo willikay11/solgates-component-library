@@ -17,7 +17,8 @@ import colors from "./Colors";
 export enum ARROW_POSITION {
     bottomLeft = "bottomLeft",
     bottomRight = "bottomLeft",
-    topRight = "topRight"
+    topRight = "topRight",
+    center = "center"
 }
 interface CarouselItem {
     item: ReactNode
@@ -30,7 +31,7 @@ export interface CarouselProps {
         tablet: number;
         large: number;
     },
-    arrowPosition: ARROW_POSITION.bottomLeft | ARROW_POSITION.bottomRight | ARROW_POSITION.topRight,
+    arrowPosition: ARROW_POSITION.bottomLeft | ARROW_POSITION.bottomRight | ARROW_POSITION.topRight | ARROW_POSITION.center,
     items: CarouselItem[]
 }
 
@@ -93,10 +94,14 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title, id }: Caro
         position = 'hidden'
     }
 
+    if (arrowPosition === ARROW_POSITION.center) {
+        position = 'absolute inset-y-1/2 px-2.5 w-full justify-between'
+    }
+
     return (
-        <div className="block w-full">
+        <div className="block w-full relative">
             <div className={`flex flex-row justify-between mb-2.5`}>
-                <p className="text-xl leading-7 font-normal text-gray-800">{title}</p>
+                {title && <p className="text-xl leading-7 font-normal text-gray-800">{title}</p>}
                 <div className={`${arrowPosition === ARROW_POSITION.topRight ? 'inline-flex' : 'hidden'}`}>
                     <button
                         className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
