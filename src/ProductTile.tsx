@@ -2,6 +2,9 @@
 import React, {useId, useState} from "react";
 import Img, {CloudimageProvider} from "react-cloudimage-responsive";
 import Carousel, {ARROW_POSITION} from "./Carousel";
+import { Heart3Line, Heart3LineFill } from "./Icons";
+import colors from "./Colors";
+import {Button, ButtonTypes} from "./Button";
 
 const cloudImageConfig = {
     token: 'cyqqqhlxia',
