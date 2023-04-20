@@ -96,7 +96,7 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title, id }: Caro
     }
 
     if (arrowPosition === ARROW_POSITION.center) {
-        position = 'absolute inset-y-1/2 px-2.5 w-full justify-between'
+        position = 'absolute inset-y-1/2 px-2.5 w-full justify-between z-50'
     }
 
     return (
