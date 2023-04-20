@@ -108,13 +108,19 @@ export const Carousel = ({ itemsVisible, items, arrowPosition, title, id }: Caro
                 <div className={`${arrowPosition === ARROW_POSITION.topRight ? 'inline-flex' : 'hidden'}`}>
                     <button
                         className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
-                        onClick={() => handleClickScroll('prev')}
+                        onClick={(event) => {
+                            event.stopPropagation();
+                            handleClickScroll('prev');
+                        }}
                     >
                         <ArrowLeftSLine size={14} color={colors.orange["600"]} />
                     </button>
                     <button
                         className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
-                        onClick={() => handleClickScroll('next')}
+                        onClick={(event) => {
+                            event.stopPropagation();
+                            handleClickScroll('next')
+                        }}
                     >
                         <ArrowRightSLine size={14} color={colors.orange["600"]} />
                     </button>

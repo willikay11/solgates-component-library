@@ -125,7 +125,7 @@ export const ProductTile = ({
             }
         </div>
         {
-            type === PRODUCT_TYPE.PRODUCTS && (
+            type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL && (
                 <div className="mt-2.5">
                     <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">{name}</p>
                     <div>
