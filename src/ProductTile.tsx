@@ -65,7 +65,8 @@ export const ProductTile = ({
   }
     return(
       <div className={`group/product-tile w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'}  rounded`}>
-        <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`} onClick={() => onClick?.()}>
+        <div className={`w-full ${type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'} relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`}
+             onClick={() => onClick?.()}>
             {
                 type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
                     <Carousel
