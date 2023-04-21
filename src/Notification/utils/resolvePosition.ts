@@ -1,6 +1,6 @@
 const resolve = {
-    topLeft: 'absolute top-[16px] left-[16px]',
-    topRight: 'absolute top-[16px] right-[16px]',
+    topLeft: 'fixed top-[16px] left-[16px]',
+    topRight: 'fixed top-[16px] right-[16px]',
     topCenter: 'position-top-center',
     bottomRight: 'absolute bottom-[16px] right-[16px]',
     bottomLeft: 'absolute bottom-[16px] left-[16px]',
