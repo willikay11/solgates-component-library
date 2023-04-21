@@ -148,6 +148,11 @@ const CheckDoubleLine = ({ color = 'currentColor', size, className }: IconProps)
         <path fill={color} d="M11.602 13.7599L13.014 15.1719L21.4795 6.7063L22.8938 8.12051L13.014 18.0003L6.65 11.6363L8.06421 10.2221L10.189 12.3469L11.6025 13.7594L11.602 13.7599ZM11.6037 10.9322L16.5563 5.97949L17.9666 7.38977L13.014 12.3424L11.6037 10.9322ZM8.77698 16.5873L7.36396 18.0003L1 11.6363L2.41421 10.2221L3.82723 11.6352L3.82604 11.6363L8.77698 16.5873Z"></path>
     </svg>
 
+const DeleteBin5Line = ({ color = 'currentColor', size, className }: IconProps) =>
+    <svg className={className} width={size} height={size} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill={color} d="M4 8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8ZM6 10V20H18V10H6ZM9 12H11V18H9V12ZM13 12H15V18H13V12ZM7 5V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V5H22V7H2V5H7ZM9 4V5H15V4H9Z"></path>
+    </svg>
+
 export {
     Heart3Line,
     Heart3LineFill,
@@ -172,5 +177,6 @@ export {
     GiftLine,
     CheckDoubleLine,
     Information,
-    Error
+    Error,
+    DeleteBin5Line
 }

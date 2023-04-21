@@ -2,7 +2,7 @@ import React from "react";
 import {PRODUCT_TYPE, ProductTile} from "./ProductTile";
 import {Input} from "./Input";
 import {IconContainer} from "./IconContainer";
-import {GiftLine} from "./Icons";
+import {DeleteBin5Line, GiftLine} from "./Icons";
 import colors from "./Colors"
 import {Button, ButtonTypes} from "./Button";
 
@@ -22,6 +22,7 @@ export enum CART_TYPE {
 
 export interface ShoppingCartProps {
     products: Product[],
+    onRemoveProduct: (id: string) => void,
     onCheckOut?: () => void,
     showDiscount?: boolean,
     currency?: string,
@@ -29,7 +30,7 @@ export interface ShoppingCartProps {
     showCheckoutButton?: boolean,
 }
 
-export const ShoppingCart = ({ products, onCheckOut, showDiscount = false, currency = 'KSH', type = CART_TYPE.full, showCheckoutButton = true }: ShoppingCartProps) => {
+export const ShoppingCart = ({ products, onRemoveProduct, onCheckOut, showDiscount = false, currency = 'KSH', type = CART_TYPE.full, showCheckoutButton = true }: ShoppingCartProps) => {
    return (
       <div className="flex flex-col">
           {
@@ -40,10 +41,12 @@ export const ShoppingCart = ({ products, onCheckOut, showDiscount = false, curre
                       </div>
                       <div className={type === CART_TYPE.small ? 'col-span-4' : 'col-span-5'}>
                           <p className="text-xs leading-4 font-medium text-gray-800 mt-1.5">{product?.name}</p>
-                          <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">{product?.size}</p>
+                          <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">Size {product?.size}</p>
                           <div className="flex flex-row justify-between items-center mt-1.5">
                               {/*<Input.Number min={1} border='borderless' width="30px" padding="0px" />*/}
-                              <span className="text-xs leading-4 font-semibold text-gray-800">Quantity {product?.quantity}</span>
+                              <span onClick={() => onRemoveProduct(product.id)}>
+                                <DeleteBin5Line size={16} color={colors.red["500"]} />
+                              </span>
                               <span className="text-xs leading-4 font-semibold text-gray-800">{currency} {product?.price?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                           </div>
                       </div>
