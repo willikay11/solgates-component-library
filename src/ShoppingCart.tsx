@@ -8,6 +8,7 @@ import {Button, ButtonTypes} from "./Button";
 
 interface Product {
     id: string;
+    cartId: string;
     name: string;
     imageUrl: string;
     price: number;
@@ -44,7 +45,7 @@ export const ShoppingCart = ({ products, onRemoveProduct, onCheckOut, showDiscou
                           <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">Size {product?.size}</p>
                           <div className="flex flex-row justify-between items-center mt-1.5">
                               {/*<Input.Number min={1} border='borderless' width="30px" padding="0px" />*/}
-                              <span onClick={() => onRemoveProduct(product.id)}>
+                              <span className="cursor-pointer" onClick={() => onRemoveProduct(product.cartId)}>
                                 <DeleteBin5Line size={16} color={colors.red["500"]} />
                               </span>
                               <span className="text-xs leading-4 font-semibold text-gray-800">{currency} {product?.price?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
