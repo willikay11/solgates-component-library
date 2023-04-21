@@ -43,3 +43,11 @@ Collection.args = {
     imageUrl: 'high-tops-are-back.png',
     name: 'Jordans'
 };
+
+export const Carousel = Template.bind({});
+Carousel.args = {
+    type: PRODUCT_TYPE.CAROUSEL,
+    imageUrl: 'high-tops-are-back.png',
+    name: 'Jordans',
+    carouselImages: ['high-tops-are-back.png', 'high-tops-are-back.png', 'high-tops-are-back.png', 'high-tops-are-back.png']
+};
