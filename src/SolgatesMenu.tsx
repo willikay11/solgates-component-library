@@ -16,7 +16,7 @@ import {Modal, MODAL_POSITION} from "./Modal";
 
 interface item {
     label: string,
-    onClick: () => void
+    id: string,
 }
 
 interface category {
@@ -26,9 +26,9 @@ interface category {
 
 interface menu {
     key: number,
+    id: string,
     label: string;
     gap: number,
-    onClickMenu?: () => void,
     category?: category[]
 }
 
@@ -38,12 +38,13 @@ export interface SolgatesMenuProps {
     userContent: ReactNode,
     onLogoClick: () => void,
     onClickWishList: () => void,
+    onClickMenuItem: (id: string) => void,
     onOpenShopClick: () => void,
     shoppingCartContent: ReactNode,
     phoneNumber: string,
 }
 
-export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClickWishList, shoppingCartContent, phoneNumber, onOpenShopClick }: SolgatesMenuProps) => {
+export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClickWishList, onClickMenuItem, shoppingCartContent, phoneNumber, onOpenShopClick }: SolgatesMenuProps) => {
     const buttonRefs = useRef<HTMLButtonElement[]>([]);
     const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -101,7 +102,9 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                                             </Disclosure.Button>
                                                             <Disclosure.Panel className="ml-[10px] text-gray-500">
                                                                 {category.items.map((item, index) => (
-                                                                    <button key={`${item.label}-${index}`} className="text-xs leading-4 font-normal text-gray-600" onClick={item.onClick}>
+                                                                    <button key={`${item.label}-${index}`}
+                                                                            className="text-xs leading-4 font-normal text-gray-600"
+                                                                            onClick={() => onClickMenuItem(item.id)}>
                                                                         {item.label}
                                                                     </button>
                                                                 ))}
@@ -172,7 +175,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                                                         <p className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500">{category.label}</p>
                                                                         {category.items.map((item) => (
                                                                             <Menu.Item key={key}>
-                                                                                <button className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full" onClick={item.onClick}>
+                                                                                <button className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full" onClick={() => onClickMenuItem(item.id)}>
                                                                                     {item.label}
                                                                                 </button>
                                                                             </Menu.Item>
@@ -190,7 +193,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                 return (
                                     <button
                                         key={menu.key}
-                                        onClick={() => menu?.onClickMenu?.()}
+                                        onClick={() => onClickMenuItem(menu?.id)}
                                         className="mr-[20px] inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600"
                                     >
                                         {menu.label}
