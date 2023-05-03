@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useRef, ReactNode} from "react";
 import {Menu, Transition, Disclosure} from '@headlessui/react'
 import {
+    AccountCircle,
     Heart3Line,
     Menu4Line,
     PhoneLine,
@@ -42,9 +43,10 @@ export interface SolgatesMenuProps {
     onOpenShopClick: () => void,
     shoppingCartContent: ReactNode,
     phoneNumber: string,
+    isLoggedIn: boolean,
 }
 
-export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClickWishList, onClickMenuItem, shoppingCartContent, phoneNumber, onOpenShopClick }: SolgatesMenuProps) => {
+export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClickWishList, onClickMenuItem, shoppingCartContent, phoneNumber, onOpenShopClick, isLoggedIn }: SolgatesMenuProps) => {
     const buttonRefs = useRef<HTMLButtonElement[]>([]);
     const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -206,7 +208,20 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                         <Menu>
                             <div className="relative flex items-center">
                                 <Menu.Button>
-                                    <User6Line className="mr-[10px] cursor-pointer" color={colors.gray["600"]} size={18} />
+                                    {
+                                        isLoggedIn ?
+                                        <AccountCircle
+                                            className="mr-[10px] cursor-pointer"
+                                            color={colors.blue["500"]}
+                                            size={18}
+                                        />
+                                        :
+                                        <User6Line
+                                            className="mr-[10px] cursor-pointer"
+                                            color={colors.gray["600"]}
+                                            size={18}
+                                        />
+                                    }
                                 </Menu.Button>
                                 <Transition
                                     as={Fragment}
