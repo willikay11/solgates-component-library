@@ -213,7 +213,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                         <AccountCircle
                                             className="mr-[10px] cursor-pointer"
                                             color={colors.blue["500"]}
-                                            size={18}
+                                            size={20}
                                         />
                                         :
                                         <User6Line
@@ -251,11 +251,16 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                         </Menu>
                         <Menu>
                             <div className="relative flex items-center">
-                                <Menu.Button>
+                                <Menu.Button className="relative">
                                     <ShoppingBagLine
                                         className="mr-[10px] cursor-pointer"
                                         color={colors.gray["600"]}
-                                        size={18} />
+                                        size={18}
+                                    />
+                                    <div className="absolute -top-3 right-[8px]">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                                    </div>
                                 </Menu.Button>
                                 <Transition
                                     as={Fragment}

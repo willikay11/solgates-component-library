@@ -15,6 +15,7 @@ export interface ButtonProps {
     onClick?: (event: React.MouseEvent) => void;
     type?: ButtonTypes.default | ButtonTypes.primary | ButtonTypes.danger | ButtonTypes.link | ButtonTypes.primary_blue_600 | ButtonTypes.primary_gray_800 | ButtonTypes.primary_orange_200;
     loading?: boolean;
+    disabled?: boolean;
     ghost?: boolean;
     htmlType?: 'button' | 'submit' | 'reset';
     block?: boolean;
@@ -25,7 +26,7 @@ export interface ButtonProps {
     value?: string;
 }
 
-export const Button = ({children, type = ButtonTypes.default, loading = false, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon, className, style, name, value}: ButtonProps) => {
+export const Button = ({children, type = ButtonTypes.default, loading = false, disabled = loading, htmlType = 'button', block = false, ghost = false, onClick, prefixIcon, className, style, name, value}: ButtonProps) => {
     let width = 'w-auto'
     let color = 'orange-600'
     let bg = `bg-white text-gray-800 border border-gray-200`;
@@ -87,7 +88,7 @@ export const Button = ({children, type = ButtonTypes.default, loading = false, h
     return (
         <button
             type={htmlType}
-            disabled={loading}
+            disabled={disabled || loading}
             onClick={(event) => onClick?.(event)}
             style={{ ...style }}
             name={name}
