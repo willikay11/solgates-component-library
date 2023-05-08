@@ -213,7 +213,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                         <AccountCircle
                                             className="mr-[10px] cursor-pointer"
                                             color={colors.blue["500"]}
-                                            size={18}
+                                            size={20}
                                         />
                                         :
                                         <User6Line
