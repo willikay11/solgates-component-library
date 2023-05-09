@@ -7,28 +7,25 @@ import genericResolveProps from './genericResolveAction';
 const store = new StoreNotification();
 
 export type NotificationsProps = Omit<
-    NotificationProps,
-    'onRemove' | 'id' | 'animation'
-    > & {
-    duration?: DurationType;
-    position?: PositionType;
-    render?: (props: RenderNotificationProps) => JSX.Element;
+  NotificationProps,
+  'onRemove' | 'id' | 'animation'
+> & {
+  duration?: DurationType;
+  position?: PositionType;
+  render?: (props: RenderNotificationProps) => JSX.Element;
 };
 
 export const notification = ({
-                                 duration = 7000,
-                                 position = 'topRight',
-                                 type = 'success',
-                                 ...props
-                             }: NotificationsProps) => {
-    const resolveProps = genericResolveProps(
-        { type, ...props },
-        Notification,
-    );
+  duration = 7000,
+  position = 'topRight',
+  type = 'success',
+  ...props
+}: NotificationsProps) => {
+  const resolveProps = genericResolveProps({ type, ...props }, Notification);
 
-    store.subscribe({
-        duration,
-        position,
-        ...resolveProps
-    });
+  store.subscribe({
+    duration,
+    position,
+    ...resolveProps,
+  });
 };
