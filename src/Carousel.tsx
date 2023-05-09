@@ -25,6 +25,7 @@ interface CarouselItem {
 }
 export interface CarouselProps {
   id: string;
+  instanceId: string;
   title?: string;
   itemsVisible: {
     mobile: number;

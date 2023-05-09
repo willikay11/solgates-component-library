@@ -83,6 +83,11 @@ export const SolgatesMenu = ({
     openedRef.current = clickedButton;
   };
 
+  const onCartOpened = () => {
+    const event = new CustomEvent('cartOpened');
+    window.dispatchEvent(event);
+  }
+
   useEffect(() => {
     window.addEventListener('productAdded', () => {
       setNewProductAdded(true);
@@ -313,7 +318,7 @@ export const SolgatesMenu = ({
             </Menu>
             <Menu>
               <div className="relative flex items-center">
-                <Menu.Button className="relative">
+                <Menu.Button className="relative" onClick={() => onCartOpened()}>
                   <ShoppingBagLine
                     className="mr-[10px] cursor-pointer"
                     color={colors.gray['600']}
