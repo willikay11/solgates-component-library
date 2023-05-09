@@ -258,8 +258,9 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                         size={18}
                                     />
                                     <div className="absolute -top-3 right-[8px]">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500">
+                                            <span className="animate-ping absolute inline-flex h-2 w-full rounded-full bg-red-400 opacity-75" />
+                                        </span>
                                     </div>
                                 </Menu.Button>
                                 <Transition
