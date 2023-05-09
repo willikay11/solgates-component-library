@@ -1,31 +1,34 @@
-import React, {ReactNode} from "react";
+import React, { ReactNode } from 'react';
 
 interface menu {
-  key: string,
-  title: string,
-  onClick: () => void,
-  icon: ReactNode,
+  key: string;
+  title: string;
+  onClick: () => void;
+  icon: ReactNode;
 }
 
 export interface SidebarProps {
-  selectedMenuKey: string,
-  menus: menu[]
+  selectedMenuKey: string;
+  menus: menu[];
 }
 
 export const Sidebar = ({ menus, selectedMenuKey }: SidebarProps) => {
-  return(
-      <div className="w-full h-full border-r-[1px] border-gray-200">
-        {
-          menus.map((menu) => (
-              <button
-                  key={menu.key}
-                  onClick={() => menu?.onClick()}
-                  className={`w-full text-left mb-3.5 inline-flex text-xs leading-4 font-normal ${selectedMenuKey === menu.key ? 'text-orange-600 border-r-[1px] border-orange-600' : 'text-gray-600'} hover:text-orange-600`}
-              >
-                <span className="mr-2.5">{menu.icon}</span>{menu.title}
-              </button>
-          ))
-        }
-      </div>
+  return (
+    <div className="w-full h-full border-r-[1px] border-gray-200">
+      {menus.map((menu) => (
+        <button
+          key={menu.key}
+          onClick={() => menu?.onClick()}
+          className={`w-full text-left mb-3.5 inline-flex text-xs leading-4 font-normal ${
+            selectedMenuKey === menu.key
+              ? 'text-orange-600 border-r-[1px] border-orange-600'
+              : 'text-gray-600'
+          } hover:text-orange-600`}
+        >
+          <span className="mr-2.5">{menu.icon}</span>
+          {menu.title}
+        </button>
+      ))}
+    </div>
   );
-}
+};
