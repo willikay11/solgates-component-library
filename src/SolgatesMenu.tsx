@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useRef, ReactNode} from "react";
+import React, {Fragment, useState, useRef, ReactNode, useEffect} from "react";
 import {Menu, Transition, Disclosure} from '@headlessui/react'
 import {
     AccountCircle,
@@ -50,7 +50,7 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
     const buttonRefs = useRef<HTMLButtonElement[]>([]);
     const openedRef = useRef<HTMLButtonElement | null>(null);
     const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
-
+    const [newProductAdded, setNewProductAdded] = useState<boolean>(false);
     const calculateKey = (menuKey: number, multiplicationFactor: number, currentKey: number) => {
         return (menuKey * multiplicationFactor) + currentKey;
     }
@@ -67,6 +67,16 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
         }
         openedRef.current = clickedButton;
     };
+
+    useEffect(() => {
+        window.addEventListener('productAdded', () => {
+            setNewProductAdded(true);
+        });
+
+        window.addEventListener('cartOpened', () => {
+            setNewProductAdded(false);
+        });
+    },[]);
 
     return (
         <>
@@ -257,11 +267,14 @@ export const SolgatesMenu = ({ menus, logoUrl, onLogoClick, userContent, onClick
                                         color={colors.gray["600"]}
                                         size={18}
                                     />
-                                    <div className="absolute -top-3 right-[8px]">
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500">
-                                            <span className="animate-ping absolute inline-flex h-2 w-full rounded-full bg-red-400 opacity-75" />
-                                        </span>
-                                    </div>
+                                    {
+                                        newProductAdded &&
+                                        <div className="absolute -top-3 right-[8px]">
+                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500">
+                                                <span className="animate-ping absolute inline-flex h-2 w-full rounded-full bg-red-400 opacity-75" />
+                                            </span>
+                                        </div>
+                                    }
                                 </Menu.Button>
                                 <Transition
                                     as={Fragment}
