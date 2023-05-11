@@ -11,10 +11,15 @@ export interface TabsProps {
   items: item[];
   defaultActiveKey?: number;
   onChange?: (activeKey: number) => void;
-  tabWidth?: 'full' | 'contain'
+  tabWidth?: 'full' | 'contain';
 }
 
-export const Tabs = ({ defaultActiveKey, items, onChange, tabWidth = 'full' }: TabsProps) => {
+export const Tabs = ({
+  defaultActiveKey,
+  items,
+  onChange,
+  tabWidth = 'full',
+}: TabsProps) => {
   return (
     <Tab.Group
       defaultIndex={defaultActiveKey}
@@ -25,7 +30,9 @@ export const Tabs = ({ defaultActiveKey, items, onChange, tabWidth = 'full' }: T
           {items.map((item, index) => (
             <Tab
               key={index}
-              className={`outline-0 ${tabWidth === 'full' ? 'flex flex-row flex-1' : 'mr-3.5'}`}
+              className={`outline-0 ${
+                tabWidth === 'full' ? 'flex flex-row flex-1' : 'mr-3.5'
+              }`}
               disabled={item.disabled}
             >
               {({ selected }) => (
