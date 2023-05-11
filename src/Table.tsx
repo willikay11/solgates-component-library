@@ -26,6 +26,7 @@ export interface TableProps {
   currentPage?: number;
   pageSize?: number;
   total?: number;
+  border?: 'bordered' | 'borderless'
 }
 
 export const Table = ({
@@ -37,6 +38,7 @@ export const Table = ({
   currentPage = 1,
   pageSize = 10,
   total = 0,
+  border = 'bordered'
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
@@ -67,9 +69,9 @@ export const Table = ({
   }, [data]);
 
   return (
-    <div className="rounded border-[1px] border-gray-200 bg-white">
+    <div className={`${border === 'bordered' ? 'rounded border-[1px] border-gray-200' : ''} bg-white`}>
       {(tableTitle || extraContent) && (
-        <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px] justify-between">
+        <div className={`flex flex-row border-b-[1px] border-gray-200 ${border === 'bordered' ? 'px-[15px]' : ''} py-[15px] justify-between`}>
           <span className="text-sm leading-4 font-semibold text-gray-800">
             {tableTitle}
           </span>
@@ -86,7 +88,7 @@ export const Table = ({
                   key={header.id}
                   className={`text-xs leading-4 font-semibold text-gray-600 border-b-[1px] border-gray-200 py-[15px] py-[15px] ${
                     index === 0
-                      ? 'pl-[15px]'
+                      ? border === 'bordered' ? 'pl-[15px]' : ''
                       : headerGroup.headers.length - 1 === index
                       ? ''
                       : 'pr-[15px]'
@@ -114,7 +116,7 @@ export const Table = ({
                 <td
                   className={`py-[15px] ${
                     index === 0
-                      ? 'pl-[15px]'
+                      ? border === 'bordered' ? 'pl-[15px]' : ''
                       : row.getVisibleCells.length - 1 === index
                       ? ''
                       : 'pr-[15px]'
@@ -144,7 +146,7 @@ export const Table = ({
           ))}
         </tfoot>
       </table>
-      <div className="flex flex-row  p-[15px] justify-between">
+      <div className={`flex flex-row ${border === 'bordered' ? 'px-[15px]' : ''} py-[15px] justify-between`}>
         <div>
           <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
             Showing
