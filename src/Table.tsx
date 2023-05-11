@@ -26,7 +26,8 @@ export interface TableProps {
   currentPage?: number;
   pageSize?: number;
   total?: number;
-  border?: 'bordered' | 'borderless'
+  border?: 'bordered' | 'borderless',
+  noContent?: ReactNode,
 }
 
 export const Table = ({
@@ -38,7 +39,8 @@ export const Table = ({
   currentPage = 1,
   pageSize = 10,
   total = 0,
-  border = 'bordered'
+  border = 'bordered',
+  noContent
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
@@ -105,30 +107,38 @@ export const Table = ({
             </tr>
           ))}
         </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr
-              key={row.id}
-              onClick={() => onRowClick?.(row?.original)}
-              className="text-xs leading-4 font-normal text-gray-800 border-b-[1px] border-gray-200 cursor-pointer"
-            >
-              {row.getVisibleCells().map((cell, index) => (
-                <td
-                  className={`py-[15px] ${
-                    index === 0
-                      ? border === 'bordered' ? 'pl-[15px]' : ''
-                      : row.getVisibleCells.length - 1 === index
-                      ? ''
-                      : 'pr-[15px]'
-                  }`}
-                  key={cell.id}
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
+        {
+          data.length > 0 ? (
+              <tbody>
+              {table.getRowModel().rows.map((row) => (
+                  <tr
+                      key={row.id}
+                      onClick={() => onRowClick?.(row?.original)}
+                      className="text-xs leading-4 font-normal text-gray-800 border-b-[1px] border-gray-200 cursor-pointer"
+                  >
+                    {row.getVisibleCells().map((cell, index) => (
+                        <td
+                            className={`py-[15px] ${
+                                index === 0
+                                    ? border === 'bordered' ? 'pl-[15px]' : ''
+                                    : row.getVisibleCells.length - 1 === index
+                                        ? ''
+                                        : 'pr-[15px]'
+                            }`}
+                            key={cell.id}
+                        >
+                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        </td>
+                    ))}
+                  </tr>
               ))}
-            </tr>
-          ))}
-        </tbody>
+              </tbody>
+          ) : (
+              <div className="flex items-center justify-center my-4">
+                {noContent}
+              </div>
+          )
+        }
         <tfoot>
           {table.getFooterGroups().map((footerGroup) => (
             <tr key={footerGroup.id}>
@@ -152,13 +162,13 @@ export const Table = ({
             Showing
           </span>
           <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">
-            {currentPage * pageSize}
+            {(currentPage * pageSize) - (pageSize - 1)}
           </span>
           <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
             to
           </span>
           <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">
-            {pageSize}
+            {(pageSize * currentPage) <= total ? (pageSize * currentPage) : total}
           </span>
           <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
             of
