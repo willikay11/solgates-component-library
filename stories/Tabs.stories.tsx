@@ -188,7 +188,7 @@ const Template: Story<TabsProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   defaultActiveKey: 2,
-    tabWidth: 'contain',
+  tabWidth: 'contain',
   items: [
     { label: 'Sign In', content: signIn },
     { label: 'Sign Up', content: signUp },
