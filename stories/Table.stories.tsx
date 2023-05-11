@@ -22,6 +22,8 @@ const Template: Story<TableProps> = (args) => <Table {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   tableTitle: 'Recent Orders',
+  total: 24,
+  currentPage: 3,
   extraContent: (
     <Button onClick={() => console.log('clicked')} type={ButtonTypes.link}>
       View Orders
