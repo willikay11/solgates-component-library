@@ -20,7 +20,7 @@ export const Checkbox = ({
   defaultChecked,
 }: CheckboxProps) => {
   return (
-    <div className="flex items-start items-center">
+    <div className="flex items-start items-start">
       <input
         disabled={disabled}
         type="checkbox"

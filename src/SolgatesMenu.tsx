@@ -44,6 +44,7 @@ export interface SolgatesMenuProps {
   shoppingCartContent: ReactNode;
   phoneNumber: string;
   isLoggedIn: boolean;
+  userName?: string;
 }
 
 export const SolgatesMenu = ({
@@ -57,6 +58,7 @@ export const SolgatesMenu = ({
   phoneNumber,
   onOpenShopClick,
   isLoggedIn,
+    userName
 }: SolgatesMenuProps) => {
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
   const openedRef = useRef<HTMLButtonElement | null>(null);
@@ -277,11 +279,14 @@ export const SolgatesMenu = ({
               <div className="relative flex items-center">
                 <Menu.Button>
                   {isLoggedIn ? (
-                    <AccountCircle
-                      className="mr-[10px] cursor-pointer"
-                      color={colors.blue['500']}
-                      size={20}
-                    />
+                      <>
+                        <AccountCircle
+                            className="mr-[10px] cursor-pointer"
+                            color={colors.blue['500']}
+                            size={20}
+                        />
+                        <p className="text-xs font-normal leading-4 text-gray-800">Hi ${userName},</p>
+                      </>
                   ) : (
                     <User6Line
                       className="mr-[10px] cursor-pointer"
