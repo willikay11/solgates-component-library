@@ -58,7 +58,7 @@ export const SolgatesMenu = ({
   phoneNumber,
   onOpenShopClick,
   isLoggedIn,
-    userName
+  userName,
 }: SolgatesMenuProps) => {
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
   const openedRef = useRef<HTMLButtonElement | null>(null);
@@ -88,7 +88,7 @@ export const SolgatesMenu = ({
   const onCartOpened = () => {
     const event = new CustomEvent('cartOpened');
     window.dispatchEvent(event);
-  }
+  };
 
   useEffect(() => {
     window.addEventListener('productAdded', () => {
@@ -199,7 +199,7 @@ export const SolgatesMenu = ({
           className="hidden md:grid lg:grid grid-cols-12 w-full"
           style={{ height: 'calc(128px - 25px)' }}
         >
-          <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-6 inline-flex">
+          <div className="md:col-start-2 md:col-span-7 lg:col-start-3 lg:col-span-6 inline-flex">
             <img
               src={logoUrl}
               className="w-[90px] mr-[30px] cursor-pointer"
@@ -274,19 +274,21 @@ export const SolgatesMenu = ({
               );
             })}
           </div>
-          <div className="col-span-2 inline-flex items-center justify-end">
+          <div className="col-span-3 inline-flex items-center justify-end">
             <Menu>
               <div className="relative flex items-center">
                 <Menu.Button>
                   {isLoggedIn ? (
-                      <>
-                        <AccountCircle
-                            className="mr-[10px] cursor-pointer"
-                            color={colors.blue['500']}
-                            size={20}
-                        />
-                        <p className="text-xs font-normal leading-4 text-gray-800">Hi ${userName},</p>
-                      </>
+                    <div className="flex flex-row mr-1.5 items-center">
+                      <AccountCircle
+                        className="mr-[5px] cursor-pointer"
+                        color={colors.blue['500']}
+                        size={20}
+                      />
+                      <p className="text-xs font-normal leading-4 text-gray-800 truncate w-[60px]">
+                        Hi, {userName}
+                      </p>
+                    </div>
                   ) : (
                     <User6Line
                       className="mr-[10px] cursor-pointer"
@@ -323,7 +325,10 @@ export const SolgatesMenu = ({
             </Menu>
             <Menu>
               <div className="relative flex items-center">
-                <Menu.Button className="relative" onClick={() => onCartOpened()}>
+                <Menu.Button
+                  className="relative"
+                  onClick={() => onCartOpened()}
+                >
                   <ShoppingBagLine
                     className="mr-[10px] cursor-pointer"
                     color={colors.gray['600']}

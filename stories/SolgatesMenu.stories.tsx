@@ -27,6 +27,8 @@ Default.args = {
     'https://user-images.githubusercontent.com/19513808/210572075-f131c86f-8117-4d0e-b839-ec79fdae516c.svg',
   onLogoClick: () => console.log('Clicked logo'),
   phoneNumber: '+254 706020966',
+  userName: 'William Kamau Kamuyu',
+  isLoggedIn: true,
   menus: [
     {
       key: 1,
