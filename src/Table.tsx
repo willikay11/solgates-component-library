@@ -26,6 +26,7 @@ export interface TableProps {
   currentPage?: number;
   pageSize?: number;
   total?: number;
+  border?: 'bordered' | 'borderless'
 }
 
 export const Table = ({
@@ -37,6 +38,7 @@ export const Table = ({
   currentPage = 1,
   pageSize = 10,
   total = 0,
+  border = 'bordered'
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
@@ -67,7 +69,7 @@ export const Table = ({
   }, [data]);
 
   return (
-    <div className="rounded border-[1px] border-gray-200 bg-white">
+    <div className={`${border === 'bordered' ? 'rounded border-[1px] border-gray-200' : ''} bg-white`}>
       {(tableTitle || extraContent) && (
         <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px] justify-between">
           <span className="text-sm leading-4 font-semibold text-gray-800">
