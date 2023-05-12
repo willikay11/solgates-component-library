@@ -12,10 +12,11 @@ export interface ModalProps {
   children: ReactNode;
   position?: MODAL_POSITION.CENTER | MODAL_POSITION.BOTTOM | MODAL_POSITION.TOP;
   widthClass?: string;
+  heightClass?: string;
   roundedBorder?: string;
 }
 
-export const Modal = ({ open, onClose, children, position, widthClass = 'w-96', roundedBorder = 'rounded-[10px]' }: ModalProps) => {
+export const Modal = ({ open, onClose, children, position, widthClass = 'w-96', heightClass, roundedBorder = 'rounded-[10px]' }: ModalProps) => {
   let positionClass = 'inset-0';
 
   if (position === MODAL_POSITION.TOP) {
@@ -51,7 +52,7 @@ export const Modal = ({ open, onClose, children, position, widthClass = 'w-96', 
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className={`${widthClass} ${roundedBorder} transform overflow-hidden bg-white p-[20px] text-left align-middle transition-all`}>
+              <Dialog.Panel className={`${widthClass} ${roundedBorder} ${heightClass} transform overflow-hidden bg-white p-[20px] text-left align-middle transition-all`}>
                 {children}
               </Dialog.Panel>
             </Transition.Child>
