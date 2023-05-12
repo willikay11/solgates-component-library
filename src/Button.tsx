@@ -126,7 +126,7 @@ export const Button = ({
       style={{ ...style }}
       name={name}
       value={value}
-      className={`${bg} text-xs inline-flex items-center justify-center ${height} ${padding} rounded ${
+      className={`${bg} text-xs inline-flex items-center justify-center disabled:opacity-50 ${height} ${padding} rounded ${
         loading ? 'cursor-not-allowed' : 'cursor-pointer'
       } ${width} ${className}`}
     >
