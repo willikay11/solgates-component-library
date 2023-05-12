@@ -358,7 +358,7 @@ export const SolgatesMenu = ({
                 </Transition>
               </div>
             </Menu>
-            <div onClick={() => onSearchClick}>
+            <div onClick={() => onSearchClick()}>
               <Search2Line
                 className="mr-[10px] cursor-pointer"
                 color={colors.gray['600']}
