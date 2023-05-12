@@ -11,9 +11,11 @@ export interface ModalProps {
   onClose: () => void;
   children: ReactNode;
   position?: MODAL_POSITION.CENTER | MODAL_POSITION.BOTTOM | MODAL_POSITION.TOP;
+  widthClass?: string;
+  roundedBorder?: string;
 }
 
-export const Modal = ({ open, onClose, children, position }: ModalProps) => {
+export const Modal = ({ open, onClose, children, position, widthClass = 'w-96', roundedBorder = 'rounded-[10px]' }: ModalProps) => {
   let positionClass = 'inset-0';
 
   if (position === MODAL_POSITION.TOP) {
@@ -37,8 +39,9 @@ export const Modal = ({ open, onClose, children, position }: ModalProps) => {
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
+        <Dialog.Overlay className="blur-sm fixed inset-0" />
         <div className={`fixed ${positionClass} overflow-y-auto`}>
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="flex min-h-full items-center justify-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -48,7 +51,7 @@ export const Modal = ({ open, onClose, children, position }: ModalProps) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-96 max-w-md transform overflow-hidden rounded-[10px] bg-white p-[20px] text-left align-middle transition-all">
+              <Dialog.Panel className={`${widthClass} ${roundedBorder} transform overflow-hidden bg-white p-[20px] text-left align-middle transition-all`}>
                 {children}
               </Dialog.Panel>
             </Transition.Child>

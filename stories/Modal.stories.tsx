@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
-  Button,
-  ButtonTypes,
-  IconContainer,
-  Modal,
-  ModalProps,
-  User6Line,
+    Button,
+    ButtonTypes,
+    IconContainer,
+    Modal, MODAL_POSITION,
+    ModalProps,
+    User6Line,
 } from '../src';
 import colors from 'tailwindcss/colors';
 
@@ -24,6 +24,9 @@ export const Default = Template.bind({});
 Default.args = {
   open: true,
   onClose: () => console.log(false),
+  position: MODAL_POSITION.TOP,
+  widthClass: 'w-full',
+  roundedBorder: 'rounded-[0px]',
   children: (
     <div className="flex flex-col justify-center items-center">
       <IconContainer bgColor="bg-red-50" borderRadius="rounded-full">
