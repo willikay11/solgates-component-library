@@ -11,7 +11,6 @@ import {
   ShoppingBagLine,
   User6Line,
 } from './Icons';
-import { Input } from './Input';
 import colors from './Colors';
 import { Modal, MODAL_POSITION } from './Modal';
 
@@ -42,6 +41,7 @@ export interface SolgatesMenuProps {
   onClickMenuItem: (id: string) => void;
   onOpenShopClick: () => void;
   shoppingCartContent: ReactNode;
+  onSearchClick: () => void;
   phoneNumber: string;
   isLoggedIn: boolean;
   userName?: string;
@@ -54,6 +54,7 @@ export const SolgatesMenu = ({
   userContent,
   onClickWishList,
   onClickMenuItem,
+  onSearchClick,
   shoppingCartContent,
   phoneNumber,
   onOpenShopClick,
@@ -274,7 +275,7 @@ export const SolgatesMenu = ({
               );
             })}
           </div>
-          <div className="col-span-3 inline-flex items-center justify-end">
+          <div className="col-span-2 inline-flex items-center justify-end">
             <Menu>
               <div className="relative flex items-center">
                 <Menu.Button>
@@ -357,16 +358,18 @@ export const SolgatesMenu = ({
                 </Transition>
               </div>
             </Menu>
-            <Search2Line
-              className="mr-[10px] lg:hidden"
-              color={colors.gray['600']}
-              size={18}
-            />
-            <Input.Text
-              className="md:hidden lg:flex h-[36px] rounded-[68px] w-[135px] bg-gray-50"
-              placeholder="Search"
-              prefixIcon={<Search2Line size={14} color={colors.gray['400']} />}
-            />
+            <div onClick={() => onSearchClick}>
+              <Search2Line
+                className="mr-[10px] cursor-pointer"
+                color={colors.gray['600']}
+                size={18}
+              />
+            </div>
+            {/*<Input.Text*/}
+            {/*  className="md:hidden lg:flex h-[36px] rounded-[68px] w-[135px] bg-gray-50"*/}
+            {/*  placeholder="Search"*/}
+            {/*  prefixIcon={<Search2Line size={14} color={colors.gray['400']} />}*/}
+            {/*/>*/}
           </div>
         </div>
         <div className="mx-3 flex md:hidden lg:hidden items-center h-[40px]">
