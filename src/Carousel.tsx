@@ -30,6 +30,7 @@ export interface CarouselProps {
     | ARROW_POSITION.topRight
     | ARROW_POSITION.center;
   items: CarouselItem[];
+  showDots?: boolean;
 }
 
 export const Carousel = ({
@@ -38,6 +39,7 @@ export const Carousel = ({
   arrowPosition,
   title,
   id,
+  showDots = true,
 }: CarouselProps) => {
   const [viewableItemCount, setViewableItemCount] = useState(4);
   const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
@@ -170,25 +172,32 @@ export const Carousel = ({
           </div>
         ))}
       </div>
-      <div className="absolute bottom-[30px] flex flex-row w-full justify-center">
-        {items.map((_, index) => (
-          <div className="cursor-pointer mr-1" onClick={() => {
-            if (index > lastVisibleItem) {
-              handleClickScroll('next', lastVisibleItem + index);
-            } else {
-              handleClickScroll('prev', lastVisibleItem - index);
-            }
-          }}>
-            <CheckboxBlankCircleFill
-              key={index}
-              size={12}
-              color={
-                index === lastVisibleItem ? colors.orange['600'] : colors.white
-              }
-            />
-          </div>
-        ))}
-      </div>
+      {showDots && (
+        <div className="absolute bottom-[30px] flex flex-row w-full justify-center">
+          {items.map((_, index) => (
+            <div
+              className="cursor-pointer mr-1"
+              onClick={() => {
+                if (index > lastVisibleItem) {
+                  handleClickScroll('next', lastVisibleItem + index);
+                } else {
+                  handleClickScroll('prev', lastVisibleItem - index);
+                }
+              }}
+            >
+              <CheckboxBlankCircleFill
+                key={index}
+                size={12}
+                color={
+                  index === lastVisibleItem
+                    ? colors.orange['600']
+                    : colors.white
+                }
+              />
+            </div>
+          ))}
+        </div>
+      )}
       {showButtons && (
         <div className={`flex flex-row ${position}`}>
           <button
