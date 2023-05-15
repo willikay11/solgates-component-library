@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<NumberInputProps> = args => <Input.Number {...args} />;
+const Template: Story<NumberInputProps> = (args) => <Input.Number {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

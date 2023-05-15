@@ -108,7 +108,7 @@ export const SolgatesMenu = ({
         onClose={() => setOpenMobileMenu(false)}
         position={MODAL_POSITION.BOTTOM}
       >
-        {menus.map(menu => (
+        {menus.map((menu) => (
           <Disclosure key={menu.key}>
             {({ open }) => (
               <>
@@ -206,7 +206,7 @@ export const SolgatesMenu = ({
               className="w-[90px] mr-[30px] cursor-pointer"
               onClick={() => onLogoClick()}
             />
-            {menus.map(menu => {
+            {menus.map((menu) => {
               if (menu?.category?.length) {
                 return (
                   <Menu
@@ -241,7 +241,7 @@ export const SolgatesMenu = ({
                                     <p className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500">
                                       {category.label}
                                     </p>
-                                    {category.items.map(item => (
+                                    {category.items.map((item) => (
                                       <Menu.Item key={key}>
                                         <button
                                           className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full"

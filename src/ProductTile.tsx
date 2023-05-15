@@ -95,7 +95,7 @@ export const ProductTile = ({
                       src={carouselImage}
                       doNotReplaceURL
                       alt="Product image"
-                      className="border-r-[5px]"
+                      className="rounded-[5px]"
                     />
                   </CloudimageProvider>
                 ),
@@ -104,13 +104,18 @@ export const ProductTile = ({
           />
         ) : (
           <CloudimageProvider config={cloudImageConfig}>
-            <Img src={imageUrl} doNotReplaceURL alt="Product image" />
+            <Img
+              src={imageUrl}
+              doNotReplaceURL
+              alt="Product image"
+              className="rounded-[5px]"
+            />
           </CloudimageProvider>
         )}
         {type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL ? (
           inWishList ? (
             <div
-              onClick={event => {
+              onClick={(event) => {
                 event.stopPropagation();
                 removeFromWishList();
               }}
@@ -123,7 +128,7 @@ export const ProductTile = ({
             </div>
           ) : (
             <div
-              onClick={event => {
+              onClick={(event) => {
                 event.stopPropagation();
                 addToWishList();
               }}

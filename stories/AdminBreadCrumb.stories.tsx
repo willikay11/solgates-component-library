@@ -9,7 +9,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<BreadCrumbsProps> = args => (
+const Template: Story<BreadCrumbsProps> = (args) => (
   <BreadCrumbs.admin {...args} />
 );
 

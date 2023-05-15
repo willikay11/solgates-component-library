@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<TextAreaInputProps> = args => (
+const Template: Story<TextAreaInputProps> = (args) => (
   <Input.TextArea {...args} />
 );
 
