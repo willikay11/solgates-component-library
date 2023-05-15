@@ -32,6 +32,7 @@ Products.args = {
   onAddToWishList: () => {
     console.log('added to wishlist');
   },
+  type: PRODUCT_TYPE.PRODUCT,
 };
 
 export const Product = Template.bind({});

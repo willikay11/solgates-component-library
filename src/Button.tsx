@@ -8,6 +8,7 @@ export enum ButtonTypes {
   primary_blue_600 = 'primary-blue-600',
   primary_gray_800 = 'primary-gray-800',
   primary_orange_200 = 'primary-orange-200',
+  text = 'text'
 }
 
 export interface ButtonProps {
@@ -20,7 +21,8 @@ export interface ButtonProps {
     | ButtonTypes.link
     | ButtonTypes.primary_blue_600
     | ButtonTypes.primary_gray_800
-    | ButtonTypes.primary_orange_200;
+    | ButtonTypes.primary_orange_200
+    | ButtonTypes.text;
   loading?: boolean;
   disabled?: boolean;
   ghost?: boolean;
@@ -89,6 +91,13 @@ export const Button = ({
     color = 'orange-200';
     bg = `bg-orange-200 text-orange-600`;
   }
+
+  if (type === ButtonTypes.text) {
+    padding = 'p-0';
+    height = 'h-auto';
+    bg = `bg-transparent`;
+  }
+
 
   if (block) {
     width = 'w-full';

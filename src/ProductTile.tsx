@@ -1,10 +1,11 @@
 // @ts-nocheck
-import React, { useId, useState } from 'react';
-import Img, { CloudimageProvider } from 'react-cloudimage-responsive';
-import Carousel, { ARROW_POSITION } from './Carousel';
-import { Heart3Line, Heart3LineFill } from './Icons';
+import React, {useId, useState} from 'react';
+import Img, {CloudimageProvider} from 'react-cloudimage-responsive';
+import Carousel, {ARROW_POSITION} from './Carousel';
+import {Heart3Line, Heart3LineFill} from './Icons';
 import colors from './Colors';
-import { Button, ButtonTypes } from './Button';
+import {Button, ButtonTypes} from './Button';
+import {PopOver} from './PopOver';
 
 const cloudImageConfig = {
   token: 'cyqqqhlxia',
@@ -39,6 +40,8 @@ export interface ProductTileProps {
   onClickShop?: () => void;
   releaseDate?: string;
   carouselImages?: string[];
+  onAddToCart?: () => void;
+  addingToCart?: boolean;
 }
 
 export const ProductTile = ({
@@ -56,6 +59,8 @@ export const ProductTile = ({
   onAddToWishList,
   onRemoveFromWishlist,
   carouselImages,
+    onAddToCart,
+    addingToCart = false
 }: ProductTileProps) => {
   const [inWishList, setInWishlist] = useState<boolean>(
     addedToWishList || false
@@ -162,12 +167,28 @@ export const ProductTile = ({
           </div>
         ) : null}
       </div>
-      {type === PRODUCT_TYPE.PRODUCTS ||
-        (type === PRODUCT_TYPE.CAROUSEL && (
+      {(type === PRODUCT_TYPE.PRODUCTS ||
+        type === PRODUCT_TYPE.CAROUSEL) && (
           <div className="mt-2.5">
-            <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">
-              {name}
-            </p>
+            <PopOver
+              type="primary"
+              content={
+                <div className="flex flex-col items-start justify-center">
+                  <Button
+                    onClick={() => onAddToCart?.()}
+                    loading={addingToCart}
+                    type={ButtonTypes.text}
+                    className="bg-transparent text-white"
+                  >
+                    Add To Cart
+                  </Button>
+                </div>
+              }
+            >
+              <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">
+                {name}
+              </p>
+            </PopOver>
             <div>
               {smallDescription && (
                 <span className="text-xs leading-4 font-normal mt-1.5 text-gray-500">
@@ -195,7 +216,7 @@ export const ProductTile = ({
               {price}
             </p>
           </div>
-        ))}
+        )}
     </div>
   );
 };
