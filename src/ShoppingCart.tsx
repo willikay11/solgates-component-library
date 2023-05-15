@@ -42,7 +42,7 @@ export const ShoppingCart = ({
 }: ShoppingCartProps) => {
   return (
     <div className="flex flex-col">
-      {products.map(product => (
+      {products.map((product) => (
         <div key={product.id} className="grid gap-2 grid-cols-6 mb-[15px]">
           <div
             className={type === CART_TYPE.small ? 'col-span-2' : 'col-span-1'}

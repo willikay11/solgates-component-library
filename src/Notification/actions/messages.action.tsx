@@ -49,7 +49,7 @@ const messageLoading = ({
   ),
   ...props
 }: MessagesProps) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const resolveProps = genericResolveProps({ type, icon, ...props }, Message);
 
     store.subscribe({

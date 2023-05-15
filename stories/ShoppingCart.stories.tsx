@@ -9,7 +9,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ShoppingCartProps> = args => (
+const Template: Story<ShoppingCartProps> = (args) => (
   <div className="w-96">
     <Card>
       <ShoppingCart {...args} />

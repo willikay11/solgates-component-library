@@ -9,7 +9,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<PopOverProps> = args => <PopOver {...args} />;
+const Template: Story<PopOverProps> = (args) => <PopOver {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

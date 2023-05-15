@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<TagProps> = args => <Tag {...args} />;
+const Template: Story<TagProps> = (args) => <Tag {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

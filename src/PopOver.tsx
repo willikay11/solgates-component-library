@@ -27,10 +27,8 @@ export const PopOver = ({
   type = 'default',
   placement = 'bottom',
 }: PopOverProps) => {
-  let [
-    referenceElement,
-    setReferenceElement,
-  ] = useState<HTMLButtonElement | null>(null);
+  let [referenceElement, setReferenceElement] =
+    useState<HTMLButtonElement | null>(null);
   let [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   let { styles, attributes } = usePopper(referenceElement, popperElement, {
     strategy: 'fixed',

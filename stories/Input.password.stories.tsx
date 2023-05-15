@@ -11,7 +11,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<PasswordInputProps> = args => (
+const Template: Story<PasswordInputProps> = (args) => (
   <Input.Password {...args} />
 );
 
@@ -23,7 +23,7 @@ Default.args = {
       <User6Line color={colors.red['500']} />
     </IconContainer>
   ),
-  iconRender: visible =>
+  iconRender: (visible) =>
     visible ? (
       <User6Line color={colors.red['500']} />
     ) : (

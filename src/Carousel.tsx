@@ -136,7 +136,7 @@ export const Carousel = ({
             >
               <button
                 className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
-                onClick={event => {
+                onClick={(event) => {
                   event.stopPropagation();
                   handleClickScroll('prev');
                 }}
@@ -145,7 +145,7 @@ export const Carousel = ({
               </button>
               <button
                 className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
-                onClick={event => {
+                onClick={(event) => {
                   event.stopPropagation();
                   handleClickScroll('next');
                 }}
@@ -203,7 +203,7 @@ export const Carousel = ({
         <div className={`flex flex-row ${position}`}>
           <button
             className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
-            onClick={event => {
+            onClick={(event) => {
               event.stopPropagation();
               handleClickScroll('prev');
             }}
@@ -212,7 +212,7 @@ export const Carousel = ({
           </button>
           <button
             className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
-            onClick={event => {
+            onClick={(event) => {
               event.stopPropagation();
               handleClickScroll('next');
             }}

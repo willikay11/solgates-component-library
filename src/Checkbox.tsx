@@ -27,7 +27,7 @@ export const Checkbox = ({
         id={id}
         name={name}
         value={value}
-        onChange={event => onChange?.(event)}
+        onChange={(event) => onChange?.(event)}
         defaultChecked={defaultChecked}
         className={`${
           disabled ? 'cursor-not-allowed' : 'cursor-pointer'

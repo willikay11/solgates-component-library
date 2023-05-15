@@ -18,7 +18,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ModalProps> = args => <Modal {...args} />;
+const Template: Story<ModalProps> = (args) => <Modal {...args} />;
 
 // const [open, setOpen] = useState<boolean>(false);
 export const Default = Template.bind({});

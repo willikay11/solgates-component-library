@@ -9,7 +9,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<SidebarProps> = args => (
+const Template: Story<SidebarProps> = (args) => (
   <div className="h-screen grid grid-cols-12 gap-4">
     <div className="col-span-2">
       <Sidebar {...args} />

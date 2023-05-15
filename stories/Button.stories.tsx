@@ -15,7 +15,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ButtonProps> = args => (
+const Template: Story<ButtonProps> = (args) => (
   <Button {...args}>Click Me</Button>
 );
 

@@ -23,7 +23,7 @@ export const Tabs = ({
   return (
     <Tab.Group
       defaultIndex={defaultActiveKey}
-      onChange={index => onChange?.(index)}
+      onChange={(index) => onChange?.(index)}
     >
       <Tab.List>
         <div className="flex border-b border-b-gray-200 mb-2.5">
