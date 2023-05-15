@@ -157,7 +157,7 @@ export const Carousel = ({
         ))}
       <div
         id="carousel-item"
-        className="grid overflow-hidden gap-2 pb-4"
+        className="grid overflow-hidden gap-2"
         style={{
           gridTemplateColumns: `repeat(${items.length}, ${gridPercentage}%)`,
         }}
@@ -173,11 +173,12 @@ export const Carousel = ({
         ))}
       </div>
       {showDots && (
-        <div className="absolute bottom-[30px] flex flex-row w-full justify-center">
+        <div className="absolute bottom-[15px] flex flex-row w-full justify-center">
           {items.map((_, index) => (
             <div
               className="cursor-pointer mr-1"
-              onClick={() => {
+              onClick={(event) => {
+                event.stopPropagation();
                 if (index > lastVisibleItem) {
                   handleClickScroll('next', index - lastVisibleItem);
                 } else {
@@ -187,7 +188,7 @@ export const Carousel = ({
             >
               <CheckboxBlankCircleFill
                 key={index}
-                size={12}
+                size={10}
                 color={
                   index === lastVisibleItem
                     ? colors.orange['600']

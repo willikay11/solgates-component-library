@@ -95,6 +95,7 @@ export const ProductTile = ({
                       src={carouselImage}
                       doNotReplaceURL
                       alt="Product image"
+                      className="border-r-[5px]"
                     />
                   </CloudimageProvider>
                 ),
