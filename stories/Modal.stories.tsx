@@ -1,12 +1,13 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
-    Button,
-    ButtonTypes,
-    IconContainer,
-    Modal, MODAL_POSITION,
-    ModalProps,
-    User6Line,
+  Button,
+  ButtonTypes,
+  IconContainer,
+  Modal,
+  MODAL_POSITION,
+  ModalProps,
+  User6Line,
 } from '../src';
 import colors from 'tailwindcss/colors';
 
@@ -17,7 +18,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ModalProps> = (args) => <Modal {...args} />;
+const Template: Story<ModalProps> = args => <Modal {...args} />;
 
 // const [open, setOpen] = useState<boolean>(false);
 export const Default = Template.bind({});

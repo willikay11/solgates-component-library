@@ -1,18 +1,10 @@
 import React, { useState, useEffect, ReactNode } from 'react';
-import { ArrowLeftSLine, ArrowRightSLine } from './Icons';
+import {
+  ArrowLeftSLine,
+  ArrowRightSLine,
+  CheckboxBlankCircleFill,
+} from './Icons';
 import colors from './Colors';
-
-//generates random id;
-// const guid = () => {
-//     let s4 = () => {
-//         return Math.floor((1 + Math.random()) * 0x10000)
-//             .toString(16)
-//             .substring(1);
-//     }
-//     return s4();
-// }
-
-// const id = guid();
 
 export enum ARROW_POSITION {
   bottomLeft = 'bottomLeft',
@@ -38,6 +30,7 @@ export interface CarouselProps {
     | ARROW_POSITION.topRight
     | ARROW_POSITION.center;
   items: CarouselItem[];
+  showDots?: boolean;
 }
 
 export const Carousel = ({
@@ -46,6 +39,7 @@ export const Carousel = ({
   arrowPosition,
   title,
   id,
+  showDots = true,
 }: CarouselProps) => {
   const [viewableItemCount, setViewableItemCount] = useState(4);
   const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
@@ -80,18 +74,18 @@ export const Carousel = ({
     handleWindowSizeChange();
   }, []);
 
-  const handleClickScroll = (type: 'prev' | 'next') => {
+  const handleClickScroll = (type: 'prev' | 'next', moveBy: number = 1) => {
     let scrollTo = lastVisibleItem;
     if (type === 'prev') {
       if (lastVisibleItem !== 0) {
-        scrollTo = lastVisibleItem - 1;
+        scrollTo = lastVisibleItem - moveBy;
       }
     } else {
       if (
         lastVisibleItem < items.length - viewableItemCount &&
-        lastVisibleItem !== items.length - 1
+        lastVisibleItem !== items.length - moveBy
       ) {
-        scrollTo = lastVisibleItem + 1;
+        scrollTo = lastVisibleItem + moveBy;
       }
     }
     setLastVisibleItem(scrollTo);
@@ -125,38 +119,45 @@ export const Carousel = ({
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
     >
-      <div className={`flex flex-row justify-between mb-2.5`}>
-        {title && (
-          <p className="text-xl leading-7 font-normal text-gray-800">{title}</p>
-        )}
-        <div
-          className={`${
-            arrowPosition === ARROW_POSITION.topRight ? 'inline-flex' : 'hidden'
-          }`}
-        >
-          <button
-            className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
-            onClick={(event) => {
-              event.stopPropagation();
-              handleClickScroll('prev');
-            }}
-          >
-            <ArrowLeftSLine size={14} color={colors.orange['600']} />
-          </button>
-          <button
-            className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
-            onClick={(event) => {
-              event.stopPropagation();
-              handleClickScroll('next');
-            }}
-          >
-            <ArrowRightSLine size={14} color={colors.orange['600']} />
-          </button>
-        </div>
-      </div>
+      {title ||
+        (arrowPosition === ARROW_POSITION.topRight && (
+          <div className={`flex flex-row justify-between mb-2.5`}>
+            {title && (
+              <p className="text-xl leading-7 font-normal text-gray-800">
+                {title}
+              </p>
+            )}
+            <div
+              className={`${
+                arrowPosition === ARROW_POSITION.topRight
+                  ? 'inline-flex'
+                  : 'hidden'
+              }`}
+            >
+              <button
+                className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+                onClick={event => {
+                  event.stopPropagation();
+                  handleClickScroll('prev');
+                }}
+              >
+                <ArrowLeftSLine size={14} color={colors.orange['600']} />
+              </button>
+              <button
+                className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+                onClick={event => {
+                  event.stopPropagation();
+                  handleClickScroll('next');
+                }}
+              >
+                <ArrowRightSLine size={14} color={colors.orange['600']} />
+              </button>
+            </div>
+          </div>
+        ))}
       <div
         id="carousel-item"
-        className="grid overflow-auto gap-2 pb-4"
+        className="grid overflow-hidden gap-2 pb-4"
         style={{
           gridTemplateColumns: `repeat(${items.length}, ${gridPercentage}%)`,
         }}
@@ -171,11 +172,37 @@ export const Carousel = ({
           </div>
         ))}
       </div>
+      {showDots && (
+        <div className="absolute bottom-[30px] flex flex-row w-full justify-center">
+          {items.map((_, index) => (
+            <div
+              className="cursor-pointer mr-1"
+              onClick={() => {
+                if (index > lastVisibleItem) {
+                  handleClickScroll('next', index - lastVisibleItem);
+                } else {
+                  handleClickScroll('prev', lastVisibleItem - index);
+                }
+              }}
+            >
+              <CheckboxBlankCircleFill
+                key={index}
+                size={12}
+                color={
+                  index === lastVisibleItem
+                    ? colors.orange['600']
+                    : colors.white
+                }
+              />
+            </div>
+          ))}
+        </div>
+      )}
       {showButtons && (
         <div className={`flex flex-row ${position}`}>
           <button
             className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
-            onClick={(event) => {
+            onClick={event => {
               event.stopPropagation();
               handleClickScroll('prev');
             }}
@@ -184,7 +211,7 @@ export const Carousel = ({
           </button>
           <button
             className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
-            onClick={(event) => {
+            onClick={event => {
               event.stopPropagation();
               handleClickScroll('next');
             }}

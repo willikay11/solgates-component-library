@@ -17,7 +17,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<TableProps> = (args) => <Table {...args} />;
+const Template: Story<TableProps> = args => <Table {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -54,7 +54,7 @@ Default.args = {
       key: '5',
       title: 'Payment',
       dataIndex: 'payment',
-      render: (val) => (
+      render: val => (
         <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
       ),
     },
@@ -62,7 +62,7 @@ Default.args = {
       key: '6',
       title: 'Delivery Status',
       dataIndex: 'status',
-      render: (val) => <Tag text={val} />,
+      render: val => <Tag text={val} />,
     },
     {
       key: '7',

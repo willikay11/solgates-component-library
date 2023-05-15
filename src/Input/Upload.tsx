@@ -31,14 +31,14 @@ export const Upload = ({ id, name, error, imageUrls }: UploadProps) => {
       let uploadedImages = event.target.files;
 
       uploadedImages = Object.keys(uploadedImages).map(
-        (item) => uploadedImages[item]
+        item => uploadedImages[item]
       );
-      setUploadedImages((prevState) => [...prevState, ...uploadedImages]);
+      setUploadedImages(prevState => [...prevState, ...uploadedImages]);
     } else {
       const uploadedImage = event.target.files?.[0];
 
       if (uploadedImage !== undefined) {
-        setUploadedImages((prevState) => [...prevState, uploadedImage]);
+        setUploadedImages(prevState => [...prevState, uploadedImage]);
       }
     }
   };
@@ -64,8 +64,8 @@ export const Upload = ({ id, name, error, imageUrls }: UploadProps) => {
     //TODO: Add check for file types
 
     if (files && files.length) {
-      const uploadedImages = Object.keys(files).map((item) => files[item]);
-      setUploadedImages((prevState) => [...prevState, ...uploadedImages]);
+      const uploadedImages = Object.keys(files).map(item => files[item]);
+      setUploadedImages(prevState => [...prevState, ...uploadedImages]);
     }
   };
 
