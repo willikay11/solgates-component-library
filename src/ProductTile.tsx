@@ -109,7 +109,7 @@ export const ProductTile = ({
         {type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL ? (
           inWishList ? (
             <div
-              onClick={(event) => {
+              onClick={event => {
                 event.stopPropagation();
                 removeFromWishList();
               }}
@@ -122,7 +122,7 @@ export const ProductTile = ({
             </div>
           ) : (
             <div
-              onClick={(event) => {
+              onClick={event => {
                 event.stopPropagation();
                 addToWishList();
               }}

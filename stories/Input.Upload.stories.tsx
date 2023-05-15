@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<UploadProps> = (args) => <Input.Upload {...args} />;
+const Template: Story<UploadProps> = args => <Input.Upload {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};

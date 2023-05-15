@@ -52,9 +52,9 @@ export const Table = ({
 
   useEffect(() => {
     if (columns.length) {
-      const newColumns = columns.map((column) =>
+      const newColumns = columns.map(column =>
         columnHelper.accessor(column.dataIndex, {
-          cell: (info) =>
+          cell: info =>
             column?.render?.(info.getValue(), info?.row?.original) ||
             info.getValue(),
           header: () => <span>{column.title}</span>,
@@ -92,7 +92,7 @@ export const Table = ({
         <>
           <table className="w-full">
             <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
+              {table.getHeaderGroups().map(headerGroup => (
                 <tr className="text-left" key={headerGroup.id}>
                   {headerGroup.headers.map((header, index) => (
                     <th
@@ -119,7 +119,7 @@ export const Table = ({
               ))}
             </thead>
             <tbody>
-              {table.getRowModel().rows.map((row) => (
+              {table.getRowModel().rows.map(row => (
                 <tr
                   key={row.id}
                   onClick={() => onRowClick?.(row?.original)}
@@ -148,9 +148,9 @@ export const Table = ({
               ))}
             </tbody>
             <tfoot>
-              {table.getFooterGroups().map((footerGroup) => (
+              {table.getFooterGroups().map(footerGroup => (
                 <tr key={footerGroup.id}>
-                  {footerGroup.headers.map((header) => (
+                  {footerGroup.headers.map(header => (
                     <th key={header.id}>
                       {header.isPlaceholder
                         ? null
@@ -210,7 +210,7 @@ export const Table = ({
         <>
           <table className="w-full">
             <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
+              {table.getHeaderGroups().map(headerGroup => (
                 <tr className="text-left" key={headerGroup.id}>
                   {headerGroup.headers.map((header, index) => (
                     <th

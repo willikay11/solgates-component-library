@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<InputErrorProps> = (args) => <Input.Error {...args} />;
+const Template: Story<InputErrorProps> = args => <Input.Error {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

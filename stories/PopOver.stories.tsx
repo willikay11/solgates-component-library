@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Button, ButtonTypes, PopOver, PopOverProps, User6Line } from '../src';
-import colors from 'tailwindcss/colors';
+import { PopOver, PopOverProps } from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Popover',
@@ -10,28 +9,21 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<PopOverProps> = (args) => <PopOver {...args} />;
+const Template: Story<PopOverProps> = args => <PopOver {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: <User6Line size={14} color={colors.red['500']} />,
+  children: (
+    <p className="text-xs leading-4 font-normal text-gray-800">Nike Pegasus</p>
+  ),
+  type: 'primary',
   content: (
-    <div className="flex flex-col items-start">
-      <Button
-        type={ButtonTypes.link}
+    <div className="flex flex-col items-start justify-center">
+      <div
+        className="text-xs font-normal leading-4 text-white"
         onClick={() => console.log('clicked')}
-        prefixIcon={<User6Line size={14} color={colors.red['500']} />}
       >
-        Accept the highest bid
-      </Button>
-      <div className="mt-2">
-        <Button
-          type={ButtonTypes.link}
-          onClick={() => console.log('clicked')}
-          prefixIcon={<User6Line size={14} color={colors.red['500']} />}
-        >
-          View All bids
-        </Button>
+        Add To Cart
       </div>
     </div>
   ),
