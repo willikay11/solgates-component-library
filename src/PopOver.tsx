@@ -24,7 +24,7 @@ export interface PopOverProps {
 export const PopOver = ({
   children,
   content,
-    type = 'default',
+  type = 'default',
   placement = 'bottom',
 }: PopOverProps) => {
   let [
@@ -60,11 +60,11 @@ export const PopOver = ({
                 ref={setPopperElement}
                 style={styles.popper}
                 {...attributes.popper}
-                className={`absolute z-20 rounded shadow-lg mt-1.5 ${type === 'primary' ? 'bg-orange-600' : 'bg-white'} `}
+                className={`absolute z-20 rounded shadow-lg mt-1.5 ${
+                  type === 'primary' ? 'bg-orange-600' : 'bg-white'
+                } `}
               >
-                <div className="overflow-hidden p-2.5">
-                  {content}
-                </div>
+                <div className="overflow-hidden p-2.5">{content}</div>
               </Popover.Panel>
             </Transition>
           </>
