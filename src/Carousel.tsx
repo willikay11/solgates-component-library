@@ -179,7 +179,7 @@ export const Carousel = ({
               className="cursor-pointer mr-1"
               onClick={() => {
                 if (index > lastVisibleItem) {
-                  handleClickScroll('next', lastVisibleItem + index);
+                  handleClickScroll('next', index - lastVisibleItem);
                 } else {
                   handleClickScroll('prev', lastVisibleItem - index);
                 }
