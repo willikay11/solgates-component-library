@@ -171,6 +171,7 @@ export const ProductTile = ({
         <div className="mt-2.5">
           <PopOver
             type="primary"
+            placement="top"
             content={
               <div className="flex flex-col items-start justify-center">
                 <Button
