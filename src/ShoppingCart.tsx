@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PRODUCT_TYPE, ProductTile } from './ProductTile';
 import { Input } from './Input';
 import { IconContainer } from './IconContainer';
@@ -40,6 +40,13 @@ export const ShoppingCart = ({
   type = CART_TYPE.full,
   showCheckoutButton = true,
 }: ShoppingCartProps) => {
+
+  const [total, setTotal] = useState<number>(0);
+
+  useEffect(() => {
+    setTotal(products?.reduce((total, product) => total + product.price, 0) || 0);
+  }, [products]);
+
   return (
     <div className="flex flex-col">
       {products.map((product) => (
@@ -103,14 +110,10 @@ export const ShoppingCart = ({
 
       <div className="flex justify-between my-[15px]">
         <span className="text-xs leading-4 font-medium text-gray-800">
-          Total:{' '}
+          Total:&nbsp;
         </span>
         <span className="text-xs leading-4 font-semibold text-black">
-          {currency}{' '}
-          {products
-            ?.reduce((total, product) => total + product.price, 0)
-            ?.toString()
-            ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{' '}
+          {currency} {total?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         </span>
       </div>
 

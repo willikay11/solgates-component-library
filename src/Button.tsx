@@ -8,7 +8,7 @@ export enum ButtonTypes {
   primary_blue_600 = 'primary-blue-600',
   primary_gray_800 = 'primary-gray-800',
   primary_orange_200 = 'primary-orange-200',
-  text = 'text'
+  text = 'text',
 }
 
 export interface ButtonProps {
@@ -97,7 +97,6 @@ export const Button = ({
     height = 'h-auto';
     bg = `bg-transparent`;
   }
-
 
   if (block) {
     width = 'w-full';
