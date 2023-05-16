@@ -1,4 +1,4 @@
-import React, { ReactNode, useState} from 'react';
+import React, { ReactNode, useState } from 'react';
 import { Popover } from '@headlessui/react';
 import { usePopper } from 'react-popper';
 
@@ -27,8 +27,7 @@ export const PopOver = ({
   type = 'default',
   placement = 'bottom',
 }: PopOverProps) => {
-  let [referenceElement, setReferenceElement] =
-    useState<any>(null);
+  let [referenceElement, setReferenceElement] = useState<any>(null);
   let [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   let { styles, attributes } = usePopper(referenceElement, popperElement, {
     strategy: 'fixed',
@@ -36,9 +35,9 @@ export const PopOver = ({
   });
 
   const handleEnter = (isOpen: boolean) => {
-    clearTimeout(referenceElement?.current)
-    !isOpen && referenceElement?.click()
-  }
+    clearTimeout(referenceElement?.current);
+    !isOpen && referenceElement?.click();
+  };
 
   // const handleLeave = (isOpen: boolean) => {
   //   setTimeout(() => {
@@ -66,16 +65,16 @@ export const PopOver = ({
             {/*  leaveFrom="opacity-100 translate-y-0"*/}
             {/*  leaveTo="opacity-0 translate-y-1"*/}
             {/*>*/}
-              <Popover.Panel
-                ref={setPopperElement}
-                style={styles.popper}
-                {...attributes.popper}
-                className={`absolute z-20 rounded shadow-lg mt-1.5 ${
-                  type === 'primary' ? 'bg-orange-600' : 'bg-white'
-                } `}
-              >
-                <div className="overflow-hidden p-2.5">{content}</div>
-              </Popover.Panel>
+            <Popover.Panel
+              ref={setPopperElement}
+              style={styles.popper}
+              {...attributes.popper}
+              className={`absolute z-20 rounded shadow-lg mt-1.5 ${
+                type === 'primary' ? 'bg-orange-600' : 'bg-white'
+              } `}
+            >
+              <div className="overflow-hidden p-2.5">{content}</div>
+            </Popover.Panel>
             {/*</Transition>*/}
           </div>
         )}
