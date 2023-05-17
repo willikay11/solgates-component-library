@@ -40,11 +40,12 @@ export const ShoppingCart = ({
   type = CART_TYPE.full,
   showCheckoutButton = true,
 }: ShoppingCartProps) => {
-
   const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
-    setTotal(products?.reduce((total, product) => total + product.price, 0) || 0);
+    setTotal(
+      products?.reduce((total, product) => total + product.price, 0) || 0
+    );
   }, [products]);
 
   return (
