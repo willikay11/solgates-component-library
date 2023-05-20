@@ -40,6 +40,15 @@ export const Select = ({
   >([]);
 
   useEffect(() => {
+    if (defaultValue) {
+      const item = items.find((item) => item.value === defaultValue);
+      if (item && Object.keys(item).length) {
+        setSelectedItem(item);
+      }
+    }
+  }, [defaultValue]);
+
+  useEffect(() => {
     console.log(
       window.document?.getElementById('headlessui-listbox-options-:r8:')
     );
@@ -52,6 +61,7 @@ export const Select = ({
     <>
       <Listbox
         multiple={multiple}
+        defaultValue={defaultValue}
         name={name}
         value={value}
         onChange={(value: any) => {
@@ -78,7 +88,6 @@ export const Select = ({
         <div className="relative w-full">
           <Listbox.Button
             id="headlessui-listbox-options-:r8:"
-            defaultValue={defaultValue}
             className={`relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-10 text-left ${
               border === 'bordered'
                 ? 'border border-gray-200 hover:border-orange-500 focus:border-orange-500'
@@ -133,11 +142,6 @@ export const Select = ({
                       >
                         {item.label}
                       </span>
-                      {/*{selected ? (*/}
-                      {/*  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-orange-600">*/}
-                      {/*    {selectedIcon}*/}
-                      {/*  </span>*/}
-                      {/*) : null}*/}
                     </>
                   )}
                 </Listbox.Option>
