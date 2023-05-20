@@ -15,9 +15,10 @@ const Template: Story<SelectInputProps> = (args) => <Input.Select {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  prefixIcon: <User6Line color={colors.gray['600']} size={18} />,
   arrowIcon: <User6Line color={colors.gray['600']} size={18} />,
   selectedIcon: <User6Line color={colors.gray['600']} size={18} />,
-  multiple: true,
+  multiple: false,
   items: [
     {
       label: 'Lucy',
