@@ -19,7 +19,11 @@ export const Default = Template.bind({});
 Default.args = {
   name: 'name',
   countryCodeDefaultValue: '+256',
-  countryCodes: [{ label: '+254', value: '+254' },{ label: '+255', value: '+255' },{ label: '+256', value: '+256' }],
+  countryCodes: [
+    { label: '+254', value: '+254' },
+    { label: '+255', value: '+255' },
+    { label: '+256', value: '+256' },
+  ],
   prefixIcon: (
     <IconContainer>
       <User6Line color={colors.red['500']} />

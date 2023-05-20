@@ -169,26 +169,32 @@ export const ProductTile = ({
       </div>
       {(type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) && (
         <div className="mt-2.5">
-          <PopOver
-            type="primary"
-            placement="top"
-            content={
-              <div className="flex flex-col items-start justify-center">
-                <Button
-                  onClick={() => onAddToCart?.()}
-                  loading={addingToCart}
-                  type={ButtonTypes.text}
-                  className="bg-transparent text-white"
-                >
-                  Add To Cart
-                </Button>
-              </div>
-            }
-          >
+          {onAddToCart ? (
+            <PopOver
+              type="primary"
+              placement="top"
+              content={
+                <div className="flex flex-col items-start justify-center">
+                  <Button
+                    onClick={() => onAddToCart?.()}
+                    loading={addingToCart}
+                    type={ButtonTypes.text}
+                    className="bg-transparent text-white"
+                  >
+                    Add To Cart
+                  </Button>
+                </div>
+              }
+            >
+              <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">
+                {name}
+              </p>
+            </PopOver>
+          ) : (
             <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">
               {name}
             </p>
-          </PopOver>
+          )}
           <div>
             {smallDescription && (
               <span className="text-xs leading-4 font-normal mt-1.5 text-gray-500">
