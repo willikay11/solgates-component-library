@@ -6,11 +6,13 @@ import { Select } from './Select';
 import { Number } from './Number';
 import { Password } from './Password';
 import { Error } from './Error';
+import { PhoneNumber } from './Phonenumber';
 
 export const Input = {
   Password: Password,
   TextArea: TextArea,
   Number: Number,
+  PhoneNumber: PhoneNumber,
   Text: Text,
   Select: Select,
   RadioButton: RadioButton,

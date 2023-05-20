@@ -11,13 +11,14 @@ interface selectItem {
 export interface SelectInputProps {
   items: selectItem[];
   arrowIcon: ReactNode;
-  selectedIcon: ReactNode;
+  selectedIcon?: ReactNode;
   prefixIcon?: ReactNode;
   multiple?: boolean;
   name?: string;
   value?: string;
   onChange?: (selectedItem: selectItem | selectItem[]) => void;
   error?: string;
+  border?: 'bordered' | 'borderless';
 }
 
 export const Select = ({
@@ -29,6 +30,7 @@ export const Select = ({
   name,
   onChange,
   error,
+    border = 'bordered',
 }: SelectInputProps) => {
   const [selectedItem, setSelectedItem] = useState<selectItem>(items[0]);
   const [multipleSelectedItems, setMultipleSelectedItem] = useState<
@@ -36,7 +38,9 @@ export const Select = ({
   >([]);
 
   useEffect(() => {
-    console.log(window.document?.getElementById('headlessui-listbox-options-:r8:'));
+    console.log(
+      window.document?.getElementById('headlessui-listbox-options-:r8:')
+    );
     window?.document
       ?.getElementById('headlessui-listbox-options-:r8:')
       ?.setAttribute('placeholder', 'Search here..');
@@ -70,7 +74,10 @@ export const Select = ({
         }}
       >
         <div className="relative w-full">
-          <Listbox.Button id="headlessui-listbox-options-:r8:" className="relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-10 text-left border border-gray-200 hover:border-orange-500 focus:border-orange-500 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300  invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500 sm:text-sm placeholder-opacity-100 focus-visible:placeholder-opacity-25">
+          <Listbox.Button
+            id="headlessui-listbox-options-:r8:"
+            className={`relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-10 text-left ${border === 'bordered' ? 'border border-gray-200 hover:border-orange-500 focus:border-orange-500' : 'border border-transparent bg-transparent'} focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300  invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500 sm:text-sm placeholder-opacity-100 focus-visible:placeholder-opacity-25`}
+          >
             <div className="inline-flex items-center h-full">
               {prefixIcon}
               {multiple ? (
