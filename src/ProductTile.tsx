@@ -56,7 +56,6 @@ const ImageTile = ({ image }: ImageTileProps) => {
         doNotReplaceURL
         alt="Product image"
         className="rounded-[5px]"
-        lazyLoading
       />
     </CloudimageProvider>
   );
