@@ -1,9 +1,9 @@
 import React, { ReactNode, useState } from 'react';
-import {Select} from "./Select";
+import { Select } from './Select';
 
 export interface PhoneNumberProps {
   arrowIcon: ReactNode;
-  countryCodes: {label: string, value: string}[];
+  countryCodes: { label: string; value: string }[];
   name?: string;
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
@@ -13,11 +13,13 @@ export interface PhoneNumberProps {
   error?: string;
   value?: string;
   defaultValue?: string;
+  countryCodeDefaultValue?: string;
+  countryCodeFormName?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const PhoneNumber = ({
-    arrowIcon,
-    countryCodes,
+  arrowIcon,
+  countryCodes,
   name,
   prefixIcon,
   suffixIcon,
@@ -27,6 +29,8 @@ export const PhoneNumber = ({
   error,
   value,
   defaultValue,
+  countryCodeDefaultValue,
+  countryCodeFormName = 'countryCode',
   onChange,
 }: PhoneNumberProps) => {
   const [currentText, setCurrentText] = useState<string>('');
@@ -42,7 +46,13 @@ export const PhoneNumber = ({
       >
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
         <div className="w-fit">
-          <Select name="countryCode" items={countryCodes} arrowIcon={arrowIcon} border="borderless" />
+          <Select
+            name={countryCodeFormName}
+            items={countryCodes}
+            arrowIcon={arrowIcon}
+            defaultValue={countryCodeDefaultValue}
+            border="borderless"
+          />
         </div>
         <input
           name={name}
