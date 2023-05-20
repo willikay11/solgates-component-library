@@ -11,12 +11,14 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<PhoneNumberProps> = (args) => <Input.PhoneNumber {...args} />;
+const Template: Story<PhoneNumberProps> = (args) => (
+  <Input.PhoneNumber {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
   name: 'name',
-  countryCodes: [{label: '+254', value: '+254'}],
+  countryCodes: [{ label: '+254', value: '+254' }],
   prefixIcon: (
     <IconContainer>
       <User6Line color={colors.red['500']} />
