@@ -15,3 +15,46 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+#arrow,
+#arrow::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+    left: 50%;
+}
+
+#arrow {
+    visibility: hidden;
+}
+
+#arrow::before {
+    visibility: visible;
+    content: '';
+    transform: rotate(45deg);
+}
+
+#tooltip {
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+#tooltip[data-popper-placement^='top'] > #arrow {
+    bottom: -4px;
+}
+
+#tooltip[data-popper-placement^='bottom'] > #arrow {
+    top: -4px;
+}
+
+#tooltip[data-popper-placement^='left'] > #arrow {
+    right: -4px;
+}
+
+#tooltip[data-popper-placement^='right'] > #arrow {
+    left: -4px;
+}
