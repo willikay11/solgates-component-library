@@ -44,6 +44,23 @@ export interface ProductTileProps {
   addingToCart?: boolean;
 }
 
+interface ImageTileProps {
+  image: string;
+}
+
+const ImageTile = ({ image }: ImageTileProps) => {
+  return (
+    <CloudimageProvider config={cloudImageConfig}>
+      <Img
+        src={image}
+        doNotReplaceURL
+        alt="Product image"
+        className="rounded-[5px]"
+      />
+    </CloudimageProvider>
+  );
+};
+
 export const ProductTile = ({
   id,
   imageUrl,
@@ -92,30 +109,14 @@ export const ProductTile = ({
             id={useId()}
             itemsVisible={{ mobile: 1, tablet: 1, large: 1 }}
             arrowPosition={ARROW_POSITION.center}
-            items={carouselImages.map((carouselImage, index) => {
+            items={carouselImages?.map((carouselImage, index) => {
               return {
-                item: (
-                  <CloudimageProvider key={index} config={cloudImageConfig}>
-                    <Img
-                      src={carouselImage}
-                      doNotReplaceURL
-                      alt="Product image"
-                      className="rounded-[5px]"
-                    />
-                  </CloudimageProvider>
-                ),
+                item: <ImageTile key={index} image={carouselImage} />,
               };
             })}
           />
         ) : (
-          <CloudimageProvider config={cloudImageConfig}>
-            <Img
-              src={imageUrl}
-              doNotReplaceURL
-              alt="Product image"
-              className="rounded-[5px]"
-            />
-          </CloudimageProvider>
+          <ImageTile image={imageUrl} />
         )}
         {type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL ? (
           inWishList ? (

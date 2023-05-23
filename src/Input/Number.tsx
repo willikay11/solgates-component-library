@@ -69,7 +69,7 @@ export const Number = ({
           onChange={(event) => {
             onChange?.(event);
           }}
-          className={`ml-2 ${width} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800`}
+          className={`ml-2 ${width} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800 focus:border-transparent focus:ring-0`}
         />
         <Button onClick={() => increase()} type={ButtonTypes.link}>
           <AddLine color={colors.gray['800']} size={14} />
