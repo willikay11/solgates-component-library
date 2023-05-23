@@ -17,6 +17,7 @@ Default.args = {
     <p className="text-xs leading-4 font-normal text-gray-800">Nike Pegasus</p>
   ),
   type: 'primary',
+    placement: 'top',
   content: (
     <div className="flex flex-col items-start justify-center">
       <div
