@@ -4,7 +4,7 @@ import { Tag } from '../Tag';
 
 interface selectItem {
   label: string;
-  value: string;
+  value: string | number | null;
   disabled?: boolean;
 }
 
@@ -47,15 +47,6 @@ export const Select = ({
       }
     }
   }, [defaultValue]);
-
-  useEffect(() => {
-    console.log(
-      window.document?.getElementById('headlessui-listbox-options-:r8:')
-    );
-    window?.document
-      ?.getElementById('headlessui-listbox-options-:r8:')
-      ?.setAttribute('placeholder', 'Search here..');
-  }, []);
 
   return (
     <>
@@ -119,7 +110,7 @@ export const Select = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-[1000]">
               {items.map((item) => (
                 <Listbox.Option
                   key={item.value}
