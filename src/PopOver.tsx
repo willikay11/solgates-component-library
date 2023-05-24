@@ -51,7 +51,8 @@ export const PopOver = ({
         {({ open }) => (
           <div onMouseEnter={() => handleEnter(open)}>
             <Popover.Button
-                id="button" aria-describedby="tooltip"
+              id="button"
+              aria-describedby="tooltip"
               ref={setReferenceElement}
               className="focus-visible:outline-0"
             >
@@ -70,7 +71,8 @@ export const PopOver = ({
               ref={setPopperElement}
               style={styles.popper}
               {...attributes.popper}
-              id="tooltip" role="tooltip"
+              id="tooltip"
+              role="tooltip"
               className={`absolute z-20 rounded shadow-lg mt-1.5 ${
                 type === 'primary' ? 'bg-orange-600' : 'bg-white'
               } `}
