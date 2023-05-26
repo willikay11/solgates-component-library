@@ -191,7 +191,7 @@ export const Carousel = ({
                 size={10}
                 color={
                   index === lastVisibleItem
-                    ? colors.orange['600']
+                    ? colors.orange['200']
                     : colors.white
                 }
               />
