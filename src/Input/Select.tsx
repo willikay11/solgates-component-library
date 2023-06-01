@@ -38,7 +38,7 @@ export const Select = ({
 }: SelectInputProps) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchValue, setSearchValue] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<selectItem>(items[0]);
+  const [selectedItem, setSelectedItem] = useState<selectItem | null>(null);
   const [multipleSelectedItems, setMultipleSelectedItem] = useState<
     selectItem[]
   >([]);
@@ -85,7 +85,6 @@ export const Select = ({
             id="headlessui-listbox-options-:r8:"
             onClick={() => {
               if (showSearch) {
-                console.log(searchInputRef);
                 searchInputRef.current?.focus();
               }
             }}
@@ -104,12 +103,14 @@ export const Select = ({
                     {multipleSelectedItems.map((selectedItem) => (
                       <Tag text={selectedItem.label} />
                     ))}
-                    {showSearch && (
+                    {showSearch && open && (
                       <input
                         autoFocus
                         placeholder="Search..."
+                        value={searchValue ?? ''}
                         className="ml-2 font-normal w-full focus:ring-0 focus:outline-0"
                         onClick={(event) => event.stopPropagation()}
+                        onChange={(event) => setSearchValue(event.target.value)}
                       />
                     )}
                   </>
@@ -118,8 +119,7 @@ export const Select = ({
                     {showSearch && open ? (
                       <input
                         autoFocus
-                        placeholder="Search..."
-                        value={searchValue ?? ''}
+                        placeholder={selectedItem?.label ?? 'Search...'}
                         className="ml-2 font-normal w-full focus:ring-0 focus:outline-0"
                         onClick={(event) => event.stopPropagation()}
                         onChange={(event) => setSearchValue(event.target.value)}
@@ -165,7 +165,7 @@ export const Select = ({
                     disabled={item.disabled || false}
                     onClick={() => {
                       if (showSearch) {
-                        setSearchValue(item.label);
+                        setSearchValue(null);
                       }
                     }}
                   >
