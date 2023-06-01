@@ -61,7 +61,7 @@ export const Modal = ({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`${widthClass} ${roundedBorder} ${heightClass} transform overflow-hidden bg-white p-[20px] text-left align-middle transition-all`}
+                className={`${widthClass} ${roundedBorder} ${heightClass} h-fit transform overflow-hidden bg-white p-[20px] text-left align-middle transition-all`}
               >
                 {children}
               </Dialog.Panel>
