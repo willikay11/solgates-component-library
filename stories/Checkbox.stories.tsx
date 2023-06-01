@@ -22,5 +22,5 @@ Default.args = {
   ),
   disabled: false,
   defaultValue: 'checkbox',
-  defaultChecked: true
+  defaultChecked: true,
 };

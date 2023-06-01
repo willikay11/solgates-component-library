@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, useEffect, ReactNode, isValidElement } from 'react';
 import {
   ArrowLeftSLine,
   ArrowRightSLine,
@@ -18,7 +18,7 @@ interface CarouselItem {
 export interface CarouselProps {
   id: string;
   instanceId: string;
-  title?: string;
+  title?: string | ReactNode;
   itemsVisible: {
     mobile: number;
     tablet: number;
@@ -122,7 +122,9 @@ export const Carousel = ({
       {title ||
         (arrowPosition === ARROW_POSITION.topRight && (
           <div className={`flex flex-row justify-between mb-2.5`}>
-            {title && (
+            {isValidElement(title) ? (
+              title
+            ) : (
               <p className="text-xl leading-7 font-normal text-gray-800">
                 {title}
               </p>

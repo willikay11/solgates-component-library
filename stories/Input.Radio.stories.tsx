@@ -21,5 +21,5 @@ Default.args = {
   value: 'mpesa',
   name: 'mpesa',
   defaultValue: 'mpesa',
-  checked: true
+  checked: true,
 };
