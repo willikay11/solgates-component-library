@@ -9,6 +9,7 @@ export interface CheckboxProps {
   defaultChecked?: boolean | undefined;
   onChange?: (event: any) => void;
   defaultValue?: string;
+  checked?: boolean;
 }
 
 export const Checkbox = ({
@@ -20,6 +21,7 @@ export const Checkbox = ({
   onChange,
   defaultChecked,
   defaultValue,
+  checked
 }: CheckboxProps) => {
   return (
     <div className="flex items-start items-start">
@@ -32,6 +34,7 @@ export const Checkbox = ({
         onChange={(event) => onChange?.(event)}
         defaultChecked={defaultChecked}
         defaultValue={defaultValue}
+        checked={checked}
         className={`${
           disabled ? 'cursor-not-allowed' : 'cursor-pointer'
         } h-[14px] w-[14px] accent-orange-600 mr-1 border-gray-800`}
