@@ -20,4 +20,6 @@ Default.args = {
   id: 'mpesa',
   value: 'mpesa',
   name: 'mpesa',
+  defaultValue: 'mpesa',
+  checked: true
 };
