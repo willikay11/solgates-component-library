@@ -21,7 +21,7 @@ export const Checkbox = ({
   onChange,
   defaultChecked,
   defaultValue,
-  checked
+  checked,
 }: CheckboxProps) => {
   return (
     <div className="flex items-start items-start">
