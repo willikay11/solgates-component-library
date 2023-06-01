@@ -21,4 +21,6 @@ Default.args = {
     </label>
   ),
   disabled: false,
+  defaultValue: 'checkbox',
+  defaultChecked: true
 };
