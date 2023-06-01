@@ -6,7 +6,7 @@ export interface RadioButtonProps {
   value: string;
   label?: string;
   checked?: boolean | undefined;
-  defaultChecked?: boolean | undefined;
+  defaultValue?: string;
   onChange?: (event: any) => void;
 }
 
@@ -16,6 +16,7 @@ export const RadioButton = ({
   value,
   label,
   onChange,
+  defaultValue,
 }: RadioButtonProps) => {
   return (
     <div className="flex items-center">
@@ -25,6 +26,7 @@ export const RadioButton = ({
         name={name}
         value={value}
         onChange={(event) => onChange?.(event)}
+        defaultValue={defaultValue}
         className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 checked:text-orange-600 checked:hover:bg-orange-600 checked:active:bg-orange-600 checked:focus:bg-orange-600 focus:border-transparent focus:ring-0"
         aria-labelledby={id}
         aria-describedby={id}
