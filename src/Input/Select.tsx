@@ -147,7 +147,9 @@ export const Select = ({
               {items
                 .filter((item) => {
                   if (searchValue !== null) {
-                    return item?.label?.toLowerCase().includes(searchValue.toLowerCase());
+                    return item?.label
+                      ?.toLowerCase()
+                      .includes(searchValue.toLowerCase());
                   }
                   return item;
                 })
