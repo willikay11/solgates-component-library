@@ -21,6 +21,7 @@ export interface SelectInputProps {
   border?: 'bordered' | 'borderless';
   defaultValue?: string;
   showSearch?: boolean;
+  searchPlaceholder?: string;
 }
 
 export const Select = ({
@@ -35,6 +36,7 @@ export const Select = ({
   border = 'bordered',
   defaultValue,
   showSearch = false,
+                         searchPlaceholder = 'Search...',
 }: SelectInputProps) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchValue, setSearchValue] = useState<string | null>(null);
@@ -106,7 +108,7 @@ export const Select = ({
                     {showSearch && open && (
                       <input
                         autoFocus
-                        placeholder="Search..."
+                        placeholder={searchPlaceholder}
                         value={searchValue ?? ''}
                         className="ml-2 font-normal w-full focus:ring-0 focus:outline-0"
                         onClick={(event) => event.stopPropagation()}
@@ -119,7 +121,7 @@ export const Select = ({
                     {showSearch && open ? (
                       <input
                         autoFocus
-                        placeholder={selectedItem?.label ?? 'Search...'}
+                        placeholder={selectedItem?.label ?? searchPlaceholder}
                         className="ml-2 font-normal w-full focus:ring-0 focus:outline-0"
                         onClick={(event) => event.stopPropagation()}
                         onChange={(event) => setSearchValue(event.target.value)}
