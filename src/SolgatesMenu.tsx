@@ -212,10 +212,10 @@ export const SolgatesMenu = ({
                   <Menu
                     key={menu.key}
                     as="div"
-                    className="inline-flex text-left mr-[20px] h-full"
+                    className="inline-flex text-left mr-[20px] h-full group"
                   >
                     <div>
-                      <Menu.Button className="inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600">
+                      <Menu.Button className="inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 group-hover:border-b active:border-b border-orange-600 hover:border-b border-orange-600">
                         {menu.label}
                       </Menu.Button>
                     </div>
