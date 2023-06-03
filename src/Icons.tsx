@@ -51,7 +51,12 @@ const Heart3LineFill = ({
   </svg>
 );
 
-const Menu4Line = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const Menu4Line = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -109,7 +114,12 @@ const ShoppingBagLine = ({
   </svg>
 );
 
-const User6Line = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const User6Line = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -235,7 +245,12 @@ const ArrowRightSLine = ({
   </svg>
 );
 
-const Shop2Line = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const Shop2Line = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -274,7 +289,12 @@ const QuestionLine = ({
   </svg>
 );
 
-const PhoneLine = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const PhoneLine = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -291,7 +311,12 @@ const PhoneLine = ({ color = 'currentColor', size, className, onClick }: IconPro
   </svg>
 );
 
-const AddLine = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const AddLine = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -305,7 +330,12 @@ const AddLine = ({ color = 'currentColor', size, className, onClick }: IconProps
   </svg>
 );
 
-const Minus = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const Minus = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -341,7 +371,12 @@ const ArrowDownSLine = ({
   </svg>
 );
 
-const Checkline = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const Checkline = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -358,7 +393,12 @@ const Checkline = ({ color = 'currentColor', size, className, onClick }: IconPro
   </svg>
 );
 
-const FileUpload = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const FileUpload = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -375,7 +415,12 @@ const FileUpload = ({ color = 'currentColor', size, className, onClick }: IconPr
   </svg>
 );
 
-const AddCircle = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const AddCircle = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -392,7 +437,12 @@ const AddCircle = ({ color = 'currentColor', size, className, onClick }: IconPro
   </svg>
 );
 
-const CloseLine = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const CloseLine = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -409,7 +459,12 @@ const CloseLine = ({ color = 'currentColor', size, className, onClick }: IconPro
   </svg>
 );
 
-const GiftLine = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const GiftLine = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}
@@ -446,7 +501,12 @@ const Information = ({
   </svg>
 );
 
-const Error = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
+const Error = ({
+  color = 'currentColor',
+  size,
+  className,
+  onClick,
+}: IconProps) => (
   <svg
     className={className}
     onClick={() => onClick?.()}

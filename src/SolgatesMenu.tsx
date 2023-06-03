@@ -133,7 +133,11 @@ export const SolgatesMenu = ({
         position={MODAL_POSITION.BOTTOM}
       >
         <div className="flex justify-end items-center mb-2">
-          <CloseLine className="cursor-pointer" size={16} onClick={() => setOpenUserContent(false)} />
+          <CloseLine
+            className="cursor-pointer"
+            size={16}
+            onClick={() => setOpenUserContent(false)}
+          />
         </div>
 
         {userContent}
@@ -145,7 +149,11 @@ export const SolgatesMenu = ({
         position={MODAL_POSITION.BOTTOM}
       >
         <div className="flex justify-end items-center mb-2">
-          <CloseLine className="cursor-pointer" size={16} onClick={() => setOpenMobileShoppingCart(false)} />
+          <CloseLine
+            className="cursor-pointer"
+            size={16}
+            onClick={() => setOpenMobileShoppingCart(false)}
+          />
         </div>
 
         {shoppingCartContent}
@@ -158,7 +166,11 @@ export const SolgatesMenu = ({
         heightClass="h-4/6"
       >
         <div className="flex justify-end items-center mb-2">
-          <CloseLine className="cursor-pointer" size={16} onClick={() => setOpenMobileMenu(false)} />
+          <CloseLine
+            className="cursor-pointer"
+            size={16}
+            onClick={() => setOpenMobileMenu(false)}
+          />
         </div>
 
         {menus.map((menu) => (
@@ -195,7 +207,7 @@ export const SolgatesMenu = ({
                               <span>{category.label}</span>
                               {open ? closeIcon : openIcon}
                             </Disclosure.Button>
-                            <Disclosure.Panel className="ml-[10px] pb-1 text-gray-500 flex flex-col">
+                            <Disclosure.Panel className="ml-[10px] pb-2 text-gray-500 flex flex-col">
                               {category.items.map((item, index) => (
                                 <button
                                   key={`${item.label}-${index}`}
@@ -439,11 +451,24 @@ export const SolgatesMenu = ({
           </div>
           <div className="flex flex-1 justify-end">
             <div onClick={() => setOpenUserContent(true)}>
-              <User6Line
-                className="mr-[10px]"
-                color={colors.gray['600']}
-                size={14}
-              />
+              {isLoggedIn ? (
+                <div className="flex flex-row mr-1.5 items-center">
+                  <AccountCircle
+                    className="mr-[5px] cursor-pointer"
+                    color={colors.blue['500']}
+                    size={20}
+                  />
+                  <p className="text-xs font-normal leading-4 text-gray-800 truncate w-[60px]">
+                    Hi, {userName}
+                  </p>
+                </div>
+              ) : (
+                <User6Line
+                  className="mr-[10px]"
+                  color={colors.gray['600']}
+                  size={14}
+                />
+              )}
             </div>
 
             <div onClick={() => onClickWishList()}>
