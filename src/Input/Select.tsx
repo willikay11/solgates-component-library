@@ -110,18 +110,22 @@ export const Select = ({
                     {showSearch && open ? (
                       <input
                         autoFocus
-                        placeholder={multipleSelectedItems.length ? '' : searchPlaceholder}
+                        placeholder={
+                          multipleSelectedItems.length ? '' : searchPlaceholder
+                        }
                         value={searchValue ?? ''}
                         className="ml-2 font-normal w-full focus:ring-0 focus:outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500"
                         onClick={(event) => event.stopPropagation()}
                         onChange={(event) => setSearchValue(event.target.value)}
                       />
-                    ) : !multipleSelectedItems.length && (
+                    ) : (
+                      !multipleSelectedItems.length && (
                         <input
-                            disabled
-                            placeholder={placeholder}
-                            className="ml-2 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                          disabled
+                          placeholder={placeholder}
+                          className="ml-2 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                         />
+                      )
                     )}
                   </>
                 ) : (

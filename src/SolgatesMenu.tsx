@@ -2,8 +2,11 @@ import React, { Fragment, useState, useRef, ReactNode, useEffect } from 'react';
 import { Menu, Transition, Disclosure } from '@headlessui/react';
 import {
   AccountCircle,
+  AddLine,
+  CloseLine,
   Heart3Line,
   Menu4Line,
+  Minus,
   PhoneLine,
   QuestionLine,
   Search2Line,
@@ -13,6 +16,9 @@ import {
 } from './Icons';
 import colors from './Colors';
 import { Modal, MODAL_POSITION } from './Modal';
+
+const openIcon = <AddLine color={colors.gray['800']} size={14} />;
+const closeIcon = <Minus color={colors.gray['800']} size={14} />;
 
 interface item {
   label: string;
@@ -61,9 +67,14 @@ export const SolgatesMenu = ({
   isLoggedIn,
   userName,
 }: SolgatesMenuProps) => {
-  const buttonRefs = useRef<HTMLButtonElement[]>([]);
   const openedRef = useRef<HTMLButtonElement | null>(null);
+  const buttonRefs = useRef<HTMLButtonElement[]>([]);
+  const secondLevelOpenedRef = useRef<HTMLButtonElement | null>(null);
+  const secondLevelButtonRefs = useRef<HTMLButtonElement[]>([]);
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
+  const [openMobileUserContent, setOpenUserContent] = useState<boolean>(false);
+  const [openMobileShoppingCart, setOpenMobileShoppingCart] =
+    useState<boolean>(false);
   const [newProductAdded, setNewProductAdded] = useState<boolean>(false);
   const calculateKey = (
     menuKey: number,
@@ -86,6 +97,19 @@ export const SolgatesMenu = ({
     openedRef.current = clickedButton;
   };
 
+  const clickSecondLevelMenu = (index: any) => {
+    const clickedButton = secondLevelButtonRefs.current[index];
+    if (clickedButton === secondLevelOpenedRef.current) {
+      secondLevelOpenedRef.current = null;
+      return;
+    }
+
+    if (Boolean(secondLevelOpenedRef.current?.getAttribute('data-value'))) {
+      secondLevelOpenedRef.current?.click();
+    }
+    secondLevelOpenedRef.current = clickedButton;
+  };
+
   const onCartOpened = () => {
     const event = new CustomEvent('cartOpened');
     window.dispatchEvent(event);
@@ -104,10 +128,39 @@ export const SolgatesMenu = ({
   return (
     <>
       <Modal
+        open={openMobileUserContent}
+        onClose={() => setOpenUserContent(false)}
+        position={MODAL_POSITION.BOTTOM}
+      >
+        <div className="flex justify-end items-center mb-2">
+          <CloseLine className="cursor-pointer" size={16} onClick={() => setOpenUserContent(false)} />
+        </div>
+
+        {userContent}
+      </Modal>
+
+      <Modal
+        open={openMobileShoppingCart}
+        onClose={() => setOpenMobileShoppingCart(false)}
+        position={MODAL_POSITION.BOTTOM}
+      >
+        <div className="flex justify-end items-center mb-2">
+          <CloseLine className="cursor-pointer" size={16} onClick={() => setOpenMobileShoppingCart(false)} />
+        </div>
+
+        {shoppingCartContent}
+      </Modal>
+
+      <Modal
         open={openMobileMenu}
         onClose={() => setOpenMobileMenu(false)}
         position={MODAL_POSITION.BOTTOM}
+        heightClass="h-4/6"
       >
+        <div className="flex justify-end items-center mb-2">
+          <CloseLine className="cursor-pointer" size={16} onClick={() => setOpenMobileMenu(false)} />
+        </div>
+
         {menus.map((menu) => (
           <Disclosure key={menu.key}>
             {({ open }) => (
@@ -118,11 +171,12 @@ export const SolgatesMenu = ({
                     buttonRefs.current[menu.key] = ref;
                   }}
                   onClick={() => clickRecent(menu.key)}
-                  className="flex py-2 outline-none"
+                  className="w-full flex justify-between items-center pb-2 outline-none"
                 >
-                  {menu.label}
+                  <span>{menu.label}</span>
+                  {open ? closeIcon : openIcon}
                 </Disclosure.Button>
-                <Disclosure.Panel className="ml-[10px] text-gray-500">
+                <Disclosure.Panel className="ml-[10px] mr-[10px] text-gray-500">
                   {menu?.category?.map((category, index) => (
                     <Disclosure key={`${category.label}-${index}`}>
                       {({ open }) => {
@@ -132,19 +186,20 @@ export const SolgatesMenu = ({
                             <Disclosure.Button
                               data-value={open}
                               ref={(ref: any) => {
-                                buttonRefs.current[key] = ref;
+                                secondLevelButtonRefs.current[key] = ref;
                               }}
-                              onClick={() => clickRecent(key)}
+                              onClick={() => clickSecondLevelMenu(key)}
                               key={key}
-                              className="flex py-2 outline-none"
+                              className="w-full flex justify-between items-center pb-1 outline-none"
                             >
-                              {category.label}
+                              <span>{category.label}</span>
+                              {open ? closeIcon : openIcon}
                             </Disclosure.Button>
-                            <Disclosure.Panel className="ml-[10px] text-gray-500">
+                            <Disclosure.Panel className="ml-[10px] pb-1 text-gray-500 flex flex-col">
                               {category.items.map((item, index) => (
                                 <button
                                   key={`${item.label}-${index}`}
-                                  className="text-xs leading-4 font-normal text-gray-600"
+                                  className="text-xs leading-4 font-normal text-gray-600 text-start"
                                   onClick={() => onClickMenuItem(item.id)}
                                 >
                                   {item.label}
@@ -365,11 +420,6 @@ export const SolgatesMenu = ({
                 size={18}
               />
             </div>
-            {/*<Input.Text*/}
-            {/*  className="md:hidden lg:flex h-[36px] rounded-[68px] w-[135px] bg-gray-50"*/}
-            {/*  placeholder="Search"*/}
-            {/*  prefixIcon={<Search2Line size={14} color={colors.gray['400']} />}*/}
-            {/*/>*/}
           </div>
         </div>
         <div className="mx-3 flex md:hidden lg:hidden items-center h-[40px]">
@@ -381,25 +431,39 @@ export const SolgatesMenu = ({
             />
           </div>
           <div className="flex flex-1 justify-center">
-            <img src={logoUrl} className="w-[60px]" />
+            <img
+              src={logoUrl}
+              className="w-[60px]"
+              onClick={() => onLogoClick()}
+            />
           </div>
           <div className="flex flex-1 justify-end">
-            <User6Line
-              className="mr-[10px]"
-              color={colors.gray['600']}
-              size={14}
-            />
-            <Heart3Line
-              className="mr-[10px]"
-              color={colors.gray['600']}
-              size={14}
-            />
-            <ShoppingBagLine
-              className="mr-[10px]"
-              color={colors.gray['600']}
-              size={14}
-            />
-            <Search2Line color={colors.gray['600']} size={14} />
+            <div onClick={() => setOpenUserContent(true)}>
+              <User6Line
+                className="mr-[10px]"
+                color={colors.gray['600']}
+                size={14}
+              />
+            </div>
+
+            <div onClick={() => onClickWishList()}>
+              <Heart3Line
+                className="mr-[10px]"
+                color={colors.gray['600']}
+                size={14}
+              />
+            </div>
+
+            <div onClick={() => setOpenMobileShoppingCart(true)}>
+              <ShoppingBagLine
+                className="mr-[10px]"
+                color={colors.gray['600']}
+                size={14}
+              />
+            </div>
+            <div onClick={() => onSearchClick()}>
+              <Search2Line color={colors.gray['600']} size={14} />
+            </div>
           </div>
         </div>
       </div>
