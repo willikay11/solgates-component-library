@@ -61,8 +61,10 @@ export const SolgatesMenu = ({
   isLoggedIn,
   userName,
 }: SolgatesMenuProps) => {
-  const buttonRefs = useRef<HTMLButtonElement[]>([]);
   const openedRef = useRef<HTMLButtonElement | null>(null);
+  const buttonRefs = useRef<HTMLButtonElement[]>([]);
+  const secondLevelOpenedRef = useRef<HTMLButtonElement | null>(null);
+  const secondLevelButtonRefs = useRef<HTMLButtonElement[]>([]);
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
   const [newProductAdded, setNewProductAdded] = useState<boolean>(false);
   const calculateKey = (
@@ -84,6 +86,19 @@ export const SolgatesMenu = ({
       openedRef.current?.click();
     }
     openedRef.current = clickedButton;
+  };
+
+  const clickSecondLevelMenu = (index: any) => {
+    const clickedButton = secondLevelButtonRefs.current[index];
+    if (clickedButton === secondLevelOpenedRef.current) {
+      secondLevelOpenedRef.current = null;
+      return;
+    }
+
+    if (Boolean(secondLevelOpenedRef.current?.getAttribute('data-value'))) {
+      secondLevelOpenedRef.current?.click();
+    }
+    secondLevelOpenedRef.current = clickedButton;
   };
 
   const onCartOpened = () => {
@@ -118,7 +133,7 @@ export const SolgatesMenu = ({
                     buttonRefs.current[menu.key] = ref;
                   }}
                   onClick={() => clickRecent(menu.key)}
-                  className="flex py-2 outline-none"
+                  className="flex pb-2 outline-none"
                 >
                   {menu.label}
                 </Disclosure.Button>
@@ -132,19 +147,19 @@ export const SolgatesMenu = ({
                             <Disclosure.Button
                               data-value={open}
                               ref={(ref: any) => {
-                                buttonRefs.current[key] = ref;
+                                secondLevelButtonRefs.current[key] = ref;
                               }}
-                              onClick={() => clickRecent(key)}
+                              onClick={() => clickSecondLevelMenu(key)}
                               key={key}
-                              className="flex py-2 outline-none"
+                              className="flex pb-1 outline-none"
                             >
                               {category.label}
                             </Disclosure.Button>
-                            <Disclosure.Panel className="ml-[10px] text-gray-500">
+                            <Disclosure.Panel className="ml-[10px] pb-1 text-gray-500 flex flex-col">
                               {category.items.map((item, index) => (
                                 <button
                                   key={`${item.label}-${index}`}
-                                  className="text-xs leading-4 font-normal text-gray-600"
+                                  className="text-xs leading-4 font-normal text-gray-600 text-start"
                                   onClick={() => onClickMenuItem(item.id)}
                                 >
                                   {item.label}
