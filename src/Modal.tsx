@@ -22,7 +22,7 @@ export const Modal = ({
   children,
   position,
   widthClass = 'w-96',
-  heightClass,
+  heightClass = 'h-fit',
   roundedBorder = 'rounded-[10px]',
 }: ModalProps) => {
   let positionClass = 'inset-0';
@@ -30,7 +30,7 @@ export const Modal = ({
   if (position === MODAL_POSITION.TOP) {
     positionClass = 'top-0 left-0 right-0';
   } else if (position === MODAL_POSITION.BOTTOM) {
-    positionClass = 'bottom-0 left-0 right-0';
+    positionClass = 'bottom-[10px] left-0 right-0';
   }
 
   return (
@@ -61,7 +61,7 @@ export const Modal = ({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`${widthClass} ${roundedBorder} ${heightClass} h-fit transform overflow-hidden bg-white p-[20px] text-left align-middle transition-all`}
+                className={`${widthClass} ${roundedBorder} ${heightClass} transform overflow-hidden bg-white p-[20px] text-left align-middle transition-all`}
               >
                 {children}
               </Dialog.Panel>

@@ -4,15 +4,18 @@ interface IconProps {
   color?: string;
   size?: number;
   className?: string;
+  onClick?: () => void;
 }
 
 const Heart3Line = ({
   color = 'currentColor',
   size = 14,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -30,9 +33,11 @@ const Heart3LineFill = ({
   color = 'currentColor',
   size = 14,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -46,9 +51,10 @@ const Heart3LineFill = ({
   </svg>
 );
 
-const Menu4Line = ({ color = 'currentColor', size, className }: IconProps) => (
+const Menu4Line = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -63,9 +69,11 @@ const Search2Line = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -83,9 +91,11 @@ const ShoppingBagLine = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -99,9 +109,10 @@ const ShoppingBagLine = ({
   </svg>
 );
 
-const User6Line = ({ color = 'currentColor', size, className }: IconProps) => (
+const User6Line = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -119,9 +130,11 @@ const AccountCircle = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -138,9 +151,11 @@ const ArrowLeftLine = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -158,9 +173,11 @@ const ArrowRightLine = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -178,9 +195,11 @@ const ArrowLeftSLine = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -198,9 +217,11 @@ const ArrowRightSLine = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -214,9 +235,10 @@ const ArrowRightSLine = ({
   </svg>
 );
 
-const Shop2Line = ({ color = 'currentColor', size, className }: IconProps) => (
+const Shop2Line = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -234,9 +256,11 @@ const QuestionLine = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -250,9 +274,10 @@ const QuestionLine = ({
   </svg>
 );
 
-const PhoneLine = ({ color = 'currentColor', size, className }: IconProps) => (
+const PhoneLine = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -266,9 +291,10 @@ const PhoneLine = ({ color = 'currentColor', size, className }: IconProps) => (
   </svg>
 );
 
-const AddLine = ({ color = 'currentColor', size, className }: IconProps) => (
+const AddLine = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -279,9 +305,10 @@ const AddLine = ({ color = 'currentColor', size, className }: IconProps) => (
   </svg>
 );
 
-const Minus = ({ color = 'currentColor', size, className }: IconProps) => (
+const Minus = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -296,9 +323,11 @@ const ArrowDownSLine = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -312,9 +341,10 @@ const ArrowDownSLine = ({
   </svg>
 );
 
-const Checkline = ({ color = 'currentColor', size, className }: IconProps) => (
+const Checkline = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -328,9 +358,10 @@ const Checkline = ({ color = 'currentColor', size, className }: IconProps) => (
   </svg>
 );
 
-const FileUpload = ({ color = 'currentColor', size, className }: IconProps) => (
+const FileUpload = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -344,9 +375,10 @@ const FileUpload = ({ color = 'currentColor', size, className }: IconProps) => (
   </svg>
 );
 
-const AddCircle = ({ color = 'currentColor', size, className }: IconProps) => (
+const AddCircle = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -360,9 +392,10 @@ const AddCircle = ({ color = 'currentColor', size, className }: IconProps) => (
   </svg>
 );
 
-const CloseLine = ({ color = 'currentColor', size, className }: IconProps) => (
+const CloseLine = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -376,9 +409,10 @@ const CloseLine = ({ color = 'currentColor', size, className }: IconProps) => (
   </svg>
 );
 
-const GiftLine = ({ color = 'currentColor', size, className }: IconProps) => (
+const GiftLine = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -395,9 +429,11 @@ const Information = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -410,9 +446,10 @@ const Information = ({
   </svg>
 );
 
-const Error = ({ color = 'currentColor', size, className }: IconProps) => (
+const Error = ({ color = 'currentColor', size, className, onClick }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     width={size}
@@ -429,9 +466,11 @@ const CheckDoubleLine = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     width={size}
     height={size}
     xmlns="http://www.w3.org/2000/svg"
@@ -448,9 +487,11 @@ const DeleteBin5Line = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick}
     width={size}
     height={size}
     xmlns="http://www.w3.org/2000/svg"
@@ -467,9 +508,11 @@ const CheckboxBlankCircleFill = ({
   color = 'currentColor',
   size,
   className,
+  onClick,
 }: IconProps) => (
   <svg
     className={className}
+    onClick={() => onClick?.()}
     width={size}
     height={size}
     xmlns="http://www.w3.org/2000/svg"
