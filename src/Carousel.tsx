@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode, isValidElement } from 'react';
+import React, {useState, useEffect, ReactNode, isValidElement} from 'react';
 import {
   ArrowLeftSLine,
   ArrowRightSLine,
@@ -47,6 +47,33 @@ export const Carousel = ({
   const [showButtons, setShowButtons] = useState<boolean>(
     arrowPosition !== ARROW_POSITION.center
   );
+  const [touchPosition, setTouchPosition] = useState<number | null>(null);
+
+  const handleTouchStart = (event: any) => {
+    const touchDown: number = event.touches[0].clientX;
+    setTouchPosition(touchDown)
+  }
+
+  const handleTouchMove = (e: any) => {
+    const touchDown = touchPosition
+
+    if(touchDown === null) {
+      return
+    }
+
+    const currentTouch = e.touches[0].clientX
+    const diff = touchDown - currentTouch
+
+    if (diff > 5) {
+      handleClickScroll('next', 1);
+    }
+
+    if (diff < -5) {
+      handleClickScroll('prev', 1);
+    }
+
+    setTouchPosition(null)
+  }
 
   const handleWindowSizeChange = () => {
     if (window.innerWidth <= 640) {
@@ -163,6 +190,8 @@ export const Carousel = ({
         style={{
           gridTemplateColumns: `repeat(${items.length}, ${gridPercentage}%)`,
         }}
+        onTouchStart={(event) => handleTouchStart(event)}
+        onTouchMove={handleTouchMove}
       >
         {items.map((item, index) => (
           <div
@@ -204,7 +233,7 @@ export const Carousel = ({
       {showButtons && (
         <div className={`flex flex-row ${position}`}>
           <button
-            className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+            className="xs:max-sm:hidden rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
             onClick={(event) => {
               event.stopPropagation();
               handleClickScroll('prev');
@@ -213,7 +242,7 @@ export const Carousel = ({
             <ArrowLeftSLine size={14} color={colors.orange['600']} />
           </button>
           <button
-            className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+            className="xs:max-sm:hidden rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
             onClick={(event) => {
               event.stopPropagation();
               handleClickScroll('next');
