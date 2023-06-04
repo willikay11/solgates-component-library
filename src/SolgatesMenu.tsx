@@ -211,7 +211,7 @@ export const SolgatesMenu = ({
                               {category.items.map((item, index) => (
                                 <button
                                   key={`${item.label}-${index}`}
-                                  className="text-xs leading-4 font-normal text-gray-600 text-start"
+                                  className="text-xs leading-4 font-normal text-gray-600 text-start mb-1.5"
                                   onClick={() => onClickMenuItem(item.id)}
                                 >
                                   {item.label}
@@ -229,7 +229,7 @@ export const SolgatesMenu = ({
           </Disclosure>
         ))}
       </Modal>
-      <div className="fixed relative w-full h-[60px] md:h-[128px] lg:h-[128px] items-center border-b border-gray-100">
+      <div className="fixed relative w-full h-[80px] md:h-[128px] lg:h-[128px] items-center border-b border-gray-100">
         <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
           <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-8 flex w-full items-center justify-center md:justify-end lg:justify-end">
             <span className="inline-flex text-[10px] text-gray-600 mr-2">
@@ -434,18 +434,18 @@ export const SolgatesMenu = ({
             </div>
           </div>
         </div>
-        <div className="mx-3 flex md:hidden lg:hidden items-center h-[40px]">
+        <div className="mx-3 flex md:max-2xl:hidden items-center h-[60px]">
           <div className="flex flex-1" onClick={() => setOpenMobileMenu(true)}>
             <Menu4Line
               className="cursor-pointer"
-              size={14}
+              size={18}
               color={colors.gray['600']}
             />
           </div>
           <div className="flex flex-1 justify-center">
             <img
               src={logoUrl}
-              className="w-[60px]"
+              className="w-[70px]"
               onClick={() => onLogoClick()}
             />
           </div>
@@ -456,7 +456,7 @@ export const SolgatesMenu = ({
                   <AccountCircle
                     className="mr-[5px] cursor-pointer"
                     color={colors.blue['500']}
-                    size={20}
+                    size={18}
                   />
                   <p className="text-xs font-normal leading-4 text-gray-800 truncate w-[60px]">
                     Hi, {userName}
@@ -466,7 +466,7 @@ export const SolgatesMenu = ({
                 <User6Line
                   className="mr-[10px]"
                   color={colors.gray['600']}
-                  size={14}
+                  size={18}
                 />
               )}
             </div>
@@ -475,7 +475,7 @@ export const SolgatesMenu = ({
               <Heart3Line
                 className="mr-[10px]"
                 color={colors.gray['600']}
-                size={14}
+                size={18}
               />
             </div>
 
@@ -483,11 +483,11 @@ export const SolgatesMenu = ({
               <ShoppingBagLine
                 className="mr-[10px]"
                 color={colors.gray['600']}
-                size={14}
+                size={18}
               />
             </div>
             <div onClick={() => onSearchClick()}>
-              <Search2Line color={colors.gray['600']} size={14} />
+              <Search2Line color={colors.gray['600']} size={18} />
             </div>
           </div>
         </div>

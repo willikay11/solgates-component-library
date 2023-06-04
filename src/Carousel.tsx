@@ -65,11 +65,11 @@ export const Carousel = ({
     const diff = touchDown - currentTouch
 
     if (diff > 5) {
-      handleClickScroll('next', 1);
+      handleClickScroll('next');
     }
 
     if (diff < -5) {
-      handleClickScroll('prev', 1);
+      handleClickScroll('prev');
     }
 
     setTouchPosition(null)
@@ -115,6 +115,7 @@ export const Carousel = ({
         scrollTo = lastVisibleItem + moveBy;
       }
     }
+    console.log('scrollTo: ', scrollTo);
     setLastVisibleItem(scrollTo);
     const element = document.getElementById(`${id}-${scrollTo}`);
     if (element) {
