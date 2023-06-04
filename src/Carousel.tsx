@@ -1,4 +1,5 @@
-import React, {useState, useEffect, ReactNode, isValidElement} from 'react';
+import React, { useState, useEffect, ReactNode, isValidElement } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import {
   ArrowLeftSLine,
   ArrowRightSLine,
@@ -47,33 +48,38 @@ export const Carousel = ({
   const [showButtons, setShowButtons] = useState<boolean>(
     arrowPosition !== ARROW_POSITION.center
   );
-  const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
-  const handleTouchStart = (event: any) => {
-    const touchDown: number = event.touches[0].clientX;
-    setTouchPosition(touchDown)
-  }
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleClickScroll('prev'),
+    onSwipedRight: () => handleClickScroll('next'),
+  });
+  // const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
-  const handleTouchMove = (e: any) => {
-    const touchDown = touchPosition
+  // const handleTouchStart = (event: any) => {
+  //   const touchDown: number = event.touches[0].clientX;
+  //   setTouchPosition(touchDown)
+  // }
 
-    if(touchDown === null) {
-      return
-    }
-
-    const currentTouch = e.touches[0].clientX
-    const diff = touchDown - currentTouch
-
-    if (diff > 1) {
-      handleClickScroll('next');
-    }
-
-    if (diff < -1) {
-      handleClickScroll('prev');
-    }
-
-    setTouchPosition(null)
-  }
+  // const handleTouchMove = (e: any) => {
+  //   const touchDown = touchPosition
+  //
+  //   if(touchDown === null) {
+  //     return
+  //   }
+  //
+  //   const currentTouch = e.touches[0].clientX
+  //   const diff = touchDown - currentTouch
+  //
+  //   if (diff > 1) {
+  //     handleClickScroll('next');
+  //   }
+  //
+  //   if (diff < -1) {
+  //     handleClickScroll('prev');
+  //   }
+  //
+  //   setTouchPosition(null)
+  // }
 
   const handleWindowSizeChange = () => {
     if (window.innerWidth <= 640) {
@@ -185,13 +191,14 @@ export const Carousel = ({
           </div>
         ))}
       <div
+        {...handlers}
         id="carousel-item"
         className="grid overflow-hidden gap-2"
         style={{
           gridTemplateColumns: `repeat(${items.length}, ${gridPercentage}%)`,
         }}
-        onTouchStart={(event) => handleTouchStart(event)}
-        onTouchMove={handleTouchMove}
+        // onTouchStart={(event) => handleTouchStart(event)}
+        // onTouchMove={handleTouchMove}
       >
         {items.map((item, index) => (
           <div
