@@ -155,7 +155,6 @@ export const Carousel = ({
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
     >
-      <div {...handlers}> You can swipe here </div>
       {title ||
         (arrowPosition === ARROW_POSITION.topRight && (
           <div className={`flex flex-row justify-between mb-2.5`}>
