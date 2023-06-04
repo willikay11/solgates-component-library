@@ -30,7 +30,7 @@ export const Notification: React.FC<NotificationProps> = ({
   return (
     <div
       id={notificationId}
-      className="flex justify-between bg-white shadow-lg border-gray-100 border-[1px] mb-2 p-3.5 w-[400px]"
+      className="flex justify-between bg-white shadow-lg border-gray-100 border-[1px] ml-2 mb-2 p-3.5 w-full md:max-2xl:w-[400px]"
       {...rest}
     >
       <div>{icon}</div>

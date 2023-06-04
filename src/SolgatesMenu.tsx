@@ -147,9 +147,11 @@ export const SolgatesMenu = ({
         position={MODAL_POSITION.BOTTOM}
       >
         <div className="flex justify-between items-center mb-2">
-          <span className="text-xs font-normal leading-4 text-gray-800 truncate w-1/2">
-            Hi, {userName}
-          </span>
+          {userName && (
+            <span className="text-xs font-normal leading-4 text-gray-800 truncate w-1/2">
+              Hi, {userName}
+            </span>
+          )}
           <CloseLine
             className="cursor-pointer"
             size={16}
