@@ -1,6 +1,10 @@
-import React, {isValidElement, ReactNode, useEffect, useState} from 'react';
-import {useSwipeable} from 'react-swipeable';
-import {ArrowLeftSLine, ArrowRightSLine, CheckboxBlankCircleFill,} from './Icons';
+import React, { isValidElement, ReactNode, useEffect, useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
+import {
+  ArrowLeftSLine,
+  ArrowRightSLine,
+  CheckboxBlankCircleFill,
+} from './Icons';
 import colors from './Colors';
 
 export enum ARROW_POSITION {
@@ -46,7 +50,10 @@ export const Carousel = ({
   );
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => {console.log('swiped');handleClickScroll('next')},
+    onSwipedLeft: () => {
+      console.log('swiped');
+      handleClickScroll('next');
+    },
     onSwipedRight: () => handleClickScroll('prev'),
   });
   // const [touchPosition, setTouchPosition] = useState<number | null>(null);
