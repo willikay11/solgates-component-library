@@ -1,10 +1,6 @@
-import React, { useState, useEffect, ReactNode, isValidElement } from 'react';
-import { useSwipeable } from 'react-swipeable';
-import {
-  ArrowLeftSLine,
-  ArrowRightSLine,
-  CheckboxBlankCircleFill,
-} from './Icons';
+import React, {isValidElement, ReactNode, useEffect, useState} from 'react';
+import {useSwipeable} from 'react-swipeable';
+import {ArrowLeftSLine, ArrowRightSLine, CheckboxBlankCircleFill,} from './Icons';
 import colors from './Colors';
 
 export enum ARROW_POSITION {
@@ -50,8 +46,8 @@ export const Carousel = ({
   );
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => handleClickScroll('prev'),
-    onSwipedRight: () => handleClickScroll('next'),
+    onSwipedLeft: () => {console.log('swiped');handleClickScroll('next')},
+    onSwipedRight: () => handleClickScroll('prev'),
   });
   // const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
@@ -152,6 +148,7 @@ export const Carousel = ({
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
     >
+      <div {...handlers}> You can swipe here </div>
       {title ||
         (arrowPosition === ARROW_POSITION.topRight && (
           <div className={`flex flex-row justify-between mb-2.5`}>

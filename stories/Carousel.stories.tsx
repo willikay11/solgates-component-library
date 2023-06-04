@@ -25,7 +25,7 @@ export const Default = Template.bind({});
 Default.args = {
   id: 'a',
   // title: 'Popular Right Now',
-  arrowPosition: ARROW_POSITION.center,
+  arrowPosition: ARROW_POSITION.topRight,
   itemsVisible: {
     mobile: 1,
     tablet: 3,
