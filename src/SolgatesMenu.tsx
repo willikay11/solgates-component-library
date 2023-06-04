@@ -115,6 +115,14 @@ export const SolgatesMenu = ({
     window.dispatchEvent(event);
   };
 
+  const handleWindowSizeChange = () => {
+    if (window.innerWidth > 640) {
+      setOpenMobileShoppingCart(false);
+      setOpenUserContent(false);
+      setOpenMobileMenu(false);
+    }
+  };
+
   useEffect(() => {
     window.addEventListener('productAdded', () => {
       setNewProductAdded(true);
@@ -125,6 +133,12 @@ export const SolgatesMenu = ({
     });
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    };
+  }, []);
   return (
     <>
       <Modal
@@ -132,14 +146,16 @@ export const SolgatesMenu = ({
         onClose={() => setOpenUserContent(false)}
         position={MODAL_POSITION.BOTTOM}
       >
-        <div className="flex justify-end items-center mb-2">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-xs font-normal leading-4 text-gray-800 truncate w-1/2">
+            Hi, {userName}
+          </span>
           <CloseLine
             className="cursor-pointer"
             size={16}
             onClick={() => setOpenUserContent(false)}
           />
         </div>
-
         {userContent}
       </Modal>
 
@@ -155,7 +171,6 @@ export const SolgatesMenu = ({
             onClick={() => setOpenMobileShoppingCart(false)}
           />
         </div>
-
         {shoppingCartContent}
       </Modal>
 
@@ -454,13 +469,10 @@ export const SolgatesMenu = ({
               {isLoggedIn ? (
                 <div className="flex flex-row mr-1.5 items-center">
                   <AccountCircle
-                    className="mr-[5px] cursor-pointer"
+                    className="mr-[5px] ml-2 cursor-pointer"
                     color={colors.blue['500']}
                     size={18}
                   />
-                  <p className="text-xs font-normal leading-4 text-gray-800 truncate w-[60px]">
-                    Hi, {userName}
-                  </p>
                 </div>
               ) : (
                 <User6Line
