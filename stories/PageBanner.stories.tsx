@@ -17,7 +17,7 @@ const Template: Story<PageBannerProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  imageUrl: 'solgates-banner-1.jpeg',
+  imageUrl: 'solgates-membership-banner.jpg',
   title: 'Checkout',
   name: 'Children Tees',
   buttonName: 'Shop',

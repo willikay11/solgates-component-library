@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { CloudimageProvider, BackgroundImg } from 'react-cloudimage-responsive';
+import Img, { CloudimageProvider } from 'react-cloudimage-responsive';
 import { Button, ButtonTypes } from './Button';
 
 const cloudImageConfig = {
@@ -24,14 +24,14 @@ export const PageBanner = ({
   onClick,
 }: PageBannerProps) => {
   return (
-    <div className="w-full h-full relative rounded">
+    <div className="w-full h-fit rounded">
       <CloudimageProvider config={cloudImageConfig}>
-        <BackgroundImg
-          src={imageUrl}
-          doNotReplaceURL
-          className="relative rounded bg-cover bg-center w-full h-full"
-        ></BackgroundImg>
-        {title && (
+        <div className="relative">
+          <Img
+            src={imageUrl}
+            doNotReplaceURL
+            className="relative rounded bg-cover bg-center w-full h-full"
+          />
           <div
             className="flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0"
             style={{
@@ -39,11 +39,13 @@ export const PageBanner = ({
                 'linear-gradient(0deg, rgba(31, 41, 55, 0.4), rgba(31, 41, 55, 0.4))',
             }}
           >
-            <p className="absolute text-6xl leading-none font-extrabold text-white">
-              {title}
-            </p>
+            {title && (
+              <p className="absolute text-6xl leading-none font-extrabold text-white">
+                {title}
+              </p>
+            )}
           </div>
-        )}
+        </div>
       </CloudimageProvider>
 
       {(name || buttonName) && (
