@@ -451,7 +451,7 @@ export const SolgatesMenu = ({
             </div>
           </div>
         </div>
-        <div className="mx-3 flex md:max-2xl:hidden items-center h-[60px]">
+        <div className="mx-3 flex md:hidden lg:hidden xl:hidden 2xl:hidden items-center h-[60px]">
           <div className="flex flex-1" onClick={() => setOpenMobileMenu(true)}>
             <Menu4Line
               className="cursor-pointer"
