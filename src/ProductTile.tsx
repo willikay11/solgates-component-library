@@ -18,7 +18,7 @@ export enum PRODUCT_TYPE {
   COLLECTION = 'collection',
   RELEASES = 'releases',
   CAROUSEL = 'carousel',
-  CONTENT = 'content'
+  CONTENT = 'content',
 }
 
 export interface ProductTileProps {
@@ -104,7 +104,9 @@ export const ProductTile = ({
     >
       <div
         className={`w-full ${
-          type === PRODUCT_TYPE.COLLECTION || type === PRODUCT_TYPE.CONTENT ? 'h-full' : 'h-auto'
+          type === PRODUCT_TYPE.COLLECTION || type === PRODUCT_TYPE.CONTENT
+            ? 'h-full'
+            : 'h-auto'
         } relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`}
         onClick={() => onClick?.()}
       >
@@ -120,7 +122,7 @@ export const ProductTile = ({
             })}
           />
         ) : type === PRODUCT_TYPE.CONTENT ? (
-            content
+          content
         ) : (
           <ImageTile image={imageUrl} />
         )}

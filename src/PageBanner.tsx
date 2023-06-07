@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react';
+import React, { isValidElement, ReactNode } from 'react';
 import Img, { CloudimageProvider } from 'react-cloudimage-responsive';
 import { Button, ButtonTypes } from './Button';
 
@@ -10,6 +10,7 @@ const cloudImageConfig = {
 
 export interface PageBannerProps {
   imageUrl: string;
+  content?: ReactNode;
   title?: string;
   onClick?: () => void;
   name?: string;
@@ -19,6 +20,7 @@ export interface PageBannerProps {
 
 export const PageBanner = ({
   imageUrl,
+  content,
   title,
   name,
   buttonName,
@@ -26,15 +28,19 @@ export const PageBanner = ({
   showOverlay = true,
 }: PageBannerProps) => {
   return (
-    <div className="w-full h-fit rounded">
+    <div className="w-full h-auto rounded">
       <CloudimageProvider config={cloudImageConfig}>
-        <div className="relative">
-          <Img
-            src={imageUrl}
-            height="100%"
-            doNotReplaceURL
-            className="relative rounded bg-cover bg-center w-full h-full"
-          />
+        <div className="h-full relative">
+          {isValidElement(content) ? (
+            content
+          ) : (
+            <Img
+              src={imageUrl}
+              height="100%"
+              doNotReplaceURL
+              className="relative rounded bg-cover bg-center w-full h-full"
+            />
+          )}
           <div
             className={`flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0 ${
               !showOverlay ? 'hidden' : ''
