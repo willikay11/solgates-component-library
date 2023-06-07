@@ -36,7 +36,7 @@ export const PageBanner = ({
             className="relative rounded bg-cover bg-center w-full h-full"
           />
           <div
-            className={!showOverlay ? 'hidden' : '' `flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0`}
+            className={`flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0 ${!showOverlay ? 'hidden' : ''}`}
             style={{
               background:
                 'linear-gradient(0deg, rgba(31, 41, 55, 0.4), rgba(31, 41, 55, 0.4))',
