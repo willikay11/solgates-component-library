@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {isValidElement, ReactNode, useId, useState} from 'react';
+import React, { isValidElement, ReactNode, useId, useState } from 'react';
 import Img, { CloudimageProvider } from 'react-cloudimage-responsive';
 import Carousel, { ARROW_POSITION } from './Carousel';
 import { Heart3Line, Heart3LineFill } from './Icons';
@@ -18,6 +18,7 @@ export enum PRODUCT_TYPE {
   COLLECTION = 'collection',
   RELEASES = 'releases',
   CAROUSEL = 'carousel',
+  CONTENT = 'content'
 }
 
 export interface ProductTileProps {
@@ -28,7 +29,8 @@ export interface ProductTileProps {
     | PRODUCT_TYPE.PRODUCT
     | PRODUCT_TYPE.COLLECTION
     | PRODUCT_TYPE.RELEASES
-    | PRODUCT_TYPE.CAROUSEL;
+    | PRODUCT_TYPE.CAROUSEL
+    | PRODUCT_TYPE.CONTENT;
   content?: ReactNode;
   name?: string;
   smallDescription?: string;
@@ -65,7 +67,7 @@ const ImageTile = ({ image }: ImageTileProps) => {
 export const ProductTile = ({
   id,
   imageUrl,
-    content,
+  content,
   type = PRODUCT_TYPE.PRODUCTS,
   name,
   buttonName,
@@ -102,7 +104,7 @@ export const ProductTile = ({
     >
       <div
         className={`w-full ${
-          type === PRODUCT_TYPE.COLLECTION ? 'h-full' : 'h-auto'
+          type === PRODUCT_TYPE.COLLECTION || type === PRODUCT_TYPE.CONTENT ? 'h-full' : 'h-auto'
         } relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`}
         onClick={() => onClick?.()}
       >
@@ -117,9 +119,11 @@ export const ProductTile = ({
               };
             })}
           />
-        ) : isValidElement(content) ? (
-          content
-        ) : <ImageTile image={imageUrl} />}
+        ) : type === PRODUCT_TYPE.CONTENT ? (
+            content
+        ) : (
+          <ImageTile image={imageUrl} />
+        )}
         {type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL ? (
           inWishList ? (
             <div
