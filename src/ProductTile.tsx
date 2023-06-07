@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useId, useState } from 'react';
+import React, {isValidElement, ReactNode, useId, useState} from 'react';
 import Img, { CloudimageProvider } from 'react-cloudimage-responsive';
 import Carousel, { ARROW_POSITION } from './Carousel';
 import { Heart3Line, Heart3LineFill } from './Icons';
@@ -29,6 +29,7 @@ export interface ProductTileProps {
     | PRODUCT_TYPE.COLLECTION
     | PRODUCT_TYPE.RELEASES
     | PRODUCT_TYPE.CAROUSEL;
+  content?: ReactNode;
   name?: string;
   smallDescription?: string;
   buttonName?: string;
@@ -64,6 +65,7 @@ const ImageTile = ({ image }: ImageTileProps) => {
 export const ProductTile = ({
   id,
   imageUrl,
+    content,
   type = PRODUCT_TYPE.PRODUCTS,
   name,
   buttonName,
@@ -115,9 +117,9 @@ export const ProductTile = ({
               };
             })}
           />
-        ) : (
-          <ImageTile image={imageUrl} />
-        )}
+        ) : isValidElement(content) ? (
+          content
+        ) : <ImageTile image={imageUrl} />}
         {type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL ? (
           inWishList ? (
             <div
