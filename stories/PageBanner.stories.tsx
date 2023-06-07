@@ -27,7 +27,7 @@ Default.args = {
 export const Content = Template.bind({});
 Content.args = {
   content: (
-    <div className="h-full w-full bg-orange-100 rounded-[5px] border-dashed border-orange-600 border-[1px] flex flex-1 items-center cursor-pointer">
+    <div className="h-80 w-full bg-orange-100 rounded-[5px] border-dashed border-orange-600 border-[1px] flex flex-1 items-center cursor-pointer">
       <div className="flex flex-col items-center justify-center w-full">
         <IconContainer borderRadius="rounded-full" bgColor="bg-orange-200">
           <User6Line color={colors.orange['600']} />
