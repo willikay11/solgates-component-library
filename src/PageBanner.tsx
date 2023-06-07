@@ -14,6 +14,7 @@ export interface PageBannerProps {
   onClick?: () => void;
   name?: string;
   buttonName?: string;
+  showOverlay?: boolean;
 }
 
 export const PageBanner = ({
@@ -22,6 +23,7 @@ export const PageBanner = ({
   name,
   buttonName,
   onClick,
+    showOverlay = true
 }: PageBannerProps) => {
   return (
     <div className="w-full h-fit rounded">
@@ -29,11 +31,12 @@ export const PageBanner = ({
         <div className="relative">
           <Img
             src={imageUrl}
+            height="100%"
             doNotReplaceURL
             className="relative rounded bg-cover bg-center w-full h-full"
           />
           <div
-            className="flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0"
+            className={!showOverlay ? 'hidden' : '' `flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0`}
             style={{
               background:
                 'linear-gradient(0deg, rgba(31, 41, 55, 0.4), rgba(31, 41, 55, 0.4))',
