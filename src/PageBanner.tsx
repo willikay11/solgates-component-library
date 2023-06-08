@@ -1,6 +1,9 @@
 // @ts-nocheck
 import React, { isValidElement, ReactNode } from 'react';
-import Img, { CloudimageProvider } from 'react-cloudimage-responsive';
+import Img, {
+  CloudimageProvider,
+  BackgroundImg,
+} from 'react-cloudimage-responsive';
 import { Button, ButtonTypes } from './Button';
 
 const cloudImageConfig = {
@@ -9,6 +12,7 @@ const cloudImageConfig = {
 };
 
 export interface PageBannerProps {
+  type?: 'image' | 'backgroundImage';
   imageUrl?: string;
   content?: ReactNode;
   title?: string;
@@ -19,6 +23,7 @@ export interface PageBannerProps {
 }
 
 export const PageBanner = ({
+  type = 'image',
   imageUrl,
   content,
   title,
@@ -28,18 +33,19 @@ export const PageBanner = ({
   showOverlay = true,
 }: PageBannerProps) => {
   return (
-    <div className="w-full h-fit rounded">
+    <div className="w-full h-full rounded">
       <CloudimageProvider config={cloudImageConfig}>
-        <div className="h-auto relative">
+        <div className="h-full relative">
           {isValidElement(content) ? (
             content
+          ) : type === 'image' ? (
+            <Img src={imageUrl} doNotReplaceURL />
           ) : (
-            <Img
+            <BackgroundImg
               src={imageUrl}
-              height="100%"
               doNotReplaceURL
-              className="relative rounded bg-cover bg-center w-full h-full object-contain"
-            />
+              className="relative rounded bg-cover bg-center w-full h-full"
+            ></BackgroundImg>
           )}
           <div
             className={`flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0 ${
