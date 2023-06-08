@@ -9,7 +9,7 @@ const cloudImageConfig = {
 };
 
 export interface PageBannerProps {
-  imageUrl: string;
+  imageUrl?: string;
   content?: ReactNode;
   title?: string;
   onClick?: () => void;
@@ -28,7 +28,7 @@ export const PageBanner = ({
   showOverlay = true,
 }: PageBannerProps) => {
   return (
-    <div className="w-full h-auto rounded">
+    <div className="w-full h-fit rounded">
       <CloudimageProvider config={cloudImageConfig}>
         <div className="h-auto relative">
           {isValidElement(content) ? (
@@ -38,7 +38,7 @@ export const PageBanner = ({
               src={imageUrl}
               height="100%"
               doNotReplaceURL
-              className="relative rounded bg-cover bg-center w-full h-full"
+              className="relative rounded bg-cover bg-center w-full h-full object-contain"
             />
           )}
           <div

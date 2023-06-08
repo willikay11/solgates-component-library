@@ -24,7 +24,7 @@ const Template: Story<CarouselProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   id: 'a',
-  // title: 'Popular Right Now',
+  title: <span>Popular Right Now</span>,
   arrowPosition: ARROW_POSITION.topRight,
   itemsVisible: {
     mobile: 1,
