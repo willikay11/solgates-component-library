@@ -155,16 +155,19 @@ export const Carousel = ({
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
     >
-      {title ||
-        (arrowPosition === ARROW_POSITION.topRight && (
-          <div className={`flex flex-row justify-between mb-2.5`}>
-            {isValidElement(title) ? (
-              title
+      <div className="flex flex-row justify-between">
+        <div className="mb-2.5">
+          {title &&
+            (isValidElement(title) ? (
+              <span>{title}</span>
             ) : (
               <p className="text-xl leading-7 font-normal text-gray-800">
                 {title}
               </p>
-            )}
+            ))}
+        </div>
+        <div className="mb-2.5">
+          {arrowPosition === ARROW_POSITION.topRight && (
             <div
               className={`${
                 arrowPosition === ARROW_POSITION.topRight
@@ -191,8 +194,9 @@ export const Carousel = ({
                 <ArrowRightSLine size={14} color={colors.orange['600']} />
               </button>
             </div>
-          </div>
-        ))}
+          )}
+        </div>
+      </div>
       <div
         {...handlers}
         id="carousel-item"

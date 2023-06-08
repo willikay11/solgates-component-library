@@ -11,7 +11,7 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<PageBannerProps> = (args) => (
-  <div className="flex flex-row h-96 md:h-64 lg:h-96">
+  <div className="flex flex-row">
     <PageBanner {...args} />
   </div>
 );
