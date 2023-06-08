@@ -7,9 +7,16 @@ export interface UploadProps {
   name: string;
   error?: string;
   imageUrls?: string[];
+  multiple?: boolean;
 }
 
-export const Upload = ({ id, name, error, imageUrls }: UploadProps) => {
+export const Upload = ({
+  id,
+  name,
+  error,
+  imageUrls,
+  multiple = true,
+}: UploadProps) => {
   const formats = 'image/*';
   const hiddenFileInput = React.useRef<HTMLInputElement>(null);
   const dropNDropInput = React.useRef<HTMLDivElement>(null);
@@ -109,7 +116,7 @@ export const Upload = ({ id, name, error, imageUrls }: UploadProps) => {
   return (
     <>
       <input
-        multiple
+        multiple={multiple}
         type="file"
         accept={formats}
         id={id}
@@ -139,13 +146,15 @@ export const Upload = ({ id, name, error, imageUrls }: UploadProps) => {
               </button>
             </div>
           ))}
-          <div
-            onClick={handleClick}
-            className="flex flex-col w-[100px] h-[100px] bg-blue-50 rounded p-[15px] cursor-pointer items-center justify-center mt-2"
-            style={{ border: '1px dashed #2563EB' }}
-          >
-            <AddCircle size={24} color={colors.blue['600']} />
-          </div>
+          {multiple && (
+            <div
+              onClick={handleClick}
+              className="flex flex-col w-[100px] h-[100px] bg-blue-50 rounded p-[15px] cursor-pointer items-center justify-center mt-2"
+              style={{ border: '1px dashed #2563EB' }}
+            >
+              <AddCircle size={24} color={colors.blue['600']} />
+            </div>
+          )}
         </div>
       ) : (
         <>
