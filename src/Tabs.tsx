@@ -37,10 +37,10 @@ export const Tabs = ({
             >
               {({ selected }) => (
                 <div
-                  className={`${
+                  className={`text-sm ${
                     selected
                       ? 'text-orange-500 border-b border-b-orange-500 font-semibold'
-                      : 'text-gray-400 font-light'
+                      : 'text-gray-500 font-light'
                   } pb-1.5 w-full`}
                 >
                   {item.label}

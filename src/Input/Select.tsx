@@ -114,7 +114,7 @@ export const Select = ({
                           multipleSelectedItems.length ? '' : searchPlaceholder
                         }
                         value={searchValue ?? ''}
-                        className="ml-2 font-normal w-full focus:ring-0 focus:outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500"
+                        className="ml-2 text-xs text-gray-800 font-normal w-full focus:ring-0 focus:outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500"
                         onClick={(event) => event.stopPropagation()}
                         onChange={(event) => setSearchValue(event.target.value)}
                       />
@@ -123,7 +123,7 @@ export const Select = ({
                         <input
                           disabled
                           placeholder={placeholder}
-                          className="ml-2 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                          className="ml-2 text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                         />
                       )
                     )}
@@ -134,19 +134,19 @@ export const Select = ({
                       <input
                         autoFocus
                         placeholder={selectedItem?.label ?? searchPlaceholder}
-                        className="ml-2 font-normal w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                        className="ml-2 text-xs text-gray-800 font-normal w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                         onClick={(event) => event.stopPropagation()}
                         onChange={(event) => setSearchValue(event.target.value)}
                       />
                     ) : selectedItem && Object.keys(selectedItem).length ? (
-                      <span className="ml-2 truncate">
+                      <span className="ml-2 truncate text-xs text-gray-800">
                         {selectedItem?.label}
                       </span>
                     ) : (
                       <input
                         disabled
                         placeholder={placeholder}
-                        className="ml-2 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                        className="ml-2 text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                       />
                     )}
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -194,7 +194,7 @@ export const Select = ({
                     {({ selected }) => (
                       <>
                         <span
-                          className={`block truncate ${
+                          className={`block truncate text-xs text-gray-800 ${
                             selected
                               ? 'font-medium text-orange-600'
                               : 'font-normal'
