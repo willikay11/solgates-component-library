@@ -12,6 +12,10 @@ export interface UploadProps {
   buttonContent?: ReactNode;
   showFileSelect?: boolean;
   onChange?: (file: any) => void;
+  preview?: {
+    height: number,
+    width: number
+  }
 }
 
 export const Upload = ({
@@ -24,6 +28,10 @@ export const Upload = ({
   buttonContent,
   showFileSelect,
   onChange,
+  preview = {
+    height: 100,
+    width: 100
+  }
 }: UploadProps) => {
   const formats = 'image/*';
   const hiddenFileInput = React.useRef<HTMLInputElement>(null);
@@ -144,8 +152,8 @@ export const Upload = ({
           {uploadedImages.map((image, index) => (
             <div key={index} className="relative">
               <img
-                width={100}
-                height={100}
+                width={preview?.width}
+                height={preview.height}
                 src={
                   typeof image === 'string' ? image : URL.createObjectURL(image)
                 }
