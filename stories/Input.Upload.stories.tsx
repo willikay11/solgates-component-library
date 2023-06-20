@@ -15,7 +15,7 @@ const Template: Story<UploadProps> = (args) => <Input.Upload {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  type: 'button',
+  type: 'input',
   multiple: false,
   buttonContent: (
     <div className="h-[90px] w-[80px] rounded-[5px] bg-orange-200 mr-2.5 relative">
@@ -24,6 +24,6 @@ Default.args = {
       </button>
     </div>
   ),
-  showFileSelect: true,
+  showFileSelect: false,
   onChange: (file) => console.log('file: ', file),
 };

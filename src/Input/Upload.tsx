@@ -13,8 +13,8 @@ export interface UploadProps {
   showFileSelect?: boolean;
   onChange?: (file: any) => void;
   preview?: {
-    height: number,
-    width: number
+    height: string,
+    width: string
   }
 }
 
@@ -29,8 +29,8 @@ export const Upload = ({
   showFileSelect,
   onChange,
   preview = {
-    height: 100,
-    width: 100
+    height: '100px',
+    width: '100px'
   }
 }: UploadProps) => {
   const formats = 'image/*';
@@ -148,12 +148,12 @@ export const Upload = ({
         style={{ display: 'none' }}
       />
       {uploadedImages.length > 0 ? (
-        <div className="flex inline-flex flex-wrap">
+        <div className="flex inline-flex flex-wrap h-full w-full">
           {uploadedImages.map((image, index) => (
-            <div key={index} className="relative">
+            <div key={index} className={`relative ${!multiple && 'h-full w-full' } `}>
               <img
                 width={preview?.width}
-                height={preview.height}
+                height={preview?.height}
                 src={
                   typeof image === 'string' ? image : URL.createObjectURL(image)
                 }
@@ -161,7 +161,7 @@ export const Upload = ({
                 className="mr-2.5 mt-2 rounded"
               />
               <button
-                className="absolute bottom-[5px] right-[15px] p-1 rounded opacity-10 bg-gray-800"
+                className="absolute bottom-[5px] right-[15px] p-1 rounded bg-opacity-30 bg-gray-800"
                 onClick={() => removeFile(index)}
               >
                 <CloseLine size={14} color={colors.white} />
