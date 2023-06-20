@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { isValidElement, ReactNode, useEffect, useState } from 'react';
 import { AddCircle, CloseLine, FileUpload } from '../Icons';
 import colors from '../Colors';
 
@@ -8,6 +8,10 @@ export interface UploadProps {
   error?: string;
   imageUrls?: string[];
   multiple?: boolean;
+  type?: 'button' | 'input';
+  buttonContent?: ReactNode;
+  showFileSelect?: boolean;
+  onChange?: (file: any) => void;
 }
 
 export const Upload = ({
@@ -16,6 +20,10 @@ export const Upload = ({
   error,
   imageUrls,
   multiple = true,
+  type = 'input',
+  buttonContent,
+  showFileSelect,
+  onChange,
 }: UploadProps) => {
   const formats = 'image/*';
   const hiddenFileInput = React.useRef<HTMLInputElement>(null);
@@ -40,11 +48,13 @@ export const Upload = ({
       uploadedImages = Object.keys(uploadedImages).map(
         (item) => uploadedImages[item]
       );
+      onChange?.(uploadedImages);
       setUploadedImages((prevState) => [...prevState, ...uploadedImages]);
     } else {
       const uploadedImage = event.target.files?.[0];
 
       if (uploadedImage !== undefined) {
+        onChange?.(uploadedImage);
         setUploadedImages((prevState) => [...prevState, uploadedImage]);
       }
     }
@@ -113,6 +123,10 @@ export const Upload = ({
   //         dropNDropInput?.current?.removeEventListener('dragleave', handleDragLeave);
   //     };
   // }, []);
+
+  useEffect(() => {
+    if (showFileSelect) handleClick();
+  }, [showFileSelect]);
   return (
     <>
       <input
@@ -158,38 +172,45 @@ export const Upload = ({
         </div>
       ) : (
         <>
-          <div
-            ref={dropNDropInput}
-            onClick={handleClick}
-            className={`flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer border-blue-600 border-[1px] border-dashed ${errorClassName}`}
-            // style={{ border: '1px dashed #2563EB' }}
-          >
-            <div className="flex justify-center col-span-12 mb-2">
-              <FileUpload size={24} color={colors.blue['600']} />
-            </div>
-            <div className="col-span-12 flex justify-center mb-2">
-              <span className="text-xs leading-4 font-medium text-blue-600">
-                Upload an Image
-              </span>
-              <span className="text-xs leading-4 font-medium text-gray-500">
-                &nbsp;or drag and drop
-              </span>
-            </div>
-            <div className="col-span-12 flex justify-center mb-2">
-              <span className="text-xs leading-4 font-normal text-gray-500">
-                Png, Jpg, Gif up to 10MB
-              </span>
-            </div>
-          </div>
-          {error && (
-            <p
-              className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
-              role="alert"
-              id={`${name}-error`}
-            >
-              {error}
-            </p>
+          {type === 'input' && (
+            <>
+              <div
+                ref={dropNDropInput}
+                onClick={handleClick}
+                className={`flex-col w-full bg-blue-50 rounded p-[15px] cursor-pointer border-blue-600 border-[1px] border-dashed ${errorClassName}`}
+                // style={{ border: '1px dashed #2563EB' }}
+              >
+                <div className="flex justify-center col-span-12 mb-2">
+                  <FileUpload size={24} color={colors.blue['600']} />
+                </div>
+                <div className="col-span-12 flex justify-center mb-2">
+                  <span className="text-xs leading-4 font-medium text-blue-600">
+                    Upload an Image
+                  </span>
+                  <span className="text-xs leading-4 font-medium text-gray-500">
+                    &nbsp;or drag and drop
+                  </span>
+                </div>
+                <div className="col-span-12 flex justify-center mb-2">
+                  <span className="text-xs leading-4 font-normal text-gray-500">
+                    Png, Jpg, Gif up to 10MB
+                  </span>
+                </div>
+              </div>
+              {error && (
+                <p
+                  className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
+                  role="alert"
+                  id={`${name}-error`}
+                >
+                  {error}
+                </p>
+              )}
+            </>
           )}
+          {type === 'button' && isValidElement(buttonContent) &&
+              buttonContent
+          }
         </>
       )}
     </>
