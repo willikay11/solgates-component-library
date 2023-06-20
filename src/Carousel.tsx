@@ -155,50 +155,51 @@ export const Carousel = ({
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
     >
-      {title || arrowPosition === ARROW_POSITION.topRight && (
+      {title ||
+        (arrowPosition === ARROW_POSITION.topRight && (
           <div className="flex flex-row justify-between">
             <div className="mb-2.5">
               {title &&
-                  (isValidElement(title) ? (
-                      <span>{title}</span>
-                  ) : (
-                      <p className="text-xl leading-7 font-normal text-gray-800">
-                        {title}
-                      </p>
-                  ))}
+                (isValidElement(title) ? (
+                  <span>{title}</span>
+                ) : (
+                  <p className="text-xl leading-7 font-normal text-gray-800">
+                    {title}
+                  </p>
+                ))}
             </div>
             <div className="mb-2.5">
               {arrowPosition === ARROW_POSITION.topRight && (
-                  <div
-                      className={`${
-                          arrowPosition === ARROW_POSITION.topRight
-                              ? 'inline-flex'
-                              : 'hidden'
-                      }`}
+                <div
+                  className={`${
+                    arrowPosition === ARROW_POSITION.topRight
+                      ? 'inline-flex'
+                      : 'hidden'
+                  }`}
+                >
+                  <button
+                    className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleClickScroll('prev');
+                    }}
                   >
-                    <button
-                        className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleClickScroll('prev');
-                        }}
-                    >
-                      <ArrowLeftSLine size={14} color={colors.orange['600']} />
-                    </button>
-                    <button
-                        className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleClickScroll('next');
-                        }}
-                    >
-                      <ArrowRightSLine size={14} color={colors.orange['600']} />
-                    </button>
-                  </div>
+                    <ArrowLeftSLine size={14} color={colors.orange['600']} />
+                  </button>
+                  <button
+                    className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleClickScroll('next');
+                    }}
+                  >
+                    <ArrowRightSLine size={14} color={colors.orange['600']} />
+                  </button>
+                </div>
               )}
             </div>
           </div>
-      )}
+        ))}
       <div
         {...handlers}
         id="carousel-item"
