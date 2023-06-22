@@ -20,6 +20,7 @@ export interface SelectInputProps {
   error?: string;
   border?: 'bordered' | 'borderless';
   defaultValue?: string;
+  defaultValues?: string[];
   showSearch?: boolean;
   searchPlaceholder?: string;
   placeholder?: string;
@@ -36,6 +37,7 @@ export const Select = ({
   error,
   border = 'bordered',
   defaultValue,
+  defaultValues,
   showSearch = false,
   searchPlaceholder = 'Search...',
   placeholder = 'Select one',
@@ -56,11 +58,24 @@ export const Select = ({
     }
   }, [defaultValue]);
 
+  useEffect(() => {
+    if (defaultValues?.length) {
+      const multipleItems: selectItem[] = [];
+      defaultValues.map((defaultValue)=> {
+        const item = items.find((item) => item.value === defaultValue);
+        if (item && Object.keys(item).length) {
+          multipleItems.push(item);
+        }
+      });
+
+      setMultipleSelectedItem(multipleItems);
+    }
+  }, [defaultValues]);
   return (
     <>
       <Listbox
         multiple={multiple}
-        defaultValue={defaultValue}
+        defaultValue={defaultValues?.length ? defaultValues : defaultValue}
         name={name}
         value={value}
         onChange={(value: any) => {
