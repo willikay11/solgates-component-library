@@ -23,6 +23,7 @@ export interface SelectInputProps {
   showSearch?: boolean;
   searchPlaceholder?: string;
   placeholder?: string;
+  multipleFormDataName?: string;
 }
 
 export const Select = ({
@@ -39,6 +40,7 @@ export const Select = ({
   showSearch = false,
   searchPlaceholder = 'Search...',
   placeholder = 'Select one',
+  multipleFormDataName = 'id'
 }: SelectInputProps) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchValue, setSearchValue] = useState<string | null>(null);
@@ -75,7 +77,11 @@ export const Select = ({
         multiple={multiple}
         defaultValue={defaultValues?.length ? defaultValues : defaultValue}
         name={name}
-        value={multiple ? JSON.stringify(multipleSelectedItems.map((item) => item.value)) : selectedItem?.value}
+        value={multiple ? JSON.stringify(multipleSelectedItems.map((item) => {
+          return {
+            [multipleFormDataName]: item.value
+          }
+        })) : selectedItem?.value}
         onChange={(value: any) => {
           if (multiple) {
             const selectedItems: [string] = value;
