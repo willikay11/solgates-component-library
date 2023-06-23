@@ -13,9 +13,9 @@ export interface UploadProps {
   showFileSelect?: boolean;
   onChange?: (file: any) => void;
   preview?: {
-    height: string,
-    width: string
-  }
+    height: string;
+    width: string;
+  };
 }
 
 export const Upload = ({
@@ -30,8 +30,8 @@ export const Upload = ({
   onChange,
   preview = {
     height: '100px',
-    width: '100px'
-  }
+    width: '100px',
+  },
 }: UploadProps) => {
   const formats = 'image/*';
   const hiddenFileInput = React.useRef<HTMLInputElement>(null);
@@ -150,7 +150,10 @@ export const Upload = ({
       {uploadedImages.length > 0 ? (
         <div className="flex inline-flex flex-wrap h-full w-full">
           {uploadedImages.map((image, index) => (
-            <div key={index} className={`relative ${!multiple && 'h-full w-full' } `}>
+            <div
+              key={index}
+              className={`relative ${!multiple && 'h-full w-full'} `}
+            >
               <img
                 width={preview?.width}
                 height={preview?.height}
@@ -216,9 +219,7 @@ export const Upload = ({
               )}
             </>
           )}
-          {type === 'button' && isValidElement(buttonContent) &&
-              buttonContent
-          }
+          {type === 'button' && isValidElement(buttonContent) && buttonContent}
         </>
       )}
     </>
