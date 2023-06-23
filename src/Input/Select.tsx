@@ -4,7 +4,7 @@ import { Tag } from '../Tag';
 
 interface selectItem {
   label: string;
-  value: string | number | null;
+  value: string | number | undefined;
   disabled?: boolean;
 }
 
@@ -40,7 +40,7 @@ export const Select = ({
   showSearch = false,
   searchPlaceholder = 'Search...',
   placeholder = 'Select one',
-  multipleFormDataName = 'id'
+  multipleFormDataName = 'id',
 }: SelectInputProps) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchValue, setSearchValue] = useState<string | null>(null);
@@ -61,7 +61,7 @@ export const Select = ({
   useEffect(() => {
     if (defaultValues?.length) {
       const multipleItems: selectItem[] = [];
-      defaultValues.map((defaultValue)=> {
+      defaultValues.map((defaultValue) => {
         const item = items.find((item) => item.value === defaultValue);
         if (item && Object.keys(item).length) {
           multipleItems.push(item);
@@ -73,15 +73,25 @@ export const Select = ({
   }, [defaultValues]);
   return (
     <>
+      <input
+        hidden
+        name={name}
+        value={
+          multiple
+            ? JSON.stringify(
+                multipleSelectedItems.map((item) => {
+                  return {
+                    [multipleFormDataName]: item?.value,
+                  };
+                })
+              )
+            : selectedItem?.value
+        }
+      />
+
       <Listbox
         multiple={multiple}
         defaultValue={defaultValues?.length ? defaultValues : defaultValue}
-        name={name}
-        value={multiple ? JSON.stringify(multipleSelectedItems.map((item) => {
-          return {
-            [multipleFormDataName]: item.value
-          }
-        })) : selectedItem?.value}
         onChange={(value: any) => {
           if (multiple) {
             const selectedItems: [string] = value;
@@ -124,7 +134,7 @@ export const Select = ({
                   <>
                     <div className="mr-1" />
                     {multipleSelectedItems.map((selectedItem) => (
-                      <Tag text={selectedItem.label} />
+                      <Tag text={selectedItem?.label} />
                     ))}
                     {showSearch && open ? (
                       <input
