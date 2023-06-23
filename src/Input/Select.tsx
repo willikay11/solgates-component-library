@@ -75,7 +75,7 @@ export const Select = ({
         multiple={multiple}
         defaultValue={defaultValues?.length ? defaultValues : defaultValue}
         name={name}
-        value={multiple ? multipleSelectedItems : selectedItem}
+        value={multiple ? JSON.stringify(multipleSelectedItems.map((item) => item.value)) : selectedItem?.value}
         onChange={(value: any) => {
           if (multiple) {
             const selectedItems: [string] = value;
