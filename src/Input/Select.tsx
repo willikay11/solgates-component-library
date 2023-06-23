@@ -15,7 +15,6 @@ export interface SelectInputProps {
   prefixIcon?: ReactNode;
   multiple?: boolean;
   name?: string;
-  value?: string;
   onChange?: (selectedItem: selectItem | selectItem[]) => void;
   error?: string;
   border?: 'bordered' | 'borderless';
@@ -31,7 +30,6 @@ export const Select = ({
   arrowIcon,
   multiple = false,
   prefixIcon,
-  value,
   name,
   onChange,
   error,
@@ -77,7 +75,7 @@ export const Select = ({
         multiple={multiple}
         defaultValue={defaultValues?.length ? defaultValues : defaultValue}
         name={name}
-        value={value}
+        value={multiple ? multipleSelectedItems : selectedItem}
         onChange={(value: any) => {
           if (multiple) {
             const selectedItems: [string] = value;
