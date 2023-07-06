@@ -20,22 +20,16 @@ import { Modal, MODAL_POSITION } from './Modal';
 const openIcon = <AddLine color={colors.gray['800']} size={14} />;
 const closeIcon = <Minus color={colors.gray['800']} size={14} />;
 
-interface item {
-  label: string;
-  id: string;
-}
-
-interface category {
-  label: string;
-  items: item[];
-}
-
 interface menu {
-  key: number;
   id: string;
-  label: string;
-  gap: number;
-  category?: category[];
+  name: string;
+  query: string;
+  weight: number;
+  active: number;
+  count: number;
+  attributeId?: number;
+  referenceAttributes?: string[];
+  children?: menu[];
 }
 
 export interface SolgatesMenuProps {
@@ -190,26 +184,26 @@ export const SolgatesMenu = ({
           />
         </div>
 
-        {menus.map((menu) => (
-          <Disclosure key={menu.key}>
+        {menus.map((menu, index) => (
+          <Disclosure key={menu.id}>
             {({ open }) => (
               <>
                 <Disclosure.Button
                   data-value={open}
                   ref={(ref: any) => {
-                    buttonRefs.current[menu.key] = ref;
+                    buttonRefs.current[index] = ref;
                   }}
-                  onClick={() => clickRecent(menu.key)}
+                  onClick={() => clickRecent(menu.id)}
                   className="w-full flex justify-between items-center pb-2 outline-none"
                 >
-                  <span>{menu.label}</span>
+                  <span>{menu.name}</span>
                   {open ? closeIcon : openIcon}
                 </Disclosure.Button>
                 <Disclosure.Panel className="ml-[10px] mr-[10px] text-gray-500">
-                  {menu?.category?.map((category, index) => (
-                    <Disclosure key={`${category.label}-${index}`}>
+                  {menu?.children?.map((child, index) => (
+                    <Disclosure key={`${child.name}-${index}`}>
                       {({ open }) => {
-                        const key = calculateKey(menu.key, 100, index);
+                        const key = calculateKey(index, 100, index);
                         return (
                           <>
                             <Disclosure.Button
@@ -221,17 +215,17 @@ export const SolgatesMenu = ({
                               key={key}
                               className="w-full flex justify-between items-center pb-1 outline-none"
                             >
-                              <span>{category.label}</span>
+                              <span>{child.name}</span>
                               {open ? closeIcon : openIcon}
                             </Disclosure.Button>
                             <Disclosure.Panel className="ml-[10px] pb-2 text-gray-500 flex flex-col">
-                              {category.items.map((item, index) => (
+                              {child?.children?.map((item, index) => (
                                 <button
-                                  key={`${item.label}-${index}`}
+                                  key={`${item.name}-${index}`}
                                   className="text-xs leading-4 font-normal text-gray-600 text-start mb-1.5"
-                                  onClick={() => onClickMenuItem(item.id)}
+                                  onClick={() => onClickMenuItem(item.query)}
                                 >
-                                  {item.label}
+                                  {item.name}
                                 </button>
                               ))}
                             </Disclosure.Panel>
@@ -291,16 +285,16 @@ export const SolgatesMenu = ({
               onClick={() => onLogoClick()}
             />
             {menus.map((menu) => {
-              if (menu?.category?.length) {
+              if (menu?.children?.length) {
                 return (
                   <Menu
-                    key={menu.key}
+                    key={menu.id}
                     as="div"
                     className="inline-flex text-left mr-[20px] h-full group"
                   >
                     <div>
                       <Menu.Button className="inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 group-hover:border-b active:border-b border-orange-600 hover:border-b border-orange-600">
-                        {menu.label}
+                        {menu.name}
                       </Menu.Button>
                     </div>
                     <Transition
@@ -316,24 +310,24 @@ export const SolgatesMenu = ({
                         <div className={`grid grid-cols-12 my-[30px]`}>
                           <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
                             <div
-                              className={`grid gap-${menu?.gap} grid-cols-4 w-full`}
+                              className={`grid gap-4 grid-cols-4 w-full`}
                             >
-                              {menu?.category?.map((category, index) => {
-                                const key = calculateKey(menu.key, 100, index);
+                              {menu?.children?.map((child, index) => {
+                                const key = calculateKey(index, 100, index);
                                 return (
                                   <div key={key}>
                                     <p className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500">
-                                      {category.label}
+                                      {child.name}
                                     </p>
-                                    {category.items.map((item) => (
+                                    {child?.children?.map((item) => (
                                       <Menu.Item key={key}>
                                         <button
                                           className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full"
                                           onClick={() =>
-                                            onClickMenuItem(item.id)
+                                            onClickMenuItem(item.query)
                                           }
                                         >
-                                          {item.label}
+                                          {item.name}
                                         </button>
                                       </Menu.Item>
                                     ))}
@@ -350,11 +344,11 @@ export const SolgatesMenu = ({
               }
               return (
                 <button
-                  key={menu.key}
-                  onClick={() => onClickMenuItem(menu?.id)}
+                  key={menu.id}
+                  onClick={() => onClickMenuItem(menu?.query)}
                   className="mr-[20px] inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600"
                 >
-                  {menu.label}
+                  {menu.name}
                 </button>
               );
             })}
