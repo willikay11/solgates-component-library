@@ -5,6 +5,7 @@ interface menu {
   title: string;
   onClick: () => void;
   icon: ReactNode;
+  show: boolean;
 }
 
 export interface SidebarProps {
@@ -23,7 +24,7 @@ export const Sidebar = ({ menus, selectedMenuKey }: SidebarProps) => {
             selectedMenuKey === menu.key
               ? 'text-orange-600 border-r-[1px] border-orange-600'
               : 'text-gray-600'
-          } hover:text-orange-600`}
+          } ${!menu.show && 'hidden'} hover:text-orange-600`}
         >
           <span className="mr-2.5">{menu.icon}</span>
           {menu.title}
