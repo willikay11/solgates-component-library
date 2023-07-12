@@ -51,7 +51,6 @@ export const Carousel = ({
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      console.log('swiped');
       handleClickScroll('next');
     },
     onSwipedRight: () => handleClickScroll('prev'),
@@ -155,18 +154,16 @@ export const Carousel = ({
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
     >
-      {title ||
-        (arrowPosition === ARROW_POSITION.topRight && (
+      {(title !== null || isValidElement(title) || arrowPosition === ARROW_POSITION.topRight) && (
           <div className="flex flex-row justify-between">
             <div className="mb-2.5">
-              {title &&
-                (isValidElement(title) ? (
+              {isValidElement(title) ? (
                   <span>{title}</span>
                 ) : (
                   <p className="text-xl leading-7 font-normal text-gray-800">
                     {title}
                   </p>
-                ))}
+                )}
             </div>
             <div className="mb-2.5">
               {arrowPosition === ARROW_POSITION.topRight && (
@@ -199,7 +196,7 @@ export const Carousel = ({
               )}
             </div>
           </div>
-        ))}
+        )}
       <div
         {...handlers}
         id="carousel-item"
