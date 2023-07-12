@@ -26,49 +26,49 @@ Default.args = {
       title: 'Dashboard',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
-      show: false
+      show: false,
     },
     {
       key: '2',
       title: 'Order/Sales',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
-      show: true
+      show: true,
     },
     {
       key: '3',
       title: 'Products',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
-      show: true
+      show: true,
     },
     {
       key: '4',
       title: 'Bids',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
-      show: true
+      show: true,
     },
     {
       key: '5',
       title: 'Customers',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
-      show: true
+      show: true,
     },
     {
       key: '6',
       title: 'Categories & Brands',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
-      show: true
+      show: true,
     },
     {
       key: '7',
       title: 'Shops/Sellers',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
-      show: true
+      show: true,
     },
   ],
 };
