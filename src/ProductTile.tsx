@@ -83,7 +83,7 @@ export const ProductTile = ({
   carouselImages,
   onAddToCart,
   addingToCart = false,
-    showWishList = true,
+  showWishList = true,
 }: ProductTileProps) => {
   const [inWishList, setInWishlist] = useState<boolean>(
     addedToWishList || false
@@ -128,7 +128,8 @@ export const ProductTile = ({
         ) : (
           <ImageTile image={imageUrl} />
         )}
-        {(type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) && showWishList ? (
+        {(type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) &&
+        showWishList ? (
           inWishList ? (
             <div
               onClick={(event) => {

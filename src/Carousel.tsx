@@ -154,49 +154,49 @@ export const Carousel = ({
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
     >
-      {(title !== null || isValidElement(title) || arrowPosition === ARROW_POSITION.topRight) ? (
-          <div className="flex flex-row justify-between">
+      {title !== null ||
+      isValidElement(title) ||
+      arrowPosition === ARROW_POSITION.topRight ? (
+        <div className="flex flex-row justify-between">
+          {isValidElement(title) ? (
+            <span className="mb-2.5">{title}</span>
+          ) : (
+            <p className="text-xl leading-7 font-normal text-gray-800 mb-2.5">
+              {title}
+            </p>
+          )}
+          {arrowPosition === ARROW_POSITION.topRight && (
             <div className="mb-2.5">
-              {isValidElement(title) ? (
-                  <span>{title}</span>
-                ) : (
-                  <p className="text-xl leading-7 font-normal text-gray-800">
-                    {title}
-                  </p>
-                )}
-            </div>
-            <div className="mb-2.5">
-              {arrowPosition === ARROW_POSITION.topRight && (
-                <div
-                  className={`${
-                    arrowPosition === ARROW_POSITION.topRight
-                      ? 'inline-flex'
-                      : 'hidden'
-                  }`}
+              <div
+                className={`${
+                  arrowPosition === ARROW_POSITION.topRight
+                    ? 'inline-flex'
+                    : 'hidden'
+                }`}
+              >
+                <button
+                  className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    handleClickScroll('prev');
+                  }}
                 >
-                  <button
-                    className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      handleClickScroll('prev');
-                    }}
-                  >
-                    <ArrowLeftSLine size={14} color={colors.orange['600']} />
-                  </button>
-                  <button
-                    className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      handleClickScroll('next');
-                    }}
-                  >
-                    <ArrowRightSLine size={14} color={colors.orange['600']} />
-                  </button>
-                </div>
-              )}
+                  <ArrowLeftSLine size={14} color={colors.orange['600']} />
+                </button>
+                <button
+                  className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    handleClickScroll('next');
+                  }}
+                >
+                  <ArrowRightSLine size={14} color={colors.orange['600']} />
+                </button>
+              </div>
             </div>
-          </div>
-        ) : null}
+          )}
+        </div>
+      ) : null}
       <div
         {...handlers}
         id="carousel-item"

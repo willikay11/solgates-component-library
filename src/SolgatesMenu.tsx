@@ -309,9 +309,7 @@ export const SolgatesMenu = ({
                       <Menu.Items className="z-50 absolute right-0 top-[120px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
                         <div className={`grid grid-cols-12 my-[30px]`}>
                           <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
-                            <div
-                              className={`grid gap-4 grid-cols-4 w-full`}
-                            >
+                            <div className={`grid gap-4 grid-cols-4 w-full`}>
                               {menu?.children?.map((child, index) => {
                                 const key = calculateKey(index, 100, index);
                                 return (
