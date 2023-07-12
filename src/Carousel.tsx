@@ -154,7 +154,7 @@ export const Carousel = ({
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
     >
-      {(title !== null || isValidElement(title) || arrowPosition === ARROW_POSITION.topRight) && (
+      {(title !== null || isValidElement(title) || arrowPosition === ARROW_POSITION.topRight) ? (
           <div className="flex flex-row justify-between">
             <div className="mb-2.5">
               {isValidElement(title) ? (
@@ -196,7 +196,7 @@ export const Carousel = ({
               )}
             </div>
           </div>
-        )}
+        ) : null}
       <div
         {...handlers}
         id="carousel-item"
