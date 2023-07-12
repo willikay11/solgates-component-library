@@ -160,11 +160,11 @@ export const Carousel = ({
         <div className="flex flex-row justify-between">
           {isValidElement(title) ? (
             <span className="mb-2.5">{title}</span>
-          ) : (
+          ) : title ? (
             <p className="text-xl leading-7 font-normal text-gray-800 mb-2.5">
               {title}
             </p>
-          )}
+          ) : null}
           {arrowPosition === ARROW_POSITION.topRight && (
             <div className="mb-2.5">
               <div
