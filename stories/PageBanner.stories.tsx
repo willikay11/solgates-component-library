@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { IconContainer, PageBanner, PageBannerProps, User6Line } from '../src';
+import {CONTENT_POSITION, IconContainer, PageBanner, PageBannerProps, User6Line} from '../src';
 import colors from 'tailwindcss/colors';
 
 const meta: Meta = {
@@ -22,6 +22,8 @@ Default.args = {
   title: 'Checkout',
   name: 'Children Tees',
   buttonName: 'Shop',
+  contentPosition: CONTENT_POSITION.center,
+  content: <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/23696ebc-18fc-46f9-8a88-c854930ad24c/air-jordan-1-retro-high-womens-shoes-W1tGx4.png" width="80px" height="90px" className="rounded mr-2.5" alt="test" />
 };
 
 export const Content = Template.bind({});
