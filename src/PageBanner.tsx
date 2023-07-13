@@ -11,10 +11,19 @@ const cloudImageConfig = {
   baseURL: 'https://cyqqqhlxia.cloudimg.io/_solgates_/',
 };
 
+export enum CONTENT_POSITION {
+  bottomLeft = 'bottomLeft',
+  bottomRight = 'bottomLeft',
+  topRight = 'topRight',
+  topLeft = 'topLeft',
+  center = 'center',
+}
+
 export interface PageBannerProps {
   type?: 'image' | 'backgroundImage';
   imageUrl?: string;
   content?: ReactNode;
+  contentPosition?: CONTENT_POSITION;
   title?: string;
   onClick?: () => void;
   name?: string;
@@ -26,12 +35,31 @@ export const PageBanner = ({
   type = 'image',
   imageUrl,
   content,
+  contentPosition = CONTENT_POSITION.center,
   title,
   name,
   buttonName,
   onClick,
   showOverlay = true,
 }: PageBannerProps) => {
+  let position = 'justify-center items-center';
+
+  if (contentPosition === CONTENT_POSITION.bottomRight) {
+    position = 'justify-end items-end'
+  }
+
+  if (contentPosition === CONTENT_POSITION.bottomLeft) {
+    position = 'justify-start items-end'
+  }
+
+  if (contentPosition === CONTENT_POSITION.topLeft) {
+    position = 'justify-start items-start'
+  }
+
+  if (contentPosition === CONTENT_POSITION.topRight) {
+    position = 'justify-end items-start'
+  }
+
   return (
     <div className="w-full h-full rounded">
       <CloudimageProvider config={cloudImageConfig}>
@@ -41,9 +69,7 @@ export const PageBanner = ({
             type === 'image' ? 'h-auto' : 'h-full'
           } relative cursor-pointer`}
         >
-          {isValidElement(content) ? (
-            content
-          ) : type === 'image' && imageUrl ? (
+          {type === 'image' && imageUrl ? (
             <Img src={imageUrl} doNotReplaceURL />
           ) : (
             imageUrl && (
@@ -55,7 +81,7 @@ export const PageBanner = ({
             )
           )}
           <div
-            className={`flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0 ${
+            className={`flex flex-row ${position} p-2.5 rounded absolute top-0 bottom-0 left-0 right-0 ${
               !showOverlay ? 'hidden' : ''
             }`}
             style={{
@@ -63,8 +89,9 @@ export const PageBanner = ({
                 'linear-gradient(0deg, rgba(31, 41, 55, 0.4), rgba(31, 41, 55, 0.4))',
             }}
           >
+            {content}
             {title && (
-              <p className="absolute text-6xl leading-none font-extrabold text-white">
+              <p className="text-6xl leading-none font-extrabold text-white">
                 {title}
               </p>
             )}
