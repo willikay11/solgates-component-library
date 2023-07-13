@@ -35,7 +35,7 @@ export const PageBanner = ({
   return (
     <div className="w-full h-full rounded">
       <CloudimageProvider config={cloudImageConfig}>
-        <div className={`${type === 'image' ? 'h-auto' : 'h-full'} relative`}>
+        <div onClick={() => onClick?.()} className={`${type === 'image' ? 'h-auto' : 'h-full'} relative cursor-pointer`}>
           {isValidElement(content) ? (
             content
           ) : type === 'image' ? (
