@@ -35,17 +35,24 @@ export const PageBanner = ({
   return (
     <div className="w-full h-full rounded">
       <CloudimageProvider config={cloudImageConfig}>
-        <div onClick={() => onClick?.()} className={`${type === 'image' ? 'h-auto' : 'h-full'} relative cursor-pointer`}>
+        <div
+          onClick={() => onClick?.()}
+          className={`${
+            type === 'image' ? 'h-auto' : 'h-full'
+          } relative cursor-pointer`}
+        >
           {isValidElement(content) ? (
             content
-          ) : type === 'image' ? (
+          ) : type === 'image' && imageUrl ? (
             <Img src={imageUrl} doNotReplaceURL />
           ) : (
-            <BackgroundImg
-              src={imageUrl}
-              doNotReplaceURL
-              className="relative rounded bg-cover bg-center w-full h-full"
-            ></BackgroundImg>
+            imageUrl && (
+              <BackgroundImg
+                src={imageUrl}
+                doNotReplaceURL
+                className="relative rounded bg-cover bg-center w-full h-full"
+              ></BackgroundImg>
+            )
           )}
           <div
             className={`flex justify-center items-center rounded absolute top-0 bottom-0 left-0 right-0 ${
