@@ -24,6 +24,7 @@ interface menu {
   id: string;
   name: string;
   query: string;
+  isPage: boolean;
   weight: number;
   active: number;
   count: number;
@@ -38,7 +39,7 @@ export interface SolgatesMenuProps {
   userContent: ReactNode;
   onLogoClick: () => void;
   onClickWishList: () => void;
-  onClickMenuItem: (id: string) => void;
+  onClickMenuItem: (menu: menu) => void;
   onOpenShopClick: () => void;
   shoppingCartContent: ReactNode;
   onSearchClick: () => void;
@@ -223,7 +224,7 @@ export const SolgatesMenu = ({
                                 <button
                                   key={`${item.name}-${index}`}
                                   className="text-xs leading-4 font-normal text-gray-600 text-start mb-1.5"
-                                  onClick={() => onClickMenuItem(item.query)}
+                                  onClick={() => onClickMenuItem(item)}
                                 >
                                   {item.name}
                                 </button>
@@ -322,7 +323,7 @@ export const SolgatesMenu = ({
                                         <button
                                           className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full"
                                           onClick={() =>
-                                            onClickMenuItem(item.query)
+                                            onClickMenuItem(item)
                                           }
                                         >
                                           {item.name}
@@ -343,7 +344,7 @@ export const SolgatesMenu = ({
               return (
                 <button
                   key={menu.id}
-                  onClick={() => onClickMenuItem(menu?.query)}
+                  onClick={() => onClickMenuItem(menu)}
                   className="mr-[20px] inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600"
                 >
                   {menu.name}
