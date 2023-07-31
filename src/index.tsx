@@ -25,3 +25,4 @@ export * from './Statistics';
 export * from './List';
 export * from './Dropdown';
 export * from './Notification';
+export * from './Loading';
