@@ -64,6 +64,7 @@ export const SolgatesMenu = ({
 }: SolgatesMenuProps) => {
   const openedRef = useRef<HTMLButtonElement | null>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
+  const menuRefs = useRef<HTMLButtonElement[]>([]);
   const secondLevelOpenedRef = useRef<HTMLButtonElement | null>(null);
   const secondLevelButtonRefs = useRef<HTMLButtonElement[]>([]);
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
@@ -77,6 +78,10 @@ export const SolgatesMenu = ({
     currentKey: number
   ) => {
     return menuKey * multiplicationFactor + currentKey;
+  };
+
+  const openMenu = (index: number) => {
+    menuRefs.current[index].click();
   };
 
   const clickRecent = (index: any) => {
@@ -134,6 +139,7 @@ export const SolgatesMenu = ({
       window.removeEventListener('resize', handleWindowSizeChange);
     };
   }, []);
+
   return (
     <>
       <Modal
@@ -285,59 +291,78 @@ export const SolgatesMenu = ({
               className="w-[90px] mr-[30px] cursor-pointer"
               onClick={() => onLogoClick()}
             />
-            {menus.map((menu) => {
+            {menus.map((menu, index) => {
               if (menu?.children?.length) {
                 return (
                   <Menu
                     key={menu.id}
                     as="div"
+                    onClick={() => onClickMenuItem(menu)}
                     className="inline-flex text-left mr-[20px] h-full group"
                   >
-                    <div>
-                      <Menu.Button className="inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 group-hover:border-b active:border-b border-orange-600 hover:border-b border-orange-600">
-                        {menu.name}
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="z-50 absolute right-0 top-[120px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
-                        <div className={`grid grid-cols-12 my-[30px]`}>
-                          <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
-                            <div className={`grid gap-4 grid-cols-4 w-full`}>
-                              {menu?.children?.map((child, index) => {
-                                const key = calculateKey(index, 100, index);
-                                return (
-                                  <div key={key}>
-                                    <p className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500">
-                                      {child.name}
-                                    </p>
-                                    {child?.children?.map((item) => (
-                                      <Menu.Item key={key}>
-                                        <button
-                                          className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full"
-                                          onClick={() =>
-                                            onClickMenuItem(item)
-                                          }
-                                        >
-                                          {item.name}
-                                        </button>
-                                      </Menu.Item>
-                                    ))}
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
+                    {({ open }) => (
+                      <>
+                        <div>
+                          <Menu.Button
+                            ref={(ref: any) => {
+                              menuRefs.current[index] = ref;
+                            }}
+                            onMouseEnter={() => !open && openMenu(index)}
+                            className="inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 group-hover:border-b active:border-b border-orange-600 hover:border-b border-orange-600"
+                          >
+                            {menu.name}
+                          </Menu.Button>
                         </div>
-                      </Menu.Items>
-                    </Transition>
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <Menu.Items className="z-50 absolute right-0 top-[120px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                            <div className={`grid grid-cols-12 my-[30px]`}>
+                              <div className="md:col-start-2 md:col-span-9 lg:col-start-3 lg:col-span-8 inline-flex">
+                                <div
+                                  className={`grid gap-4 grid-cols-4 w-full`}
+                                >
+                                  {menu?.children?.map((child, index) => {
+                                    const key = calculateKey(index, 100, index);
+                                    return (
+                                      <div key={key}>
+                                        <p
+                                          onClick={(event) => {
+                                            event.stopPropagation();
+                                            onClickMenuItem(child);
+                                          }}
+                                          className="text-xs leading-4 font-semibold tracking-wider uppercase text-gray-500 cursor-pointer"
+                                        >
+                                          {child.name}
+                                        </p>
+                                        {child?.children?.map((item) => (
+                                          <Menu.Item key={key}>
+                                            <button
+                                              className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full"
+                                              onClick={() =>
+                                                onClickMenuItem(item)
+                                              }
+                                            >
+                                              {item.name}
+                                            </button>
+                                          </Menu.Item>
+                                        ))}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            </div>
+                          </Menu.Items>
+                        </Transition>
+                      </>
+                    )}
                   </Menu>
                 );
               }
