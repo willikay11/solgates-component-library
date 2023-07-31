@@ -347,6 +347,7 @@ Default.args = {
       </Button>
     </div>
   ),
+  onClickMenuItem: (menu) => console.log(menu),
   onClickWishList: () => console.log('clicked wishlist'),
   onOpenShopClick: () => console.log('clicked open shop'),
   shoppingCartContent: (

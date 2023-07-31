@@ -45,19 +45,19 @@ export const PageBanner = ({
   let position = 'justify-center items-center';
 
   if (contentPosition === CONTENT_POSITION.bottomRight) {
-    position = 'justify-end items-end'
+    position = 'justify-end items-end';
   }
 
   if (contentPosition === CONTENT_POSITION.bottomLeft) {
-    position = 'justify-start items-end'
+    position = 'justify-start items-end';
   }
 
   if (contentPosition === CONTENT_POSITION.topLeft) {
-    position = 'justify-start items-start'
+    position = 'justify-start items-start';
   }
 
   if (contentPosition === CONTENT_POSITION.topRight) {
-    position = 'justify-end items-start'
+    position = 'justify-end items-start';
   }
 
   return (
