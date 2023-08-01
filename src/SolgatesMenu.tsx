@@ -252,7 +252,7 @@ export const SolgatesMenu = ({
         ))}
       </Modal>
       <div className={`fixed relative w-full h-[80px] md:h-[${height}] lg:h-[${height}] items-center border-b border-gray-100`}>
-        {isSeller ? (
+        {!isSeller ? (
           <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
             <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-8 flex w-full items-center justify-center md:justify-end lg:justify-end">
               <span className="inline-flex text-[10px] text-gray-600 mr-2">
