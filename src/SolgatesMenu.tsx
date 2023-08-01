@@ -345,8 +345,10 @@ export const SolgatesMenu = ({
                                           <Menu.Item key={key}>
                                             <button
                                               className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full"
-                                              onClick={() =>
-                                                onClickMenuItem(item)
+                                              onClick={(event) => {
+                                                event.stopPropagation();
+                                                onClickMenuItem(item);
+                                              }
                                               }
                                             >
                                               {item.name}
