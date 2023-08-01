@@ -36,16 +36,17 @@ interface menu {
 export interface SolgatesMenuProps {
   logoUrl: string;
   menus: menu[];
-  userContent: ReactNode;
+  userContent?: ReactNode;
   onLogoClick: () => void;
-  onClickWishList: () => void;
+  onClickWishList?: () => void;
   onClickMenuItem: (menu: menu) => void;
-  onOpenShopClick: () => void;
-  shoppingCartContent: ReactNode;
-  onSearchClick: () => void;
-  phoneNumber: string;
+  onOpenShopClick?: () => void;
+  shoppingCartContent?: ReactNode;
+  onSearchClick?: () => void;
+  phoneNumber?: string;
   isLoggedIn: boolean;
   userName?: string;
+  showTopBar?: boolean;
 }
 
 export const SolgatesMenu = ({
@@ -61,6 +62,7 @@ export const SolgatesMenu = ({
   onOpenShopClick,
   isLoggedIn,
   userName,
+  showTopBar = true,
 }: SolgatesMenuProps) => {
   const openedRef = useRef<HTMLButtonElement | null>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
@@ -248,39 +250,41 @@ export const SolgatesMenu = ({
         ))}
       </Modal>
       <div className="fixed relative w-full h-[80px] md:h-[128px] lg:h-[128px] items-center border-b border-gray-100">
-        <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
-          <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-8 flex w-full items-center justify-center md:justify-end lg:justify-end">
-            <span className="inline-flex text-[10px] text-gray-600 mr-2">
-              <PhoneLine
-                color={colors.gray['400']}
-                size={14}
-                className="mr-2"
-              />
-              {phoneNumber}
-            </span>
-            <div className="border-[1px] border-gray-300 h-full rounded mr-2" />
-            <span className="inline-flex text-[10px] text-gray-600 mr-2">
-              <QuestionLine
-                color={colors.gray['400']}
-                size={14}
-                className="mr-2"
-              />
-              Help
-            </span>
-            <div className="border-[1px] border-gray-300 h-full rounded mr-2" />
-            <span
-              className="inline-flex text-[10px] text-gray-600 mr-2 cursor-pointer"
-              onClick={() => onOpenShopClick()}
-            >
-              <Shop2Line
-                color={colors.gray['400']}
-                size={14}
-                className="mr-2"
-              />
-              Open Shop
-            </span>
+        {showTopBar ? (
+          <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
+            <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-8 flex w-full items-center justify-center md:justify-end lg:justify-end">
+              <span className="inline-flex text-[10px] text-gray-600 mr-2">
+                <PhoneLine
+                  color={colors.gray['400']}
+                  size={14}
+                  className="mr-2"
+                />
+                {phoneNumber}
+              </span>
+              <div className="border-[1px] border-gray-300 h-full rounded mr-2" />
+              <span className="inline-flex text-[10px] text-gray-600 mr-2">
+                <QuestionLine
+                  color={colors.gray['400']}
+                  size={14}
+                  className="mr-2"
+                />
+                Help
+              </span>
+              <div className="border-[1px] border-gray-300 h-full rounded mr-2" />
+              <span
+                className="inline-flex text-[10px] text-gray-600 mr-2 cursor-pointer"
+                onClick={() => onOpenShopClick?.()}
+              >
+                <Shop2Line
+                  color={colors.gray['400']}
+                  size={14}
+                  className="mr-2"
+                />
+                Open Shop
+              </span>
+            </div>
           </div>
-        </div>
+        ) : null}
         <div
           className="hidden md:grid lg:grid grid-cols-12 w-full"
           style={{ height: 'calc(128px - 25px)' }}
@@ -348,8 +352,7 @@ export const SolgatesMenu = ({
                                               onClick={(event) => {
                                                 event.stopPropagation();
                                                 onClickMenuItem(item);
-                                              }
-                                              }
+                                              }}
                                             >
                                               {item.name}
                                             </button>
@@ -462,7 +465,7 @@ export const SolgatesMenu = ({
                 </Transition>
               </div>
             </Menu>
-            <div onClick={() => onSearchClick()}>
+            <div onClick={() => onSearchClick?.()}>
               <Search2Line
                 className="mr-[10px] cursor-pointer"
                 color={colors.gray['600']}
@@ -505,7 +508,7 @@ export const SolgatesMenu = ({
               )}
             </div>
 
-            <div onClick={() => onClickWishList()}>
+            <div onClick={() => onClickWishList?.()}>
               <Heart3Line
                 className="mr-[10px]"
                 color={colors.gray['600']}
@@ -520,7 +523,7 @@ export const SolgatesMenu = ({
                 size={18}
               />
             </div>
-            <div onClick={() => onSearchClick()}>
+            <div onClick={() => onSearchClick?.()}>
               <Search2Line color={colors.gray['600']} size={18} />
             </div>
           </div>
