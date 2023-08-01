@@ -46,7 +46,7 @@ export interface SolgatesMenuProps {
   phoneNumber?: string;
   isLoggedIn: boolean;
   userName?: string;
-  showTopBar?: boolean;
+  isSeller?: boolean;
 }
 
 export const SolgatesMenu = ({
@@ -62,7 +62,7 @@ export const SolgatesMenu = ({
   onOpenShopClick,
   isLoggedIn,
   userName,
-  showTopBar = true,
+  isSeller = false,
 }: SolgatesMenuProps) => {
   const openedRef = useRef<HTMLButtonElement | null>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
@@ -74,6 +74,8 @@ export const SolgatesMenu = ({
   const [openMobileShoppingCart, setOpenMobileShoppingCart] =
     useState<boolean>(false);
   const [newProductAdded, setNewProductAdded] = useState<boolean>(false);
+
+  const height = isSeller ? '90px' : '128px';
   const calculateKey = (
     menuKey: number,
     multiplicationFactor: number,
@@ -249,8 +251,8 @@ export const SolgatesMenu = ({
           </Disclosure>
         ))}
       </Modal>
-      <div className="fixed relative w-full h-[80px] md:h-[128px] lg:h-[128px] items-center border-b border-gray-100">
-        {showTopBar ? (
+      <div className={`fixed relative w-full h-[80px] md:h-[${height}] lg:h-[${height}] items-center border-b border-gray-100`}>
+        {isSeller ? (
           <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
             <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-8 flex w-full items-center justify-center md:justify-end lg:justify-end">
               <span className="inline-flex text-[10px] text-gray-600 mr-2">
@@ -287,7 +289,7 @@ export const SolgatesMenu = ({
         ) : null}
         <div
           className="hidden md:grid lg:grid grid-cols-12 w-full"
-          style={{ height: 'calc(128px - 25px)' }}
+          style={{ height: isSeller ? '100%' : `calc(${height} - 25px)` }}
         >
           <div className="md:col-start-2 md:col-span-7 lg:col-start-3 lg:col-span-6 inline-flex">
             <img
@@ -420,58 +422,62 @@ export const SolgatesMenu = ({
                 </Transition>
               </div>
             </Menu>
-            <Menu>
-              <div className="relative flex items-center">
-                <div className="cursor-pointer" onClick={onClickWishList}>
-                  <Heart3Line
+            {!isSeller && (
+              <>
+                <Menu>
+                  <div className="relative flex items-center">
+                    <div className="cursor-pointer" onClick={onClickWishList}>
+                      <Heart3Line
+                        className="mr-[10px] cursor-pointer"
+                        color={colors.gray['600']}
+                        size={18}
+                      />
+                    </div>
+                  </div>
+                </Menu>
+                <Menu>
+                  <div className="relative flex items-center">
+                    <Menu.Button
+                      className="relative"
+                      onClick={() => onCartOpened()}
+                    >
+                      <ShoppingBagLine
+                        className="mr-[10px] cursor-pointer"
+                        color={colors.gray['600']}
+                        size={18}
+                      />
+                      {newProductAdded && (
+                        <div className="absolute -top-3 right-[8px]">
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500">
+                            <span className="animate-ping absolute inline-flex h-2 w-full rounded-full bg-red-400 opacity-75" />
+                          </span>
+                        </div>
+                      )}
+                    </Menu.Button>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="min-w-[320px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                        {shoppingCartContent}
+                      </Menu.Items>
+                    </Transition>
+                  </div>
+                </Menu>
+                <div onClick={() => onSearchClick?.()}>
+                  <Search2Line
                     className="mr-[10px] cursor-pointer"
                     color={colors.gray['600']}
                     size={18}
                   />
                 </div>
-              </div>
-            </Menu>
-            <Menu>
-              <div className="relative flex items-center">
-                <Menu.Button
-                  className="relative"
-                  onClick={() => onCartOpened()}
-                >
-                  <ShoppingBagLine
-                    className="mr-[10px] cursor-pointer"
-                    color={colors.gray['600']}
-                    size={18}
-                  />
-                  {newProductAdded && (
-                    <div className="absolute -top-3 right-[8px]">
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500">
-                        <span className="animate-ping absolute inline-flex h-2 w-full rounded-full bg-red-400 opacity-75" />
-                      </span>
-                    </div>
-                  )}
-                </Menu.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="min-w-[320px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
-                    {shoppingCartContent}
-                  </Menu.Items>
-                </Transition>
-              </div>
-            </Menu>
-            <div onClick={() => onSearchClick?.()}>
-              <Search2Line
-                className="mr-[10px] cursor-pointer"
-                color={colors.gray['600']}
-                size={18}
-              />
-            </div>
+              </>
+            )}
           </div>
         </div>
         <div className="mx-3 flex md:hidden lg:hidden xl:hidden 2xl:hidden items-center h-[60px]">
@@ -508,24 +514,27 @@ export const SolgatesMenu = ({
               )}
             </div>
 
-            <div onClick={() => onClickWishList?.()}>
-              <Heart3Line
-                className="mr-[10px]"
-                color={colors.gray['600']}
-                size={18}
-              />
-            </div>
-
-            <div onClick={() => setOpenMobileShoppingCart(true)}>
-              <ShoppingBagLine
-                className="mr-[10px]"
-                color={colors.gray['600']}
-                size={18}
-              />
-            </div>
-            <div onClick={() => onSearchClick?.()}>
-              <Search2Line color={colors.gray['600']} size={18} />
-            </div>
+            {!isSeller && (
+              <>
+                <div onClick={() => onClickWishList?.()}>
+                  <Heart3Line
+                    className="mr-[10px]"
+                    color={colors.gray['600']}
+                    size={18}
+                  />
+                </div>
+                <div onClick={() => setOpenMobileShoppingCart(true)}>
+                  <ShoppingBagLine
+                    className="mr-[10px]"
+                    color={colors.gray['600']}
+                    size={18}
+                  />
+                </div>
+                <div onClick={() => onSearchClick?.()}>
+                  <Search2Line color={colors.gray['600']} size={18} />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
