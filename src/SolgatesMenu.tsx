@@ -254,7 +254,7 @@ export const SolgatesMenu = ({
       </Modal>
       <div
         className={`fixed relative w-full h-[80px] ${
-          isSeller ? 'md:max-2xl:h-[90px]' : 'md:max-2xl:h-[128px]'
+          isSeller ? 'md:h-[90px]' : 'md:h-[128px]'
         } bg-white items-center border-b border-gray-100`}
       >
         {!isSeller ? (
