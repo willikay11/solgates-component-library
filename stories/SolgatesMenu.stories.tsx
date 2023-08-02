@@ -29,6 +29,7 @@ Default.args = {
   phoneNumber: '+254 706020966',
   userName: 'William Kamau Kamuyu',
   isLoggedIn: true,
+  shopName: 'Sugggggggggggggggggar',
   menus: [
     {
       name: "Men's",
