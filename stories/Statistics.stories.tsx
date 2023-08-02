@@ -14,7 +14,7 @@ const Template: Story<StatisticsProps> = (args) => <Statistics {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  title: 'Account Summary',
+  title: <div><span>Account Summary</span></div>,
   stats: [
     {
       span: 2,

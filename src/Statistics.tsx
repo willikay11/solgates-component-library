@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { isValidElement, ReactNode } from 'react';
 import { Input } from './Input';
 import { ArrowDownSLine, Checkline } from './Icons';
 
@@ -10,7 +10,7 @@ interface stat {
 }
 
 export interface StatisticsProps {
-  title: string;
+  title: string | ReactNode;
   stats: stat[];
 }
 
@@ -19,9 +19,13 @@ export const Statistics = ({ title, stats }: StatisticsProps) => {
     <div className="rounded w-full bg-white border-[1px] border-gray-200 p-3">
       <div className="flex flex-row justify-between mb-3.5">
         <div className="flex flex-1 items-center">
-          <span className="text-lg leading-7 font-bold text-gray-800">
-            {title}
-          </span>
+          {isValidElement(title) ? (
+            title
+          ) : (
+            <span className="text-lg leading-7 font-bold text-gray-800">
+              {title}
+            </span>
+          )}
         </div>
         <div className="flex flex-2">
           <Input.Select
