@@ -79,17 +79,23 @@ export const Button = ({
 
   if (type === ButtonTypes.primary_blue_600) {
     color = 'blue-600';
-    bg = `bg-blue-600 text-white`;
+    bg = ghost
+      ? `bg-white text-blue-600 border border-blue-600`
+      : `bg-blue-600 text-white`;
   }
 
   if (type === ButtonTypes.primary_gray_800) {
     color = 'gray-800';
-    bg = `bg-gray-800 text-white`;
+    bg = ghost
+      ? `bg-white text-gray-800 border border-gray-800`
+      : `bg-gray-800 text-white`;
   }
 
   if (type === ButtonTypes.primary_orange_200) {
     color = 'orange-200';
-    bg = `bg-orange-200 text-orange-600`;
+    bg = ghost
+      ? `bg-white text-orange-200 border border-orange-200`
+      : `bg-orange-200 text-orange-600`;
   }
 
   if (type === ButtonTypes.text) {

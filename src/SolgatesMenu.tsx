@@ -47,6 +47,7 @@ export interface SolgatesMenuProps {
   isLoggedIn: boolean;
   userName?: string;
   isSeller?: boolean;
+  shopName?: string;
 }
 
 export const SolgatesMenu = ({
@@ -63,6 +64,7 @@ export const SolgatesMenu = ({
   isLoggedIn,
   userName,
   isSeller = false,
+  shopName,
 }: SolgatesMenuProps) => {
   const openedRef = useRef<HTMLButtonElement | null>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
@@ -75,7 +77,6 @@ export const SolgatesMenu = ({
     useState<boolean>(false);
   const [newProductAdded, setNewProductAdded] = useState<boolean>(false);
 
-  const height = isSeller ? '90px' : '128px';
   const calculateKey = (
     menuKey: number,
     multiplicationFactor: number,
@@ -252,7 +253,9 @@ export const SolgatesMenu = ({
         ))}
       </Modal>
       <div
-        className={`fixed relative w-full h-[80px] md:h-[${height}] lg:h-[${height}] bg-white items-center border-b border-gray-100`}
+        className={`fixed relative w-full h-[80px] ${
+          isSeller ? 'md:max-2xl:h-[90px]' : 'md:max-2xl:h-[128px]'
+        } bg-white items-center border-b border-gray-100`}
       >
         {!isSeller ? (
           <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
@@ -284,14 +287,14 @@ export const SolgatesMenu = ({
                   size={14}
                   className="mr-2"
                 />
-                Open Shop
+                <span className="truncate w-[60px]">{shopName ? shopName : 'Open Shop'}</span>
               </span>
             </div>
           </div>
         ) : null}
         <div
           className="hidden md:grid lg:grid grid-cols-12 w-full"
-          style={{ height: isSeller ? '100%' : `calc(${height} - 25px)` }}
+          style={{ height: isSeller ? '100%' : `calc(128px - 25px)` }}
         >
           <div className="md:col-start-2 md:col-span-7 lg:col-start-3 lg:col-span-6 inline-flex">
             <img
