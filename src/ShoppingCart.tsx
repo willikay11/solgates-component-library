@@ -23,7 +23,7 @@ export enum CART_TYPE {
 
 export interface ShoppingCartProps {
   products: Product[];
-  onRemoveProduct: (id: string) => void;
+  onRemoveProduct: (product: Product) => void;
   onCheckOut?: () => void;
   showDiscount?: boolean;
   currency?: string;
@@ -74,7 +74,7 @@ export const ShoppingCart = ({
               {/*<Input.Number min={1} border='borderless' width="30px" padding="0px" />*/}
               <span
                 className="cursor-pointer"
-                onClick={() => onRemoveProduct(product.cartId)}
+                onClick={() => onRemoveProduct(product)}
               >
                 <DeleteBin5Line size={16} color={colors.red['500']} />
               </span>
