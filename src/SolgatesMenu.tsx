@@ -287,7 +287,9 @@ export const SolgatesMenu = ({
                   size={14}
                   className="mr-2"
                 />
-                <span className="truncate w-[60px]">{shopName ? shopName : 'Open Shop'}</span>
+                <span className="truncate w-[60px]">
+                  {shopName ? shopName : 'Open Shop'}
+                </span>
               </span>
             </div>
           </div>
