@@ -9,6 +9,7 @@ import { Button, ButtonTypes } from './Button';
 interface Product {
   id: string;
   cartId: string;
+  shop: string;
   name: string;
   imageUrl: string;
   price: number;
@@ -68,7 +69,7 @@ export const ShoppingCart = ({
               {product?.name}
             </p>
             <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">
-              Size {product?.size}
+              {product?.size}
             </p>
             <div className="flex flex-row justify-between items-center mt-1.5">
               {/*<Input.Number min={1} border='borderless' width="30px" padding="0px" />*/}
