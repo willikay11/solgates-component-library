@@ -44,6 +44,8 @@ export interface ProductTileProps {
   releaseDate?: string;
   carouselImages?: string[];
   onAddToCart?: () => void;
+  onRemoveFromCart?: () => void;
+  inCart?: boolean;
   addingToCart?: boolean;
   showWishList?: boolean;
 }
@@ -82,6 +84,8 @@ export const ProductTile = ({
   onRemoveFromWishlist,
   carouselImages,
   onAddToCart,
+  onRemoveFromCart,
+  inCart = false,
   addingToCart = false,
   showWishList = true,
 }: ProductTileProps) => {
@@ -181,19 +185,19 @@ export const ProductTile = ({
       </div>
       {(type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) && (
         <div className="mt-2.5">
-          {onAddToCart ? (
+          {onAddToCart || onRemoveFromCart ? (
             <PopOver
-              type="primary"
+              type={inCart ? 'danger' : 'primary'}
               placement="top"
               content={
                 <div className="flex flex-col items-start justify-center">
                   <Button
-                    onClick={() => onAddToCart?.()}
+                    onClick={() => inCart ? onRemoveFromCart?.() : onAddToCart?.()}
                     loading={addingToCart}
                     type={ButtonTypes.text}
                     className="bg-transparent text-white"
                   >
-                    Add To Cart
+                    {inCart ? 'Remove' : 'Add To Cart'}
                   </Button>
                 </div>
               }
@@ -217,8 +221,8 @@ export const ProductTile = ({
             {buttonName && (
               <>
                 <span className="text-xs leading-4 font-normal mt-1.5 text-gray-500">
-                  {' '}
-                  |{' '}
+                  &nbsp;
+                  |&nbsp;
                 </span>
                 <Button
                   onClick={() => onClickShop?.()}
