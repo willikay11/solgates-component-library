@@ -2,10 +2,16 @@ import React, { ReactNode, useState } from 'react';
 import { Popover } from '@headlessui/react';
 import { usePopper } from 'react-popper';
 
+export enum PopOverType {
+  primary = 'primary',
+  danger = 'danger',
+  default = 'default',
+}
+
 export interface PopOverProps {
   children: ReactNode;
   content: ReactNode;
-  type?: 'primary' | 'default';
+  type?: PopOverType.primary | PopOverType.danger | PopOverType.default;
   placement?:
     | 'bottom'
     | 'bottom-start'
@@ -24,7 +30,7 @@ export interface PopOverProps {
 export const PopOver = ({
   children,
   content,
-  type = 'default',
+  type = PopOverType.default,
   placement = 'bottom',
 }: PopOverProps) => {
   let [referenceElement, setReferenceElement] = useState<any>(null);
@@ -74,7 +80,7 @@ export const PopOver = ({
               id="tooltip"
               role="tooltip"
               className={`absolute z-20 rounded shadow-lg mt-1.5 ${
-                type === 'primary' ? 'bg-orange-600' : 'bg-white'
+                type === PopOverType.primary ? 'bg-orange-600' : type === PopOverType.danger ? 'bg-red-600' : 'bg-white'
               } `}
             >
               <div className="overflow-hidden p-2.5">{content}</div>
