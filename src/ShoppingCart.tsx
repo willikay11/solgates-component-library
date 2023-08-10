@@ -9,6 +9,8 @@ import { Button, ButtonTypes } from './Button';
 interface Product {
   id: string;
   cartId: string;
+  productId: string;
+  shop: string;
   name: string;
   imageUrl: string;
   price: number;
