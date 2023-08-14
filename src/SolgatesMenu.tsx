@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useRef, ReactNode, useEffect } from 'react';
-import { Menu, Transition, Disclosure } from '@headlessui/react';
+import { Menu, Transition, Disclosure, Popover } from '@headlessui/react';
 import {
   AccountCircle,
   AddLine,
@@ -392,9 +392,9 @@ export const SolgatesMenu = ({
             })}
           </div>
           <div className="col-span-2 inline-flex items-center justify-end">
-            <Menu>
+            <Popover>
               <div className="relative flex items-center">
-                <Menu.Button>
+                <Popover.Button>
                   {isLoggedIn ? (
                     <div className="flex flex-row mr-1.5 items-center">
                       <AccountCircle
@@ -413,7 +413,7 @@ export const SolgatesMenu = ({
                       size={18}
                     />
                   )}
-                </Menu.Button>
+                </Popover.Button>
                 <Transition
                   as={Fragment}
                   enter="transition ease-out duration-100"
@@ -423,12 +423,12 @@ export const SolgatesMenu = ({
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="min-w-[220px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                  <Popover.Panel className="min-w-[220px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
                     {userContent}
-                  </Menu.Items>
+                  </Popover.Panel>
                 </Transition>
               </div>
-            </Menu>
+            </Popover>
             {!isSeller && (
               <>
                 <Menu>
