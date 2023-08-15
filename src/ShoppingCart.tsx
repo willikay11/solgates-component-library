@@ -5,7 +5,7 @@ import { IconContainer } from './IconContainer';
 import { DeleteBin5Line, GiftLine } from './Icons';
 import colors from './Colors';
 import { Button, ButtonTypes } from './Button';
-import {Loading} from "./Loading";
+import { Loading } from './Loading';
 
 interface Product {
   id: string;
@@ -44,7 +44,7 @@ export const ShoppingCart = ({
   type = CART_TYPE.full,
   showCheckoutButton = true,
   loading = false,
-  loadingText = 'Loading cart items'
+  loadingText = 'Loading cart items',
 }: ShoppingCartProps) => {
   const [total, setTotal] = useState<number>(0);
 

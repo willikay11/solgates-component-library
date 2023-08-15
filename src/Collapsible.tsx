@@ -41,7 +41,9 @@ export const Collapsible = ({
               </span>
               {open ? closeIcon : openIcon}
             </Disclosure.Button>
-            <Disclosure.Panel className={`${padding} pb-2 text-sm text-gray-500`}>
+            <Disclosure.Panel
+              className={`${padding} pb-2 text-sm text-gray-500`}
+            >
               {panelContent}
             </Disclosure.Panel>
           </div>

@@ -192,7 +192,9 @@ export const ProductTile = ({
               content={
                 <div className="flex flex-col items-start justify-center">
                   <Button
-                    onClick={() => inCart ? onRemoveFromCart?.() : onAddToCart?.()}
+                    onClick={() =>
+                      inCart ? onRemoveFromCart?.() : onAddToCart?.()
+                    }
                     loading={addingToCart}
                     type={ButtonTypes.text}
                     className="bg-transparent text-white"
@@ -221,8 +223,7 @@ export const ProductTile = ({
             {buttonName && (
               <>
                 <span className="text-xs leading-4 font-normal mt-1.5 text-gray-500">
-                  &nbsp;
-                  |&nbsp;
+                  &nbsp; |&nbsp;
                 </span>
                 <Button
                   onClick={() => onClickShop?.()}
