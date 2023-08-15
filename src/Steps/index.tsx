@@ -11,7 +11,8 @@ export interface StepsProps {
     description: string;
   }[];
 }
-const Steps = ({
+
+export const Steps = ({
   items,
   initial,
   labelPlacement,
@@ -43,5 +44,3 @@ const Steps = ({
     </div>
   );
 };
-
-export default Steps;
