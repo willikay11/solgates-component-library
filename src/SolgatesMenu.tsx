@@ -328,12 +328,12 @@ export const SolgatesMenu = ({
                         </div>
                         <Transition
                           as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
+                          enter="transition ease duration-500 transform"
+                          enterFrom="opacity-0 -translate-y-6"
+                          enterTo="opacity-100 translate-y-0"
+                          leave="transition ease duration-300 transform"
+                          leaveFrom="opacity-100 translate-y-0"
+                          leaveTo="opacity-0 -translate-y-6"
                         >
                           <Menu.Items className="z-50 absolute right-0 top-[120px] mt-2 w-full origin-top-right divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
                             <div className={`grid grid-cols-12 my-[30px]`}>
@@ -394,7 +394,7 @@ export const SolgatesMenu = ({
           <div className="col-span-2 inline-flex items-center justify-end">
             <Popover>
               <div className="relative flex items-center">
-                <Popover.Button>
+                <Popover.Button className="outline-0">
                   {isLoggedIn ? (
                     <div className="flex flex-row mr-1.5 items-center">
                       <AccountCircle
@@ -416,12 +416,12 @@ export const SolgatesMenu = ({
                 </Popover.Button>
                 <Transition
                   as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
+                  enter="transition ease duration-500 transform"
+                  enterFrom="opacity-0 -translate-y-6"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease duration-300 transform"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 -translate-y-6"
                 >
                   <Popover.Panel className="min-w-[220px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
                     {userContent}
@@ -463,12 +463,12 @@ export const SolgatesMenu = ({
                     </Menu.Button>
                     <Transition
                       as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
+                      enter="transition ease duration-500 transform"
+                      enterFrom="opacity-0 -translate-y-6"
+                      enterTo="opacity-100 translate-y-0"
+                      leave="transition ease duration-300 transform"
+                      leaveFrom="opacity-100 translate-y-0"
+                      leaveTo="opacity-0 -translate-y-6"
                     >
                       <Menu.Items className="min-w-[320px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
                         {shoppingCartContent}

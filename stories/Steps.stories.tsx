@@ -14,7 +14,7 @@ const Template: Story<StepsProps> = (args) => <Steps {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  initial: 1,
+  initial: 4,
   labelPlacement: 'vertical',
   items: [
     {
