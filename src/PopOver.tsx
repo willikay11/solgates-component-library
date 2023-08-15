@@ -80,7 +80,11 @@ export const PopOver = ({
               id="tooltip"
               role="tooltip"
               className={`absolute z-20 rounded shadow-lg mt-1.5 ${
-                type === PopOverType.primary ? 'bg-orange-600' : type === PopOverType.danger ? 'bg-red-600' : 'bg-white'
+                type === PopOverType.primary
+                  ? 'bg-orange-600'
+                  : type === PopOverType.danger
+                  ? 'bg-red-600'
+                  : 'bg-white'
               } `}
             >
               <div className="overflow-hidden p-2.5">{content}</div>
