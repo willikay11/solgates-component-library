@@ -54,11 +54,11 @@ export const Modal = ({
             <Transition.Child
               as={Fragment}
               enter="transition ease duration-500 transform"
-              enterFrom="opacity-0 -translate-y-6"
+              enterFrom="opacity-0 -translate-y-28"
               enterTo="opacity-100 translate-y-0"
-              leave="transition ease duration-300 transform"
+              leave="transition ease duration-500 transform"
               leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 -translate-y-6"
+              leaveTo="opacity-0 -translate-y-28"
             >
               <Dialog.Panel
                 className={`${widthClass} ${roundedBorder} ${heightClass} transform overflow-hidden bg-white p-[20px] text-left align-middle transition-all`}

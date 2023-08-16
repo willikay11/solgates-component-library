@@ -27,7 +27,7 @@ Default.args = {
   onClose: () => console.log(false),
   position: MODAL_POSITION.TOP,
   widthClass: 'w-full',
-  heightClass: 'h-80',
+  heightClass: 'h-fit',
   roundedBorder: 'rounded-[0px]',
   children: (
     <div className="flex flex-col justify-center items-center">
