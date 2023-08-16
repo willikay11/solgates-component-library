@@ -321,7 +321,7 @@ export const SolgatesMenu = ({
                               menuRefs.current[index] = ref;
                             }}
                             onMouseEnter={() => !open && openMenu(index)}
-                            className="inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 group-hover:border-b active:border-b border-orange-600 hover:border-b border-orange-600"
+                            className="inline-flex justify-center items-center outline-0 h-full bg-white text-xs leading-4 font-medium text-gray-800 group-hover:border-b active:border-b border-orange-600 hover:border-b border-orange-600"
                           >
                             {menu.name}
                           </Menu.Button>
