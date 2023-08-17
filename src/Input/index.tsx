@@ -7,6 +7,7 @@ import { Number } from './Number';
 import { Password } from './Password';
 import { Error } from './Error';
 import { PhoneNumber } from './Phonenumber';
+import { Range } from "./Range";
 
 export const Input = {
   Password: Password,
@@ -18,4 +19,5 @@ export const Input = {
   RadioButton: RadioButton,
   Upload: Upload,
   Error: Error,
+  Range: Range
 };
