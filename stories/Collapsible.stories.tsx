@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Checkbox, Collapsible, CollapsibleProps, User6Line } from '../src';
+import { Checkbox, Collapsible, CollapsibleProps, User6Line, Button, ButtonTypes } from '../src';
 import colors from 'tailwindcss/colors';
 
 const meta: Meta = {
@@ -17,6 +17,7 @@ Default.args = {
   openIcon: <User6Line size={14} color={colors.red['500']} />,
   closeIcon: <User6Line size={14} color={colors.red['500']} />,
   panelTitle: 'Condition',
+  extraContent: <Button type={ButtonTypes.link}>Apply</Button>,
   panelContent: (
     <div className="grid grid-cols-1">
       <>

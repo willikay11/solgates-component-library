@@ -9,6 +9,7 @@ export interface CollapsibleProps {
   showTitleDivider?: boolean;
   closeIcon?: ReactNode;
   openIcon?: ReactNode;
+  extraContent?: ReactNode;
   padding?: string;
 }
 
@@ -20,6 +21,7 @@ export const Collapsible = ({
   showTitleDivider = true,
   open = false,
   bordered = true,
+  extraContent,
   padding = 'p-[15px]',
 }: CollapsibleProps) => {
   return (
@@ -32,14 +34,17 @@ export const Collapsible = ({
             }`}
           >
             <Disclosure.Button
-              className={`${padding} flex w-full justify-between focus:outline-none ${
+              className={`${padding} flex w-full items-center justify-between focus:outline-none ${
                 open && showTitleDivider ? 'border-b-[1px]' : ''
               }`}
             >
               <span className="text-xs leading-4 font-semibold text-gray-800">
                 {panelTitle}
               </span>
-              {open ? closeIcon : openIcon}
+              <div className="flex items-center justify-end">
+                {extraContent && <div className="pr-2">{extraContent}</div>}
+                {open ? closeIcon : openIcon}
+              </div>
             </Disclosure.Button>
             <Disclosure.Panel
               className={`${padding} pb-2 text-sm text-gray-500`}
