@@ -29,7 +29,7 @@ const Template: Story<ProductTileProps> = (args) => (
 export const Products = Template.bind({});
 Products.args = {
   id: '1',
-  imageUrl: 'nike-blazer-77-1.webp',
+  imageUrl: 'nike-blazer-7-1.webp',
   name: 'Air Jordan 1 Retro High OG',
   smallDescription: 'Dutch Green',
   buttonName: 'Nike',

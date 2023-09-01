@@ -109,11 +109,7 @@ export const ProductTile = ({
       }  rounded`}
     >
       <div
-        className={`w-full ${
-          type === PRODUCT_TYPE.COLLECTION || type === PRODUCT_TYPE.CONTENT
-            ? 'h-full'
-            : 'h-auto'
-        } relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`}
+        className={`w-full h-full relative rounded bg-gray-100 flex justify-center items-center cursor-pointer`}
         onClick={() => onClick?.()}
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
