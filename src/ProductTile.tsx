@@ -185,7 +185,7 @@ export const ProductTile = ({
         ) : null}
       </div>
       {(type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) && (
-        <div className="mt-2.5">
+        <div className="pt-2.5 h-full bg-white">
           {onAddToCart || onRemoveFromCart ? (
             <PopOver
               type={inCart ? 'danger' : 'primary'}

@@ -1,6 +1,13 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Checkbox, Collapsible, CollapsibleProps, User6Line, Button, ButtonTypes } from '../src';
+import {
+  Checkbox,
+  Collapsible,
+  CollapsibleProps,
+  User6Line,
+  Button,
+  ButtonTypes,
+} from '../src';
 import colors from 'tailwindcss/colors';
 
 const meta: Meta = {
