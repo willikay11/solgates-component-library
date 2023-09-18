@@ -10,7 +10,7 @@ export * from './CustomRadioButton';
 export * from './SolgatesMenu';
 export * from './Collapsible';
 export * from './Modal';
-export * from './ProductTile/index';
+export * from './ProductTile';
 export * from './PageBanner';
 export * from './ShoppingCart';
 export * from './Icons';
