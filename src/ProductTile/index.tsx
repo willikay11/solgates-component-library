@@ -1,5 +1,5 @@
 import ProductDescription from './productDescription';
-import React, {ReactNode, useState} from 'react';
+import React, { ReactNode, useState } from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
 
@@ -55,7 +55,7 @@ const ProductTile = ({
   onRemoveFromCart,
   onClick,
 }: ProductTileProps) => {
-  const [imageLoaded, setImageLoaded] = useState<boolean>(false)
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   return (
     <div className="group/product-tile w-full rounded">
       <div
@@ -65,29 +65,45 @@ const ProductTile = ({
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
           <>
             {!imageLoaded && (
-                <img
-                    alt="Image"
-                    className="rounded"
-                    style={{ width: '100%', backgroundColor: '#f4f4f4', height: 'auto' }}
-                    loading="eager"
-                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                />
+              <img
+                alt="ImageLoader"
+                className="rounded"
+                style={{
+                  width: '100%',
+                  backgroundColor: '#f4f4f4',
+                  height: 'auto',
+                }}
+                loading="eager"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              />
             )}
-            <CarouselImages carouselImages={carouselImages} onAllCarouselImagesLoaded={(imageLoaded) => setImageLoaded(imageLoaded)} />
+            <CarouselImages
+              carouselImages={carouselImages}
+              onAllCarouselImagesLoaded={(imageLoaded) =>
+                setImageLoaded(imageLoaded)
+              }
+            />
           </>
         ) : (
-            <>
-              {!imageLoaded && (
-                  <img
-                      alt="Image"
-                      className="rounded"
-                      style={{ width: '100%', backgroundColor: '#f4f4f4', height: 'auto' }}
-                      loading="eager"
-                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                  />
-              )}
-              <ImageTile image={imageUrl} onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)} />
-            </>
+          <>
+            {!imageLoaded && (
+              <img
+                alt="ImageLoader"
+                className="rounded"
+                style={{
+                  width: '100%',
+                  backgroundColor: '#f4f4f4',
+                  height: 'auto',
+                }}
+                loading="eager"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              />
+            )}
+            <ImageTile
+              image={imageUrl}
+              onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)}
+            />
+          </>
         )}
       </div>
       <ProductDescription

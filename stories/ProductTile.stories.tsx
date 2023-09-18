@@ -29,7 +29,8 @@ const Template: Story<ProductTileProps> = (args) => (
 export const Products = Template.bind({});
 Products.args = {
   id: '1',
-  imageUrl: 'v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp',
+  imageUrl:
+    'https://solgate.us-southeast-1.linodeobjects.com/product/74/1.webp',
   name: 'Air Jordan 1 Retro High OG',
   smallDescription: 'Dutch Green',
   buttonName: 'Nike',
@@ -45,7 +46,7 @@ Products.args = {
 export const Product = Template.bind({});
 Product.args = {
   imageUrl:
-    'v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp',
+    'https://solgate.us-southeast-1.linodeobjects.com/product/74/1.webp?w=29&org_if_sml=1',
   type: PRODUCT_TYPE.PRODUCT,
 };
 
