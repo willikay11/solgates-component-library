@@ -122,4 +122,4 @@ const ProductTile = ({
   );
 };
 
-export default ProductTile;
+export { ProductTile };
