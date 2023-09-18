@@ -68,7 +68,7 @@ const ImageTile = ({ image }: ImageTileProps) => {
   );
 };
 
-export const ProductTile = ({
+export const ProductTile1 = ({
   id,
   imageUrl,
   content,

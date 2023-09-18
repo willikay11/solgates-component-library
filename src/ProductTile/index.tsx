@@ -1,5 +1,7 @@
 import ProductDescription from './productDescription';
 import React, { ReactNode } from 'react';
+import CarouselImages from './carouselImages';
+import ImageTile from './imageTile';
 
 export enum PRODUCT_TYPE {
   PRODUCTS = 'products',
@@ -44,29 +46,40 @@ const ProductTile = ({
   smallDescription,
   buttonName,
   type,
+  carouselImages,
+  imageUrl,
   onClickShop,
   addingToCart,
   inCart,
   onAddToCart,
   onRemoveFromCart,
+  onClick,
 }: ProductTileProps) => {
   return (
-    <>
-      {type === PRODUCT_TYPE.PRODUCTS ||
-        (type === PRODUCT_TYPE.CAROUSEL && (
-          <ProductDescription
-            name={name}
-            smallDescription={smallDescription}
-            price={price}
-            onClickShop={onClickShop}
-            buttonName={buttonName}
-            addingToCart={addingToCart}
-            inCart={inCart}
-            onAddToCart={onAddToCart}
-            onRemoveFromCart={onRemoveFromCart}
-          />
-        ))}
-    </>
+    <div className="group/product-tile w-full rounded">
+      <div
+        className="w-full relative rounded flex justify-center items-center cursor-pointer"
+        onClick={() => onClick?.()}
+      >
+        {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
+          <CarouselImages carouselImages={carouselImages} />
+        ) : (
+          <ImageTile image={imageUrl} />
+        )}
+      </div>
+      <ProductDescription
+        type={type}
+        name={name}
+        smallDescription={smallDescription}
+        price={price}
+        onClickShop={onClickShop}
+        buttonName={buttonName}
+        addingToCart={addingToCart}
+        inCart={inCart}
+        onAddToCart={onAddToCart}
+        onRemoveFromCart={onRemoveFromCart}
+      />
+    </div>
   );
 };
 
