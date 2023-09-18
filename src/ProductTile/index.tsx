@@ -1,5 +1,5 @@
 import ProductDescription from './productDescription';
-import React, { ReactNode } from 'react';
+import React, {ReactNode, useState} from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
 
@@ -55,6 +55,7 @@ const ProductTile = ({
   onRemoveFromCart,
   onClick,
 }: ProductTileProps) => {
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false)
   return (
     <div className="group/product-tile w-full rounded">
       <div
@@ -62,9 +63,31 @@ const ProductTile = ({
         onClick={() => onClick?.()}
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
-          <CarouselImages carouselImages={carouselImages} />
+          <>
+            {!imageLoaded && (
+                <img
+                    alt="Image"
+                    className="rounded"
+                    style={{ width: '100%', backgroundColor: '#f4f4f4', height: 'auto' }}
+                    loading="eager"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                />
+            )}
+            <CarouselImages carouselImages={carouselImages} onAllCarouselImagesLoaded={(imageLoaded) => setImageLoaded(imageLoaded)} />
+          </>
         ) : (
-          <ImageTile image={imageUrl} />
+            <>
+              {!imageLoaded && (
+                  <img
+                      alt="Image"
+                      className="rounded"
+                      style={{ width: '100%', backgroundColor: '#f4f4f4', height: 'auto' }}
+                      loading="eager"
+                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  />
+              )}
+              <ImageTile image={imageUrl} onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)} />
+            </>
         )}
       </div>
       <ProductDescription

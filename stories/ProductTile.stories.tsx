@@ -15,20 +15,21 @@ const meta: Meta = {
 };
 
 export default meta;
-
 const Template: Story<ProductTileProps> = (args) => (
   <div className="grid gap-2 grid-cols-2 md:gap-2 md:grid-cols-3 lg:gap-4 lg:grid-cols-4 h-screen">
     <ProductTile {...args} />
-    {/*<ProductTile {...args} />*/}
-    {/*<ProductTile {...args} />*/}
-    {/*<ProductTile {...args} />*/}
+    <ProductTile {...args} />
+    <ProductTile {...args} />
+    <ProductTile {...args} />
+    <ProductTile {...args} />
+    <ProductTile {...args} />
   </div>
 );
 
 export const Products = Template.bind({});
 Products.args = {
   id: '1',
-  imageUrl: '/v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp',
+  imageUrl: 'v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp',
   name: 'Air Jordan 1 Retro High OG',
   smallDescription: 'Dutch Green',
   buttonName: 'Nike',
@@ -43,7 +44,8 @@ Products.args = {
 
 export const Product = Template.bind({});
 Product.args = {
-  imageUrl: '/v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp?_a=AJFJtWIB',
+  imageUrl:
+    'v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp',
   type: PRODUCT_TYPE.PRODUCT,
 };
 
@@ -62,11 +64,11 @@ Carousel.args = {
   buttonName: 'Nike',
   price: 'KSH 12,200',
   carouselImages: [
-    '/v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp',
-    '/v1693935647/Shoes/Brand/nike-airmax-270/2_ulijas.webp',
-    '/v1693935649/Shoes/Brand/nike-airmax-270/5_elwoy6.jpg',
-    '/v1693935645/Shoes/Brand/nike-airmax-270/8_ozuets.webp',
-    '/v1693935651/Shoes/Brand/nike-airmax-270/3_yrizjv.webp',
+    'v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp',
+    'v1693935647/Shoes/Brand/nike-airmax-270/2_ulijas.webp',
+    'v1693935649/Shoes/Brand/nike-airmax-270/5_elwoy6.jpg',
+    'v1693935645/Shoes/Brand/nike-airmax-270/8_ozuets.webp',
+    'v1693935651/Shoes/Brand/nike-airmax-270/3_yrizjv.webp',
   ],
 };
 
