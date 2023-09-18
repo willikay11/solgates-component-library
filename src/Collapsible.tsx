@@ -38,10 +38,10 @@ export const Collapsible = ({
                 open && showTitleDivider ? 'border-b-[1px]' : ''
               }`}
             >
-              <span className="text-xs leading-4 font-semibold text-gray-800">
+              <span className="text-xs truncate leading-4 font-semibold text-gray-800">
                 {panelTitle}
               </span>
-              <div className="flex items-center justify-end">
+              <div className="flex flex-1 items-center justify-end">
                 {extraContent && <div className="pr-2">{extraContent}</div>}
                 {open ? closeIcon : openIcon}
               </div>

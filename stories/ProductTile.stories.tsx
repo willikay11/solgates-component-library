@@ -4,10 +4,10 @@ import {
   // IconContainer,
   PRODUCT_TYPE,
   ProductTileProps,
+  ProductTile
   // User6Line,
 } from '../src';
 // import colors from 'tailwindcss/colors';
-import ProductTile from '../src/ProductTile/index';
 
 const meta: Meta = {
   title: 'Data Display/Product Tile',
