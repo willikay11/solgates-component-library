@@ -29,7 +29,7 @@ const ProductDescription = ({
 }: ProductDescriptionInterface) => {
   if (type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) {
     return (
-      <div className="pt-2.5 h-full bg-white">
+      <div className="pt-2.5 h-full">
         {onAddToCart || onRemoveFromCart ? (
           <PopOver
             type={inCart ? PopOverType.danger : PopOverType.primary}
