@@ -12,7 +12,7 @@ const PageBannerImage = ({ image }: PageBannerImageInterface) => {
       {!imageLoaded && <ImageLoader />}
       <img
         alt="product"
-        className="rounded"
+        className={`rounded ${imageLoaded ? 'block' : 'hidden'}`}
         onLoad={() => setImageLoaded(true)}
         src={image}
       />
