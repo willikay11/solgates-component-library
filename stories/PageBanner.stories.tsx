@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import {
-  CONTENT_POSITION,
   IconContainer,
   PageBanner,
   PageBannerProps,
@@ -24,21 +23,11 @@ const Template: Story<PageBannerProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  imageUrl: 'solgates-membership-banner.jpg',
-  type: 'backgroundImage',
-  title: 'Checkout',
+  imageUrl:
+      'https://solgate.us-southeast-1.linodeobjects.com/product/160/Walks_of_Nairobi.jpg',
   name: 'Children Tees',
   buttonName: 'Shop',
-  contentPosition: CONTENT_POSITION.center,
-  content: (
-    <img
-      src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/23696ebc-18fc-46f9-8a88-c854930ad24c/air-jordan-1-retro-high-womens-shoes-W1tGx4.png"
-      width="80px"
-      height="90px"
-      className="rounded mr-2.5"
-      alt="test"
-    />
-  ),
+  showOverlay: false,
 };
 
 export const Content = Template.bind({});
