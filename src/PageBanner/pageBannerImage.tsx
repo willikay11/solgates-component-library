@@ -3,13 +3,14 @@ import ImageLoader from '../ProductTile/imageLoader';
 
 interface PageBannerImageInterface {
   image: string;
+  placeholderHeight?: string;
 }
-const PageBannerImage = ({ image }: PageBannerImageInterface) => {
+const PageBannerImage = ({ image, placeholderHeight }: PageBannerImageInterface) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   return (
     <>
-      {!imageLoaded && <ImageLoader />}
+      {!imageLoaded && <ImageLoader height={placeholderHeight} />}
       <img
         alt="product"
         className={`rounded ${imageLoaded ? 'block' : 'hidden'}`}

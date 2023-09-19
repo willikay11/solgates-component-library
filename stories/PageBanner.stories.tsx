@@ -28,6 +28,7 @@ Default.args = {
   name: 'Children Tees',
   buttonName: 'Shop',
   showOverlay: false,
+  placeholderHeight: 'h-56'
 };
 
 export const Content = Template.bind({});
