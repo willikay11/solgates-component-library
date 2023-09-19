@@ -4,7 +4,7 @@ import {
   // IconContainer,
   PRODUCT_TYPE,
   ProductTileProps,
-  ProductTile
+  ProductTile,
   // User6Line,
 } from '../src';
 // import colors from 'tailwindcss/colors';
