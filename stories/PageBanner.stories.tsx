@@ -1,11 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-  IconContainer,
-  PageBanner,
-  PageBannerProps,
-  User6Line,
-} from '../src';
+import { IconContainer, PageBanner, PageBannerProps, User6Line } from '../src';
 import colors from 'tailwindcss/colors';
 
 const meta: Meta = {
@@ -23,12 +18,11 @@ const Template: Story<PageBannerProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  imageUrl:
-      'https://solgate.us-southeast-1.linodeobjects.com/product/160/Walks_of_Nairobi.jpg',
+  imageUrl: 'https://cyqqqhlxia.cloudimg.io/_solgates_/solgates-hero-v2.jpg',
   name: 'Children Tees',
   buttonName: 'Shop',
   showOverlay: false,
-  placeholderHeight: 'h-56'
+  placeholderHeight: 'h-56',
 };
 
 export const Content = Template.bind({});
