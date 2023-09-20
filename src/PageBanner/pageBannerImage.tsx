@@ -13,9 +13,7 @@ const PageBannerImage = ({
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log('imgRef.current?.complete: ', imgRef.current?.complete);
     if (imgRef.current?.complete) {
-      console.log('completed');
       setImageLoaded(true);
     }
   }, [imgRef]);
