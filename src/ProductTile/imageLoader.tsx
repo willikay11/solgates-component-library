@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ImageLoaderProps {
-  height?: string
+  height?: string;
 }
 const ImageLoader = ({ height = 'h-auto' }: ImageLoaderProps) => {
   return (

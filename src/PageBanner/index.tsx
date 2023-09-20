@@ -32,7 +32,7 @@ const PageBanner = ({
   buttonName,
   onClick,
   showOverlay = true,
-    placeholderHeight
+  placeholderHeight,
 }: PageBannerProps) => {
   return (
     <div className="w-full h-full rounded">
@@ -40,7 +40,10 @@ const PageBanner = ({
         onClick={() => onClick?.()}
         className="h-auto relative cursor-pointer"
       >
-        <PageBannerImage image={imageUrl} placeholderHeight={placeholderHeight} />
+        <PageBannerImage
+          image={imageUrl}
+          placeholderHeight={placeholderHeight}
+        />
         <Overlay
           showOverlay={showOverlay}
           content={content}
