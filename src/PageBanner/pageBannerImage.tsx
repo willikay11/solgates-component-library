@@ -24,7 +24,7 @@ const PageBannerImage = ({
       <img
         ref={imgRef}
         alt="product"
-        className={`rounded ${imageLoaded ? 'visible' : 'hidden'}`}
+        className={`rounded w-full ${imageLoaded ? 'visible' : 'hidden'}`}
         src={image}
         onLoad={() => setImageLoaded(true)}
         decoding="async"
