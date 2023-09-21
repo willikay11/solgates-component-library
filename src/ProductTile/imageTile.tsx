@@ -22,7 +22,7 @@ const ImageTile = ({ image, onImageLoaded }: ImageTileProps) => {
   return (
     <img
       alt="product"
-      className="rounded"
+      className="rounded w-full"
       onLoad={() => onImageLoaded(true)}
       src={image}
     />
