@@ -165,7 +165,11 @@ export const Upload = ({
               />
               <button
                 className="absolute bottom-[5px] right-[15px] p-1 rounded bg-opacity-30 bg-gray-800"
-                onClick={() => removeFile(index)}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  event.preventDefault();
+                  removeFile(index)
+                }}
               >
                 <CloseLine size={14} color={colors.white} />
               </button>
