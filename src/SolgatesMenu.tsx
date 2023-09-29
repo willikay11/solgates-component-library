@@ -17,8 +17,8 @@ import {
 import colors from './Colors';
 import { Modal, MODAL_POSITION } from './Modal';
 
-const openIcon = <AddLine color={colors.gray['800']} size={14} />;
-const closeIcon = <Minus color={colors.gray['800']} size={14} />;
+const openIcon = <AddLine color={colors.gray['800']} size={18} />;
+const closeIcon = <Minus color={colors.gray['800']} size={18} />;
 
 interface menu {
   id: string;
@@ -234,7 +234,7 @@ export const SolgatesMenu = ({
                               {child?.children?.map((item, index) => (
                                 <button
                                   key={`${item.name}-${index}`}
-                                  className="text-xs leading-4 font-normal text-gray-600 text-start mb-1.5"
+                                  className="text-[0.8rem] leading-4 font-normal text-gray-600 text-start mb-1.5"
                                   onClick={() => onClickMenuItem(item)}
                                 >
                                   {item.name}

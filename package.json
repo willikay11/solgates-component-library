@@ -1,8 +1,9 @@
 {
-  "version": "2.2.4",
+  "version": "2.2.5",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "homepage": "https://willikay11.github.io/solgates-component-library",
   "files": [
     "dist",
     "src"
@@ -20,6 +21,7 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "build-tailwind": "NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify",
     "lintfix": "yarn run lint -- --fix",
     "format": "prettier --write \"./src/**/*\" \"./stories/*\""
@@ -67,6 +69,7 @@
     "@types/react-dom": "^18.0.10",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
+    "gh-pages": "^6.0.0",
     "husky": "^8.0.2",
     "postcss": "^8.4.20",
     "react": "^18.2.0",
