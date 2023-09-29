@@ -44,7 +44,7 @@ jobs:
       - name: Install dependencies
         run: |
           if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
+          yarn install --ignore-engines --frozen-lockfile
           elif [ -e package-lock.json ]; then
           npm ci
           else
