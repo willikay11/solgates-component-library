@@ -79,7 +79,7 @@ const ProductTile = ({
             )}
             <CarouselImages
               carouselImages={carouselImages}
-              onAllCarouselImagesLoaded={(imageLoaded) =>
+              onAllCarouselImagesLoaded={imageLoaded =>
                 setImageLoaded(imageLoaded)
               }
             />
@@ -101,7 +101,7 @@ const ProductTile = ({
             )}
             <ImageTile
               image={imageUrl}
-              onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)}
+              onImageLoaded={imageLoaded => setImageLoaded(imageLoaded)}
             />
           </>
         )}

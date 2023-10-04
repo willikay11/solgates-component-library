@@ -10,9 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<IconContainerProps> = (args) => (
-  <IconContainer {...args} />
-);
+const Template: Story<IconContainerProps> = args => <IconContainer {...args} />;
 
 export const Default = Template.bind({
   children: <User6Line color={colors.gray[600]} />,

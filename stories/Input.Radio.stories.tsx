@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<RadioButtonProps> = (args) => (
+const Template: Story<RadioButtonProps> = args => (
   <Input.RadioButton {...args} />
 );
 

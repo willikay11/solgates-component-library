@@ -11,7 +11,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<PhoneNumberProps> = (args) => (
+const Template: Story<PhoneNumberProps> = args => (
   <Input.PhoneNumber {...args} />
 );
 

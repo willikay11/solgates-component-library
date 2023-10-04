@@ -11,7 +11,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<SelectInputProps> = (args) => <Input.Select {...args} />;
+const Template: Story<SelectInputProps> = args => <Input.Select {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

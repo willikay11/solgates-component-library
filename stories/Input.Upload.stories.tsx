@@ -11,7 +11,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<UploadProps> = (args) => <Input.Upload {...args} />;
+const Template: Story<UploadProps> = args => <Input.Upload {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -25,5 +25,5 @@ Default.args = {
     </div>
   ),
   showFileSelect: false,
-  onChange: (file) => console.log('file: ', file),
+  onChange: file => console.log('file: ', file),
 };

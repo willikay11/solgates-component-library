@@ -15,13 +15,13 @@ export const Checked: Story = {
     name: 'checkbox',
     id: 'checkbox',
     label: (
-        <label className="text-xs leading-4 text-gray-800 font-normal">
-          Checked
-        </label>
+      <label className="text-xs leading-4 text-gray-800 font-normal">
+        Checked
+      </label>
     ),
     defaultValue: 'checkbox',
-    checked: true
-  }
+    checked: true,
+  },
 };
 
 export const Unchecked: Story = {
@@ -29,12 +29,12 @@ export const Unchecked: Story = {
     name: 'checkbox',
     id: 'checkbox',
     label: (
-        <label className="text-xs leading-4 text-gray-800 font-normal">
-          Unchecked
-        </label>
+      <label className="text-xs leading-4 text-gray-800 font-normal">
+        Unchecked
+      </label>
     ),
     defaultValue: 'checkbox',
-  }
+  },
 };
 
 export const Disabled: Story = {
@@ -42,13 +42,13 @@ export const Disabled: Story = {
     name: 'checkbox',
     id: 'checkbox',
     label: (
-        <label className="text-xs leading-4 text-gray-800 font-normal">
-          Disabled
-        </label>
+      <label className="text-xs leading-4 text-gray-800 font-normal">
+        Disabled
+      </label>
     ),
     defaultValue: 'checkbox',
-    disabled: true
-  }
+    disabled: true,
+  },
 };
 
 export const DisabledWhenChecked: Story = {
@@ -56,14 +56,12 @@ export const DisabledWhenChecked: Story = {
     name: 'checkbox',
     id: 'checkbox',
     label: (
-        <label className="text-xs leading-4 text-gray-800 font-normal">
-          Disabled when checked
-        </label>
+      <label className="text-xs leading-4 text-gray-800 font-normal">
+        Disabled when checked
+      </label>
     ),
     defaultValue: 'checkbox',
     disabled: true,
-    checked: true
-  }
+    checked: true,
+  },
 };
-
-

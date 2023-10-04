@@ -9,7 +9,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<StepsProps> = (args) => <Steps {...args} />;
+const Template: Story<StepsProps> = args => <Steps {...args} />;
 
 export const Default = Template.bind({});
 
