@@ -1,0 +1,2 @@
+import{I as s,j as n}from"./index-bf72dc8c.js";import"./client-128ae93f.js";const d={title:"Data Entry/TextArea",component:s.Password},p=o=>n(s.TextArea,{...o}),e=p.bind({});e.args={rows:7};var r,a,t;e.parameters={...e.parameters,docs:{...(r=e.parameters)==null?void 0:r.docs,source:{originalSource:"args => <Input.TextArea {...args} />",...(t=(a=e.parameters)==null?void 0:a.docs)==null?void 0:t.source}}};const u=["Default"];export{e as Default,u as __namedExportsOrder,d as default};
+//# sourceMappingURL=Input.Textarea.stories-24e45636.js.map
