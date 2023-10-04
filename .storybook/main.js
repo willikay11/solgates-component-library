@@ -1,6 +1,6 @@
 module.exports = {
   framework: '@storybook/react-vite',
-  stories: ['../stories/**/*.stories.@(ts|tsx|js|jsx)'],
+  stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(ts|tsx|js|jsx)'],
   features: {
     storyStoreV7: true,
   },
@@ -24,8 +24,7 @@ module.exports = {
   typescript: {
     check: true, // type-check stories during Storybook build
   },
-
   docs: {
-    autodocs: true
+    autodocs: 'tag',
   }
 };
