@@ -1,0 +1,2 @@
+import{I as s,j as n}from"./index-bf72dc8c.js";import"./client-128ae93f.js";const u={title:"Data Entry/Input Error",component:s.Error},m=o=>n(s.Error,{...o}),r=m.bind({});r.args={name:"firstName",error:"Please enter first name"};var e,t,a;r.parameters={...r.parameters,docs:{...(e=r.parameters)==null?void 0:e.docs,source:{originalSource:"args => <Input.Error {...args} />",...(a=(t=r.parameters)==null?void 0:t.docs)==null?void 0:a.source}}};const i=["Default"];export{r as Default,i as __namedExportsOrder,u as default};
+//# sourceMappingURL=Input.Error.stories-d70786c0.js.map
