@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import {Heart3Line, IconContainer, Input, User6Line} from '../src';
+import {Heart3Line, IconContainer, Input} from '../src';
 import React from "react";
 
 const meta: Meta = {
