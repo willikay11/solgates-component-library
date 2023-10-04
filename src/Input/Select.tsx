@@ -11,7 +11,6 @@ interface selectItem {
 export interface SelectInputProps {
   items: selectItem[];
   arrowIcon: ReactNode;
-  selectedIcon?: ReactNode;
   prefixIcon?: ReactNode;
   multiple?: boolean;
   name?: string;
@@ -71,6 +70,7 @@ export const Select = ({
       setMultipleSelectedItem(multipleItems);
     }
   }, [defaultValues]);
+
   return (
     <>
       <input
