@@ -1,0 +1,33 @@
+import { Canvas, Meta, Title, Controls } from '@storybook/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+<Title />
+
+## When to use
+
+A button means an operation (or a series of operations). Clicking a button will trigger corresponding business logic.
+
+There are 5 button types
+* Default: indicates a series of actions without priority.
+* Primary: indicates the main action, one primary button at most in one section
+* Danger: indicates a risky action, like deletion or authorization.
+* Link: indicates a link
+* Text: indicates a text
+
+And 4 other properties additionally.
+
+* Ghost: sed in situations with complex background
+<Canvas of={ButtonStories.Default} />
+
+<Canvas of={ButtonStories.Primary} />
+
+<Canvas of={ButtonStories.Danger} />
+
+<Canvas of={ButtonStories.Text} />
+
+<Canvas of={ButtonStories.Link} />
+
+## Props
+<Controls />
