@@ -15,6 +15,7 @@ export interface SelectInputProps {
   multiple?: boolean;
   name?: string;
   onChange?: (selectedItem: selectItem | selectItem[]) => void;
+  style?: React.CSSProperties;
   error?: string;
   border?: 'bordered' | 'borderless';
   defaultValue?: string;
@@ -40,6 +41,7 @@ export const Select = ({
   searchPlaceholder = 'Search...',
   placeholder = 'Select one',
   multipleFormDataName = 'id',
+  style,
 }: SelectInputProps) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchValue, setSearchValue] = useState<string | null>(null);
@@ -121,7 +123,8 @@ export const Select = ({
                 searchInputRef.current?.focus();
               }
             }}
-            className={`relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-10 text-left ${
+            style={style}
+            className={`relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-2 text-left ${
               border === 'bordered'
                 ? 'border border-gray-200 hover:border-orange-500 focus:border-orange-500'
                 : 'border border-transparent bg-transparent'
@@ -192,7 +195,7 @@ export const Select = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-[1000]">
+            <Listbox.Options className="absolute min-w-[70px] mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-[1000]">
               {items
                 .filter(item => {
                   if (searchValue !== null) {

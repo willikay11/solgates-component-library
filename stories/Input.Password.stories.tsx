@@ -10,7 +10,6 @@ const meta: Meta = {
 export default meta;
 
 type Story = StoryObj<typeof Input.Password>;
-
 export const Default: Story = {
   args: {
     prefixIcon: (

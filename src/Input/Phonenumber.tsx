@@ -52,6 +52,7 @@ export const PhoneNumber = ({
             arrowIcon={arrowIcon}
             defaultValue={countryCodeDefaultValue}
             border="borderless"
+            style={{ background: 'transparent' }}
           />
         </div>
         <input
