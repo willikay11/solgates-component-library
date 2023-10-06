@@ -1,0 +1,2 @@
+import{R as s,c as u,r as n}from"./client-128ae93f.js";var o=new Map,c=({callback:e,children:t})=>{let r=n.useRef();return n.useLayoutEffect(()=>{r.current!==e&&(r.current=e,e())},[e]),t},R=async(e,t)=>{let r=await m(t);return new Promise(a=>{r.render(s.createElement(c,{callback:()=>a(null)},e))})},i=(e,t)=>{let r=o.get(e);r&&(r.unmount(),o.delete(e))},m=async e=>{let t=o.get(e);return t||(t=u.createRoot(e),o.set(e,t)),t};export{R as r,i as u};
+//# sourceMappingURL=react-18-d9285b47.js.map

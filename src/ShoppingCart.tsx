@@ -63,7 +63,7 @@ export const ShoppingCart = ({
         </div>
       ) : (
         <>
-          {products.map((product) => (
+          {products.map(product => (
             <div key={product.id} className="grid gap-2 grid-cols-6 mb-[15px]">
               <div
                 className={

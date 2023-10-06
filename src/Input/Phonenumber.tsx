@@ -52,6 +52,7 @@ export const PhoneNumber = ({
             arrowIcon={arrowIcon}
             defaultValue={countryCodeDefaultValue}
             border="borderless"
+            style={{ background: 'transparent' }}
           />
         </div>
         <input
@@ -60,7 +61,7 @@ export const PhoneNumber = ({
           placeholder={placeholder}
           value={currentText || value}
           defaultValue={defaultValue}
-          onChange={(e) => {
+          onChange={e => {
             setCurrentText(e.target.value);
             onChange?.(e);
           }}

@@ -16,7 +16,7 @@ export interface SidebarProps {
 export const Sidebar = ({ menus, selectedMenuKey }: SidebarProps) => {
   return (
     <div className="w-full h-full border-r-[1px] border-gray-200">
-      {menus.map((menu) => (
+      {menus.map(menu => (
         <button
           key={menu.key}
           onClick={() => menu?.onClick()}

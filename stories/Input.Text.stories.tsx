@@ -1,8 +1,6 @@
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { IconContainer, Input, User6Line } from '../src';
-import colors from 'tailwindcss/colors';
-import { TextInputProps } from '../src/Input/text';
+import React from "react";
+import { Meta, StoryObj } from '@storybook/react';
+import {CloseLine, IconContainer, Input, User6Line} from '../src';
 
 const meta: Meta = {
   title: 'Data Entry/Text',
@@ -11,21 +9,49 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<TextInputProps> = (args) => <Input.Text {...args} />;
+type Story = StoryObj<typeof Input.Text>;
 
-export const Default = Template.bind({});
-Default.args = {
-  name: 'name',
-  error: 'Error',
-  prefixIcon: (
-    <IconContainer>
-      <User6Line color={colors.red['500']} />
+export const Default: Story = {
+  args: {
+    name: 'name',
+    placeholder: "First Name"
+  }
+}
+
+export const PrefixIcon: Story = {
+  args: {
+    name: 'name',
+    placeholder: "First Name",
+    prefixIcon: <IconContainer>
+      <User6Line size={14} />
     </IconContainer>
-  ),
-  suffixIcon: (
-    <IconContainer>
-      <User6Line color={colors.red['500']} />
+  }
+}
+
+export const SuffixIcon: Story = {
+  args: {
+    name: 'name',
+    placeholder: "First Name",
+    suffixIcon: <IconContainer>
+      <User6Line size={14} />
     </IconContainer>
-  ),
-  clearIcon: <User6Line color={colors.red['500']} />,
-};
+  }
+}
+
+export const clearIcon: Story = {
+  args: {
+    name: 'name',
+    placeholder: "First Name",
+    clearIcon: <CloseLine size={14} />
+  }
+}
+
+export const error: Story = {
+  args: {
+    name: 'name',
+    placeholder: "First Name",
+    error: "Please enter first name"
+  }
+}
+
+

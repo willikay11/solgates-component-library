@@ -15,7 +15,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<CustomRadioButtonProps> = (args) => (
+const Template: Story<CustomRadioButtonProps> = args => (
   <CustomRadioButton {...args} />
 );
 

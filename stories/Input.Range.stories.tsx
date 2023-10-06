@@ -10,7 +10,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<RangeProps> = (args) => <Input.Range {...args} />;
+const Template: Story<RangeProps> = args => <Input.Range {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -73,8 +73,9 @@ export const SolgatesMenu = ({
   const secondLevelButtonRefs = useRef<HTMLButtonElement[]>([]);
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
   const [openMobileUserContent, setOpenUserContent] = useState<boolean>(false);
-  const [openMobileShoppingCart, setOpenMobileShoppingCart] =
-    useState<boolean>(false);
+  const [openMobileShoppingCart, setOpenMobileShoppingCart] = useState<boolean>(
+    false
+  );
   const [newProductAdded, setNewProductAdded] = useState<boolean>(false);
 
   const calculateKey = (
@@ -346,7 +347,7 @@ export const SolgatesMenu = ({
                                     return (
                                       <div key={key}>
                                         <p
-                                          onClick={(event) => {
+                                          onClick={event => {
                                             event.stopPropagation();
                                             onClickMenuItem(child);
                                           }}
@@ -354,11 +355,11 @@ export const SolgatesMenu = ({
                                         >
                                           {child.name}
                                         </p>
-                                        {child?.children?.map((item) => (
+                                        {child?.children?.map(item => (
                                           <Menu.Item key={key}>
                                             <button
                                               className="text-xs leading-4 font-medium text-gray-800 hover:underline text-left w-full"
-                                              onClick={(event) => {
+                                              onClick={event => {
                                                 event.stopPropagation();
                                                 onClickMenuItem(item);
                                               }}

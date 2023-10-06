@@ -31,7 +31,7 @@ export default class Store {
   render(_position: PositionType) {}
 
   set(item: any) {
-    const findIndex = this.instances.findIndex((f) => f.key === item.key);
+    const findIndex = this.instances.findIndex(f => f.key === item.key);
 
     if (findIndex !== -1) {
       const timeoutKey = this.instances[findIndex].timeoutKey;
@@ -47,7 +47,7 @@ export default class Store {
   }
 
   getInstances(position: PositionType) {
-    return this.instances.filter((f) => f.position === position);
+    return this.instances.filter(f => f.position === position);
   }
 
   onTimeClose(duration: number, key: string | number, position: PositionType) {
@@ -57,7 +57,7 @@ export default class Store {
   }
 
   clear(key: string | number, resolve: () => void) {
-    const findItem = this.instances.find((f) => f.key === key);
+    const findItem = this.instances.find(f => f.key === key);
     if (findItem && findItem?.timeoutKey) {
       clearTimeout(findItem.timeoutKey);
       resolve();
@@ -112,7 +112,7 @@ export default class Store {
 
   // remove element from DOM
   unsubscribe(key: string | number, position: PositionType) {
-    this.instances = this.instances.filter((f) => f.key !== key);
+    this.instances = this.instances.filter(f => f.key !== key);
     this.render(position);
   }
 }
