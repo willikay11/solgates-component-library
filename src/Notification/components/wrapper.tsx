@@ -31,7 +31,7 @@ export const Wrapper: React.FC<WrapperType> = ({
 
   return (
     <div id="notifications" className={_class + positionClass}>
-      {instances.map(child => {
+      {instances.map((child) => {
         const closableClass = child?.closable ? ' ant-closable' : '';
         // @ts-ignore
         const className = child?.props?.className ?? '';

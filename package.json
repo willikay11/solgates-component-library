@@ -1,5 +1,5 @@
 {
-  "version": "2.3.1",
+  "version": "2.3.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -9,13 +9,13 @@
     "src"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build && yarn build-tailwind",
-    "test": "tsdx test --passWithNoTests",
-    "lint": "tsdx lint",
+    "start": "dts watch",
+    "build": "dts build && yarn build-tailwind",
+    "test": "dts test --passWithNoTests",
+    "lint": "dts lint",
     "prepare": "yarn build",
     "size": "size-limit",
     "analyze": "size-limit --why",
@@ -25,17 +25,17 @@
     "deploy-storybook": "gh-pages -d storybook-static",
     "build-tailwind": "NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify",
     "lintfix": "yarn run lint -- --fix",
-    "format": "prettier --write \"./src/**/*\" \"./stories/*\""
+    "format": "prettier --write \"./src/**/*\" \"./stories/*/.tsx\""
   },
   "publishConfig": {
     "@willikay11:registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=18"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "dts lint"
     }
   },
   "prettier": {
@@ -71,6 +71,7 @@
     "@types/react-dom": "^18.0.10",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
+    "dts-cli": "^2.0.3",
     "eslint-plugin-storybook": "^0.6.14",
     "gh-pages": "^6.0.0",
     "husky": "^8.0.2",

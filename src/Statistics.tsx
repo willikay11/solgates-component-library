@@ -1,6 +1,6 @@
 import React, { isValidElement, ReactNode } from 'react';
 import { Input } from './Input';
-import { ArrowDownSLine, Checkline } from './Icons';
+import { ArrowDownSLine } from './Icons';
 
 interface stat {
   icon: ReactNode;
@@ -31,7 +31,6 @@ export const Statistics = ({ title, stats }: StatisticsProps) => {
           <Input.Select
             items={[{ label: 'Last 7 Days', value: '7' }]}
             arrowIcon={<ArrowDownSLine size={14} />}
-            selectedIcon={<Checkline size={14} />}
           />
         </div>
       </div>

@@ -9,7 +9,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ListProps> = args => <List {...args} />;
+const Template: Story<ListProps> = (args) => <List {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

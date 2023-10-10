@@ -31,7 +31,7 @@ export const Checkbox = ({
         id={id}
         name={name}
         value={value}
-        onChange={event => onChange?.(event)}
+        onChange={(event) => onChange?.(event)}
         defaultChecked={defaultChecked}
         defaultValue={defaultValue}
         checked={checked}

@@ -13,14 +13,14 @@ type Story = StoryObj<typeof Input.TextArea>;
 export const Default: Story = {
   args: {
     placeholder: 'Enter description',
-    rows: 7
-  }
-}
+    rows: 7,
+  },
+};
 
 export const Error: Story = {
   args: {
     placeholder: 'Enter description',
     error: 'Please enter description',
-    rows: 7
-  }
-}
+    rows: 7,
+  },
+};

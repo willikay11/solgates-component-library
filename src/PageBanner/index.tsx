@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import Overlay from './overlay';
 import PageBannerButton from './pageBannerButton';
 import PageBannerImage from './pageBannerImage';
+import PageBannerBackgroundImage from './PageBannerBackgroundImage';
 
 export enum CONTENT_POSITION {
   bottomLeft = 'bottomLeft',
@@ -21,6 +22,8 @@ export interface PageBannerProps {
   buttonName?: string;
   showOverlay?: boolean;
   placeholderHeight: string;
+  type?: 'image' | 'backgroundImage';
+  backgroundImageClassName?: string;
 }
 
 const PageBanner = ({
@@ -33,6 +36,8 @@ const PageBanner = ({
   onClick,
   showOverlay = true,
   placeholderHeight,
+  type = 'image',
+  backgroundImageClassName,
 }: PageBannerProps) => {
   return (
     <div className="w-full h-full rounded">
@@ -40,10 +45,14 @@ const PageBanner = ({
         onClick={() => onClick?.()}
         className="h-auto relative cursor-pointer"
       >
-        <PageBannerImage
-          image={imageUrl}
-          placeholderHeight={placeholderHeight}
-        />
+        {type === 'image' ? (
+          <PageBannerImage
+            image={imageUrl}
+            placeholderHeight={placeholderHeight}
+          />
+        ) : (
+          <PageBannerBackgroundImage image={imageUrl} className={backgroundImageClassName} />
+        )}
         <Overlay
           showOverlay={showOverlay}
           content={content}
