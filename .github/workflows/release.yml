@@ -46,9 +46,9 @@ jobs:
           if [ -e yarn.lock ]; then
           yarn install --ignore-engines --frozen-lockfile
           elif [ -e package-lock.json ]; then
-          npm ci
+          yarn ci
           else
-          npm i
+          yarn i
           fi
       - run: npm publish
         env:
