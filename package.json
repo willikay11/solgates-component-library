@@ -9,7 +9,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   },
   "scripts": {
     "start": "dts watch",
@@ -31,7 +31,7 @@
     "@willikay11:registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
-    "react": ">=18"
+    "react": ">=16"
   },
   "husky": {
     "hooks": {
