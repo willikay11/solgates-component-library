@@ -61,7 +61,7 @@ export const PhoneNumber = ({
           placeholder={placeholder}
           value={currentText || value}
           defaultValue={defaultValue}
-          onChange={e => {
+          onChange={(e) => {
             setCurrentText(e.target.value);
             onChange?.(e);
           }}

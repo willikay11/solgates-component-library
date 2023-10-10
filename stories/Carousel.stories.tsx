@@ -9,7 +9,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<CarouselProps> = args => (
+const Template: Story<CarouselProps> = (args) => (
   <>
     <div className="w-full">
       <Carousel {...args} />

@@ -19,7 +19,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<SolgatesMenuProps> = args => <SolgatesMenu {...args} />;
+const Template: Story<SolgatesMenuProps> = (args) => <SolgatesMenu {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -348,7 +348,7 @@ Default.args = {
       </Button>
     </div>
   ),
-  onClickMenuItem: menu => console.log(menu),
+  onClickMenuItem: (menu) => console.log(menu),
   onClickWishList: () => console.log('clicked wishlist'),
   onOpenShopClick: () => console.log('clicked open shop'),
   shoppingCartContent: (

@@ -9,7 +9,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<DropdownProps> = args => <Dropdown {...args} />;
+const Template: Story<DropdownProps> = (args) => <Dropdown {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

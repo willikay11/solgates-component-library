@@ -14,7 +14,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<InformationBannerProps> = args => (
+const Template: Story<InformationBannerProps> = (args) => (
   <div className="w-full h-52">
     <InformationBanner {...args} />
   </div>

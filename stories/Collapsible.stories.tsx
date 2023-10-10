@@ -17,7 +17,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<CollapsibleProps> = args => <Collapsible {...args} />;
+const Template: Story<CollapsibleProps> = (args) => <Collapsible {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

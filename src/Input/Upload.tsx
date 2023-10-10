@@ -54,16 +54,16 @@ export const Upload = ({
       let uploadedImages = event.target.files;
 
       uploadedImages = Object.keys(uploadedImages).map(
-        item => uploadedImages[item]
+        (item) => uploadedImages[item]
       );
       onChange?.(uploadedImages);
-      setUploadedImages(prevState => [...prevState, ...uploadedImages]);
+      setUploadedImages((prevState) => [...prevState, ...uploadedImages]);
     } else {
       const uploadedImage = event.target.files?.[0];
 
       if (uploadedImage !== undefined) {
         onChange?.(uploadedImage);
-        setUploadedImages(prevState => [...prevState, uploadedImage]);
+        setUploadedImages((prevState) => [...prevState, uploadedImage]);
       }
     }
   };
@@ -89,8 +89,8 @@ export const Upload = ({
     //TODO: Add check for file types
 
     if (files && files.length) {
-      const uploadedImages = Object.keys(files).map(item => files[item]);
-      setUploadedImages(prevState => [...prevState, ...uploadedImages]);
+      const uploadedImages = Object.keys(files).map((item) => files[item]);
+      setUploadedImages((prevState) => [...prevState, ...uploadedImages]);
     }
   };
 
@@ -165,7 +165,7 @@ export const Upload = ({
               />
               <button
                 className="absolute bottom-[5px] right-[15px] p-1 rounded bg-opacity-30 bg-gray-800"
-                onClick={event => {
+                onClick={(event) => {
                   event.stopPropagation();
                   event.preventDefault();
                   removeFile(index);

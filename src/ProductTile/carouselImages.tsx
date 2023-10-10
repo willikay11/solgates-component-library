@@ -37,7 +37,7 @@ const CarouselImages = ({
               <ImageTile
                 key={index}
                 image={carouselImage}
-                onImageLoaded={imageLoader => {
+                onImageLoaded={(imageLoader) => {
                   setCarouselImagesLoaded([
                     ...carouselImagesLoaded,
                     ...[imageLoader],

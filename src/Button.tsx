@@ -136,7 +136,7 @@ export const Button = ({
     <button
       type={htmlType}
       disabled={disabled || loading}
-      onClick={event => onClick?.(event)}
+      onClick={(event) => onClick?.(event)}
       style={{ ...style }}
       name={name}
       value={value}

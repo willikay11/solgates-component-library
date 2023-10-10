@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonProps, ButtonTypes, notification } from '../src';
-import { AddLine } from  '../src'
+import { AddLine } from '../src';
 
 const buttonLayout = (args: ButtonProps) => {
   return (
@@ -58,7 +58,7 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  render: args => buttonLayout(args),
+  render: (args) => buttonLayout(args),
   args: {
     children: 'Default',
     type: ButtonTypes.default,
@@ -72,7 +72,7 @@ export const Default: Story = {
   },
 };
 export const Primary: Story = {
-  render: args => buttonLayout(args),
+  render: (args) => buttonLayout(args),
   args: {
     children: 'Primary',
     type: ButtonTypes.primary,
@@ -87,7 +87,7 @@ export const Primary: Story = {
 };
 
 export const Danger: Story = {
-  render: args => buttonLayout(args),
+  render: (args) => buttonLayout(args),
   args: {
     children: 'Danger',
     type: ButtonTypes.danger,
@@ -102,7 +102,7 @@ export const Danger: Story = {
 };
 
 export const Text: Story = {
-  render: args => buttonLayout(args),
+  render: (args) => buttonLayout(args),
   args: {
     children: 'Text',
     type: ButtonTypes.text,
@@ -117,7 +117,7 @@ export const Text: Story = {
 };
 
 export const Link: Story = {
-  render: args => buttonLayout(args),
+  render: (args) => buttonLayout(args),
 
   args: {
     children: 'Link',

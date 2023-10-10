@@ -39,7 +39,7 @@ const signIn = (
             <User6Line color={colors.blue['600']} />
           </IconContainer>
         }
-        iconRender={visible =>
+        iconRender={(visible) =>
           visible ? (
             <User6Line color={colors.gray['500']} />
           ) : (
@@ -117,7 +117,7 @@ const signUp = (
             <User6Line color={colors.blue['600']} />
           </IconContainer>
         }
-        iconRender={visible =>
+        iconRender={(visible) =>
           visible ? (
             <User6Line color={colors.gray['500']} />
           ) : (
@@ -177,7 +177,7 @@ const signUp = (
 
 export default meta;
 
-const Template: Story<TabsProps> = args => (
+const Template: Story<TabsProps> = (args) => (
   <div className="w-96">
     <Card>
       <Tabs {...args} />

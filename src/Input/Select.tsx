@@ -52,7 +52,7 @@ export const Select = ({
 
   useEffect(() => {
     if (defaultValue) {
-      const item = items.find(item => item.value === defaultValue);
+      const item = items.find((item) => item.value === defaultValue);
       if (item && Object.keys(item).length) {
         setSelectedItem(item);
       }
@@ -62,8 +62,8 @@ export const Select = ({
   useEffect(() => {
     if (defaultValues?.length) {
       const multipleItems: selectItem[] = [];
-      defaultValues.map(defaultValue => {
-        const item = items.find(item => item.value === defaultValue);
+      defaultValues.map((defaultValue) => {
+        const item = items.find((item) => item.value === defaultValue);
         if (item && Object.keys(item).length) {
           multipleItems.push(item);
         }
@@ -81,7 +81,7 @@ export const Select = ({
         value={
           multiple
             ? JSON.stringify(
-                multipleSelectedItems.map(item => {
+                multipleSelectedItems.map((item) => {
                   return {
                     [multipleFormDataName]: item?.value,
                   };
@@ -98,16 +98,16 @@ export const Select = ({
           if (multiple) {
             const selectedItems: [string] = value;
             const foundItems: selectItem[] = [];
-            selectedItems.forEach(selectedItem => {
+            selectedItems.forEach((selectedItem) => {
               const foundItem = items.filter(
-                item => item.value === selectedItem
+                (item) => item.value === selectedItem
               );
               foundItems.push(foundItem[0]);
             });
             setMultipleSelectedItem(foundItems);
             onChange?.(foundItems);
           } else {
-            const foundItem = items.filter(item => item.value === value);
+            const foundItem = items.filter((item) => item.value === value);
             if (foundItem) {
               setSelectedItem(foundItem[0]);
             }
@@ -136,7 +136,7 @@ export const Select = ({
                 {multiple ? (
                   <>
                     <div className="mr-1" />
-                    {multipleSelectedItems.map(selectedItem => (
+                    {multipleSelectedItems.map((selectedItem) => (
                       <Tag text={selectedItem?.label} />
                     ))}
                     {showSearch && open ? (
@@ -147,8 +147,8 @@ export const Select = ({
                         }
                         value={searchValue ?? ''}
                         className="ml-2 text-xs text-gray-800 font-normal w-full focus:ring-0 focus:outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500"
-                        onClick={event => event.stopPropagation()}
-                        onChange={event => setSearchValue(event.target.value)}
+                        onClick={(event) => event.stopPropagation()}
+                        onChange={(event) => setSearchValue(event.target.value)}
                       />
                     ) : (
                       !multipleSelectedItems.length && (
@@ -167,8 +167,8 @@ export const Select = ({
                         autoFocus
                         placeholder={selectedItem?.label ?? searchPlaceholder}
                         className="ml-2 text-xs text-gray-800 font-normal w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
-                        onClick={event => event.stopPropagation()}
-                        onChange={event => setSearchValue(event.target.value)}
+                        onClick={(event) => event.stopPropagation()}
+                        onChange={(event) => setSearchValue(event.target.value)}
                       />
                     ) : selectedItem && Object.keys(selectedItem).length ? (
                       <span className="ml-2 truncate text-xs text-gray-800">
@@ -197,7 +197,7 @@ export const Select = ({
           >
             <Listbox.Options className="absolute min-w-[70px] mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-[1000]">
               {items
-                .filter(item => {
+                .filter((item) => {
                   if (searchValue !== null) {
                     return item?.label
                       ?.toLowerCase()
@@ -205,7 +205,7 @@ export const Select = ({
                   }
                   return item;
                 })
-                .map(item => (
+                .map((item) => (
                   <Listbox.Option
                     key={item.value}
                     className={({ active }) =>
