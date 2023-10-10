@@ -1,5 +1,5 @@
 {
-  "version": "2.3.3",
+  "version": "2.3.4",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -31,7 +31,7 @@
     "@willikay11:registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=18"
   },
   "husky": {
     "hooks": {
