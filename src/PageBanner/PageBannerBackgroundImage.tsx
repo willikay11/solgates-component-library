@@ -5,7 +5,7 @@ interface PageBannerBackgroundImageProps {
 }
 const PageBannerBackgroundImage = ({
   image,
-  className = 'h-full'
+  className = 'h-full',
 }: PageBannerBackgroundImageProps) => {
   return (
     <div

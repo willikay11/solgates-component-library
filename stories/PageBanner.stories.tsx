@@ -1,6 +1,6 @@
-import React from "react";
-import {Meta, StoryObj} from '@storybook/react';
-import {CONTENT_POSITION, PageBanner} from '../src';
+import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import { CONTENT_POSITION, PageBanner } from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Page Banner',
@@ -17,9 +17,9 @@ export const Image: Story = {
     name: 'Children Tees',
     buttonName: 'Shop',
     showOverlay: true,
-    placeholderHeight: 'h-56'
-  }
-}
+    placeholderHeight: 'h-56',
+  },
+};
 
 export const BackgroundImage: Story = {
   args: {
@@ -29,9 +29,9 @@ export const BackgroundImage: Story = {
     buttonName: 'Shop',
     showOverlay: true,
     placeholderHeight: 'h-56',
-    backgroundImageClassName: 'h-40'
-  }
-}
+    backgroundImageClassName: 'h-40',
+  },
+};
 
 export const withOutOverlay: Story = {
   args: {
@@ -39,8 +39,8 @@ export const withOutOverlay: Story = {
     imageUrl: 'https://cyqqqhlxia.cloudimg.io/_solgates_/solgates-hero-v2.jpg',
     showOverlay: false,
     placeholderHeight: 'h-56',
-  }
-}
+  },
+};
 
 export const withContent: Story = {
   args: {
@@ -49,6 +49,6 @@ export const withContent: Story = {
     showOverlay: true,
     placeholderHeight: 'h-56',
     content: <span className="text-white text-lg">Checkout</span>,
-    contentPosition: CONTENT_POSITION.center
-  }
-}
+    contentPosition: CONTENT_POSITION.center,
+  },
+};

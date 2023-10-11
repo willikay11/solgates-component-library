@@ -51,7 +51,10 @@ const PageBanner = ({
             placeholderHeight={placeholderHeight}
           />
         ) : (
-          <PageBannerBackgroundImage image={imageUrl} className={backgroundImageClassName} />
+          <PageBannerBackgroundImage
+            image={imageUrl}
+            className={backgroundImageClassName}
+          />
         )}
         <Overlay
           showOverlay={showOverlay}

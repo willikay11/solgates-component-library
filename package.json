@@ -25,7 +25,7 @@
     "deploy-storybook": "gh-pages -d storybook-static",
     "build-tailwind": "NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify",
     "lintfix": "yarn run lint -- --fix",
-    "format": "prettier --write \"./src/**/*\" \"./stories/*/.tsx\""
+    "format": "prettier --write \"./src/**/*\" \"./stories/**/*.tsx\""
   },
   "publishConfig": {
     "@willikay11:registry": "https://npm.pkg.github.com"
