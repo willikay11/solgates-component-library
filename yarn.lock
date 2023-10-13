@@ -5570,7 +5570,6 @@ __metadata:
     husky: ^8.0.2
     postcss: ^8.4.20
     react: ^18.2.0
-    react-cloudimage-responsive: ^3.6.4
     react-dom: ^18.2.0
     react-is: ^18.2.0
     react-popper: ^2.3.0
@@ -7342,13 +7341,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cloudimage-responsive-utils@npm:^2.5.1":
-  version: 2.5.1
-  resolution: "cloudimage-responsive-utils@npm:2.5.1"
-  checksum: 07ef3a6006565904769cc167c067ec95c4ea71b27c8b6116eeb9955021a8666158875bb7134cee4ce350831a537af03bb0d660371b9c4f421930dcf3ddc1c010
-  languageName: node
-  linkType: hard
-
 "co@npm:^4.6.0":
   version: 4.6.0
   resolution: "co@npm:4.6.0"
@@ -7610,7 +7602,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.0.1, core-js@npm:^3.15.2, core-js@npm:^3.8.2":
+"core-js@npm:^3.0.1, core-js@npm:^3.8.2":
   version: 3.32.2
   resolution: "core-js@npm:3.32.2"
   checksum: d6fac7e8eb054eefc211c76cd0a0ff07447a917122757d085f469f046ec888d122409c7db1a9601c3eb5fa767608ed380bcd219eace02bdf973da155680edeec
@@ -15171,7 +15163,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:15.8.1, prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -15374,19 +15366,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-cloudimage-responsive@npm:^3.6.4":
-  version: 3.6.5
-  resolution: "react-cloudimage-responsive@npm:3.6.5"
-  dependencies:
-    cloudimage-responsive-utils: ^2.5.1
-    core-js: ^3.15.2
-    prop-types: 15.8.1
-    react-lazyload: ^3.2.0
-    throttle-debounce: ^3.0.1
-  checksum: 54691d54dd9cdc5df908009104124e01bd0118efd69483ce086c3c60e40e40bfc00e7203642411325629e7014bc79bab386b1c256e29c39c5cd968594fa50a3d
-  languageName: node
-  linkType: hard
-
 "react-colorful@npm:^5.1.2":
   version: 5.6.1
   resolution: "react-colorful@npm:5.6.1"
@@ -15557,16 +15536,6 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
-  languageName: node
-  linkType: hard
-
-"react-lazyload@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "react-lazyload@npm:3.2.0"
-  peerDependencies:
-    react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-    react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 871a88c698a80c53ead85c293b493ac67c94e5980590094128c371e3f1e3d5bc17841ead1e7830771c87ece7fe677a6c9c323f3e6ce392a5f6f0328a36c38fe7
   languageName: node
   linkType: hard
 
@@ -17839,13 +17808,6 @@ __metadata:
   version: 5.0.0
   resolution: "throat@npm:5.0.0"
   checksum: 031ff7f4431618036c1dedd99c8aa82f5c33077320a8358ed829e84b320783781d1869fe58e8f76e948306803de966f5f7573766a437562c9f5c033297ad2fe2
-  languageName: node
-  linkType: hard
-
-"throttle-debounce@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "throttle-debounce@npm:3.0.1"
-  checksum: e34ef638e8df3a9154249101b68afcbf2652a139c803415ef8a2f6a8bc577bcd4d79e4bb914ad3cd206523ac78b9fb7e80885bfa049f64fbb1927f99d98b5736
   languageName: node
   linkType: hard
 
