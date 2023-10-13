@@ -1,5 +1,5 @@
 {
-  "version": "2.3.4",
+  "version": "2.3.5",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     "deploy-storybook": "gh-pages -d storybook-static",
     "build-tailwind": "NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify",
     "lintfix": "yarn run lint -- --fix",
-    "format": "prettier --write \"./src/**/*\" \"./stories/*/.tsx\""
+    "format": "prettier --write \"./src/**/*\" \"./stories/**/*.tsx\""
   },
   "publishConfig": {
     "@willikay11:registry": "https://npm.pkg.github.com"
@@ -94,7 +94,6 @@
     "@popperjs/core": "^2.11.7",
     "@storybook/react-vite": "^7.4.5",
     "@tanstack/react-table": "^8.7.6",
-    "react-cloudimage-responsive": "^3.6.4",
     "react-popper": "^2.3.0",
     "react-swipeable": "^7.0.1",
     "vite": "^4.4.9"

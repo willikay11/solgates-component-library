@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, Story, StoryObj } from '@storybook/react';
 import {
   Button,
   ButtonTypes,
@@ -176,22 +176,27 @@ const signUp = (
 );
 
 export default meta;
+type Story = StoryObj<typeof Tabs>;
 
-const Template: Story<TabsProps> = (args) => (
-  <div className="w-96">
-    <Card>
-      <Tabs {...args} />
-    </Card>
-  </div>
-);
+export const Default: Story = {
+  args: {
+    defaultActiveKey: 1,
+    items: [
+      { label: 'Sign In', content: signIn },
+      { label: 'Sign Up', content: signUp },
+    ],
+    onChange: (activeKey: number) => console.log('Active key: ', activeKey),
+  },
+};
 
-export const Default = Template.bind({});
-Default.args = {
-  defaultActiveKey: 2,
-  tabWidth: 'contain',
-  items: [
-    { label: 'Sign In', content: signIn },
-    { label: 'Sign Up', content: signUp },
-  ],
-  onChange: (activeKey: number) => console.log('Active key: ', activeKey),
+export const tabWidthContain: Story = {
+  args: {
+    defaultActiveKey: 1,
+    tabWidth: 'contain',
+    items: [
+      { label: 'Sign In', content: signIn },
+      { label: 'Sign Up', content: signUp },
+    ],
+    onChange: (activeKey: number) => console.log('Active key: ', activeKey),
+  },
 };
