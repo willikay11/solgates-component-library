@@ -39,6 +39,7 @@ const ImageTile = ({ image, onImageLoaded }: ImageTileProps) => {
       ref={imgRef}
       alt="product"
       className={`rounded w-full ${imageLoaded ? 'visible' : 'hidden'}`}
+      onLoad={() => setImageLoaded(true)}
       src={image}
     />
   );
