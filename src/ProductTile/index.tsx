@@ -2,6 +2,7 @@ import ProductDescription from './productDescription';
 import React, { ReactNode, useState } from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
+import ImageLoader from "./imageLoader";
 
 export enum PRODUCT_TYPE {
   PRODUCTS = 'products',
@@ -87,17 +88,7 @@ const ProductTile = ({
         ) : (
           <>
             {!imageLoaded && (
-              <img
-                alt="ImageLoader"
-                className="rounded"
-                style={{
-                  width: '100%',
-                  backgroundColor: '#f4f4f4',
-                  height: 'auto',
-                }}
-                loading="eager"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              />
+                <ImageLoader height="auto" />
             )}
             <ImageTile
               image={imageUrl}
