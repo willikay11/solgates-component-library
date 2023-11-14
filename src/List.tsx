@@ -7,9 +7,11 @@ interface item {
 export interface ListProps {
   title: string;
   items: item[];
+  loading?: boolean;
+  noContent?: ReactNode;
 }
 
-export const List = ({ title, items }: ListProps) => {
+export const List = ({ title, loading, noContent, items }: ListProps) => {
   return (
     <div className="rounded border-[1px] border-gray-200 bg-white">
       <div className="flex flex-row border-b-[1px] border-gray-200 p-[15px] justify-between">
@@ -18,17 +20,23 @@ export const List = ({ title, items }: ListProps) => {
         </span>
       </div>
       <div className="p-[15px]">
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className={`flex flex-row ${
-              items.length - 1 !== index ? 'mb-[15px]' : ''
-            }`}
-          >
-            <div className="flex flex-1">{item.leftContent}</div>
-            <div className="flex flex-1 justify-end">{item.rightContent}</div>
-          </div>
-        ))}
+        {!loading && items?.length ? (
+          items.map((item, index) => (
+            <div
+              key={index}
+              className={`flex flex-row ${
+                items.length - 1 !== index ? 'mb-[15px]' : ''
+              }`}
+            >
+              <div className="flex flex-1">{item.leftContent}</div>
+              <div className="flex flex-1 justify-end">{item.rightContent}</div>
+            </div>
+          ))
+        ) : loading ? (
+          <></>
+        ) : (
+          <div className="flex items-center justify-center">{noContent}</div>
+        )}
       </div>
     </div>
   );

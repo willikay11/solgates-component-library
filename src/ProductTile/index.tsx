@@ -2,7 +2,7 @@ import ProductDescription from './productDescription';
 import React, { ReactNode, useState } from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
-import ImageLoader from "./imageLoader";
+import ImageLoader from './imageLoader';
 
 export enum PRODUCT_TYPE {
   PRODUCTS = 'products',
@@ -87,9 +87,7 @@ const ProductTile = ({
           </>
         ) : (
           <>
-            {!imageLoaded && (
-                <ImageLoader height="auto" />
-            )}
+            {!imageLoaded && <ImageLoader height="auto" />}
             <ImageTile
               image={imageUrl}
               onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)}
