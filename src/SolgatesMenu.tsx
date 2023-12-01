@@ -196,61 +196,74 @@ export const SolgatesMenu = ({
           />
         </div>
 
-        {menus.map((menu, index) => (
-          <Disclosure key={menu.id}>
-            {({ open }) => (
-              <>
-                <Disclosure.Button
-                  data-value={open}
-                  ref={(ref: any) => {
-                    buttonRefs.current[index] = ref;
-                  }}
-                  onClick={() => clickRecent(menu.id)}
-                  className="w-full flex justify-between items-center pb-2 outline-none"
-                >
-                  <span>{menu.name}</span>
-                  {open ? closeIcon : openIcon}
-                </Disclosure.Button>
-                <Disclosure.Panel className="ml-[10px] mr-[10px] text-gray-500">
-                  {menu?.children?.map((child, index) => (
-                    <Disclosure key={`${child.name}-${index}`}>
-                      {({ open }) => {
-                        const key = calculateKey(index, 100, index);
-                        return (
-                          <>
-                            <Disclosure.Button
-                              data-value={open}
-                              ref={(ref: any) => {
-                                secondLevelButtonRefs.current[key] = ref;
-                              }}
-                              onClick={() => clickSecondLevelMenu(key)}
-                              key={key}
-                              className="w-full flex justify-between items-center pb-1 outline-none"
-                            >
-                              <span>{child.name}</span>
-                              {open ? closeIcon : openIcon}
-                            </Disclosure.Button>
-                            <Disclosure.Panel className="ml-[10px] pb-2 text-gray-500 flex flex-col">
-                              {child?.children?.map((item, index) => (
-                                <button
-                                  key={`${item.name}-${index}`}
-                                  className="text-[0.8rem] leading-4 font-normal text-gray-600 text-start mb-1.5"
-                                  onClick={() => onClickMenuItem(item)}
-                                >
-                                  {item.name}
-                                </button>
-                              ))}
-                            </Disclosure.Panel>
-                          </>
-                        );
+        {menus.map((menu, index) => {
+          if (menu.children?.length) {
+            return (
+              <Disclosure key={menu.id}>
+                {({ open }) => (
+                  <>
+                    <Disclosure.Button
+                      data-value={open}
+                      ref={(ref: any) => {
+                        buttonRefs.current[index] = ref;
                       }}
-                    </Disclosure>
-                  ))}
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-        ))}
+                      onClick={() => clickRecent(menu.id)}
+                      className="w-full flex justify-between items-center pb-2 outline-none"
+                    >
+                      <span>{menu.name}</span>
+                      {open ? closeIcon : openIcon}
+                    </Disclosure.Button>
+                    <Disclosure.Panel className="ml-[10px] mr-[10px] text-gray-500">
+                      {menu?.children?.map((child, index) => (
+                        <Disclosure key={`${child.name}-${index}`}>
+                          {({ open }) => {
+                            const key = calculateKey(index, 100, index);
+                            return (
+                              <>
+                                <Disclosure.Button
+                                  data-value={open}
+                                  ref={(ref: any) => {
+                                    secondLevelButtonRefs.current[key] = ref;
+                                  }}
+                                  onClick={() => clickSecondLevelMenu(key)}
+                                  key={key}
+                                  className="w-full flex justify-between items-center pb-1 outline-none"
+                                >
+                                  <span>{child.name}</span>
+                                  {open ? closeIcon : openIcon}
+                                </Disclosure.Button>
+                                <Disclosure.Panel className="ml-[10px] pb-2 text-gray-500 flex flex-col">
+                                  {child?.children?.map((item, index) => (
+                                    <button
+                                      key={`${item.name}-${index}`}
+                                      className="text-[0.8rem] leading-4 font-normal text-gray-600 text-start mb-1.5"
+                                      onClick={() => onClickMenuItem(item)}
+                                    >
+                                      {item.name}
+                                    </button>
+                                  ))}
+                                </Disclosure.Panel>
+                              </>
+                            );
+                          }}
+                        </Disclosure>
+                      ))}
+                    </Disclosure.Panel>
+                  </>
+                )}
+              </Disclosure>
+            );
+          }
+          return (
+            <button
+              key={menu.id}
+              onClick={() => onClickMenuItem(menu)}
+              className="mr-[20px] inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600"
+            >
+              {menu.name}
+            </button>
+          );
+        })}
       </Modal>
       <div
         className={`fixed relative w-full h-[80px] ${

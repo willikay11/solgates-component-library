@@ -49,12 +49,12 @@ const ProductDescription = ({
               </div>
             }
           >
-            <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">
+            <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800 text-left">
               {name}
             </p>
           </PopOver>
         ) : (
-          <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800">
+          <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800 text-left">
             {name}
           </p>
         )}
