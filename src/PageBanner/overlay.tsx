@@ -43,7 +43,7 @@ const Overlay = ({
     >
       {content}
       {title && (
-        <p className="text-6xl leading-none font-extrabold text-white">
+        <p className="text-2xl md:text-6xl leading-none font-extrabold text-white">
           {title}
         </p>
       )}
