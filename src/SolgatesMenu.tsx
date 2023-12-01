@@ -258,7 +258,7 @@ export const SolgatesMenu = ({
             <button
               key={menu.id}
               onClick={() => onClickMenuItem(menu)}
-              className="mr-[20px] inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600"
+              className="mr-[20px] mb-3 flex justify-start items-start h-full bg-white text-xs leading-4 text-gray-800 active:border-b border-orange-600 hover:border-b"
             >
               {menu.name}
             </button>
