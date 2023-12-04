@@ -14,6 +14,7 @@ export interface ModalProps {
   widthClass?: string;
   heightClass?: string;
   roundedBorder?: string;
+  fullWidth?: boolean;
 }
 
 export const Modal = ({
@@ -24,6 +25,7 @@ export const Modal = ({
   widthClass = 'w-96',
   heightClass = 'h-fit',
   roundedBorder = 'rounded-[10px]',
+  fullWidth = false,
 }: ModalProps) => {
   let positionClass = 'inset-0';
 
@@ -50,7 +52,7 @@ export const Modal = ({
 
         <Dialog.Overlay className="blur-sm fixed inset-0" />
         <div className={`fixed ${positionClass} overflow-y-auto`}>
-          <div className="flex min-h-full items-center justify-center mb-1 mx-[15px]">
+          <div className={`flex min-h-full items-center justify-center mb-1 ${!fullWidth ? 'mx-[15px]' : ''} `}>
             <Transition.Child
               as={Fragment}
               enter="transition ease duration-500 transform"
