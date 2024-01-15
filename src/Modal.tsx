@@ -52,7 +52,11 @@ export const Modal = ({
 
         <Dialog.Overlay className="blur-sm fixed inset-0" />
         <div className={`fixed ${positionClass} overflow-y-auto`}>
-          <div className={`flex min-h-full items-center justify-center mb-1 ${!fullWidth ? 'mx-[15px]' : ''} `}>
+          <div
+            className={`flex min-h-full items-center justify-center mb-1 ${
+              !fullWidth ? 'mx-[15px]' : ''
+            } `}
+          >
             <Transition.Child
               as={Fragment}
               enter="transition ease duration-500 transform"

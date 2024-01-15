@@ -43,6 +43,7 @@ export const Select = ({
   multipleFormDataName = 'id',
   style,
 }: SelectInputProps) => {
+  const listBoxRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchValue, setSearchValue] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<selectItem | null>(null);
@@ -117,6 +118,7 @@ export const Select = ({
       >
         <div className="relative w-full">
           <Listbox.Button
+            ref={listBoxRef}
             id="headlessui-listbox-options-:r8:"
             onClick={() => {
               if (showSearch) {
@@ -131,7 +133,7 @@ export const Select = ({
             } focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300  invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500 sm:text-sm placeholder-opacity-100 focus-visible:placeholder-opacity-25`}
           >
             {({ open }) => (
-              <div className="inline-flex items-center w-full h-full">
+              <div className="inline-flex items-center w-full h-full cursor-pointer">
                 {prefixIcon}
                 {multiple ? (
                   <>
@@ -146,16 +148,17 @@ export const Select = ({
                           multipleSelectedItems.length ? '' : searchPlaceholder
                         }
                         value={searchValue ?? ''}
-                        className="ml-2 text-xs text-gray-800 font-normal w-full focus:ring-0 focus:outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500"
-                        onClick={(event) => event.stopPropagation()}
+                        className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full focus:ring-0 focus:outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500"
                         onChange={(event) => setSearchValue(event.target.value)}
                       />
                     ) : (
                       !multipleSelectedItems.length && (
                         <input
-                          disabled
+                          onClick={() => {
+                            listBoxRef?.current?.click();
+                          }}
                           placeholder={placeholder}
-                          className="ml-2 text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                          className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                         />
                       )
                     )}
@@ -166,7 +169,7 @@ export const Select = ({
                       <input
                         autoFocus
                         placeholder={selectedItem?.label ?? searchPlaceholder}
-                        className="ml-2 text-xs text-gray-800 font-normal w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                        className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                         onClick={(event) => event.stopPropagation()}
                         onChange={(event) => setSearchValue(event.target.value)}
                       />
@@ -176,9 +179,11 @@ export const Select = ({
                       </span>
                     ) : (
                       <input
-                        disabled
+                        onClick={() => {
+                          listBoxRef?.current?.click();
+                        }}
                         placeholder={placeholder}
-                        className="ml-2 text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                        className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                       />
                     )}
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
