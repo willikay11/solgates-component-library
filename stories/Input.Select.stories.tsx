@@ -40,6 +40,7 @@ export const MultiSelect: Story = {
     arrowIcon: <ArrowDownSLine color={colors.gray['600']} size={18} />,
     multiple: true,
     placeholder: 'Select multiple',
+    showSearch: true,
     items: [
       {
         label: 'Lucy',
