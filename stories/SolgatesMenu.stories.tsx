@@ -265,7 +265,7 @@ Default.args = {
           active: 1,
           count: 0,
           attributeId: 6,
-        }
+        },
       ],
     },
     {
@@ -288,7 +288,7 @@ Default.args = {
           active: 1,
           count: 0,
           attributeId: 6,
-        }
+        },
       ],
     },
     {
