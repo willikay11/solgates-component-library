@@ -255,7 +255,18 @@ Default.args = {
       count: 0,
       attributeId: 2,
       referenceAttributes: ['9a40695f-4dc8-484c-a71e-7b1f0fd3196a'],
-      children: [],
+      children: [
+        {
+          name: 'Womens Shoes',
+          id: '9a406960-03b5-4050-bdca-681c643e3b1f',
+          query: 'gender=male&',
+          isPage: false,
+          weight: 0,
+          active: 1,
+          count: 0,
+          attributeId: 6,
+        }
+      ],
     },
     {
       name: 'Kids',
@@ -267,7 +278,18 @@ Default.args = {
       count: 0,
       attributeId: 2,
       referenceAttributes: ['9a40695f-4e69-470d-8a93-3f2d9a753963'],
-      children: [],
+      children: [
+        {
+          name: 'Kids Shoes',
+          id: '9a406960-03b5-4050-bdca-681c643e3b1f',
+          query: 'gender=male&',
+          isPage: false,
+          weight: 0,
+          active: 1,
+          count: 0,
+          attributeId: 6,
+        }
+      ],
     },
     {
       name: 'Shops',

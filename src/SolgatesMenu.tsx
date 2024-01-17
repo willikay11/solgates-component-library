@@ -76,7 +76,7 @@ export const SolgatesMenu = ({
   const [openMobileShoppingCart, setOpenMobileShoppingCart] =
     useState<boolean>(false);
   const [newProductAdded, setNewProductAdded] = useState<boolean>(false);
-
+  let previousOpenMenu: number | null = null;
   const calculateKey = (
     menuKey: number,
     multiplicationFactor: number,
@@ -86,8 +86,16 @@ export const SolgatesMenu = ({
   };
 
   const openMenu = (index: number) => {
+    closeMenu();
+    previousOpenMenu = index;
     menuRefs.current[index].click();
   };
+
+  const closeMenu = () => {
+    if (previousOpenMenu !== null) {
+      menuRefs?.current?.[previousOpenMenu]?.click()
+    }
+  }
 
   const clickRecent = (index: any) => {
     const clickedButton = buttonRefs.current[index];
@@ -334,6 +342,7 @@ export const SolgatesMenu = ({
                               menuRefs.current[index] = ref;
                             }}
                             onMouseEnter={() => !open && openMenu(index)}
+                            // onMouseLeave={() => menuRefs?.current?.[index]?.click()}
                             className="inline-flex justify-center items-center outline-0 h-full bg-white text-xs leading-4 font-medium text-gray-800 group-hover:border-b active:border-b border-orange-600 hover:border-b border-orange-600"
                           >
                             {menu.name}
