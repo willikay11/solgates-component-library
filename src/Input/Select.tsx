@@ -1,6 +1,8 @@
 import React, { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { Tag } from '../Tag';
+import { CloseLine } from '../Icons';
+import Colors from '../Colors';
 
 interface selectItem {
   label: string;
@@ -45,6 +47,7 @@ export const Select = ({
 }: SelectInputProps) => {
   const listBoxRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const optionsRefs = useRef<HTMLButtonElement[]>([]);
   const [searchValue, setSearchValue] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<selectItem | null>(null);
   const [multipleSelectedItems, setMultipleSelectedItem] = useState<
@@ -139,7 +142,21 @@ export const Select = ({
                   <>
                     <div className="mr-1" />
                     {multipleSelectedItems.map((selectedItem) => (
-                      <Tag text={selectedItem?.label} />
+                      <Tag
+                        text={selectedItem?.label}
+                        onClose={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          items.forEach((item, index) => {
+                            if (item.value === selectedItem.value) {
+                              optionsRefs.current?.[index]?.click()
+                            }
+                          })
+                        }}
+                        closeIcon={
+                          <CloseLine size={14} color={Colors.orange['600']} />
+                        }
+                      />
                     ))}
                     {showSearch && open ? (
                       <input
@@ -210,9 +227,12 @@ export const Select = ({
                   }
                   return item;
                 })
-                .map((item) => (
+                .map((item, index) => (
                   <Listbox.Option
                     key={item.value}
+                    ref={(ref: any) => {
+                      optionsRefs.current[index] = ref;
+                    }}
                     className={({ active }) =>
                       `relative cursor-pointer select-none py-2 pl-4 pr-4 ${
                         active
