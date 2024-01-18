@@ -76,7 +76,7 @@ export const SolgatesMenu = ({
   const [openMobileShoppingCart, setOpenMobileShoppingCart] =
     useState<boolean>(false);
   const [newProductAdded, setNewProductAdded] = useState<boolean>(false);
-  let previousOpenMenu: number | null = null;
+  // let previousOpenMenu: number | null = null;
   const calculateKey = (
     menuKey: number,
     multiplicationFactor: number,
@@ -85,23 +85,23 @@ export const SolgatesMenu = ({
     return menuKey * multiplicationFactor + currentKey;
   };
 
-  const openMenu = (index: number) => {
-    closeMenu();
-    previousOpenMenu = index;
-    menuRefs.current[index].click();
-  };
+  // const openMenu = (index: number) => {
+  //   closeMenu();
+  //   previousOpenMenu = index;
+  //   menuRefs.current[index].click();
+  // };
 
-  const closeMenu = () => {
-    if (previousOpenMenu !== null) {
-      console.log('previousMenu');
-      menuRefs?.current?.[previousOpenMenu]?.dispatchEvent(new KeyboardEvent('keydown', {
-        key: 'Escape',
-        bubbles: true,
-        cancelable: true,
-      }));
-      previousOpenMenu = null;
-    }
-  };
+  // const closeMenu = () => {
+  //   if (previousOpenMenu !== null) {
+  //     console.log('previousMenu');
+  //     menuRefs?.current?.[previousOpenMenu]?.dispatchEvent(new KeyboardEvent('keydown', {
+  //       key: 'Escape',
+  //       bubbles: true,
+  //       cancelable: true,
+  //     }));
+  //     previousOpenMenu = null;
+  //   }
+  // };
 
   const clickRecent = (index: any) => {
     const clickedButton = buttonRefs.current[index];
@@ -410,7 +410,6 @@ export const SolgatesMenu = ({
               return (
                 <button
                   key={menu.id}
-                  onMouseEnter={() => closeMenu()}
                   onClick={() => {
                     onClickMenuItem(menu);
                   }}
