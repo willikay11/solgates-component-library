@@ -93,7 +93,12 @@ export const SolgatesMenu = ({
 
   const closeMenu = () => {
     if (previousOpenMenu !== null) {
-      menuRefs?.current?.[previousOpenMenu]?.click();
+      console.log('previousMenu');
+      menuRefs?.current?.[previousOpenMenu]?.dispatchEvent(new KeyboardEvent('keydown', {
+        key: 'Escape',
+        bubbles: true,
+        cancelable: true,
+      }));
       previousOpenMenu = null;
     }
   };
@@ -335,14 +340,14 @@ export const SolgatesMenu = ({
                     onClick={() => onClickMenuItem(menu)}
                     className="inline-flex text-left mr-[20px] h-full group"
                   >
-                    {({ open }) => (
+                    {() => (
                       <>
                         <div>
                           <Menu.Button
                             ref={(ref: any) => {
                               menuRefs.current[index] = ref;
                             }}
-                            onMouseEnter={() => !open && openMenu(index)}
+                            // onMouseEnter={() => !open && openMenu(index)}
                             className="inline-flex justify-center items-center outline-0 h-full bg-white text-xs leading-4 font-medium text-gray-800 group-hover:border-b active:border-b border-orange-600 hover:border-b border-orange-600"
                           >
                             {menu.name}
