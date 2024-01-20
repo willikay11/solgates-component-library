@@ -35,14 +35,16 @@ export const Notification: React.FC<NotificationProps> = ({
     >
       <div>{icon}</div>
       <div className="flex-1 ml-3.5">
-        <div className="text-sm leading-5 font-semibold text-gray-800 mb-1">
-          {title}
-        </div>
-        {message ? (
-          <div className="text-sm leading-4 font-normal text-gray-600">
-            {message}
+        <div className="flex flex-col h-full justify-center">
+          <div className="text-sm leading-5 font-semibold text-gray-800 mb-1">
+            {title}
           </div>
-        ) : null}
+          {message ? (
+              <div className="text-sm leading-4 font-normal text-gray-600">
+                {message}
+              </div>
+          ) : null}
+        </div>
       </div>
       <div
         className="cursor-pointer"
