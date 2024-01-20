@@ -149,9 +149,9 @@ export const Select = ({
                           event.stopPropagation();
                           items.forEach((item, index) => {
                             if (item.value === selectedItem.value) {
-                              optionsRefs.current?.[index]?.click()
+                              optionsRefs.current?.[index]?.click();
                             }
-                          })
+                          });
                         }}
                         closeIcon={
                           <CloseLine size={14} color={Colors.orange['600']} />

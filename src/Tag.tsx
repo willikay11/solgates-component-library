@@ -13,14 +13,21 @@ export const Tag = ({
   tagColor = 'bg-orange-100',
   textColor = 'text-orange-600',
   closeIcon,
-    onClose
+  onClose,
 }: TagProps) => {
   return (
     <div
       className={`w-auto inline-flex rounded p-2 items-center mr-2 text-xs leading-4 font-normal ${tagColor} ${textColor}`}
     >
       {text}
-      {closeIcon && <div className="ml-2 cursor-pointer" onClick={(event) => onClose?.(event)}>{closeIcon}</div>}
+      {closeIcon && (
+        <div
+          className="ml-2 cursor-pointer"
+          onClick={(event) => onClose?.(event)}
+        >
+          {closeIcon}
+        </div>
+      )}
     </div>
   );
 };
