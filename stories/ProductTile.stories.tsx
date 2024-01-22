@@ -30,7 +30,7 @@ export const Products = Template.bind({});
 Products.args = {
   id: '1',
   imageUrl:
-    'https://solgate.us-southeast-1.linodeobjects.com/product/74/1.webp',
+    'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
   name: 'Air Jordan 1 Retro High OG',
   smallDescription: 'Dutch Green',
   buttonName: 'Nike',
@@ -46,7 +46,7 @@ Products.args = {
 export const Product = Template.bind({});
 Product.args = {
   imageUrl:
-    'https://solgate.us-southeast-1.linodeobjects.com/product/74/1.webp?w=29&org_if_sml=1',
+    'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
   type: PRODUCT_TYPE.PRODUCT,
 };
 
@@ -64,12 +64,13 @@ Carousel.args = {
   smallDescription: 'Dutch Green',
   buttonName: 'Nike',
   price: 'KSH 12,200',
+  addedToWishList: true,
+  onAddToWishList: () => console.log('Added to wishlist'),
+  onRemoveFromWishlist: () => console.log('Removed from wishlist'),
   carouselImages: [
-    'v1693935645/Shoes/Brand/nike-airmax-270/1_g205xn.webp',
-    'v1693935647/Shoes/Brand/nike-airmax-270/2_ulijas.webp',
-    'v1693935649/Shoes/Brand/nike-airmax-270/5_elwoy6.jpg',
-    'v1693935645/Shoes/Brand/nike-airmax-270/8_ozuets.webp',
-    'v1693935651/Shoes/Brand/nike-airmax-270/3_yrizjv.webp',
+    'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
+    'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
+    'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
   ],
 };
 

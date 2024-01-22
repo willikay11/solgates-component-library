@@ -40,9 +40,9 @@ export const Notification: React.FC<NotificationProps> = ({
             {title}
           </div>
           {message ? (
-              <div className="text-sm leading-4 font-normal text-gray-600">
-                {message}
-              </div>
+            <div className="text-sm leading-4 font-normal text-gray-600">
+              {message}
+            </div>
           ) : null}
         </div>
       </div>
