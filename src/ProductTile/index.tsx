@@ -3,6 +3,9 @@ import React, { ReactNode, useState } from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
 import ImageLoader from './imageLoader';
+import { Heart3Line, Heart3LineFill } from '../Icons';
+import colors from '../Colors';
+import { Loading } from '../Loading';
 
 export enum PRODUCT_TYPE {
   PRODUCTS = 'products',
@@ -29,6 +32,7 @@ export interface ProductTileProps {
   buttonName?: string;
   price?: string;
   onAddToWishList?: (id: string) => void;
+  addingToWishlist?: boolean;
   onRemoveFromWishlist?: (id: string) => void;
   addedToWishList?: boolean;
   onClick?: () => void;
@@ -42,6 +46,7 @@ export interface ProductTileProps {
   showWishList?: boolean;
 }
 const ProductTile = ({
+  id,
   name,
   price,
   smallDescription,
@@ -55,6 +60,10 @@ const ProductTile = ({
   onAddToCart,
   onRemoveFromCart,
   onClick,
+  onAddToWishList,
+  addedToWishList,
+  onRemoveFromWishlist,
+  addingToWishlist,
 }: ProductTileProps) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   return (
@@ -64,7 +73,7 @@ const ProductTile = ({
         onClick={() => onClick?.()}
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
-          <>
+          <div className="h-full relative">
             {!imageLoaded && (
               <img
                 alt="ImageLoader"
@@ -84,7 +93,23 @@ const ProductTile = ({
                 setImageLoaded(imageLoaded)
               }
             />
-          </>
+            <div
+              className="absolute top-2.5 right-2.5"
+              onClick={() => {
+                addedToWishList
+                  ? onRemoveFromWishlist?.(id)
+                  : onAddToWishList?.(id);
+              }}
+            >
+              {addingToWishlist ? (
+                <Loading fillColor={colors.orange['600']} />
+              ) : addedToWishList ? (
+                <Heart3LineFill color={colors.red['500']} />
+              ) : (
+                <Heart3Line color={colors.gray['600']} />
+              )}
+            </div>
+          </div>
         ) : (
           <>
             {!imageLoaded && <ImageLoader height="auto" />}
