@@ -95,7 +95,9 @@ const ProductTile = ({
             />
             <div
               className="absolute top-2.5 right-2.5"
-              onClick={() => {
+              onClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
                 addedToWishList
                   ? onRemoveFromWishlist?.(id)
                   : onAddToWishList?.(id);
