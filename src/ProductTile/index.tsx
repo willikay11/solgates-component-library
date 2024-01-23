@@ -1,5 +1,5 @@
 import ProductDescription from './productDescription';
-import React, { ReactNode, useState } from 'react';
+import React, {ReactNode, useEffect, useState} from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
 import ImageLoader from './imageLoader';
@@ -66,6 +66,16 @@ const ProductTile = ({
   addingToWishlist,
 }: ProductTileProps) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+  const [addedToWishlist, setAddedToWishlist] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (addedToWishList) {
+      setAddedToWishlist(true);
+    } else {
+      setAddedToWishlist(false);
+    }
+  }, [addedToWishList]);
+
   return (
     <div className="group/product-tile w-full rounded">
       <div
@@ -98,14 +108,18 @@ const ProductTile = ({
               onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
-                addedToWishList
-                  ? onRemoveFromWishlist?.(id)
-                  : onAddToWishList?.(id);
+                if (addedToWishList) {
+                  setAddedToWishlist(false);
+                  onRemoveFromWishlist?.(id)
+                } else {
+                  setAddedToWishlist(true);
+                  onAddToWishList?.(id)
+                }
               }}
             >
               {addingToWishlist ? (
                 <Loading fillColor={colors.orange['600']} />
-              ) : addedToWishList ? (
+              ) : addedToWishlist ? (
                 <Heart3LineFill color={colors.red['500']} />
               ) : (
                 <Heart3Line color={colors.gray['600']} />

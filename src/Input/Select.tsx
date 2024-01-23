@@ -203,7 +203,7 @@ export const Select = ({
                         className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                       />
                     )}
-                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                    <span className="pointer-events-none inset-y-0 right-0 flex items-center pr-2">
                       {arrowIcon}
                     </span>
                   </>
