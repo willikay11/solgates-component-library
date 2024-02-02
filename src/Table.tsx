@@ -5,8 +5,6 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { ArrowRightLine, ArrowLeftLine } from './Icons';
-import colors from './Colors';
 
 const columnHelper = createColumnHelper<any>();
 
@@ -28,6 +26,7 @@ export interface TableProps {
   total?: number;
   border?: 'bordered' | 'borderless';
   noContent?: ReactNode;
+  pagination?: ReactNode
 }
 
 export const Table = ({
@@ -41,6 +40,7 @@ export const Table = ({
   total = 0,
   border = 'bordered',
   noContent,
+                        pagination
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
@@ -97,7 +97,7 @@ export const Table = ({
                   {headerGroup.headers.map((header, index) => (
                     <th
                       key={header.id}
-                      className={`text-xs leading-4 font-semibold text-gray-600 border-b-[1px] border-gray-200 py-[15px] py-[15px] ${
+                      className={`text-xs leading-4 font-semibold text-gray-600 border-b-[1px] border-gray-200 py-[15px] ${
                         index === 0
                           ? border === 'bordered'
                             ? 'pl-[15px]'
@@ -197,12 +197,7 @@ export const Table = ({
             </div>
 
             <div>
-              <button className="mr-2.5">
-                <ArrowLeftLine color={colors.gray['600']} size={14} />
-              </button>
-              <button>
-                <ArrowRightLine color={colors.orange['600']} size={14} />
-              </button>
+              {pagination}
             </div>
           </div>
         </>
@@ -215,7 +210,7 @@ export const Table = ({
                   {headerGroup.headers.map((header, index) => (
                     <th
                       key={header.id}
-                      className={`text-xs leading-4 font-semibold text-gray-600 border-b-[1px] border-gray-200 py-[15px] py-[15px] ${
+                      className={`text-xs leading-4 font-semibold text-gray-600 border-b-[1px] border-gray-200 py-[15px] ${
                         index === 0
                           ? border === 'bordered'
                             ? 'pl-[15px]'
