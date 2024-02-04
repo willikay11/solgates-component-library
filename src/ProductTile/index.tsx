@@ -110,12 +110,13 @@ const ProductTile = ({
               onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
-                if (!isLoggedIn) return;
                 if (addedToWishList) {
                   setAddedToWishlist(false);
                   onRemoveFromWishlist?.(id);
                 } else {
-                  setAddedToWishlist(true);
+                  if (isLoggedIn) {
+                    setAddedToWishlist(true);
+                  }
                   onAddToWishList?.(id);
                 }
               }}
