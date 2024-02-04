@@ -1,5 +1,5 @@
 import ProductDescription from './productDescription';
-import React, {ReactNode, useEffect, useState} from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
 import ImageLoader from './imageLoader';
@@ -39,11 +39,12 @@ export interface ProductTileProps {
   onClickShop?: () => void;
   releaseDate?: string;
   carouselImages?: string[];
-  onAddToCart?: () => void;
-  onRemoveFromCart?: () => void;
-  inCart?: boolean;
-  addingToCart?: boolean;
+  // onAddToCart?: () => void;
+  // onRemoveFromCart?: () => void;
+  // inCart?: boolean;
+  // addingToCart?: boolean;
   showWishList?: boolean;
+  isLoggedIn?: boolean;
 }
 const ProductTile = ({
   id,
@@ -55,15 +56,16 @@ const ProductTile = ({
   carouselImages,
   imageUrl,
   onClickShop,
-  addingToCart,
-  inCart,
-  onAddToCart,
-  onRemoveFromCart,
+  // addingToCart,
+  // inCart,
+  // onAddToCart,
+  // onRemoveFromCart,
   onClick,
   onAddToWishList,
   addedToWishList,
   onRemoveFromWishlist,
   addingToWishlist,
+  isLoggedIn = false,
 }: ProductTileProps) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [addedToWishlist, setAddedToWishlist] = useState<boolean>(false);
@@ -108,12 +110,13 @@ const ProductTile = ({
               onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
+                if (!isLoggedIn) return;
                 if (addedToWishList) {
                   setAddedToWishlist(false);
-                  onRemoveFromWishlist?.(id)
+                  onRemoveFromWishlist?.(id);
                 } else {
                   setAddedToWishlist(true);
-                  onAddToWishList?.(id)
+                  onAddToWishList?.(id);
                 }
               }}
             >
@@ -143,10 +146,10 @@ const ProductTile = ({
         price={price}
         onClickShop={onClickShop}
         buttonName={buttonName}
-        addingToCart={addingToCart}
-        inCart={inCart}
-        onAddToCart={onAddToCart}
-        onRemoveFromCart={onRemoveFromCart}
+        // addingToCart={addingToCart}
+        // inCart={inCart}
+        // onAddToCart={onAddToCart}
+        // onRemoveFromCart={onRemoveFromCart}
       />
     </div>
   );
