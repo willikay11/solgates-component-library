@@ -144,6 +144,7 @@ const ProductTile = ({
         name={name}
         smallDescription={smallDescription}
         price={price}
+        onClick={onClick}
         onClickShop={onClickShop}
         buttonName={buttonName}
         // addingToCart={addingToCart}
