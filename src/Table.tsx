@@ -26,7 +26,7 @@ export interface TableProps {
   total?: number;
   border?: 'bordered' | 'borderless';
   noContent?: ReactNode;
-  pagination?: ReactNode
+  pagination?: ReactNode;
 }
 
 export const Table = ({
@@ -40,7 +40,7 @@ export const Table = ({
   total = 0,
   border = 'bordered',
   noContent,
-                        pagination
+  pagination,
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
@@ -196,9 +196,7 @@ export const Table = ({
               </span>
             </div>
 
-            <div>
-              {pagination}
-            </div>
+            <div>{pagination}</div>
           </div>
         </>
       ) : (

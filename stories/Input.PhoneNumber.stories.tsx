@@ -1,6 +1,12 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import {ArrowDownSLine, CloseLine, IconContainer, Input, PhoneLine} from '../src';
+import {
+  ArrowDownSLine,
+  CloseLine,
+  IconContainer,
+  Input,
+  PhoneLine,
+} from '../src';
 
 const meta: Meta = {
   title: 'Data Entry/PhoneNumber',

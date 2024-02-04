@@ -1,63 +1,37 @@
 import React from 'react';
-import { PopOver, PopOverType } from '../PopOver';
 import { Button, ButtonTypes } from '../Button';
 import { PRODUCT_TYPE } from './index';
 
 interface ProductDescriptionInterface {
   type?: PRODUCT_TYPE;
-  inCart?: boolean;
+  // inCart?: boolean;
   buttonName?: string;
   price?: string;
   name?: string;
   smallDescription?: string;
-  onAddToCart?: () => void;
-  onRemoveFromCart?: () => void;
+  // onAddToCart?: () => void;
+  // onRemoveFromCart?: () => void;
   onClickShop?: () => void;
-  addingToCart?: boolean;
+  // addingToCart?: boolean;
 }
 const ProductDescription = ({
   type,
-  inCart,
+  // inCart,
   name,
   price,
   smallDescription,
   buttonName,
-  onAddToCart,
-  onRemoveFromCart,
+  // onAddToCart,
+  // onRemoveFromCart,
   onClickShop,
-  addingToCart,
+  // addingToCart,
 }: ProductDescriptionInterface) => {
   if (type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) {
     return (
       <div className="pt-2.5 h-full">
-        {onAddToCart || onRemoveFromCart ? (
-          <PopOver
-            type={inCart ? PopOverType.danger : PopOverType.primary}
-            placement="top"
-            content={
-              <div className="flex flex-col items-start justify-center">
-                <Button
-                  onClick={() =>
-                    inCart ? onRemoveFromCart?.() : onAddToCart?.()
-                  }
-                  loading={addingToCart}
-                  type={ButtonTypes.text}
-                  className="bg-transparent text-white"
-                >
-                  {inCart ? 'Remove' : 'Add To Cart'}
-                </Button>
-              </div>
-            }
-          >
-            <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800 text-left">
-              {name}
-            </p>
-          </PopOver>
-        ) : (
-          <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800 text-left">
-            {name}
-          </p>
-        )}
+        <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800 text-left">
+          {name}
+        </p>
         <div>
           {smallDescription && (
             <span className="text-xs leading-4 font-normal mt-1.5 text-gray-500">

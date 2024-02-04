@@ -12,6 +12,7 @@ export interface UploadProps {
   buttonContent?: ReactNode;
   showFileSelect?: boolean;
   onChange?: (file: any) => void;
+  onRemove?: (fileUrl: string) => void;
   preview?: {
     height: string;
     width: string;
@@ -28,6 +29,7 @@ export const Upload = ({
   buttonContent,
   showFileSelect,
   onChange,
+    onRemove,
   preview = {
     height: '100px',
     width: '100px',
@@ -169,6 +171,7 @@ export const Upload = ({
                   event.stopPropagation();
                   event.preventDefault();
                   removeFile(index);
+                  onRemove?.(image);
                 }}
               >
                 <CloseLine size={14} color={colors.white} />
