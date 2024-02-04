@@ -9,6 +9,7 @@ interface ProductDescriptionInterface {
   price?: string;
   name?: string;
   smallDescription?: string;
+  onClick?: () => void;
   // onAddToCart?: () => void;
   // onRemoveFromCart?: () => void;
   onClickShop?: () => void;
@@ -23,13 +24,17 @@ const ProductDescription = ({
   buttonName,
   // onAddToCart,
   // onRemoveFromCart,
+  onClick,
   onClickShop,
-  // addingToCart,
-}: ProductDescriptionInterface) => {
+} // addingToCart,
+: ProductDescriptionInterface) => {
   if (type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) {
     return (
       <div className="pt-2.5 h-full">
-        <p className="text-xs leading-4 font-semibold mt-2.5 text-gray-800 text-left">
+        <p
+          className="text-xs leading-4 font-semibold mt-2.5 text-gray-800 text-left cursor-pointer"
+          onClick={() => onClick?.()}
+        >
           {name}
         </p>
         <div>

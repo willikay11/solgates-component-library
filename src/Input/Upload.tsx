@@ -29,7 +29,7 @@ export const Upload = ({
   buttonContent,
   showFileSelect,
   onChange,
-    onRemove,
+  onRemove,
   preview = {
     height: '100px',
     width: '100px',
