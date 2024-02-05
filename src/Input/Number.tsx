@@ -16,6 +16,8 @@ export interface NumberInputProps {
   value?: string;
   defaultValue?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  minIcon?: ReactNode;
+  maxIcon?: ReactNode;
 }
 
 export const Number = ({
@@ -31,6 +33,8 @@ export const Number = ({
   defaultValue,
   error,
   onChange,
+    minIcon,
+                         maxIcon
 }: NumberInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const increase = () => {
@@ -55,7 +59,7 @@ export const Number = ({
       >
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
         <Button onClick={() => decrease()} type={ButtonTypes.link}>
-          <Minus color={colors.gray['500']} size={14} />
+          {minIcon ? minIcon : <Minus color={colors.gray['500']} size={14} />}
         </Button>
         <input
           name={name}
@@ -72,7 +76,9 @@ export const Number = ({
           className={`ml-2 ${width} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800 focus:border-transparent focus:ring-0`}
         />
         <Button onClick={() => increase()} type={ButtonTypes.link}>
-          <AddLine color={colors.gray['800']} size={14} />
+          {
+            maxIcon ? maxIcon : <AddLine color={colors.gray['800']} size={14} />
+          }
         </Button>
       </div>
       {error && (
