@@ -15,7 +15,7 @@ interface Product {
   imageUrl: string;
   price: number;
   size: string;
-  quantity: string;
+  quantity: number;
 }
 
 export enum CART_TYPE {
@@ -50,7 +50,7 @@ export const ShoppingCart = ({
 
   useEffect(() => {
     setTotal(
-      products?.reduce((total, product) => total + product.price, 0) || 0
+      products?.reduce((total, product) => total + (product.price * product.quantity), 0) || 0
     );
   }, [products]);
 
@@ -97,7 +97,7 @@ export const ShoppingCart = ({
                   </span>
                   <span className="text-xs leading-4 font-semibold text-gray-800">
                     {currency}{' '}
-                    {product?.price
+                    {(product?.price * product.quantity)
                       ?.toString()
                       ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                   </span>
