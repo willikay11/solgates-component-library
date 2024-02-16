@@ -124,35 +124,40 @@ export const ShoppingCart = ({
             />
           )}
 
-          <div className="flex justify-between mt-[15px]">
-            <span className="text-xs leading-4 font-medium text-gray-800">
-              Sub Total:&nbsp;
-            </span>
-            <span className="text-xs leading-4 font-semibold text-black">
-              {currency}{' '}
-              {total?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            </span>
-          </div>
+          { type === CART_TYPE.full ? (
+            <>
+              <div className="flex justify-between mt-[15px]">
+                <span className="text-xs leading-4 font-medium text-gray-800">
+                  Sub Total:&nbsp;
+                </span>
+                <span className="text-xs leading-4 font-semibold text-black">
+                  {currency}{' '}
+                  {total?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                </span>
+              </div>
 
-          <div className="flex justify-between mt-[5px]">
-            <span className="text-xs leading-4 font-medium text-gray-800">
-              Delivery Costs:&nbsp;
-            </span>
-            <span className="text-xs leading-4 font-semibold text-black">
-              {currency}{' '}
-              {deliveryCosts?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            </span>
-          </div>
+              <div className="flex justify-between mt-[5px]">
+                <span className="text-xs leading-4 font-medium text-gray-800">
+                  Delivery Costs:&nbsp;
+                </span>
+                <span className="text-xs leading-4 font-semibold text-black">
+                  {currency}{' '}
+                  {deliveryCosts?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                </span>
+              </div>
 
-          <div className="flex justify-between mt-[5px]">
-            <span className="text-xs leading-4 font-medium text-gray-800">
-              Discount:&nbsp;
-            </span>
-            <span className="text-xs leading-4 font-semibold text-black">
-              {currency}{' '}
-              {`${discountCosts > 0 ? '-' : ''}`}{discountCosts?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            </span>
-          </div>
+              <div className="flex justify-between mt-[5px]">
+                <span className="text-xs leading-4 font-medium text-gray-800">
+                  Discount:&nbsp;
+                </span>
+                <span className="text-xs leading-4 font-semibold text-black">
+                  {currency}{' '}
+                  {`${discountCosts > 0 ? '-' : ''}`}{discountCosts?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                </span>
+              </div>
+            </>
+          ) : null}
+
 
           <div className="flex justify-between my-[15px]">
             <span className="text-xs leading-4 font-bold text-gray-800">
