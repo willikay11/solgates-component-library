@@ -33,6 +33,8 @@ export interface ShoppingCartProps {
   showCheckoutButton?: boolean;
   loading?: boolean;
   loadingText?: string;
+  deliveryCosts?: number;
+  discountCosts?: number;
 }
 
 export const ShoppingCart = ({
@@ -45,6 +47,8 @@ export const ShoppingCart = ({
   showCheckoutButton = true,
   loading = false,
   loadingText = 'Loading cart items',
+  deliveryCosts = 0,
+  discountCosts = 0
 }: ShoppingCartProps) => {
   const [total, setTotal] = useState<number>(0);
 
@@ -87,6 +91,9 @@ export const ShoppingCart = ({
                 <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">
                   {product?.size}
                 </p>
+                <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">
+                  Quantity: {product?.quantity}
+                </p>
                 <div className="flex flex-row justify-between items-center mt-1.5">
                   {/*<Input.Number min={1} border='borderless' width="30px" padding="0px" />*/}
                   <span
@@ -117,13 +124,43 @@ export const ShoppingCart = ({
             />
           )}
 
-          <div className="flex justify-between my-[15px]">
+          <div className="flex justify-between mt-[15px]">
             <span className="text-xs leading-4 font-medium text-gray-800">
-              Total:&nbsp;
+              Sub Total:&nbsp;
             </span>
             <span className="text-xs leading-4 font-semibold text-black">
               {currency}{' '}
               {total?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            </span>
+          </div>
+
+          <div className="flex justify-between mt-[5px]">
+            <span className="text-xs leading-4 font-medium text-gray-800">
+              Delivery Costs:&nbsp;
+            </span>
+            <span className="text-xs leading-4 font-semibold text-black">
+              {currency}{' '}
+              {deliveryCosts?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            </span>
+          </div>
+
+          <div className="flex justify-between mt-[5px]">
+            <span className="text-xs leading-4 font-medium text-gray-800">
+              Discount:&nbsp;
+            </span>
+            <span className="text-xs leading-4 font-semibold text-black">
+              {currency}{' '}
+              {`${discountCosts > 0 ? '-' : ''}`}{discountCosts?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            </span>
+          </div>
+
+          <div className="flex justify-between my-[15px]">
+            <span className="text-xs leading-4 font-bold text-gray-800">
+              Total:&nbsp;
+            </span>
+            <span className="text-xs leading-4 font-semibold text-black">
+              {currency}{' '}
+              {((total + deliveryCosts) - discountCosts)?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             </span>
           </div>
 
