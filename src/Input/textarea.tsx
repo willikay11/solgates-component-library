@@ -7,6 +7,7 @@ export interface TextAreaInputProps {
   error?: string;
   value?: string;
   defaultValue?: string;
+  disabled?: boolean;
 }
 
 export const TextArea = ({
@@ -16,6 +17,7 @@ export const TextArea = ({
   error,
   value,
   defaultValue,
+    disabled = false
 }: TextAreaInputProps) => {
   let errorClassName = '';
 
@@ -31,6 +33,7 @@ export const TextArea = ({
         rows={rows}
         value={value}
         defaultValue={defaultValue}
+        disabled={disabled}
       />
       {error && (
         <p

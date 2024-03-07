@@ -18,6 +18,7 @@ export interface NumberInputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   minIcon?: ReactNode;
   maxIcon?: ReactNode;
+  disabled?: boolean;
 }
 
 export const Number = ({
@@ -34,7 +35,8 @@ export const Number = ({
   error,
   onChange,
     minIcon,
-                         maxIcon
+                         maxIcon,
+    disabled = false
 }: NumberInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const increase = () => {
@@ -58,9 +60,14 @@ export const Number = ({
         }  focus-within:border-orange-500 hover:border-orange-500 items-center ${errorClassName}`}
       >
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
-        <Button onClick={() => decrease()} type={ButtonTypes.link}>
-          {minIcon ? minIcon : <Minus color={colors.gray['500']} size={14} />}
-        </Button>
+        {
+          !disabled ? (
+              <Button onClick={() => decrease()} type={ButtonTypes.link}>
+                {minIcon ? minIcon : <Minus color={colors.gray['500']} size={14} />}
+              </Button>
+          ) : null
+        }
+
         <input
           name={name}
           ref={inputRef}
@@ -74,12 +81,17 @@ export const Number = ({
             onChange?.(event);
           }}
           className={`ml-2 ${width} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800 focus:border-transparent focus:ring-0`}
+          disabled={disabled}
         />
-        <Button onClick={() => increase()} type={ButtonTypes.link}>
-          {
-            maxIcon ? maxIcon : <AddLine color={colors.gray['800']} size={14} />
-          }
-        </Button>
+        {
+          !disabled ? (
+              <Button onClick={() => increase()} type={ButtonTypes.link}>
+                {
+                  maxIcon ? maxIcon : <AddLine color={colors.gray['800']} size={14} />
+                }
+              </Button>
+          ) : null
+        }
       </div>
       {error && (
         <p
