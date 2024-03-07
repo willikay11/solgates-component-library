@@ -11,6 +11,7 @@ export interface TextInputProps {
   value?: string;
   defaultValue?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 }
 
 export const Text = ({
@@ -24,6 +25,7 @@ export const Text = ({
   value,
   defaultValue,
   onChange,
+    disabled = false
 }: TextInputProps) => {
   const [currentText, setCurrentText] = useState<string>('');
   let errorClassName = '';
@@ -51,6 +53,7 @@ export const Text = ({
           className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-xs text-gray-800 focus:border-transparent focus:ring-0`}
           aria-invalid={Boolean(error) || undefined}
           aria-errormessage={error ? `${name}-error` : undefined}
+          disabled={disabled}
         />
         {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
         {clearIcon && (

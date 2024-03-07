@@ -8,6 +8,7 @@ export interface RadioButtonProps {
   checked?: boolean | undefined;
   defaultValue?: string;
   onChange?: (event: any) => void;
+  disabled?: boolean;
 }
 
 export const RadioButton = ({
@@ -18,6 +19,7 @@ export const RadioButton = ({
   onChange,
   defaultValue,
   checked,
+    disabled = false
 }: RadioButtonProps) => {
   return (
     <div className="flex items-center">
@@ -32,6 +34,7 @@ export const RadioButton = ({
         className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 checked:text-orange-600 checked:hover:bg-orange-600 checked:active:bg-orange-600 checked:focus:bg-orange-600 focus:border-transparent focus:ring-0"
         aria-labelledby={id}
         aria-describedby={id}
+        disabled={disabled}
       />
       {label && (
         <label
