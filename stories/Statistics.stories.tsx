@@ -21,7 +21,7 @@ Default.args = {
   ),
   stats: [
     {
-      span: 2,
+      span: 3,
       icon: (
         <IconContainer bgColor="bg-blue-50">
           <User6Line size={14} color={colors.blue['500']} />
@@ -51,7 +51,7 @@ Default.args = {
       value: '812',
     },
     {
-      span: 4,
+      span: 3,
       icon: (
         <IconContainer bgColor="bg-blue-50">
           <User6Line size={14} color={colors.blue['500']} />
