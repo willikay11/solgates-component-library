@@ -40,4 +40,6 @@ Default.args = {
     },
   ],
   showDiscount: true,
+  deliveryCosts: 400,
+  discountCosts: 100,
 };
