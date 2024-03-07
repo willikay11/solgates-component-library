@@ -182,7 +182,7 @@ export const Upload = ({
               ) : null}
             </div>
           ))}
-          {multiple && (
+          {multiple && !disabled && (
             <div
               onClick={handleClick}
               className="flex flex-col w-[100px] h-[100px] bg-blue-50 rounded p-[15px] cursor-pointer items-center justify-center mt-2"

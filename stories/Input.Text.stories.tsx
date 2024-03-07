@@ -50,6 +50,14 @@ export const clearIcon: Story = {
   },
 };
 
+export const disabled: Story = {
+  args: {
+    name: 'name',
+    placeholder: 'First Name',
+    disabled: true,
+  },
+};
+
 export const error: Story = {
   args: {
     name: 'name',
