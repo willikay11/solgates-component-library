@@ -19,7 +19,7 @@ export const RadioButton = ({
   onChange,
   defaultValue,
   checked,
-    disabled = false
+  disabled = false,
 }: RadioButtonProps) => {
   return (
     <div className="flex items-center">

@@ -5568,6 +5568,7 @@ __metadata:
     eslint-plugin-storybook: ^0.6.14
     gh-pages: ^6.0.0
     husky: ^8.0.2
+    libphonenumber-js: ^1.10.57
     postcss: ^8.4.20
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -13140,6 +13141,13 @@ __metadata:
     prelude-ls: ^1.2.1
     type-check: ~0.4.0
   checksum: 12c5021c859bd0f5248561bf139121f0358285ec545ebf48bb3d346820d5c61a4309535c7f387ed7d84361cf821e124ce346c6b7cef8ee09a67c1473b46d0fc4
+  languageName: node
+  linkType: hard
+
+"libphonenumber-js@npm:^1.10.57":
+  version: 1.10.57
+  resolution: "libphonenumber-js@npm:1.10.57"
+  checksum: 15997157da80226684697e1385cf8150afc6dca70388a1cac28c2d5c0b9dbb913c0fbf92bf99755d634b3df9f4d33f57b92472d58beb8bb913d020b7e503c986
   languageName: node
   linkType: hard
 

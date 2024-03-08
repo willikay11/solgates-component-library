@@ -94,6 +94,7 @@
     "@popperjs/core": "^2.11.7",
     "@storybook/react-vite": "^7.4.5",
     "@tanstack/react-table": "^8.7.6",
+    "libphonenumber-js": "^1.10.57",
     "react-popper": "^2.3.0",
     "react-swipeable": "^7.0.1",
     "vite": "^4.4.9"

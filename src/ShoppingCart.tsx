@@ -48,13 +48,16 @@ export const ShoppingCart = ({
   loading = false,
   loadingText = 'Loading cart items',
   deliveryCosts = 0,
-  discountCosts = 0
+  discountCosts = 0,
 }: ShoppingCartProps) => {
   const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     setTotal(
-      products?.reduce((total, product) => total + (product.price * product.quantity), 0) || 0
+      products?.reduce(
+        (total, product) => total + product.price * product.quantity,
+        0
+      ) || 0
     );
   }, [products]);
 
@@ -124,7 +127,7 @@ export const ShoppingCart = ({
             />
           )}
 
-          { type === CART_TYPE.full ? (
+          {type === CART_TYPE.full ? (
             <>
               <div className="flex justify-between mt-[15px]">
                 <span className="text-xs leading-4 font-medium text-gray-800">
@@ -142,7 +145,9 @@ export const ShoppingCart = ({
                 </span>
                 <span className="text-xs leading-4 font-semibold text-black">
                   {currency}{' '}
-                  {deliveryCosts?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  {deliveryCosts
+                    ?.toString()
+                    ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 </span>
               </div>
 
@@ -151,13 +156,14 @@ export const ShoppingCart = ({
                   Discount:&nbsp;
                 </span>
                 <span className="text-xs leading-4 font-semibold text-black">
-                  {currency}{' '}
-                  {`${discountCosts > 0 ? '-' : ''}`}{discountCosts?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  {currency} {`${discountCosts > 0 ? '-' : ''}`}
+                  {discountCosts
+                    ?.toString()
+                    ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 </span>
               </div>
             </>
           ) : null}
-
 
           <div className="flex justify-between my-[15px]">
             <span className="text-xs leading-4 font-bold text-gray-800">
@@ -165,7 +171,9 @@ export const ShoppingCart = ({
             </span>
             <span className="text-xs leading-4 font-semibold text-black">
               {currency}{' '}
-              {((total + deliveryCosts) - discountCosts)?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              {(total + deliveryCosts - discountCosts)
+                ?.toString()
+                ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             </span>
           </div>
 

@@ -26,7 +26,7 @@ export interface SelectInputProps {
   searchPlaceholder?: string;
   placeholder?: string;
   multipleFormDataName?: string;
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export const Select = ({
@@ -45,7 +45,7 @@ export const Select = ({
   placeholder = 'Select one',
   multipleFormDataName = 'id',
   style,
-    disabled = false
+  disabled = false,
 }: SelectInputProps) => {
   const listBoxRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);

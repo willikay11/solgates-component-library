@@ -1,4 +1,5 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 import { Select } from './Select';
 
 export interface PhoneNumberProps {
@@ -17,6 +18,7 @@ export interface PhoneNumberProps {
   countryCodeFormName?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
+  onPhoneNumberValid?: (valid: boolean) => void
 }
 export const PhoneNumber = ({
   arrowIcon,
@@ -33,14 +35,33 @@ export const PhoneNumber = ({
   countryCodeDefaultValue,
   countryCodeFormName = 'countryCode',
   onChange,
-    disabled = false
+  disabled = false,
+    onPhoneNumberValid
 }: PhoneNumberProps) => {
   const [currentText, setCurrentText] = useState<string>('');
+  const [selectedCountryCode, setSelectedCountryCode] = useState<
+    string | undefined
+  >(countryCodeDefaultValue);
+  const [currentError, setCurrentError] = useState<string | undefined>(error);
+
   let errorClassName = '';
 
   if (Boolean(error)) {
     errorClassName = 'border-red-600 text-red-600 ring-red-600';
   }
+
+  useEffect(() => {
+    if (selectedCountryCode && currentText) {
+      if (!isValidPhoneNumber(`${selectedCountryCode}${currentText}`)) {
+        setCurrentError('Phone Number not valid');
+        onPhoneNumberValid?.(false);
+      } else {
+        setCurrentError(undefined);
+        onPhoneNumberValid?.(true);
+      }
+    }
+  }, [selectedCountryCode, currentText]);
+
   return (
     <>
       <div
@@ -56,6 +77,9 @@ export const PhoneNumber = ({
             border="borderless"
             style={{ background: 'transparent' }}
             disabled={disabled}
+            onChange={(selectedItem: { label: string; value: string }) => {
+              setSelectedCountryCode(selectedItem?.[0].value);
+            }}
           />
         </div>
         <input
@@ -80,13 +104,13 @@ export const PhoneNumber = ({
           </div>
         )}
       </div>
-      {error && (
+      {currentError && (
         <p
           className="text-xs font-normal mb-1.5 mt-1.5 leading-4 text-red-600"
           role="alert"
           id={`${name}-error`}
         >
-          {error}
+          {currentError}
         </p>
       )}
     </>
