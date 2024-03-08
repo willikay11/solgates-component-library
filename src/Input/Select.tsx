@@ -26,7 +26,7 @@ export interface SelectInputProps {
   searchPlaceholder?: string;
   placeholder?: string;
   multipleFormDataName?: string;
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export const Select = ({
@@ -45,7 +45,7 @@ export const Select = ({
   placeholder = 'Select one',
   multipleFormDataName = 'id',
   style,
-    disabled = false
+  disabled = false,
 }: SelectInputProps) => {
   const listBoxRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -240,7 +240,7 @@ export const Select = ({
                       `relative cursor-pointer select-none py-2 pl-4 pr-4 ${
                         active
                           ? 'bg-orange-100 text-orange-600'
-                          : 'text-gray-900'
+                          : item.disabled ? 'bg-gray-100' : 'text-gray-900'
                       }`
                     }
                     value={item.value}
@@ -257,7 +257,7 @@ export const Select = ({
                           className={`block truncate text-xs text-gray-800 ${
                             selected
                               ? 'font-medium text-orange-600'
-                              : 'font-normal'
+                              : item.disabled ? 'text-gray-300' : 'font-normal'
                           }`}
                         >
                           {item.label}

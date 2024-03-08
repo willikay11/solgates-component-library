@@ -17,7 +17,7 @@ export interface UploadProps {
     height: string;
     width: string;
   };
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export const Upload = ({
@@ -35,7 +35,7 @@ export const Upload = ({
     height: '100px',
     width: '100px',
   },
-    disabled = false
+  disabled = false,
 }: UploadProps) => {
   const formats = 'image/*';
   const hiddenFileInput = React.useRef<HTMLInputElement>(null);
@@ -168,17 +168,17 @@ export const Upload = ({
                 className="mr-2.5 mt-2 rounded"
               />
               {!disabled ? (
-                  <button
-                      className="absolute bottom-[5px] right-[15px] p-1 rounded bg-opacity-30 bg-gray-800"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        event.preventDefault();
-                        removeFile(index);
-                        onRemove?.(image);
-                      }}
-                  >
-                    <CloseLine size={14} color={colors.white} />
-                  </button>
+                <button
+                  className="absolute bottom-[5px] right-[15px] p-1 rounded bg-opacity-30 bg-gray-800"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    removeFile(index);
+                    onRemove?.(image);
+                  }}
+                >
+                  <CloseLine size={14} color={colors.white} />
+                </button>
               ) : null}
             </div>
           ))}

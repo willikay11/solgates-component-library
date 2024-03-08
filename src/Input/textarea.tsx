@@ -17,7 +17,7 @@ export const TextArea = ({
   error,
   value,
   defaultValue,
-    disabled = false
+  disabled = false,
 }: TextAreaInputProps) => {
   let errorClassName = '';
 

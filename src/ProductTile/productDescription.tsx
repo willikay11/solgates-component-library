@@ -25,9 +25,8 @@ const ProductDescription = ({
   // onAddToCart,
   // onRemoveFromCart,
   onClick,
-  onClickShop,
-} // addingToCart,
-: ProductDescriptionInterface) => {
+  onClickShop, // addingToCart,
+}: ProductDescriptionInterface) => {
   if (type === PRODUCT_TYPE.PRODUCTS || type === PRODUCT_TYPE.CAROUSEL) {
     return (
       <div className="pt-2.5 h-full">

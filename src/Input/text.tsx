@@ -25,7 +25,7 @@ export const Text = ({
   value,
   defaultValue,
   onChange,
-    disabled = false
+  disabled = false,
 }: TextInputProps) => {
   const [currentText, setCurrentText] = useState<string>('');
   let errorClassName = '';

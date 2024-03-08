@@ -21,6 +21,7 @@ export const Default: Story = {
       {
         label: 'Lucy',
         value: 'lucy',
+        disabled: true,
       },
       {
         label: 'John',

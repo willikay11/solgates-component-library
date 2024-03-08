@@ -34,9 +34,9 @@ export const Number = ({
   defaultValue,
   error,
   onChange,
-    minIcon,
-                         maxIcon,
-    disabled = false
+  minIcon,
+  maxIcon,
+  disabled = false,
 }: NumberInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const increase = () => {
@@ -60,13 +60,11 @@ export const Number = ({
         }  focus-within:border-orange-500 hover:border-orange-500 items-center ${errorClassName}`}
       >
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
-        {
-          !disabled ? (
-              <Button onClick={() => decrease()} type={ButtonTypes.link}>
-                {minIcon ? minIcon : <Minus color={colors.gray['500']} size={14} />}
-              </Button>
-          ) : null
-        }
+        {!disabled ? (
+          <Button onClick={() => decrease()} type={ButtonTypes.link}>
+            {minIcon ? minIcon : <Minus color={colors.gray['500']} size={14} />}
+          </Button>
+        ) : null}
 
         <input
           name={name}
@@ -83,15 +81,15 @@ export const Number = ({
           className={`ml-2 ${width} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800 focus:border-transparent focus:ring-0`}
           disabled={disabled}
         />
-        {
-          !disabled ? (
-              <Button onClick={() => increase()} type={ButtonTypes.link}>
-                {
-                  maxIcon ? maxIcon : <AddLine color={colors.gray['800']} size={14} />
-                }
-              </Button>
-          ) : null
-        }
+        {!disabled ? (
+          <Button onClick={() => increase()} type={ButtonTypes.link}>
+            {maxIcon ? (
+              maxIcon
+            ) : (
+              <AddLine color={colors.gray['800']} size={14} />
+            )}
+          </Button>
+        ) : null}
       </div>
       {error && (
         <p

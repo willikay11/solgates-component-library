@@ -15,7 +15,7 @@ export interface StatisticsProps {
 }
 
 function COL_SPANS(span: number) {
-  switch(span) {
+  switch (span) {
     case 1:
       return 'col-span-1';
     case 2:
