@@ -4,7 +4,7 @@ import { Tag } from '../Tag';
 import { CloseLine } from '../Icons';
 import Colors from '../Colors';
 
-interface selectItem {
+export interface selectItem {
   label: string;
   value: string | number | undefined;
   disabled?: boolean;

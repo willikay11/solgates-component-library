@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import { isValidPhoneNumber } from 'libphonenumber-js';
-import { Select } from './Select';
+import phoneUtil from 'google-libphonenumber';
+import {Select, selectItem} from './Select';
 
 export interface PhoneNumberProps {
   arrowIcon: ReactNode;
@@ -39,9 +39,7 @@ export const PhoneNumber = ({
     onPhoneNumberValid
 }: PhoneNumberProps) => {
   const [currentText, setCurrentText] = useState<string>('');
-  const [selectedCountryCode, setSelectedCountryCode] = useState<
-    string | undefined
-  >(countryCodeDefaultValue);
+  const [selectedCountryCode, setSelectedCountryCode] = useState<any>(countryCodeDefaultValue);
   const [currentError, setCurrentError] = useState<string | undefined>(error);
 
   let errorClassName = '';
@@ -51,14 +49,21 @@ export const PhoneNumber = ({
   }
 
   useEffect(() => {
-    if (selectedCountryCode && currentText) {
-      if (!isValidPhoneNumber(`${selectedCountryCode}${currentText}`)) {
-        setCurrentError('Phone Number not valid');
-        onPhoneNumberValid?.(false);
-      } else {
-        setCurrentError(undefined);
-        onPhoneNumberValid?.(true);
+    try {
+      if (selectedCountryCode && currentText) {
+        const phoneUtilInstance = phoneUtil.PhoneNumberUtil.getInstance();
+        const number = phoneUtilInstance.parse(`${selectedCountryCode}${currentText}`);
+        if (!phoneUtilInstance.isValidNumber(number)) {
+          setCurrentError('Phone Number not valid');
+          onPhoneNumberValid?.(false);
+        } else {
+          setCurrentError(undefined);
+          onPhoneNumberValid?.(true);
+        }
       }
+    } catch (e) {
+      setCurrentError('Phone Number not valid');
+      onPhoneNumberValid?.(false);
     }
   }, [selectedCountryCode, currentText]);
 
@@ -77,8 +82,15 @@ export const PhoneNumber = ({
             border="borderless"
             style={{ background: 'transparent' }}
             disabled={disabled}
-            onChange={(selectedItem: { label: string; value: string }) => {
-              setSelectedCountryCode(selectedItem?.[0].value);
+            onChange={(selectedItem: selectItem | selectItem[]) => {
+              if (selectedItem instanceof Array) {
+                setSelectedCountryCode(selectedItem?.[0]?.value);
+                return;
+              }
+
+              if (Object.keys(selectedItem).length) {
+                setSelectedCountryCode(selectedItem?.value)
+              }
             }}
           />
         </div>

@@ -1,5 +1,5 @@
 {
-  "version": "2.6.6",
+  "version": "2.6.7",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -94,7 +94,8 @@
     "@popperjs/core": "^2.11.7",
     "@storybook/react-vite": "^7.4.5",
     "@tanstack/react-table": "^8.7.6",
-    "libphonenumber-js": "^1.10.57",
+    "@types/google-libphonenumber": "^7.4.30",
+    "google-libphonenumber": "^3.2.34",
     "react-popper": "^2.3.0",
     "react-swipeable": "^7.0.1",
     "vite": "^4.4.9"
