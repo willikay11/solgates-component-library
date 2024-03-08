@@ -240,7 +240,7 @@ export const Select = ({
                       `relative cursor-pointer select-none py-2 pl-4 pr-4 ${
                         active
                           ? 'bg-orange-100 text-orange-600'
-                          : 'text-gray-900'
+                          : item.disabled ? 'bg-gray-100' : 'text-gray-900'
                       }`
                     }
                     value={item.value}
@@ -257,7 +257,7 @@ export const Select = ({
                           className={`block truncate text-xs text-gray-800 ${
                             selected
                               ? 'font-medium text-orange-600'
-                              : 'font-normal'
+                              : item.disabled ? 'text-gray-300' : 'font-normal'
                           }`}
                         >
                           {item.label}
