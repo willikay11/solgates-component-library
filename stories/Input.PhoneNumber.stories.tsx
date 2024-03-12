@@ -20,12 +20,12 @@ export const Default: Story = {
   args: {
     name: 'name',
     placeholder: 'Enter phone number',
-    countryCodeDefaultValue: '+254',
+    countryCodeDefaultValue: '254',
     arrowIcon: <ArrowDownSLine size={16} />,
     countryCodes: [
-      { label: '+254', value: '+254' },
-      { label: '+255', value: '+255' },
-      { label: '+256', value: '+256' },
+      { label: '+254', value: '254' },
+      { label: '+255', value: '255' },
+      { label: '+256', value: '256' },
     ],
   },
 };
@@ -33,13 +33,13 @@ export const Default: Story = {
 export const PrefixIcon: Story = {
   args: {
     name: 'name',
-    countryCodeDefaultValue: '+254',
+    countryCodeDefaultValue: '254',
     placeholder: 'Enter phone number',
     arrowIcon: <ArrowDownSLine size={16} />,
     countryCodes: [
-      { label: '+254', value: '+254' },
-      { label: '+255', value: '+255' },
-      { label: '+256', value: '+256' },
+      { label: '+254', value: '254' },
+      { label: '+255', value: '255' },
+      { label: '+256', value: '256' },
     ],
     prefixIcon: (
       <IconContainer>
@@ -52,7 +52,7 @@ export const PrefixIcon: Story = {
 export const ClearIcon: Story = {
   args: {
     name: 'name',
-    countryCodeDefaultValue: '+254',
+    countryCodeDefaultValue: '254',
     placeholder: 'Enter phone number',
     countryCodes: [
       { label: '+254', value: '+254' },
@@ -73,13 +73,13 @@ export const Error: Story = {
   args: {
     name: 'name',
     error: 'Please enter phone number',
-    countryCodeDefaultValue: '+254',
+    countryCodeDefaultValue: '254',
     arrowIcon: <ArrowDownSLine size={16} />,
     placeholder: 'Enter phone number',
     countryCodes: [
-      { label: '+254', value: '+254' },
-      { label: '+255', value: '+255' },
-      { label: '+256', value: '+256' },
+      { label: '+254', value: '254' },
+      { label: '+255', value: '255' },
+      { label: '+256', value: '256' },
     ],
     prefixIcon: (
       <IconContainer>
