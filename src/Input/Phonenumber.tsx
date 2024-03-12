@@ -50,6 +50,8 @@ export const PhoneNumber = ({
 
   useEffect(() => {
     try {
+      console.log('selectedCountryCode: ',selectedCountryCode);
+      console.log('currentText: ',currentText);
       if (selectedCountryCode && currentText) {
         const phoneUtilInstance = phoneUtil.PhoneNumberUtil.getInstance();
         const number = phoneUtilInstance.parse(`${selectedCountryCode}${currentText}`);
