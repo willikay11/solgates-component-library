@@ -53,6 +53,8 @@ export const PhoneNumber = ({
       if (selectedCountryCode && currentText) {
         const phoneUtilInstance = phoneUtil.PhoneNumberUtil.getInstance();
         const number = phoneUtilInstance.parse(`${selectedCountryCode}${currentText}`);
+        console.log('number: ', number);
+        console.log(phoneUtilInstance.isValidNumber(number));
         if (!phoneUtilInstance.isValidNumber(number)) {
           setCurrentError('Phone Number not valid');
           onPhoneNumberValid?.(false);
