@@ -64,6 +64,7 @@ export const PhoneNumber = ({
         }
       }
     } catch (e) {
+      console.log('error: ', e);
       setCurrentError('Phone Number not valid');
       onPhoneNumberValid?.(false);
     }
