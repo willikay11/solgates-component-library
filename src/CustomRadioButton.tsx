@@ -15,6 +15,7 @@ export interface CustomRadioButtonProps {
   selectedIcon: ReactNode;
   unSelectedIcon: ReactNode;
   options: radioOption[];
+  defaultValue?: string;
 }
 
 export const CustomRadioButton = ({
@@ -22,10 +23,11 @@ export const CustomRadioButton = ({
   options,
   selectedIcon,
   unSelectedIcon,
+    defaultValue
 }: CustomRadioButtonProps) => {
   let [plan, setPlan] = useState<string>('');
   return (
-    <RadioGroup value={plan} onChange={setPlan}>
+    <RadioGroup value={plan} onChange={setPlan} defaultValue={defaultValue}>
       <RadioGroup.Label className="text-xs leading-4 font-medium text-gray-800 mb-[5px]">
         {label}
       </RadioGroup.Label>
