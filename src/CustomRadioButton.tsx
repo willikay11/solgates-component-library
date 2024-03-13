@@ -1,10 +1,13 @@
 import React, { ReactNode, useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
+import { Loading } from './Loading';
+import colors from './Colors';
 
 interface radioOption {
   label: string;
   value: string;
   leftContent: ReactNode;
+  loading: boolean;
 }
 
 export interface CustomRadioButtonProps {
@@ -55,14 +58,20 @@ export const CustomRadioButton = ({
                   </div>
                 </div>
                 <div className="flex shrink-0">
-                  <span
-                    className={`font-semibold text-xs leading-4 mr-2 ${
-                      checked ? 'text-blue-600' : 'text-gray-800'
-                    }`}
-                  >
-                    {option.label}
-                  </span>
-                  {checked ? selectedIcon : unSelectedIcon}
+                  {option.loading ? (
+                    <Loading fillColor={colors.orange['600']} />
+                  ) : (
+                    <>
+                      <span
+                        className={`font-semibold text-xs leading-4 mr-2 ${
+                          checked ? 'text-blue-600' : 'text-gray-800'
+                        }`}
+                      >
+                        {option.label}
+                      </span>
+                      {checked ? selectedIcon : unSelectedIcon}
+                    </>
+                  )}
                 </div>
               </div>
             </>

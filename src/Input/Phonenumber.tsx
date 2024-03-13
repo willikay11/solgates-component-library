@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import phoneUtil from 'google-libphonenumber';
-import {Select, selectItem} from './Select';
+import { Select, selectItem } from './Select';
 
 export interface PhoneNumberProps {
   arrowIcon: ReactNode;
@@ -18,7 +18,7 @@ export interface PhoneNumberProps {
   countryCodeFormName?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
-  onPhoneNumberValid?: (valid: boolean) => void
+  onPhoneNumberValid?: (valid: boolean) => void;
 }
 export const PhoneNumber = ({
   arrowIcon,
@@ -36,10 +36,12 @@ export const PhoneNumber = ({
   countryCodeFormName = 'countryCode',
   onChange,
   disabled = false,
-    onPhoneNumberValid
+  onPhoneNumberValid,
 }: PhoneNumberProps) => {
   const [currentText, setCurrentText] = useState<string>('');
-  const [selectedCountryCode, setSelectedCountryCode] = useState<any>(countryCodeDefaultValue);
+  const [selectedCountryCode, setSelectedCountryCode] = useState<any>(
+    countryCodeDefaultValue
+  );
   const [currentError, setCurrentError] = useState<string | undefined>(error);
 
   let errorClassName = '';
@@ -52,7 +54,9 @@ export const PhoneNumber = ({
     try {
       if (selectedCountryCode && currentText) {
         const phoneUtilInstance = phoneUtil.PhoneNumberUtil.getInstance();
-        const number = phoneUtilInstance.parse(`+${selectedCountryCode}${currentText}`);
+        const number = phoneUtilInstance.parse(
+          `+${selectedCountryCode}${currentText}`
+        );
         if (!phoneUtilInstance.isValidNumber(number)) {
           setCurrentError('Phone Number not valid');
           onPhoneNumberValid?.(false);
@@ -89,7 +93,7 @@ export const PhoneNumber = ({
               }
 
               if (Object.keys(selectedItem).length) {
-                setSelectedCountryCode(selectedItem?.value)
+                setSelectedCountryCode(selectedItem?.value);
               }
             }}
           />
