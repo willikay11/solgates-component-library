@@ -70,6 +70,7 @@ Default.args = {
       ),
       label: 'KES 500',
       value: 'KES 500',
+      loading: true
     },
   ],
   selectedIcon: <User6Line size={18} color={colors.blue['600']} />,
