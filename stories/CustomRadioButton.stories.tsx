@@ -22,6 +22,7 @@ const Template: Story<CustomRadioButtonProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   label: 'Plans',
+  defaultValue: '500',
   options: [
     {
       leftContent: (
@@ -45,7 +46,7 @@ Default.args = {
         </div>
       ),
       label: 'KES 450',
-      value: 'Kes 450',
+      value: '450',
     },
     {
       leftContent: (
@@ -69,8 +70,7 @@ Default.args = {
         </div>
       ),
       label: 'KES 500',
-      value: 'KES 500',
-      loading: true
+      value: '500',
     },
   ],
   selectedIcon: <User6Line size={18} color={colors.blue['600']} />,
