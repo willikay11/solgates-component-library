@@ -23,11 +23,11 @@ export const CustomRadioButton = ({
   options,
   selectedIcon,
   unSelectedIcon,
-    defaultValue
+  defaultValue,
 }: CustomRadioButtonProps) => {
   let [plan, setPlan] = useState<string>(defaultValue ?? '');
   return (
-    <RadioGroup value={plan} onChange={setPlan} >
+    <RadioGroup value={plan} onChange={setPlan}>
       <RadioGroup.Label className="text-xs leading-4 font-medium text-gray-800 mb-[5px]">
         {label}
       </RadioGroup.Label>
