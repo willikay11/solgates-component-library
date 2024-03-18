@@ -29,7 +29,7 @@ export interface TableProps {
   border?: 'bordered' | 'borderless';
   noContent?: ReactNode;
   pagination?: ReactNode;
-  onPageSizeChange?: (pageSize: string) => void
+  onPageSizeChange?: (pageSize: string) => void;
 }
 
 export const Table = ({
@@ -44,7 +44,7 @@ export const Table = ({
   border = 'bordered',
   noContent,
   pagination,
-    onPageSizeChange
+  onPageSizeChange,
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
@@ -187,7 +187,7 @@ export const Table = ({
                 ]}
                 defaultValue="10"
                 arrowIcon={<ArrowDownSLine size={14} />}
-                onChange={selectedItem => {
+                onChange={(selectedItem: any) => {
                   onPageSizeChange?.(selectedItem?.value);
                 }}
               />
