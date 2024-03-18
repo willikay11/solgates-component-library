@@ -5,7 +5,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import {Select, selectItem} from './Input/Select';
+import { Select } from './Input/Select';
 import { ArrowDownSLine } from './Icons';
 
 const columnHelper = createColumnHelper<any>();
@@ -29,7 +29,7 @@ export interface TableProps {
   border?: 'bordered' | 'borderless';
   noContent?: ReactNode;
   pagination?: ReactNode;
-  onPageSizeChange?: (pageSize: string) => void
+  onPageSizeChange?: (pageSize: string) => void;
 }
 
 export const Table = ({
@@ -44,7 +44,7 @@ export const Table = ({
   border = 'bordered',
   noContent,
   pagination,
-    onPageSizeChange
+  onPageSizeChange,
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
