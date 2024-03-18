@@ -5,7 +5,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { Select } from './Input/Select';
+import {Select, selectItem} from './Input/Select';
 import { ArrowDownSLine } from './Icons';
 
 const columnHelper = createColumnHelper<any>();
@@ -187,7 +187,7 @@ export const Table = ({
                 ]}
                 defaultValue="10"
                 arrowIcon={<ArrowDownSLine size={14} />}
-                onChange={selectedItem => {
+                onChange={(selectedItem: any) => {
                   onPageSizeChange?.(selectedItem?.value);
                 }}
               />
