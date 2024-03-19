@@ -46,7 +46,7 @@ export const Table = ({
   noContent,
   pagination,
   onPageSizeChange,
-    showPagination = true
+  showPagination = true,
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
@@ -171,65 +171,62 @@ export const Table = ({
             </tfoot>
           </table>
 
-          {
-            showPagination ? (
-                <div
-                    className={`flex flex-row ${
-                        border === 'bordered' ? 'px-[15px]' : ''
-                    } py-[15px] justify-between`}
-                >
-                  <div className="inline-flex items-center">
-              <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
-                Show
-              </span>
-                    <Select
-                        items={[
-                          { label: '10', value: '10' },
-                          { label: '20', value: '20' },
-                          { label: '50', value: '50' },
-                          { label: '100', value: '100' },
-                        ]}
-                        defaultValue="10"
-                        arrowIcon={<ArrowDownSLine size={14} />}
-                        onClick={(value: any) => {
-                          onPageSizeChange?.(value);
-                        }}
+          {showPagination ? (
+            <div
+              className={`flex flex-row ${
+                border === 'bordered' ? 'px-[15px]' : ''
+              } py-[15px] justify-between`}
+            >
+              <div className="inline-flex items-center">
+                <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
+                  Show
+                </span>
+                <Select
+                  items={[
+                    { label: '10', value: '10' },
+                    { label: '20', value: '20' },
+                    { label: '50', value: '50' },
+                    { label: '100', value: '100' },
+                  ]}
+                  defaultValue="10"
+                  arrowIcon={<ArrowDownSLine size={14} />}
+                  onClick={(value: any) => {
+                    onPageSizeChange?.(value);
+                  }}
+                />
+                <span className="text-xs leading-4 font-normal text-gray-500 ml-2 mr-1">
+                  Entries
+                </span>
+              </div>
 
-                    />
-                    <span className="text-xs leading-4 font-normal text-gray-500 ml-2 mr-1">
-                Entries
-              </span>
-                  </div>
-
-                  <div className="inline-flex items-center">
-              <span className="text-xs leading-4 font-normal text-gray-500 ml-2 mr-1">
-                Showing
-              </span>
-                    <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">
-                {currentPage * pageSize - (pageSize - 1)}
-              </span>
-                    <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
-                to
-              </span>
-                    <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">
-                {pageSize * currentPage <= total
+              <div className="inline-flex items-center">
+                <span className="text-xs leading-4 font-normal text-gray-500 ml-2 mr-1">
+                  Showing
+                </span>
+                <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">
+                  {currentPage * pageSize - (pageSize - 1)}
+                </span>
+                <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
+                  to
+                </span>
+                <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">
+                  {pageSize * currentPage <= total
                     ? pageSize * currentPage
                     : total}
-              </span>
-                    <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
-                of
-              </span>
-                    <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">
-                {total}
-              </span>
-                    <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
-                results
-              </span>
-                    <div className="ml-2">{pagination}</div>
-                  </div>
-                </div>
-            ) : null
-          }
+                </span>
+                <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
+                  of
+                </span>
+                <span className="text-xs leading-4 font-semibold text-gray-800 mr-1">
+                  {total}
+                </span>
+                <span className="text-xs leading-4 font-normal text-gray-500 mr-1">
+                  results
+                </span>
+                <div className="ml-2">{pagination}</div>
+              </div>
+            </div>
+          ) : null}
         </>
       ) : (
         <>
