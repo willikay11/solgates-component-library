@@ -47,7 +47,7 @@ export const Select = ({
   multipleFormDataName = 'id',
   style,
   disabled = false,
-  onClick
+  onClick,
 }: SelectInputProps) => {
   const listBoxRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
