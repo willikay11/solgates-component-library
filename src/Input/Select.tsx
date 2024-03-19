@@ -27,6 +27,7 @@ export interface SelectInputProps {
   placeholder?: string;
   multipleFormDataName?: string;
   disabled?: boolean;
+  onClick?: (value: string | number | undefined) => void;
 }
 
 export const Select = ({
@@ -46,6 +47,7 @@ export const Select = ({
   multipleFormDataName = 'id',
   style,
   disabled = false,
+  onClick
 }: SelectInputProps) => {
   const listBoxRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -251,6 +253,7 @@ export const Select = ({
                       if (showSearch) {
                         setSearchValue(null);
                       }
+                      onClick?.(item.value);
                     }}
                   >
                     {({ selected }) => (
