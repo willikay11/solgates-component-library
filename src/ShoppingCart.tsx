@@ -70,52 +70,58 @@ export const ShoppingCart = ({
         </div>
       ) : (
         <>
-          {products.map((product) => (
-            <div key={product.id} className="grid gap-2 grid-cols-6 mb-[15px]">
+          <div className={`${products?.length >= 3 ? 'h-[320px]' : products?.length === 2 ? 'h-[240px]' : 'h-[120px]'} min-h-[120px] overflow-scroll`}>
+            {products.map((product) => (
               <div
-                className={
-                  type === CART_TYPE.small ? 'col-span-2' : 'col-span-1'
-                }
+                key={product.id}
+                className="grid gap-2 grid-cols-6 mb-[15px]"
               >
-                <ProductTile
-                  id="1"
-                  type={PRODUCT_TYPE.PRODUCT}
-                  imageUrl={product?.imageUrl}
-                />
-              </div>
-              <div
-                className={
-                  type === CART_TYPE.small ? 'col-span-4' : 'col-span-5'
-                }
-              >
-                <p className="text-xs leading-4 font-medium text-gray-800 mt-1.5">
-                  {product?.name}
-                </p>
-                <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">
-                  {product?.size}
-                </p>
-                <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">
-                  Quantity: {product?.quantity}
-                </p>
-                <div className="flex flex-row justify-between items-center mt-1.5">
-                  {/*<Input.Number min={1} border='borderless' width="30px" padding="0px" />*/}
-                  <span
-                    className="cursor-pointer"
-                    onClick={() => onRemoveProduct(product)}
-                  >
-                    <DeleteBin5Line size={16} color={colors.red['500']} />
-                  </span>
-                  <span className="text-xs leading-4 font-semibold text-gray-800">
-                    {currency}{' '}
-                    {(product?.price * product.quantity)
-                      ?.toString()
-                      ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  </span>
+                <div
+                  className={
+                    type === CART_TYPE.small ? 'col-span-2' : 'col-span-1'
+                  }
+                >
+                  <ProductTile
+                    id="1"
+                    type={PRODUCT_TYPE.PRODUCT}
+                    imageUrl={product?.imageUrl}
+                  />
                 </div>
+                <div
+                  className={
+                    type === CART_TYPE.small ? 'col-span-4' : 'col-span-5'
+                  }
+                >
+                  <p className="text-xs leading-4 font-medium text-gray-800 mt-1.5">
+                    {product?.name}
+                  </p>
+                  <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">
+                    {product?.size}
+                  </p>
+                  <p className="text-xs leading-4 font-semibold text-gray-800 mt-1.5">
+                    Quantity: {product?.quantity}
+                  </p>
+                  <div className="flex flex-row justify-between items-center mt-1.5">
+                    {/*<Input.Number min={1} border='borderless' width="30px" padding="0px" />*/}
+                    <span
+                      className="cursor-pointer"
+                      onClick={() => onRemoveProduct(product)}
+                    >
+                      <DeleteBin5Line size={16} color={colors.red['500']} />
+                    </span>
+                    <span className="text-xs leading-4 font-semibold text-gray-800">
+                      {currency}{' '}
+                      {(product?.price * product.quantity)
+                        ?.toString()
+                        ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    </span>
+                  </div>
+                </div>
+                <div className="col-span-6 border-b-[1px] mt-[15px]" />
               </div>
-              <div className="col-span-6 border-b-[1px] mt-[15px]" />
-            </div>
-          ))}
+            ))}
+          </div>
+
           {showDiscount && (
             <Input.Text
               placeholder="Discount Coupon"
