@@ -106,80 +106,82 @@ export const Table = ({
       )}
       {data.length > 0 ? (
         <>
-          <table className="w-full">
-            <thead>
+          <div className="overflow-auto">
+            <table className="w-full">
+              <thead>
               {table.getHeaderGroups().map((headerGroup) => (
-                <tr className="text-left" key={headerGroup.id}>
-                  {headerGroup.headers.map((header, index) => (
-                    <th
-                      key={header.id}
-                      className={`text-xs leading-4 font-semibold text-gray-600 border-b-[1px] border-gray-200 py-[15px] ${
-                        index === 0
-                          ? border === 'bordered'
-                            ? 'pl-[15px]'
-                            : ''
-                          : headerGroup.headers.length - 1 === index
-                          ? ''
-                          : 'pr-[15px]'
-                      }`}
-                    >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </th>
-                  ))}
-                </tr>
+                  <tr className="text-left" key={headerGroup.id}>
+                    {headerGroup.headers.map((header, index) => (
+                        <th
+                            key={header.id}
+                            className={`text-xs leading-4 font-semibold text-gray-600 border-b-[1px] border-gray-200 py-[15px] ${
+                                index === 0
+                                    ? border === 'bordered'
+                                        ? 'pl-[15px]'
+                                        : ''
+                                    : headerGroup.headers.length - 1 === index
+                                        ? ''
+                                        : 'pr-[15px]'
+                            }`}
+                        >
+                          {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                              )}
+                        </th>
+                    ))}
+                  </tr>
               ))}
-            </thead>
-            <tbody>
+              </thead>
+              <tbody>
               {table.getRowModel().rows.map((row) => (
-                <tr
-                  key={row.id}
-                  onClick={() => onRowClick?.(row?.original)}
-                  className="text-xs leading-4 font-normal text-gray-800 border-b-[1px] border-gray-200 cursor-pointer"
-                >
-                  {row.getVisibleCells().map((cell, index) => (
-                    <td
-                      className={`py-[15px] ${
-                        index === 0
-                          ? border === 'bordered'
-                            ? 'pl-[15px]'
-                            : ''
-                          : row.getVisibleCells.length - 1 === index
-                          ? ''
-                          : 'pr-[15px]'
-                      }`}
-                      key={cell.id}
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              {table.getFooterGroups().map((footerGroup) => (
-                <tr key={footerGroup.id}>
-                  {footerGroup.headers.map((header) => (
-                    <th key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.footer,
-                            header.getContext()
+                  <tr
+                      key={row.id}
+                      onClick={() => onRowClick?.(row?.original)}
+                      className="text-xs leading-4 font-normal text-gray-800 border-b-[1px] border-gray-200 cursor-pointer"
+                  >
+                    {row.getVisibleCells().map((cell, index) => (
+                        <td
+                            className={`py-[15px] ${
+                                index === 0
+                                    ? border === 'bordered'
+                                        ? 'pl-[15px]'
+                                        : ''
+                                    : row.getVisibleCells.length - 1 === index
+                                        ? ''
+                                        : 'pr-[15px]'
+                            }`}
+                            key={cell.id}
+                        >
+                          {flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext()
                           )}
-                    </th>
-                  ))}
-                </tr>
+                        </td>
+                    ))}
+                  </tr>
               ))}
-            </tfoot>
-          </table>
+              </tbody>
+              <tfoot>
+              {table.getFooterGroups().map((footerGroup) => (
+                  <tr key={footerGroup.id}>
+                    {footerGroup.headers.map((header) => (
+                        <th key={header.id}>
+                          {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.footer,
+                                  header.getContext()
+                              )}
+                        </th>
+                    ))}
+                  </tr>
+              ))}
+              </tfoot>
+            </table>
+          </div>
 
           {showPagination ? (
             <div
