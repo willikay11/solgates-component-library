@@ -17,29 +17,29 @@ export interface StatisticsProps {
 function COL_SPANS(span: number) {
   switch (span) {
     case 1:
-      return 'col-span-1';
+      return 'md:col-span-1';
     case 2:
-      return 'col-span-2';
+      return 'md:col-span-2';
     case 3:
-      return 'col-span-3';
+      return 'md:col-span-3';
     case 4:
-      return 'col-span-4';
+      return 'md:col-span-4';
     case 5:
-      return 'col-span-5';
+      return 'md:col-span-5';
     case 6:
-      return 'col-span-6';
+      return 'md:col-span-6';
     case 7:
-      return 'col-span-7';
+      return 'md:col-span-7';
     case 8:
-      return 'col-span-8';
+      return 'md:col-span-8';
     case 9:
-      return 'col-span-9';
+      return 'md:col-span-9';
     case 10:
-      return 'col-span-10';
+      return 'md:col-span-10';
     case 11:
-      return 'col-span-11';
+      return 'md:col-span-11';
     default:
-      return 'col-span-12';
+      return 'md:col-span-12';
   }
 }
 
@@ -66,7 +66,10 @@ export const Statistics = ({ title, stats }: StatisticsProps) => {
 
       <div className="grid grid-cols-12 gap-1">
         {stats.map((stat, index) => (
-          <div key={index} className={`grid ${COL_SPANS(stat.span)}`}>
+          <div
+            key={index}
+            className={`grid col-span-6 ${COL_SPANS(stat.span)}`}
+          >
             <div className="flex flex-row justify-start items-center">
               <div className="flex flex-col">
                 <div className="mb-[5px]">{stat.icon}</div>
