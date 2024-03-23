@@ -34,6 +34,7 @@ Default.args = {
       key: '1',
       title: 'Order ID',
       dataIndex: 'orderId',
+      visible: false,
     },
     {
       key: '2',

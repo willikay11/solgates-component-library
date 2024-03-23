@@ -15,6 +15,7 @@ interface column {
   dataIndex: string;
   key: string;
   render?: (val: any, record: any) => ReactNode;
+  visible?: boolean;
 }
 
 export interface TableProps {
@@ -50,10 +51,14 @@ export const Table = ({
 }: TableProps) => {
   const [tableData, setTableData] = useState<any[]>([]);
   const [tableColumns, setNewColumns] = useState<any[]>([]);
+  const [columnVisibility, setColumnVisibility] = useState<{[key: string]:boolean}>()
   const table = useReactTable({
     data: tableData,
     columns: tableColumns,
     getCoreRowModel: getCoreRowModel(),
+    state: {
+      columnVisibility
+    }
   });
 
   useEffect(() => {
@@ -67,6 +72,11 @@ export const Table = ({
         })
       );
       setNewColumns(newColumns);
+      const cVisibility : {[key: string]:boolean} = {}
+      columns.forEach((column) => {
+        cVisibility[column.dataIndex] = column.visible ?? true;
+      });
+      setColumnVisibility(cVisibility)
     }
   }, [columns]);
 

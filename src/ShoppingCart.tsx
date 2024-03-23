@@ -70,7 +70,15 @@ export const ShoppingCart = ({
         </div>
       ) : (
         <>
-          <div className={`${products?.length >= 3 ? 'h-[320px]' : products?.length === 2 ? 'h-[240px]' : 'h-[120px]'} min-h-[120px] overflow-scroll`}>
+          <div
+            className={`${
+              products?.length >= 3
+                ? 'h-[320px]'
+                : products?.length === 2
+                ? 'h-[240px]'
+                : 'h-[120px]'
+            } min-h-[120px] overflow-scroll`}
+          >
             {products.map((product) => (
               <div
                 key={product.id}
