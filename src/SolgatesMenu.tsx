@@ -66,7 +66,7 @@ export const SolgatesMenu = ({
   userName,
   isSeller = false,
   shopName,
-    onHelpClick,
+  onHelpClick,
 }: SolgatesMenuProps) => {
   const openedRef = useRef<HTMLButtonElement | null>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
@@ -298,12 +298,14 @@ export const SolgatesMenu = ({
                 {phoneNumber}
               </span>
               <div className="border-[1px] border-gray-300 h-full rounded mr-2" />
-              <span className="inline-flex text-[10px] text-gray-600 mr-2">
+              <span
+                className="inline-flex text-[10px] text-gray-600 mr-2 cursor-pointer"
+                onClick={() => onHelpClick?.()}
+              >
                 <QuestionLine
                   color={colors.gray['400']}
                   size={14}
-                  className="mr-2 cursor-pointer"
-                  onClick={() => onHelpClick?.()}
+                  className="mr-2"
                 />
                 Help
               </span>
