@@ -43,6 +43,7 @@ export interface SolgatesMenuProps {
   onOpenShopClick?: () => void;
   shoppingCartContent?: ReactNode;
   onSearchClick?: () => void;
+  onHelpClick?: () => void;
   phoneNumber?: string;
   isLoggedIn: boolean;
   userName?: string;
@@ -65,6 +66,7 @@ export const SolgatesMenu = ({
   userName,
   isSeller = false,
   shopName,
+    onHelpClick,
 }: SolgatesMenuProps) => {
   const openedRef = useRef<HTMLButtonElement | null>(null);
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
@@ -300,7 +302,8 @@ export const SolgatesMenu = ({
                 <QuestionLine
                   color={colors.gray['400']}
                   size={14}
-                  className="mr-2"
+                  className="mr-2 cursor-pointer"
+                  onClick={() => onHelpClick?.()}
                 />
                 Help
               </span>
