@@ -51,6 +51,12 @@ export const PhoneNumber = ({
   }
 
   useEffect(() => {
+    if (error) {
+      setCurrentError(error)
+    }
+  }, [error]);
+
+  useEffect(() => {
     try {
       if (selectedCountryCode && currentText) {
         const phoneUtilInstance = phoneUtil.PhoneNumberUtil.getInstance();
@@ -60,7 +66,9 @@ export const PhoneNumber = ({
         if (!phoneUtilInstance.isValidNumber(number)) {
           setCurrentError('Phone Number not valid');
           onPhoneNumberValid?.(false);
-        } else {
+        } else if (error) {
+          setCurrentError(currentError);
+        }else {
           setCurrentError(undefined);
           onPhoneNumberValid?.(true);
         }
