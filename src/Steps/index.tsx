@@ -37,7 +37,7 @@ export const Steps = ({
               : StepStatus.future
           }
           labelPlacement={labelPlacement}
-          isLastStep={index + 1 === items.length}
+          isLastStep={index >= items.length}
           direction={direction}
         />
       ))}
