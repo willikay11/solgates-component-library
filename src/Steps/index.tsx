@@ -32,12 +32,12 @@ export const Steps = ({
           status={
             index === initial
               ? StepStatus.current
-              : index < initial || initial + 1 === items.length
+              : index < initial || initial >= items.length
               ? StepStatus.finished
               : StepStatus.future
           }
           labelPlacement={labelPlacement}
-          isLastStep={index >= items.length}
+          isLastStep={index + 1 === items.length}
           direction={direction}
         />
       ))}
