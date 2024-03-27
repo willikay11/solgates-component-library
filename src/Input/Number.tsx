@@ -19,6 +19,7 @@ export interface NumberInputProps {
   minIcon?: ReactNode;
   maxIcon?: ReactNode;
   disabled?: boolean;
+  centered?: boolean;
 }
 
 export const Number = ({
@@ -37,6 +38,7 @@ export const Number = ({
   minIcon,
   maxIcon,
   disabled = false,
+  centered = false,
 }: NumberInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const increase = () => {
@@ -78,7 +80,7 @@ export const Number = ({
           onChange={(event) => {
             onChange?.(event);
           }}
-          className={`ml-2 ${width} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800 focus:border-transparent focus:ring-0`}
+          className={`ml-2 ${width} ${centered ? 'text-center' : ''} outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800 focus:border-transparent focus:ring-0`}
           disabled={disabled}
         />
         {!disabled ? (
