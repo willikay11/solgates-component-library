@@ -32,7 +32,7 @@ export const Steps = ({
           status={
             index === initial
               ? StepStatus.current
-              : index < initial || initial >= items.length
+              : index < initial
               ? StepStatus.finished
               : StepStatus.future
           }

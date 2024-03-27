@@ -69,6 +69,7 @@ export const custom: Story = {
     width: 'w-[15px]',
     defaultValue: '1',
     min: 1,
+    centered: true,
     minIcon: (
       <div className="h-[21px] w-[21px] flex justify-center items-center border border-gray-800 rounded-[50%]">
         <Minus color={colors.gray['800']} size={12} />
