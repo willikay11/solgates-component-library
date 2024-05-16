@@ -115,7 +115,11 @@ export const PhoneNumber = ({
           value={currentText || value}
           defaultValue={defaultValue}
           onChange={(e) => {
-            setCurrentText(e.target.value);
+            if (e.target.value && e.target.value.length > 1 && e.target.value.charAt(0) == '0') {
+              setCurrentText(e.target.value.slice(1));
+            } else {
+              setCurrentText(e.target.value);
+            }
             onChange?.(e);
           }}
           className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-xs text-gray-800 focus:border-transparent focus:ring-0`}
