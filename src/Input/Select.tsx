@@ -28,6 +28,7 @@ export interface SelectInputProps {
   multipleFormDataName?: string;
   disabled?: boolean;
   onClick?: (value: string | number | undefined) => void;
+  autoComplete?: boolean;
 }
 
 export const Select = ({
@@ -48,6 +49,7 @@ export const Select = ({
   style,
   disabled = false,
   onClick,
+  autoComplete = true,
 }: SelectInputProps) => {
   const listBoxRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -172,6 +174,7 @@ export const Select = ({
                         value={searchValue ?? ''}
                         className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full focus:ring-0 focus:outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500"
                         onChange={(event) => setSearchValue(event.target.value)}
+                        autoComplete={!autoComplete ? 'new-password' : ''}
                       />
                     ) : (
                       !multipleSelectedItems.length && (
@@ -181,6 +184,7 @@ export const Select = ({
                           }}
                           placeholder={placeholder}
                           className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                          autoComplete={!autoComplete ? 'new-password' : ''}
                         />
                       )
                     )}
@@ -194,6 +198,7 @@ export const Select = ({
                         className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                         onClick={(event) => event.stopPropagation()}
                         onChange={(event) => setSearchValue(event.target.value)}
+                        autoComplete={!autoComplete ? 'new-password' : ''}
                       />
                     ) : selectedItem && Object.keys(selectedItem).length ? (
                       <span className="ml-2 truncate text-xs text-gray-800">
@@ -206,6 +211,7 @@ export const Select = ({
                         }}
                         placeholder={placeholder}
                         className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                        autoComplete={!autoComplete ? 'new-password' : ''}
                       />
                     )}
                     <span className="pointer-events-none inset-y-0 right-0 flex items-center pr-2">
@@ -222,58 +228,64 @@ export const Select = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute min-w-[70px] mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-[1000]">
-              {items
-                .filter((item) => {
-                  if (searchValue !== null) {
-                    return item?.label
-                      ?.toLowerCase()
-                      .includes(searchValue.toLowerCase());
-                  }
-                  return item;
-                })
-                .map((item, index) => (
-                  <Listbox.Option
-                    key={item.value}
-                    ref={(ref: any) => {
-                      optionsRefs.current[index] = ref;
-                    }}
-                    className={({ active }) =>
-                      `relative cursor-pointer select-none py-2 pl-4 pr-4 ${
-                        active
-                          ? 'bg-orange-100 text-orange-600'
-                          : item.disabled
-                          ? 'bg-gray-100'
-                          : 'text-gray-900'
-                      }`
+            {items.length ? (
+              <Listbox.Options className="absolute min-w-[70px] mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-[1000]">
+                {items
+                  .filter((item) => {
+                    if (searchValue !== null) {
+                      return item?.label
+                        ?.toLowerCase()
+                        .includes(searchValue.toLowerCase());
                     }
-                    value={item.value}
-                    disabled={item.disabled || false}
-                    onClick={() => {
-                      if (showSearch) {
-                        setSearchValue(null);
+                    return item;
+                  })
+                  .map((item, index) => (
+                    <Listbox.Option
+                      key={item.value}
+                      ref={(ref: any) => {
+                        optionsRefs.current[index] = ref;
+                      }}
+                      className={({ active }) =>
+                        `relative cursor-pointer select-none py-2 pl-4 pr-4 ${
+                          active
+                            ? 'bg-orange-100 text-orange-600'
+                            : item.disabled
+                            ? 'bg-gray-100'
+                            : 'text-gray-900'
+                        }`
                       }
-                      onClick?.(item.value);
-                    }}
-                  >
-                    {({ selected }) => (
-                      <>
-                        <span
-                          className={`block truncate text-xs text-gray-800 ${
-                            selected
-                              ? 'font-medium text-orange-600'
-                              : item.disabled
-                              ? 'text-gray-300'
-                              : 'font-normal'
-                          }`}
-                        >
-                          {item.label}
-                        </span>
-                      </>
-                    )}
-                  </Listbox.Option>
-                ))}
-            </Listbox.Options>
+                      value={item.value}
+                      disabled={item.disabled || false}
+                      onClick={() => {
+                        if (showSearch) {
+                          setSearchValue(null);
+                        }
+                        onClick?.(item.value);
+                      }}
+                    >
+                      {({ selected }) => (
+                        <>
+                          <span
+                            className={`block truncate text-xs text-gray-800 ${
+                              selected
+                                ? 'font-medium text-orange-600'
+                                : item.disabled
+                                ? 'text-gray-300'
+                                : 'font-normal'
+                            }`}
+                          >
+                            {item.label}
+                          </span>
+                        </>
+                      )}
+                    </Listbox.Option>
+                  ))}
+              </Listbox.Options>
+            ) : (
+              <div className="absolute min-w-[70px] mt-1 max-h-60 w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-[1000]">
+                <p className="text-center text-sm text-gray-800">No items</p>
+              </div>
+            )}
           </Transition>
         </div>
       </Listbox>
