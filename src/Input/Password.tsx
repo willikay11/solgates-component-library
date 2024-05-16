@@ -17,7 +17,7 @@ export const Password = ({
   placeholder,
   error,
   value,
-  autoComplete = true
+  autoComplete = true,
 }: PasswordInputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
@@ -39,7 +39,7 @@ export const Password = ({
           placeholder={placeholder}
           value={value}
           className="ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800 focus:border-transparent focus:ring-0"
-          autoComplete={!autoComplete ? "new-password" : ""}
+          autoComplete={!autoComplete ? 'new-password' : ''}
         />
         {iconRender && (
           <div onClick={() => setIsPasswordVisible(!isPasswordVisible)}>

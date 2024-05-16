@@ -27,7 +27,7 @@ export const Text = ({
   defaultValue,
   onChange,
   disabled = false,
-  autoComplete = true
+  autoComplete = true,
 }: TextInputProps) => {
   const [currentText, setCurrentText] = useState<string>('');
   let errorClassName = '';
@@ -56,7 +56,7 @@ export const Text = ({
           aria-invalid={Boolean(error) || undefined}
           aria-errormessage={error ? `${name}-error` : undefined}
           disabled={disabled}
-          autoComplete={!autoComplete ? "new-password" : ""}
+          autoComplete={!autoComplete ? 'new-password' : ''}
         />
         {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
         {clearIcon && (

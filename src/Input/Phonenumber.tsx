@@ -38,7 +38,7 @@ export const PhoneNumber = ({
   onChange,
   disabled = false,
   onPhoneNumberValid,
-  autoComplete = true
+  autoComplete = true,
 }: PhoneNumberProps) => {
   const [currentText, setCurrentText] = useState<string>('');
   const [selectedCountryCode, setSelectedCountryCode] = useState<any>(
@@ -54,7 +54,7 @@ export const PhoneNumber = ({
 
   useEffect(() => {
     if (error) {
-      setCurrentError(error)
+      setCurrentError(error);
     }
   }, [error]);
 
@@ -70,7 +70,7 @@ export const PhoneNumber = ({
           onPhoneNumberValid?.(false);
         } else if (error) {
           setCurrentError(currentError);
-        }else {
+        } else {
           setCurrentError(undefined);
           onPhoneNumberValid?.(true);
         }
@@ -122,7 +122,7 @@ export const PhoneNumber = ({
           aria-invalid={Boolean(error) || undefined}
           aria-errormessage={error ? `${name}-error` : undefined}
           disabled={disabled}
-          autoComplete={!autoComplete ? "new-password" : ""}
+          autoComplete={!autoComplete ? 'new-password' : ''}
         />
         {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
         {clearIcon && (
