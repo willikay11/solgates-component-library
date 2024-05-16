@@ -19,6 +19,7 @@ export interface PhoneNumberProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   onPhoneNumberValid?: (valid: boolean) => void;
+  autoComplete?: boolean;
 }
 export const PhoneNumber = ({
   arrowIcon,
@@ -37,6 +38,7 @@ export const PhoneNumber = ({
   onChange,
   disabled = false,
   onPhoneNumberValid,
+  autoComplete = true
 }: PhoneNumberProps) => {
   const [currentText, setCurrentText] = useState<string>('');
   const [selectedCountryCode, setSelectedCountryCode] = useState<any>(
@@ -120,6 +122,7 @@ export const PhoneNumber = ({
           aria-invalid={Boolean(error) || undefined}
           aria-errormessage={error ? `${name}-error` : undefined}
           disabled={disabled}
+          autoComplete={!autoComplete ? "new-password" : ""}
         />
         {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
         {clearIcon && (

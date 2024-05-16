@@ -28,6 +28,7 @@ export interface SelectInputProps {
   multipleFormDataName?: string;
   disabled?: boolean;
   onClick?: (value: string | number | undefined) => void;
+  autoComplete?: boolean;
 }
 
 export const Select = ({
@@ -48,6 +49,7 @@ export const Select = ({
   style,
   disabled = false,
   onClick,
+  autoComplete = true
 }: SelectInputProps) => {
   const listBoxRef = useRef<HTMLButtonElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -172,6 +174,7 @@ export const Select = ({
                         value={searchValue ?? ''}
                         className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full focus:ring-0 focus:outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500"
                         onChange={(event) => setSearchValue(event.target.value)}
+                        autoComplete={!autoComplete ? "new-password" : ""}
                       />
                     ) : (
                       !multipleSelectedItems.length && (
@@ -181,6 +184,7 @@ export const Select = ({
                           }}
                           placeholder={placeholder}
                           className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                          autoComplete={!autoComplete ? "new-password" : ""}
                         />
                       )
                     )}
@@ -194,6 +198,7 @@ export const Select = ({
                         className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
                         onClick={(event) => event.stopPropagation()}
                         onChange={(event) => setSearchValue(event.target.value)}
+                        autoComplete={!autoComplete ? "new-password" : ""}
                       />
                     ) : selectedItem && Object.keys(selectedItem).length ? (
                       <span className="ml-2 truncate text-xs text-gray-800">
@@ -206,6 +211,7 @@ export const Select = ({
                         }}
                         placeholder={placeholder}
                         className="ml-2 cursor-pointer text-xs text-gray-800 font-normal w-full disabled:bg-transparent placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 focus:ring-0 focus:outline-0"
+                        autoComplete={!autoComplete ? "new-password" : ""}
                       />
                     )}
                     <span className="pointer-events-none inset-y-0 right-0 flex items-center pr-2">
