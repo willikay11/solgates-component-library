@@ -133,6 +133,7 @@ export const ShoppingCart = ({
           {showDiscount && (
             <Input.Text
               placeholder="Discount Coupon"
+              className="mt-2.5"
               prefixIcon={
                 <IconContainer>
                   <GiftLine size={14} color={colors.purple['500']} />
