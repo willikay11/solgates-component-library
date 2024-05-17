@@ -8,6 +8,7 @@ import { Password } from './Password';
 import { Error } from './Error';
 import { PhoneNumber } from './Phonenumber';
 import { Range } from './Range';
+import { DatePicker } from "./DateTime";
 
 export const Input = {
   Password: Password,
@@ -20,4 +21,5 @@ export const Input = {
   Upload: Upload,
   Error: Error,
   Range: Range,
+  DatePicker: DatePicker,
 };
