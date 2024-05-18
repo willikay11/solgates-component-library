@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 
 export interface TextInputProps {
   name?: string;
@@ -15,7 +15,7 @@ export interface TextInputProps {
   autoComplete?: boolean;
 }
 
-export const Text = ({
+export const Text: FC<TextInputProps> = ({
   name,
   prefixIcon,
   suffixIcon,
@@ -28,7 +28,8 @@ export const Text = ({
   onChange,
   disabled = false,
   autoComplete = true,
-}: TextInputProps) => {
+  ...props
+}) => {
   const [currentText, setCurrentText] = useState<string>('');
   let errorClassName = '';
 
@@ -57,6 +58,7 @@ export const Text = ({
           aria-errormessage={error ? `${name}-error` : undefined}
           disabled={disabled}
           autoComplete={!autoComplete ? 'new-password' : ''}
+          {...props}
         />
         {suffixIcon && !clearIcon && <div>{suffixIcon}</div>}
         {clearIcon && (
