@@ -1,6 +1,7 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { Input } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
+import {CloseLine, Input} from '../src';
+import {User6Line} from "@willikay11/solgates-component-library";
 
 const meta: Meta = {
   title: 'Data Entry/Date Picker',
@@ -9,6 +10,15 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = (args) => <Input.DatePicker />;
+type Story = StoryObj<typeof Input.DatePicker>;
 
-export const Default = Template.bind({});
+export const Date: Story = {
+  args: {
+    textProps: {
+      placeholder: 'Select expiry date',
+      clearIcon: <CloseLine size={14} />,
+      prefixIcon: <User6Line size={14} />
+    }
+  },
+};
+

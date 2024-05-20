@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useDatePicker } from '@rehookify/datepicker';
 import { Button, Calendar, Section, SectionHeader } from './components';
 import {
   getDayClassName,
-  getMonthClassName,
-  getYearsClassName,
 } from '../../../utils/classNames';
 import { ArrowLeftSLine, ArrowRightSLine } from '../../Icons';
 import { Input } from '../index';
 import clsx from 'clsx';
-export const DatePicker = () => {
+import {TextInputProps} from "../text";
+
+export interface DatePickerProps {
+  textProps: TextInputProps
+}
+export const DatePicker: FC<DatePickerProps> = ({ textProps }) => {
   const [selectedDates, onDatesChange] = useState<Date[]>([]);
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const {
@@ -18,10 +21,6 @@ export const DatePicker = () => {
       dayButton,
       addOffset,
       subtractOffset,
-      monthButton,
-      nextYearsButton,
-      previousYearsButton,
-      yearButton,
     },
   } = useDatePicker({
     selectedDates,
@@ -47,85 +46,39 @@ export const DatePicker = () => {
   return (
     <div className="relative">
       <Input.Text
-        placeholder="Select Date"
         readOnly={true}
         onClick={() => setShowDatePicker(true)}
         value={formattedDates[0]}
+        {...textProps}
       />
       <div className={datePickerClassName}>
-        <Section>
-          <SectionHeader>
-            <Button className="w-8" {...subtractOffset({ months: 1 })}>
-              <ArrowLeftSLine size={20} />
-            </Button>
-            <p className="text-center text-xs">{month}</p>
-            <Button className="w-8" {...addOffset({ months: 1 })}>
-              <ArrowRightSLine size={20} />
-            </Button>
-          </SectionHeader>
-          <Calendar className="mb-2 items-center h-8">
-            {weekDays.map((d) => (
-              <p className="text-xs text-center">{d}</p>
-            ))}
-          </Calendar>
-          <Calendar>
-            {days.map((d) => (
-              <Button
-                key={d.$date.toString()}
-                className={getDayClassName('w-8 text-xs', d)}
-                {...dayButton(d)}
-              >
-                {d.day}
+          <Section>
+            <SectionHeader>
+              <Button className="w-8" {...subtractOffset({ months: 1 })}>
+                <ArrowLeftSLine size={20} />
               </Button>
-            ))}
-          </Calendar>
-        </Section>
-        {/*<Section>*/}
-        {/*    <SectionHeader>*/}
-        {/*        <Button className="w-8" {...subtractOffset({ months: 1 })}>*/}
-        {/*            <ArrowLeftSLine size={20} />*/}
-        {/*        </Button>*/}
-        {/*        <p className="text-center text-xs">{year}</p>*/}
-        {/*        <Button className="w-8" {...addOffset({ months: 1 })}>*/}
-        {/*            <ArrowRightSLine size={20} />*/}
-        {/*        </Button>*/}
-        {/*    </SectionHeader>*/}
-        {/*    <main className="grid grid-cols-3 items-center gap-x-2 gap-y-2">*/}
-        {/*        {months.map((m) => (*/}
-        {/*            <Button*/}
-        {/*                key={m.month + year}*/}
-        {/*                className={getMonthClassName("text-xs text-gray-800", m)}*/}
-        {/*                {...monthButton(m)}*/}
-        {/*            >*/}
-        {/*                {m.month}*/}
-        {/*            </Button>*/}
-        {/*        ))}*/}
-        {/*    </main>*/}
-        {/*</Section>*/}
-        {/*<Section>*/}
-        {/*    <SectionHeader>*/}
-        {/*        <Button className="w-8" {...previousYearsButton()}>*/}
-        {/*            <ArrowLeftSLine size={20} />*/}
-        {/*        </Button>*/}
-        {/*        <p className="text-center text-xs">*/}
-        {/*            {`${years[0].year} - ${years[years.length - 1].year}`}*/}
-        {/*        </p>*/}
-        {/*        <Button className="w-8" {...nextYearsButton()}>*/}
-        {/*            <ArrowRightSLine size={20} />*/}
-        {/*        </Button>*/}
-        {/*    </SectionHeader>*/}
-        {/*    <main className="grid grid-cols-3 items-center gap-x-2 gap-y-2">*/}
-        {/*        {years.map((y) => (*/}
-        {/*            <Button*/}
-        {/*                key={y.$date.toString()}*/}
-        {/*                className={getYearsClassName("text-xs text-gray-800", y)}*/}
-        {/*                {...yearButton(y)}*/}
-        {/*            >*/}
-        {/*                {y.year}*/}
-        {/*            </Button>*/}
-        {/*        ))}*/}
-        {/*    </main>*/}
-        {/*</Section>*/}
+              <p className="text-center text-xs">{month}</p>
+              <Button className="w-8" {...addOffset({ months: 1 })}>
+                <ArrowRightSLine size={20} />
+              </Button>
+            </SectionHeader>
+            <Calendar className="mb-2 items-center h-8">
+              {weekDays.map((d) => (
+                <p className="text-xs text-center">{d}</p>
+              ))}
+            </Calendar>
+            <Calendar>
+              {days.map((d) => (
+                <Button
+                  key={d.$date.toString()}
+                  className={getDayClassName('w-8 text-xs', d)}
+                  {...dayButton(d)}
+                >
+                  {d.day}
+                </Button>
+              ))}
+            </Calendar>
+          </Section>
       </div>
     </div>
   );
