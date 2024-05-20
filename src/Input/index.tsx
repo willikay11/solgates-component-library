@@ -8,7 +8,7 @@ import { Password } from './Password';
 import { Error } from './Error';
 import { PhoneNumber } from './Phonenumber';
 import { Range } from './Range';
-import {DatePicker, MonthPicker} from './DateTime';
+import { DatePicker } from './DateTime';
 
 export const Input = {
   Password: Password,
