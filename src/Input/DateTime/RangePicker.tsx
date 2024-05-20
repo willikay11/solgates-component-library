@@ -76,56 +76,58 @@ export const RangePicker: FC<Props> = ({
           autoComplete={!autoComplete ? 'new-password' : ''}
         />
       </div>
-      <main className="grid grid-cols-3 gap-x-6">
-        <Section>
-          <SectionHeader>
-            <Button className="w-8" {...subtractOffset({ months: 1 })}>
-              <ArrowLeftSLine size={20} />
-            </Button>
-            <p className="text-center text-xs">{month1}</p>
-          </SectionHeader>
-          <Calendar className="mb-2 items-center h-8">
-            {weekDays.map((d) => (
-              <p className="text-xs text-center">{d}</p>
-            ))}
-          </Calendar>
-          <Calendar>
-            {days1.map((d) => (
-              <Button
-                key={d.$date.toString()}
-                className={getDayClassName('w-8 text-xs', d)}
-                {...dayButton(d)}
-              >
-                {d.day}
-              </Button>
-            ))}
-          </Calendar>
-        </Section>
+      <main className="grid grid-cols-2">
+        <Calendar picker="range" calendar={calendars[1]} weekDays={weekDays} subtractOffset={subtractOffset} addOffset={addOffset} dayButton={dayButton} />
+        <Calendar picker="range" calendar={calendars[0]} weekDays={weekDays} subtractOffset={subtractOffset} addOffset={addOffset} dayButton={dayButton} />
+        {/*<Section>*/}
+        {/*  <SectionHeader>*/}
+        {/*    <Button className="w-8" {...subtractOffset({ months: 1 })}>*/}
+        {/*      <ArrowLeftSLine size={20} />*/}
+        {/*    </Button>*/}
+        {/*    <p className="text-center text-xs">{month1}</p>*/}
+        {/*  </SectionHeader>*/}
+        {/*  <Calendar className="mb-2 items-center h-8">*/}
+        {/*    {weekDays.map((d) => (*/}
+        {/*      <p className="text-xs text-center">{d}</p>*/}
+        {/*    ))}*/}
+        {/*  </Calendar>*/}
+        {/*  <Calendar>*/}
+        {/*    {days1.map((d) => (*/}
+        {/*      <Button*/}
+        {/*        key={d.$date.toString()}*/}
+        {/*        className={getDayClassName('w-8 text-xs', d)}*/}
+        {/*        {...dayButton(d)}*/}
+        {/*      >*/}
+        {/*        {d.day}*/}
+        {/*      </Button>*/}
+        {/*    ))}*/}
+        {/*  </Calendar>*/}
+        {/*</Section>*/}
 
-        <Section>
-          <SectionHeader>
-            <p className="text-center text-xs">{month}</p>
-            <Button className="w-8" {...addOffset({ months: 1 })}>
-              <ArrowRightSLine size={20} />
-            </Button>
-          </SectionHeader>
-          <Calendar className="mb-2 items-center h-8">
-            {weekDays.map((d) => (
-              <p className="text-xs text-center">{d}</p>
-            ))}
-          </Calendar>
-          <Calendar>
-            {days.map((d) => (
-              <Button
-                key={d.$date.toString()}
-                className={getDayClassName('w-8 text-xs', d)}
-                {...dayButton(d)}
-              >
-                {d.day}
-              </Button>
-            ))}
-          </Calendar>
-        </Section>
+        {/*<Section>*/}
+        {/*  <SectionHeader>*/}
+        {/*    <p className="text-center text-xs">{month}</p>*/}
+        {/*    <Button className="w-8" {...addOffset({ months: 1 })}>*/}
+        {/*      <ArrowRightSLine size={20} />*/}
+        {/*    </Button>*/}
+        {/*  </SectionHeader>*/}
+        {/*  <Calendar className="mb-2 items-center h-8">*/}
+        {/*    {weekDays.map((d) => (*/}
+        {/*      <p className="text-xs text-center">{d}</p>*/}
+        {/*    ))}*/}
+        {/*  </Calendar>*/}
+        {/*  <Calendar>*/}
+        {/*    {days.map((d) => (*/}
+        {/*      <Button*/}
+        {/*        key={d.$date.toString()}*/}
+        {/*        className={getDayClassName('w-8 text-xs', d)}*/}
+        {/*        {...dayButton(d)}*/}
+        {/*      >*/}
+        {/*        {d.day}*/}
+        {/*      </Button>*/}
+        {/*    ))}*/}
+        {/*  </Calendar>*/}
+        {/*</Section>*/}
       </main>
     </>
   );
