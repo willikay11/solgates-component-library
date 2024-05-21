@@ -1,4 +1,5 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { CloseButton } from '@headlessui/react';
 import { Section } from './section';
 import { SectionHeader } from './section-header';
 import { Button } from './button';
@@ -15,6 +16,8 @@ interface CalendarProps {
   addOffset: ReactNode;
   dayButton: any;
   removeArrow?: 'left' | 'right';
+  close?: boolean;
+  onClose?: () => void;
 }
 
 export const Calendar: FC<CalendarProps> = ({
@@ -24,6 +27,8 @@ export const Calendar: FC<CalendarProps> = ({
   addOffset,
   dayButton,
   removeArrow,
+  close = true,
+  onClose,
 }) => {
   const { month, year, days } = calendar;
 
@@ -41,6 +46,7 @@ export const Calendar: FC<CalendarProps> = ({
         <p className="text-center text-xs">{month}</p>
         {removeArrow !== 'right' ? (
           <Button
+            as="CloseButton"
             className="w-8 absolute right-0"
             {...addOffset({ months: 1 })}
           >
