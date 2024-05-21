@@ -76,7 +76,7 @@ export const RangePicker: FC<Props> = ({
           />
         </div>
       </Popover.Button>
-      <Popover.Panel anchor="bottom start" className="w-fit mt-2 shadow-lg h-[20.635rem] rounded-[5px] pt-2 pb-2">
+      <Popover.Panel anchor="bottom start" className="w-fit mt-2 bg-white shadow-lg h-[20.635rem] rounded-[5px] pt-2 pb-2">
         <CloseButton className="hidden" ref={closeButtonRef} />
         <main className="inline-flex">
           <Calendar
