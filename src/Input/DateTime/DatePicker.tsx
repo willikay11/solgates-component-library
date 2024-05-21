@@ -5,9 +5,10 @@ import { FC } from 'react';
 
 interface Props {
   picker: 'single' | 'range';
+  disabledDate?: Date;
   textProps: Omit<TextInputProps, 'onChange'>;
 }
-export const DatePicker: FC<Props> = ({ picker, textProps }) => {
-  if (picker === 'single') return <SingleDatePicker textProps={textProps} />;
-  return <RangePicker textProps={textProps} />;
+export const DatePicker: FC<Props> = ({ picker, ...props }) => {
+  if (picker === 'single') return <SingleDatePicker {...props}   />;
+  return <RangePicker {...props} />;
 };

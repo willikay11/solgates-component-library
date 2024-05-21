@@ -1,15 +1,19 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { useDatePicker } from '@rehookify/datepicker';
 import { Input } from '../index';
-import clsx from 'clsx';
 import { TextInputProps } from '../text';
 import { Calendar } from './components';
-import { CloseButton, Popover, useClose } from '@headlessui/react';
+import { CloseButton, Popover, } from '@headlessui/react';
 
 export interface DatePickerProps {
   textProps: Omit<TextInputProps, 'onChange'>;
+  disabledDate?: Date;
 }
-export const SingleDatePicker: FC<DatePickerProps> = ({ textProps }) => {
+export const SingleDatePicker: FC<DatePickerProps> = ({ textProps, disabledDate }) => {
+  const now = new Date();
+  const M = now.getMonth();
+  const Y = now.getFullYear();
+  const D = now.getDate();
   const closeButtonRef = useRef<HTMLElement | null>(null);
   const [closePopOver, setClosePopOver] = useState<boolean>(false);
   const [selectedDates, onDatesChange] = useState<Date[]>([]);
@@ -27,7 +31,14 @@ export const SingleDatePicker: FC<DatePickerProps> = ({ textProps }) => {
     calendar: {
       startDay: 1,
     },
+    dates: {
+      minDate: disabledDate,
+    }
   });
+
+  useEffect(() => {
+    console.log('disabledDate: ', disabledDate);
+  }, [disabledDate]);
 
   useEffect(() => {
     if (closePopOver) {

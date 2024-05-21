@@ -16,8 +16,6 @@ interface CalendarProps {
   addOffset: ReactNode;
   dayButton: any;
   removeArrow?: 'left' | 'right';
-  close?: boolean;
-  onClose?: () => void;
 }
 
 export const Calendar: FC<CalendarProps> = ({
@@ -27,8 +25,6 @@ export const Calendar: FC<CalendarProps> = ({
   addOffset,
   dayButton,
   removeArrow,
-  close = true,
-  onClose,
 }) => {
   const { month, year, days } = calendar;
 
