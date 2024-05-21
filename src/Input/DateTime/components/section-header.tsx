@@ -11,7 +11,7 @@ export const SectionHeader: FC<SectionHeaderProps> = ({
   children,
 }) => {
   const headerClassName = clsx(
-    'flex justify-between items-center mb-2 border-b-[1px] border-gray-100 pl-2 pr-2',
+    'flex justify-center items-center mb-2 border-b-[1px] border-gray-100 pl-2 pr-2 relative h-[35px]',
     className
   );
   return <header className={headerClassName}>{children}</header>;

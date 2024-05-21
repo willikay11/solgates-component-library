@@ -3,10 +3,12 @@ import clsx from "clsx";
 
 export const getDayClassName = (
     className: string,
-    { selected, disabled, inCurrentMonth }: DPDay
+    { selected, disabled, inCurrentMonth, range }: DPDay
 ) =>
     clsx(
+        'day',
         className,
+        range,
         {
             'bg-orange-600 text-white hover:bg-slate-700 opacity-100': selected,
             'opacity-25 cursor-not-allowed': disabled,

@@ -43,16 +43,11 @@ export const RangePicker: FC<Props> = ({
     onOffsetChange,
     dates: {
       mode: 'range',
-      // minDate: new Date(Y, M - 2, 1),
-      // maxDate: new Date(Y, M + 2, 0),
     },
     calendar: {
       offsets: [-1, 1],
     },
   });
-
-  const { month, days } = calendars[0];
-  const { month: month1, days: days1 } = calendars[1];
 
   return (
     <>
@@ -76,9 +71,23 @@ export const RangePicker: FC<Props> = ({
           autoComplete={!autoComplete ? 'new-password' : ''}
         />
       </div>
-      <main className="grid grid-cols-2">
-        <Calendar picker="range" calendar={calendars[1]} weekDays={weekDays} subtractOffset={subtractOffset} addOffset={addOffset} dayButton={dayButton} />
-        <Calendar picker="range" calendar={calendars[0]} weekDays={weekDays} subtractOffset={subtractOffset} addOffset={addOffset} dayButton={dayButton} />
+      <main className="inline-flex">
+        <Calendar
+          removeArrow="right"
+          calendar={calendars[1]}
+          weekDays={weekDays}
+          subtractOffset={subtractOffset}
+          addOffset={addOffset}
+          dayButton={dayButton}
+        />
+        <Calendar
+          removeArrow="left"
+          calendar={calendars[0]}
+          weekDays={weekDays}
+          subtractOffset={subtractOffset}
+          addOffset={addOffset}
+          dayButton={dayButton}
+        />
         {/*<Section>*/}
         {/*  <SectionHeader>*/}
         {/*    <Button className="w-8" {...subtractOffset({ months: 1 })}>*/}
