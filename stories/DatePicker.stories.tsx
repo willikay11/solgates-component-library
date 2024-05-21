@@ -42,3 +42,60 @@ export const DisabledDate: Story = {
     },
   },
 };
+
+export const PresetWithSingleDate: Story = {
+  args: {
+    picker: 'single',
+    textProps: {
+      placeholder: 'Select date',
+    },
+    presets: [
+      {
+        label: 'Yesterday',
+        key: 1,
+        dates: [new Date(Y, M, D - 1)],
+      },
+      {
+        label: 'Last Week',
+        key: 1,
+        dates: [new Date(Y, M, D - 7)],
+      },
+      {
+        label: 'Last Month',
+        key: 1,
+        dates: [new Date(Y, M - 1, D)],
+      },
+    ],
+  },
+};
+
+export const PresetWithRangeDate: Story = {
+  args: {
+    picker: 'range',
+    textProps: {
+      placeholder: 'Select date',
+    },
+    presets: [
+      {
+        label: 'Last 7 Days',
+        key: 1,
+        dates: [new Date(Y, M, D - 7), new Date(Y, M, D)],
+      },
+      {
+        label: 'Last 14 Days',
+        key: 1,
+        dates: [new Date(Y, M, D - 14), new Date(Y, M, D)],
+      },
+      {
+        label: 'Last 30 Days',
+        key: 1,
+        dates: [new Date(Y, M, D - 30), new Date(Y, M, D)],
+      },
+      {
+        label: 'Last 90 Days',
+        key: 1,
+        dates: [new Date(Y, M, D - 90), new Date(Y, M, D)],
+      },
+    ],
+  },
+};

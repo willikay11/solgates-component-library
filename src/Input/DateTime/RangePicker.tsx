@@ -4,18 +4,21 @@ import { Calendar } from './components';
 import { ArrowLeftRightLine } from '../../Icons';
 import colors from 'tailwindcss/colors';
 import { CloseButton, Popover, useClose } from '@headlessui/react';
+import { DatePreset, Presets } from './components/presets';
 
 interface Props {
   autoComplete?: boolean;
   disabled?: boolean;
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
+  presets?: DatePreset[];
 }
 export const RangePicker: FC<Props> = ({
   autoComplete = true,
   disabled = false,
   prefixIcon,
   suffixIcon,
+  presets,
 }) => {
   const closeButtonRef = useRef<HTMLElement | null>(null);
   const now = new Date();
@@ -76,9 +79,18 @@ export const RangePicker: FC<Props> = ({
           />
         </div>
       </Popover.Button>
-      <Popover.Panel anchor="bottom start" className="w-fit mt-2 bg-white shadow-lg h-[20.635rem] rounded-[5px] pt-2 pb-2">
+      <Popover.Panel
+        anchor="bottom start"
+        className="w-fit mt-2 bg-white shadow-lg h-[20.635rem] rounded-[5px] pt-2 pb-2"
+      >
         <CloseButton className="hidden" ref={closeButtonRef} />
         <main className="inline-flex">
+          {presets?.length ? (
+            <Presets
+              presets={presets}
+              onClick={(dates) => onDatesChange(dates)}
+            />
+          ) : null}
           <Calendar
             removeArrow="right"
             calendar={calendars[1]}
