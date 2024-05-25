@@ -428,7 +428,7 @@ export const SolgatesMenu = ({
           <div className="col-span-2 inline-flex items-center justify-end">
             <Popover>
               <div className="relative flex items-center">
-                <Popover.Button className="outline-0">
+                <Popover.Button className="outline-0 flex">
                   {isLoggedIn ? (
                     <div className="flex flex-row mr-1.5 items-center">
                       <AccountCircle
@@ -441,11 +441,14 @@ export const SolgatesMenu = ({
                       </p>
                     </div>
                   ) : (
-                    <User6Line
-                      className="mr-[10px] cursor-pointer"
-                      color={colors.gray['600']}
-                      size={18}
-                    />
+                      <div className="inline-flex mr-[10px] text-gray-800 hover:text-orange-600">
+                        {/*<User6Line*/}
+                        {/*    className="cursor-pointer mr-1"*/}
+                        {/*    color={colors.gray['600']}*/}
+                        {/*    size={18}*/}
+                        {/*/>*/}
+                        <span className="text-xs">Log in / Sign Up</span>
+                      </div>
                   )}
                 </Popover.Button>
                 <Transition
