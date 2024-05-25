@@ -50,7 +50,7 @@ export const Modal = ({
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
-        <Dialog.Overlay className="blur-sm fixed inset-0" />
+        {/*<Dialog.Overlay className="blur-sm fixed inset-0" />*/}
         <div className={`fixed ${positionClass} overflow-y-auto`}>
           <div
             className={`flex min-h-full items-center justify-center mb-1 ${
