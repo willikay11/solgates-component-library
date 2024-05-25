@@ -311,11 +311,11 @@ export const SolgatesMenu = ({
               </span>
               <div className="border-[1px] border-gray-300 h-full rounded mr-2" />
               <span
-                className="inline-flex text-[10px] text-gray-600 mr-2 cursor-pointer"
+                className="inline-flex text-[10px] text-orange-600 mr-2 cursor-pointer"
                 onClick={() => onOpenShopClick?.()}
               >
                 <Shop2Line
-                  color={colors.gray['400']}
+                  color={colors.orange['600']}
                   size={14}
                   className="mr-2"
                 />
