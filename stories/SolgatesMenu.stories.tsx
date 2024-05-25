@@ -28,8 +28,8 @@ Default.args = {
   onLogoClick: () => console.log('Clicked logo'),
   phoneNumber: '+254 706020966',
   userName: 'William Kamau Kamuyu',
-  isLoggedIn: true,
-  shopName: 'Sugggggggggggggggggar',
+  isLoggedIn: false,
+  shopName: 'Sugar',
   menus: [
     {
       name: 'Men',
