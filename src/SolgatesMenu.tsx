@@ -447,7 +447,7 @@ export const SolgatesMenu = ({
                         {/*    color={colors.gray['600']}*/}
                         {/*    size={18}*/}
                         {/*/>*/}
-                        <span className="text-xs">Log in / Sign Up</span>
+                        <span className="text-xs font-medium hover:underline">Log in / Sign Up</span>
                       </div>
                   )}
                 </Popover.Button>
