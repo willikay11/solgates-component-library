@@ -21,7 +21,7 @@ export const Sidebar = ({ menus, selectedMenuKey }: SidebarProps) => {
           key={menu.key}
           onClick={() => menu?.onClick()}
           className={`w-full text-left mb-3.5 inline-flex text-xs leading-4 font-normal ${
-            selectedMenuKey === menu.key
+            menu.key.includes(selectedMenuKey)
               ? 'text-orange-600 border-r-[1px] border-orange-600'
               : 'text-gray-600'
           } ${!menu.show && 'hidden'} hover:text-orange-600`}
