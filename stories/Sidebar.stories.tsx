@@ -19,7 +19,7 @@ const Template: Story<SidebarProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  selectedMenuKey: 'pro',
+  selectedMenuKey: '2',
   menus: [
     {
       key: '1',
@@ -29,14 +29,14 @@ Default.args = {
       show: false,
     },
     {
-      key: 'orders/sales',
+      key: '2',
       title: 'Order/Sales',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
       show: true,
     },
     {
-      key: 'products',
+      key: '3',
       title: 'Products',
       icon: <User6Line size={14} />,
       onClick: () => console.log('clicked'),
