@@ -18,8 +18,10 @@ const preview = {
   decorators: [
     (Story, { parameters }) => {
       return (
-          <ThemeProvider colors={
-            {primary: '91 33 182', secondary: '234 88 12'}
+          <ThemeProvider theme={
+              {
+                  colors: { primary: '91 33 182', secondary: '234 88 12' }
+              }
           }>
             <Story />
           </ThemeProvider>

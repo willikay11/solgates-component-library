@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import clsx from 'clsx';
 
 export enum ButtonTypes {
   link = 'link',
@@ -50,63 +51,30 @@ export const Button = ({
   name,
   value,
 }: ButtonProps) => {
-  let width = 'w-auto';
-  let color = 'orange-600';
-  let bg = `bg-white text-gray-800 border border-gray-200`;
-  let padding = 'py-2.5 px-4';
-  let height = 'h-[50px]';
 
-  if (type === ButtonTypes.primary) {
-    color = 'orange-600';
-    bg = ghost
-      ? `bg-white text-${color} border border-${color}`
-      : `bg-primary text-white`;
-  }
-
-  if (type === ButtonTypes.danger) {
-    color = 'red-600';
-    bg = ghost
-      ? `bg-white text-red-600 border border-red-600`
-      : `bg-red-600 text-white`;
-  }
-
-  if (type === ButtonTypes.link) {
-    color = 'blue-600';
-    bg = `bg-white text-${color}`;
-    padding = 'p-0';
-    height = 'h-auto';
-  }
-
-  if (type === ButtonTypes.primary_blue_600) {
-    color = 'blue-600';
-    bg = ghost
-      ? `bg-white text-blue-600 border border-blue-600`
-      : `bg-blue-600 text-white`;
-  }
-
-  if (type === ButtonTypes.primary_gray_800) {
-    color = 'gray-800';
-    bg = ghost
-      ? `bg-white text-gray-800 border border-gray-800`
-      : `bg-gray-800 text-white`;
-  }
-
-  if (type === ButtonTypes.primary_orange_200) {
-    color = 'orange-200';
-    bg = ghost
-      ? `bg-white text-orange-200 border border-orange-200`
-      : `bg-orange-200 text-orange-600`;
-  }
-
-  if (type === ButtonTypes.text) {
-    padding = 'p-0';
-    height = 'h-auto';
-    bg = `bg-transparent`;
-  }
-
-  if (block) {
-    width = 'w-full';
-  }
+  const buttonClassName = clsx(
+    'rounded py-2.5 px-4 w-auto border text-xs inline-flex items-center justify-center outline-0 disabled:opacity-50 h-[50px]',
+      className,
+      {
+        'text-gray-800 border-gray-200': type === ButtonTypes.default,
+        'bg-white text-blue-600': type === ButtonTypes.link,
+        'bg-white text-gray-800': type === ButtonTypes.text,
+        'h-auto p-0 bg-transparent border-0': type === ButtonTypes.link || type === ButtonTypes.text,
+        'w-full': block,
+        'bg-primary text-white border-primary': type === ButtonTypes.primary && !ghost,
+        'bg-white text-primary border border-primary': type === ButtonTypes.primary && ghost,
+        'bg-red-600 text-white border-red-600': type === ButtonTypes.danger && !ghost,
+        'bg-white text-red-600 border border-red-600': type === ButtonTypes.danger && ghost,
+        'bg-blue-600': type === ButtonTypes.link && !ghost,
+        'bg-white text-blue-600 border border-blue-600': type === (ButtonTypes.primary_blue_600 || type === ButtonTypes.link) && ghost,
+        'bg-gray-800 text-white': type === ButtonTypes.primary_gray_800 && !ghost,
+        'bg-white text-gray-800 border border-gray-800': type === ButtonTypes.primary_gray_800 && ghost,
+        'bg-orange-200 text-orange-600': type === ButtonTypes.primary_orange_200 && !ghost,
+        'bg-white text-orange-200 border border-orange-200': type === ButtonTypes.primary_orange_200 && ghost,
+        'cursor-not-allowed' : loading || disabled,
+        'cursor-pointer': !loading && !disabled,
+      }
+  );
 
   let content = children;
 
@@ -123,7 +91,7 @@ export const Button = ({
             d="M12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"
           ></path>
           <path
-            className={`fill-${color}`}
+            className={`fill-primary`}
             d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"
           ></path>
         </svg>
@@ -140,9 +108,7 @@ export const Button = ({
       style={{ ...style }}
       name={name}
       value={value}
-      className={`${bg} text-xs inline-flex items-center justify-center outline-0 disabled:opacity-50 ${height} ${padding} rounded ${
-        loading ? 'cursor-not-allowed' : 'cursor-pointer'
-      } ${width} ${className}`}
+      className={buttonClassName}
     >
       {prefixIcon && <div className="mr-2">{prefixIcon}</div>}
       {content}
