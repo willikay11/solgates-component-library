@@ -59,7 +59,7 @@ export const Number = ({
       <div
         className={`flex h-[3.125rem] ${padding} rounded bg-white ${
           border === 'bordered' ? 'border border-gray-200' : ''
-        }  focus-within:border-orange-500 hover:border-orange-500 items-center ${errorClassName}`}
+        }  focus-within:border-primary hover:border-primary items-center ${errorClassName}`}
       >
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
         {!disabled ? (

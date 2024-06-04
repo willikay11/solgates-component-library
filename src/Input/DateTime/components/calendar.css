@@ -1,7 +1,7 @@
 .day {
-  --color: rgb(234 88 12); /* orange-700 */
-  --border-color: rgb(234 88 12); /* orange-700 */
-  --in-range-bg: rgb(254 215 170); /* orange-400 */
+  --color: --color-primary;
+  --border-color: --color-primary;
+  --in-range-bg: rgb(var(--color-primary) / 0.2);
   --border-radius: 4px;
 }
 
