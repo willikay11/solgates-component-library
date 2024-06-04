@@ -60,7 +60,7 @@ export const Button = ({
     color = 'orange-600';
     bg = ghost
       ? `bg-white text-${color} border border-${color}`
-      : `bg-${color} text-white`;
+      : `bg-primary text-white`;
   }
 
   if (type === ButtonTypes.danger) {
