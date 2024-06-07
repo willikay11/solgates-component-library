@@ -160,9 +160,7 @@ export const Select = ({
                             }
                           });
                         }}
-                        closeIcon={
-                          <CloseLine size={14} color="currentColor" />
-                        }
+                        closeIcon={<CloseLine size={14} color="currentColor" />}
                       />
                     ))}
                     {showSearch && open ? (
