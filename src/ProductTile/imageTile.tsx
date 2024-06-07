@@ -1,17 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import {
-//   AdvancedImage,
-//   lazyload,
-//   placeholder,
-//   responsive,
-// } from '@cloudinary/react';
-// import { Cloudinary } from '@cloudinary/base';
-
-// const cld = new Cloudinary({
-//   cloud: {
-//     cloudName: 'dp1buffig',
-//   },
-// });
 
 interface ImageTileProps {
   image: string;

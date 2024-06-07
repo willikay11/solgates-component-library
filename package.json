@@ -99,6 +99,7 @@
     "@willikay11/solgates-component-library": "^2.9.1",
     "clsx": "^2.1.1",
     "google-libphonenumber": "^3.2.34",
+    "react-loading-skeleton": "^3.4.0",
     "react-popper": "^2.3.0",
     "react-swipeable": "^7.0.1",
     "vite": "^4.4.9"

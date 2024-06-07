@@ -132,7 +132,8 @@ const ProductTile = ({
           </div>
         ) : (
           <>
-            {!imageLoaded && <ImageLoader height="auto" />}
+            {/*<ImageLoader height="auto" />*/}
+            {!imageLoaded && <ImageLoader height="h-64" />}
             <ImageTile
               image={imageUrl}
               onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)}

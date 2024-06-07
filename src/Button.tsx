@@ -52,33 +52,33 @@ export const Button = ({
   value,
 }: ButtonProps) => {
   const buttonClassName = clsx(
-    'rounded py-2.5 px-4 w-auto border text-xs inline-flex items-center justify-center outline-0 disabled:opacity-50 h-[50px]',
+    'rounded w-auto border text-xs inline-flex items-center justify-center outline-0 disabled:opacity-50 h-[50px]',
     className,
     {
-      'text-gray-800 border-gray-200': type === ButtonTypes.default,
-      'bg-white text-blue-600': type === ButtonTypes.link,
+      'text-gray-800 border-gray-200 py-2.5 px-4': type === ButtonTypes.default,
+      'bg-white text-blue-600 !p-0': type === ButtonTypes.link,
       'bg-white text-gray-800': type === ButtonTypes.text,
-      'h-auto p-0 bg-transparent border-0':
+      'h-auto !p-0 bg-transparent border-0':
         type === ButtonTypes.link || type === ButtonTypes.text,
       'w-full': block,
-      'bg-primary text-white border-primary':
+      'bg-primary text-white border-primary py-2.5 px-4':
         type === ButtonTypes.primary && !ghost,
-      'bg-white text-primary border border-primary':
+      'bg-white text-primary border border-primary py-2.5 px-4':
         type === ButtonTypes.primary && ghost,
-      'bg-red-600 text-white border-red-600':
+      'bg-red-600 text-white border-red-600 py-2.5 px-4':
         type === ButtonTypes.danger && !ghost,
-      'bg-white text-red-600 border border-red-600':
+      'bg-white text-red-600 border border-red-600 py-2.5 px-4':
         type === ButtonTypes.danger && ghost,
-      'bg-blue-600': type === ButtonTypes.link && !ghost,
-      'bg-white text-blue-600 border border-blue-600':
+      'bg-blue-600 py-2.5 px-4' : type === ButtonTypes.link && !ghost,
+      'bg-white text-blue-600 border border-blue-600 py-2.5 px-4':
         type === (ButtonTypes.primary_blue_600 || type === ButtonTypes.link) &&
         ghost,
-      'bg-gray-800 text-white': type === ButtonTypes.primary_gray_800 && !ghost,
-      'bg-white text-gray-800 border border-gray-800':
+      'bg-gray-800 text-white py-2.5 px-4': type === ButtonTypes.primary_gray_800 && !ghost,
+      'bg-white text-gray-800 border border-gray-800 py-2.5 px-4':
         type === ButtonTypes.primary_gray_800 && ghost,
-      'bg-orange-200 text-orange-600':
+      'bg-orange-200 text-orange-600 py-2.5 px-4':
         type === ButtonTypes.primary_orange_200 && !ghost,
-      'bg-white text-orange-200 border border-orange-200':
+      'bg-white text-orange-200 border border-orange-200 py-2.5 px-4':
         type === ButtonTypes.primary_orange_200 && ghost,
       'cursor-not-allowed': loading || disabled,
       'cursor-pointer': !loading && !disabled,
