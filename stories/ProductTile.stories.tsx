@@ -1,10 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-  PRODUCT_TYPE,
-  ProductTileProps,
-  ProductTile,
-} from '../src';
+import { PRODUCT_TYPE, ProductTileProps, ProductTile } from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Product Tile',

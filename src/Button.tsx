@@ -69,11 +69,12 @@ export const Button = ({
         type === ButtonTypes.danger && !ghost,
       'bg-white text-red-600 border border-red-600 py-2.5 px-4':
         type === ButtonTypes.danger && ghost,
-      'bg-blue-600 py-2.5 px-4' : type === ButtonTypes.link && !ghost,
+      'bg-blue-600 py-2.5 px-4': type === ButtonTypes.link && !ghost,
       'bg-white text-blue-600 border border-blue-600 py-2.5 px-4':
         type === (ButtonTypes.primary_blue_600 || type === ButtonTypes.link) &&
         ghost,
-      'bg-gray-800 text-white py-2.5 px-4': type === ButtonTypes.primary_gray_800 && !ghost,
+      'bg-gray-800 text-white py-2.5 px-4':
+        type === ButtonTypes.primary_gray_800 && !ghost,
       'bg-white text-gray-800 border border-gray-800 py-2.5 px-4':
         type === ButtonTypes.primary_gray_800 && ghost,
       'bg-orange-200 text-orange-600 py-2.5 px-4':

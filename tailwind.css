@@ -17,6 +17,16 @@
     }
 }
 
+.slick-dots {
+    bottom: 15px !important;
+}
+
+.slick-dots li button:before {
+    color: rgb(var(--color-primary)) !important;
+}
+.slick-dots li.slick-active button:before {
+    color: rgb(var(--color-primary)) !important;
+}
 /*input:checked + div {*/
 /*    @apply border-orange-600;*/
 /*}*/
