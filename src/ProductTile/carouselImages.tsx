@@ -25,7 +25,7 @@ const CarouselImages = ({
   }, [carouselImagesLoaded]);
 
   return (
-    <div className={showCarousel ? 'visible' : 'hidden'}>
+    // <div className={showCarousel ? 'visible' : 'hidden'}>
       <Carousel
         id={id}
         instanceId={id}
@@ -46,9 +46,8 @@ const CarouselImages = ({
               />
             ),
           };
-        })}
+        })!}
       />
-    </div>
   );
 };
 

@@ -25,7 +25,7 @@ const ImageTile = ({ image, onImageLoaded }: ImageTileProps) => {
     <img
       ref={imgRef}
       alt="product"
-      className={`rounded w-full ${imageLoaded ? 'visible' : 'hidden'}`}
+      className={`rounded w-full h-64 ${imageLoaded ? 'visible' : 'hidden'}`}
       onLoad={() => setImageLoaded(true)}
       src={image}
     />
