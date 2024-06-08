@@ -53,7 +53,7 @@ const Heart3LineFill = ({
 
 const Menu4Line = ({
   color = 'currentColor',
-  size,
+                     size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -72,7 +72,7 @@ const Menu4Line = ({
 
 const Search2Line = ({
   color = 'currentColor',
-  size,
+                       size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -94,7 +94,7 @@ const Search2Line = ({
 
 const ShoppingBagLine = ({
   color = 'currentColor',
-  size,
+                           size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -116,7 +116,7 @@ const ShoppingBagLine = ({
 
 const User6Line = ({
   color = 'currentColor',
-  size,
+                     size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -138,7 +138,7 @@ const User6Line = ({
 
 const AccountCircle = ({
   color = 'currentColor',
-  size,
+                         size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -159,7 +159,7 @@ const AccountCircle = ({
 
 const ArrowLeftLine = ({
   color = 'currentColor',
-  size,
+                         size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -181,7 +181,7 @@ const ArrowLeftLine = ({
 
 const ArrowRightLine = ({
   color = 'currentColor',
-  size,
+                          size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -203,7 +203,7 @@ const ArrowRightLine = ({
 
 const ArrowLeftRightLine = ({
   color = 'currentColor',
-  size,
+                              size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -224,7 +224,7 @@ const ArrowLeftRightLine = ({
 
 const ArrowLeftSLine = ({
   color = 'currentColor',
-  size,
+                          size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -246,7 +246,7 @@ const ArrowLeftSLine = ({
 
 const ArrowRightSLine = ({
   color = 'currentColor',
-  size,
+                           size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -268,7 +268,7 @@ const ArrowRightSLine = ({
 
 const Shop2Line = ({
   color = 'currentColor',
-  size,
+                     size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -290,7 +290,7 @@ const Shop2Line = ({
 
 const QuestionLine = ({
   color = 'currentColor',
-  size,
+                        size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -312,7 +312,7 @@ const QuestionLine = ({
 
 const PhoneLine = ({
   color = 'currentColor',
-  size,
+                     size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -334,7 +334,7 @@ const PhoneLine = ({
 
 const AddLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -353,7 +353,7 @@ const AddLine = ({
 
 const Minus = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -372,7 +372,7 @@ const Minus = ({
 
 const ArrowDownSLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -394,7 +394,7 @@ const ArrowDownSLine = ({
 
 const ArrowUpSLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -413,7 +413,7 @@ const ArrowUpSLine = ({
 
 const Checkline = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -435,7 +435,7 @@ const Checkline = ({
 
 const FileUpload = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -457,7 +457,7 @@ const FileUpload = ({
 
 const AddCircle = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -479,7 +479,7 @@ const AddCircle = ({
 
 const CloseLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -501,7 +501,7 @@ const CloseLine = ({
 
 const GiftLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -522,7 +522,7 @@ const GiftLine = ({
 
 const Information = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -543,7 +543,7 @@ const Information = ({
 
 const Error = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -564,7 +564,7 @@ const Error = ({
 
 const CheckDoubleLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -585,7 +585,7 @@ const CheckDoubleLine = ({
 
 const DeleteBin5Line = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -606,7 +606,7 @@ const DeleteBin5Line = ({
 
 const CheckboxBlankCircleFill = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -627,7 +627,7 @@ const CheckboxBlankCircleFill = ({
 
 const CheckLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -648,7 +648,7 @@ const CheckLine = ({
 
 const EyeLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -669,7 +669,7 @@ const EyeLine = ({
 
 const EyeCloseLine = ({
   color = 'currentColor',
-  size,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -685,6 +685,24 @@ const EyeCloseLine = ({
       fill={color}
       d="M17.8827 19.2968C16.1814 20.3755 14.1638 21.0002 12.0003 21.0002C6.60812 21.0002 2.12215 17.1204 1.18164 12.0002C1.61832 9.62282 2.81932 7.5129 4.52047 5.93457L1.39366 2.80777L2.80788 1.39355L22.6069 21.1925L21.1927 22.6068L17.8827 19.2968ZM5.9356 7.3497C4.60673 8.56015 3.6378 10.1672 3.22278 12.0002C4.14022 16.0521 7.7646 19.0002 12.0003 19.0002C13.5997 19.0002 15.112 18.5798 16.4243 17.8384L14.396 15.8101C13.7023 16.2472 12.8808 16.5002 12.0003 16.5002C9.51498 16.5002 7.50026 14.4854 7.50026 12.0002C7.50026 11.1196 7.75317 10.2981 8.19031 9.60442L5.9356 7.3497ZM12.9139 14.328L9.67246 11.0866C9.5613 11.3696 9.50026 11.6777 9.50026 12.0002C9.50026 13.3809 10.6196 14.5002 12.0003 14.5002C12.3227 14.5002 12.6309 14.4391 12.9139 14.328ZM20.8068 16.5925L19.376 15.1617C20.0319 14.2268 20.5154 13.1586 20.7777 12.0002C19.8603 7.94818 16.2359 5.00016 12.0003 5.00016C11.1544 5.00016 10.3329 5.11773 9.55249 5.33818L7.97446 3.76015C9.22127 3.26959 10.5793 3.00016 12.0003 3.00016C17.3924 3.00016 21.8784 6.87992 22.8189 12.0002C22.5067 13.6998 21.8038 15.2628 20.8068 16.5925ZM11.7229 7.50857C11.8146 7.50299 11.9071 7.50016 12.0003 7.50016C14.4855 7.50016 16.5003 9.51488 16.5003 12.0002C16.5003 12.0933 16.4974 12.1858 16.4919 12.2775L11.7229 7.50857Z"
     ></path>{' '}
+  </svg>
+);
+const Database = ({
+  color = 'currentColor',
+  size = 14,
+  className,
+  onClick,
+}: IconProps) => (
+  <svg
+    className={className}
+    onClick={() => onClick?.()}
+    width={size}
+    height={size}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill={color}
+  >
+    <path d="M11 19V9H4V19H11ZM11 7V4C11 3.44772 11.4477 3 12 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V8C2 7.44772 2.44772 7 3 7H11ZM13 5V19H20V5H13ZM5 16H10V18H5V16ZM14 16H19V18H14V16ZM14 13H19V15H14V13ZM14 10H19V12H14V10ZM5 13H10V15H5V13Z"></path>
   </svg>
 );
 
@@ -721,4 +739,5 @@ export {
   EyeCloseLine,
   ArrowLeftRightLine,
   ArrowUpSLine,
+  Database,
 };

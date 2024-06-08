@@ -25,7 +25,7 @@ const signIn = (
         placeholder="Email"
         prefixIcon={
           <IconContainer>
-            <User6Line color={colors.yellow['600']} />
+            <User6Line size={14} color={colors.yellow['600']} />
           </IconContainer>
         }
       />
