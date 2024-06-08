@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowLeftLine, ArrowRightSLine } from './Icons';
 import colors from './Colors';
-import clsx from "clsx";
+import clsx from 'clsx';
 
 interface BreadCrumb {
   title: string;
@@ -18,9 +18,9 @@ const NormalBreadCrumbs = ({ items }: BreadCrumbsProps) => {
       {items.map((item, index) => (
         <span
           key={index}
-          className={ clsx(`text-xs leading-4 font-medium`, {
+          className={clsx(`text-xs leading-4 font-medium`, {
             'text-primary ml-1': item.active,
-            'text-gray-800': !item.active
+            'text-gray-800': !item.active,
           })}
         >
           {item.title} {index < items.length - 1 ? ' / ' : null}
@@ -44,13 +44,11 @@ const AdminBreadCrumbs = ({ items }: BreadCrumbsProps) => {
             </div>
           )}
           <span
-            className={clsx(
-                `text-lg leading-7`,
-                {
-                  'font-semibold text-primary': item.active,
-                  'cursor-pointer font-medium text-gray-600 hover:text-orange-600 mr-2': !item.active
-                }
-            )}
+            className={clsx(`text-lg leading-7`, {
+              'font-semibold text-primary': item.active,
+              'cursor-pointer font-medium text-gray-600 hover:text-orange-600 mr-2':
+                !item.active,
+            })}
             onClick={() => item?.onClick?.()}
           >
             {item.title}

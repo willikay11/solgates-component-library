@@ -26,12 +26,13 @@ const CarouselImages = ({
 
   return (
     // <div className={showCarousel ? 'visible' : 'hidden'}>
-      <Carousel
-        id={id}
-        instanceId={id}
-        itemsVisible={{ mobile: 1, tablet: 1, large: 1 }}
-        arrowPosition={ARROW_POSITION.center}
-        items={carouselImages?.map((carouselImage, index) => {
+    <Carousel
+      id={id}
+      instanceId={id}
+      itemsVisible={{ mobile: 1, tablet: 1, large: 1 }}
+      arrowPosition={ARROW_POSITION.center}
+      items={
+        carouselImages?.map((carouselImage, index) => {
           return {
             item: (
               <ImageTile
@@ -46,8 +47,9 @@ const CarouselImages = ({
               />
             ),
           };
-        })!}
-      />
+        })!
+      }
+    />
   );
 };
 

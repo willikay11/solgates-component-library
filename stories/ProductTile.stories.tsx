@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import {PRODUCT_TYPE, ProductTileProps, ProductTile, Button} from '../src';
+import { PRODUCT_TYPE, ProductTileProps, ProductTile, Button } from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Product Tile',
@@ -11,16 +11,18 @@ export default meta;
 type Story = StoryObj<typeof ProductTile>;
 
 export const Products: Story = {
-  render: (args) => <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
-    <ProductTile {...args} />
-    <ProductTile {...args} />
-    <ProductTile {...args} />
-    <ProductTile {...args} />
-  </div>,
+  render: (args) => (
+    <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+    </div>
+  ),
   args: {
     id: '1',
     imageUrl:
-        'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
+      'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
     name: 'Air Jordan 1 Retro High OG',
     smallDescription: 'Dutch Green',
     buttonName: 'Nike',
@@ -31,26 +33,30 @@ export const Products: Story = {
       console.log('added to wishlist');
     },
     type: PRODUCT_TYPE.PRODUCTS,
-  }
-}
+  },
+};
 
 export const Product: Story = {
-  render: (args) => <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
-    <ProductTile {...args} />
-    <ProductTile {...args} />
-    <ProductTile {...args} />
-    <ProductTile {...args} />
-  </div>,
+  render: (args) => (
+    <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+    </div>
+  ),
   args: {
     imageUrl:
-        'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
+      'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
     type: PRODUCT_TYPE.PRODUCT,
-  }
-}
+  },
+};
 export const Carousel: Story = {
-  render: (args) => <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
-    <ProductTile {...args} />
-  </div>,
+  render: (args) => (
+    <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
+      <ProductTile {...args} />
+    </div>
+  ),
   args: {
     type: PRODUCT_TYPE.CAROUSEL,
     name: 'Air Jordan 1 Retro High OG',
@@ -65,5 +71,5 @@ export const Carousel: Story = {
       'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
       'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
     ],
-  }
-}
+  },
+};

@@ -1,16 +1,8 @@
-import React, {
-  isValidElement,
-  ReactNode,
-  useRef,
-  useState,
-} from 'react';
+import React, { isValidElement, ReactNode, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import {
-  ArrowLeftSLine,
-  ArrowRightSLine,
-} from './Icons';
+import { ArrowLeftSLine, ArrowRightSLine } from './Icons';
 import colors from './Colors';
 
 export enum ARROW_POSITION {
@@ -78,25 +70,25 @@ export const Carousel = ({
         breakpoint: 640,
         settings: {
           slidesToShow: itemsVisible.mobile,
-          slidesToScroll: 1
-        }
+          slidesToScroll: 1,
+        },
       },
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: itemsVisible.tablet,
-          slidesToScroll: 1
-        }
-      }
+          slidesToScroll: 1,
+        },
+      },
     ],
     appendDots(dots: React.ReactNode): React.JSX.Element {
       if (!showDots) return <></>;
       return (
-          <div className="absolute bottom-[15px] flex flex-row w-full justify-center">
-            <ul style={{ margin: "0px" }}> {dots} </ul>
-          </div>
+        <div className="absolute bottom-[15px] flex flex-row w-full justify-center">
+          <ul style={{ margin: '0px' }}> {dots} </ul>
+        </div>
       );
-    }
+    },
   };
 
   return (
