@@ -21,8 +21,9 @@ const Step = ({
 }: StepProps) => {
   return (
     <div
-      className={clsx('flex flex-1 relative',
+      className={clsx('flex relative',
           {
+            'flex-1': !isLastStep,
             'flex-row': labelPlacement === 'horizontal',
             'flex-col': labelPlacement === 'vertical'
           })}
