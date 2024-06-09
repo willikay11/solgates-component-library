@@ -1,5 +1,5 @@
-import {Meta, StoryObj} from '@storybook/react';
-import {Steps} from '../src';
+import { Meta, StoryObj } from '@storybook/react';
+import { Steps } from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Steps',
@@ -10,9 +10,11 @@ export default meta;
 type Story = StoryObj<typeof Steps>;
 
 export const VerticalWithVerticalLabels: Story = {
-  render: (args) => <div className="h-[30rem]">
-    <Steps {...args} />
-  </div>,
+  render: (args) => (
+    <div className="h-[30rem]">
+      <Steps {...args} />
+    </div>
+  ),
   args: {
     initial: 1,
     labelPlacement: 'vertical',
@@ -35,13 +37,15 @@ export const VerticalWithVerticalLabels: Story = {
         description: '-',
       },
     ],
-  }
-}
+  },
+};
 
 export const VerticalWithHorizontalLabels: Story = {
-  render: (args) => <div className="h-96">
-    <Steps {...args} />
-  </div>,
+  render: (args) => (
+    <div className="h-96">
+      <Steps {...args} />
+    </div>
+  ),
   args: {
     initial: 1,
     labelPlacement: 'horizontal',
@@ -64,8 +68,8 @@ export const VerticalWithHorizontalLabels: Story = {
         description: '-',
       },
     ],
-  }
-}
+  },
+};
 export const HorizontalWithHorizontalLabels: Story = {
   args: {
     initial: 1,
@@ -89,8 +93,8 @@ export const HorizontalWithHorizontalLabels: Story = {
         description: '-',
       },
     ],
-  }
-}
+  },
+};
 
 export const HorizontalWithVerticalLabels: Story = {
   args: {
@@ -115,5 +119,5 @@ export const HorizontalWithVerticalLabels: Story = {
         description: '-',
       },
     ],
-  }
-}
+  },
+};

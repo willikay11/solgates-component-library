@@ -1,12 +1,8 @@
 import React from 'react';
-import {Meta, StoryObj} from '@storybook/react';
-import {
-  ArrowRightLine, Database,
-  Table,
-  Tag,
-} from '../src';
+import { Meta, StoryObj } from '@storybook/react';
+import { ArrowRightLine, Database, Table, Tag } from '../src';
 import colors from 'tailwindcss/colors';
-import {notification} from "@willikay11/solgates-component-library";
+import { notification } from '@willikay11/solgates-component-library';
 
 const meta: Meta = {
   title: 'Data Display/Table',
@@ -46,7 +42,7 @@ export const Default: Story = {
         title: 'Payment',
         dataIndex: 'payment',
         render: (val) => (
-            <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
+          <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
         ),
       },
       {
@@ -110,7 +106,7 @@ export const Default: Story = {
       },
     ],
     total: 4,
-  }
+  },
 };
 
 export const NoContent: Story = {
@@ -143,7 +139,7 @@ export const NoContent: Story = {
         title: 'Payment',
         dataIndex: 'payment',
         render: (val) => (
-            <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
+          <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
         ),
       },
       {
@@ -166,12 +162,12 @@ export const NoContent: Story = {
     ],
     data: [],
     noContent: (
-        <div className="flex flex-col items-center justify-center">
-          <Database size={48} color={colors.gray["800"]} />
-          <p className="text-xs text-gray-800">No Data</p>
-        </div>
-    )
-  }
+      <div className="flex flex-col items-center justify-center">
+        <Database size={48} color={colors.gray['800']} />
+        <p className="text-xs text-gray-800">No Data</p>
+      </div>
+    ),
+  },
 };
 
 export const NoPagiantion: Story = {
@@ -204,7 +200,7 @@ export const NoPagiantion: Story = {
         title: 'Payment',
         dataIndex: 'payment',
         render: (val) => (
-            <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
+          <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
         ),
       },
       {
@@ -267,8 +263,8 @@ export const NoPagiantion: Story = {
         action: '',
       },
     ],
-    showPagination: false
-  }
+    showPagination: false,
+  },
 };
 
 export const Borderless: Story = {
@@ -301,7 +297,7 @@ export const Borderless: Story = {
         title: 'Payment',
         dataIndex: 'payment',
         render: (val) => (
-            <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
+          <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
         ),
       },
       {
@@ -365,8 +361,8 @@ export const Borderless: Story = {
       },
     ],
     total: 4,
-    border: "borderless",
-  }
+    border: 'borderless',
+  },
 };
 
 export const PageSizeChange: Story = {
@@ -399,7 +395,7 @@ export const PageSizeChange: Story = {
         title: 'Payment',
         dataIndex: 'payment',
         render: (val) => (
-            <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
+          <Tag tagColor="bg-red-100" textColor="text-red-500" text={val} />
         ),
       },
       {
@@ -463,10 +459,11 @@ export const PageSizeChange: Story = {
       },
     ],
     total: 4,
-    onPageSizeChange:(pageSize) =>       notification({
-      type: 'success',
-      title: 'Page size changed',
-      message: `New page size: ${pageSize}`,
-    }),
-  }
+    onPageSizeChange: (pageSize) =>
+      notification({
+        type: 'success',
+        title: 'Page size changed',
+        message: `New page size: ${pageSize}`,
+      }),
+  },
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import {Meta, StoryObj} from '@storybook/react';
-import {Card, ShoppingCart} from '../src';
-import {CART_TYPE} from "@willikay11/solgates-component-library";
+import { Meta, StoryObj } from '@storybook/react';
+import { Card, ShoppingCart } from '../src';
+import { CART_TYPE } from '@willikay11/solgates-component-library';
 
 const meta: Meta = {
   title: 'Data Display/Shopping Cart',
@@ -11,19 +11,20 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<typeof ShoppingCart>;
 export const Default = {
-  render: (args) =>
-      <div className="w-96">
-        <Card>
-          <ShoppingCart {...args} />
-        </Card>
-      </div>,
+  render: (args) => (
+    <div className="w-96">
+      <Card>
+        <ShoppingCart {...args} />
+      </Card>
+    </div>
+  ),
   args: {
     products: [
       {
         id: '1',
         name: 'Jordans',
         imageUrl:
-            'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
+          'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
         size: '8.5',
         price: 20000,
         quantity: '1',
@@ -32,7 +33,7 @@ export const Default = {
         id: '2',
         name: 'Jordans',
         imageUrl:
-            'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
+          'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
         size: '8.5',
         price: 20000,
         quantity: '1',
@@ -41,7 +42,7 @@ export const Default = {
         id: '3',
         name: 'Jordans',
         imageUrl:
-            'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
+          'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
         size: '8.5',
         price: 20000,
         quantity: '1',
@@ -50,16 +51,17 @@ export const Default = {
     showDiscount: true,
     deliveryCosts: 400,
     discountCosts: 100,
-  }
-}
+  },
+};
 
 export const Small = {
-  render: (args) =>
-      <div className="w-96">
-        <Card>
-          <ShoppingCart {...args} />
-        </Card>
-      </div>,
+  render: (args) => (
+    <div className="w-96">
+      <Card>
+        <ShoppingCart {...args} />
+      </Card>
+    </div>
+  ),
   args: {
     type: CART_TYPE.small,
     products: [
@@ -67,7 +69,7 @@ export const Small = {
         id: '1',
         name: 'Jordans',
         imageUrl:
-            'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
+          'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
         size: '8.5',
         price: 20000,
         quantity: '1',
@@ -76,7 +78,7 @@ export const Small = {
         id: '2',
         name: 'Jordans',
         imageUrl:
-            'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
+          'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
         size: '8.5',
         price: 20000,
         quantity: '1',
@@ -85,7 +87,7 @@ export const Small = {
         id: '3',
         name: 'Jordans',
         imageUrl:
-            'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
+          'https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg',
         size: '8.5',
         price: 20000,
         quantity: '1',
@@ -94,5 +96,5 @@ export const Small = {
     showDiscount: false,
     deliveryCosts: 400,
     discountCosts: 100,
-  }
-}
+  },
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import ProgressDot, { StepStatus } from './ProgressDot';
-import clsx from "clsx";
+import clsx from 'clsx';
 
 interface StepProps {
   title: string;
@@ -21,21 +21,23 @@ const Step = ({
 }: StepProps) => {
   return (
     <div
-      className={clsx('flex relative',
-          {
-            'flex-1': !isLastStep,
-            'flex-row': labelPlacement === 'horizontal',
-            'flex-col': labelPlacement === 'vertical'
-          })}
+      className={clsx('flex relative', {
+        'flex-1': !isLastStep,
+        'flex-row': labelPlacement === 'horizontal',
+        'flex-col': labelPlacement === 'vertical',
+      })}
     >
       <div
-        className={clsx('flex',
-            {
-              'flex-row': labelPlacement === 'horizontal',
-              'flex-col': labelPlacement === 'vertical'
-            })}
+        className={clsx('flex', {
+          'flex-row': labelPlacement === 'horizontal',
+          'flex-col': labelPlacement === 'vertical',
+        })}
       >
-        <ProgressDot status={status} direction={direction} isLastStep={isLastStep} />
+        <ProgressDot
+          status={status}
+          direction={direction}
+          isLastStep={isLastStep}
+        />
         <div
           className={clsx('flex bg-white z-10 flex-col', {
             'justify-center': direction === 'horizontal',

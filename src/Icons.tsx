@@ -53,7 +53,7 @@ const Heart3LineFill = ({
 
 const Menu4Line = ({
   color = 'currentColor',
-                     size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -72,7 +72,7 @@ const Menu4Line = ({
 
 const Search2Line = ({
   color = 'currentColor',
-                       size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -94,7 +94,7 @@ const Search2Line = ({
 
 const ShoppingBagLine = ({
   color = 'currentColor',
-                           size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -116,7 +116,7 @@ const ShoppingBagLine = ({
 
 const User6Line = ({
   color = 'currentColor',
-                     size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -138,7 +138,7 @@ const User6Line = ({
 
 const AccountCircle = ({
   color = 'currentColor',
-                         size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -159,7 +159,7 @@ const AccountCircle = ({
 
 const ArrowLeftLine = ({
   color = 'currentColor',
-                         size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -181,7 +181,7 @@ const ArrowLeftLine = ({
 
 const ArrowRightLine = ({
   color = 'currentColor',
-                          size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -203,7 +203,7 @@ const ArrowRightLine = ({
 
 const ArrowLeftRightLine = ({
   color = 'currentColor',
-                              size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -224,7 +224,7 @@ const ArrowLeftRightLine = ({
 
 const ArrowLeftSLine = ({
   color = 'currentColor',
-                          size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -246,7 +246,7 @@ const ArrowLeftSLine = ({
 
 const ArrowRightSLine = ({
   color = 'currentColor',
-                           size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -268,7 +268,7 @@ const ArrowRightSLine = ({
 
 const Shop2Line = ({
   color = 'currentColor',
-                     size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -290,7 +290,7 @@ const Shop2Line = ({
 
 const QuestionLine = ({
   color = 'currentColor',
-                        size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
@@ -312,7 +312,7 @@ const QuestionLine = ({
 
 const PhoneLine = ({
   color = 'currentColor',
-                     size = 14,
+  size = 14,
   className,
   onClick,
 }: IconProps) => (
