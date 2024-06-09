@@ -1,6 +1,5 @@
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { Steps, StepsProps } from '../src';
+import {Meta, StoryObj} from '@storybook/react';
+import {Steps} from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Steps',
@@ -8,30 +7,33 @@ const meta: Meta = {
 };
 
 export default meta;
+type Story = StoryObj<typeof Steps>;
 
-const Template: Story<StepsProps> = (args) => <Steps {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {
-  initial: 4,
-  labelPlacement: 'vertical',
-  items: [
-    {
-      title: 'Order Placed',
-      description: '12th Dec, 2022 | 10:34 AM',
-    },
-    {
-      title: 'Order Confirmed',
-      description: '12th Dec, 2022 | 10:38 AM',
-    },
-    {
-      title: 'Delivery',
-      description: '-',
-    },
-    {
-      title: 'Delivered',
-      description: '-',
-    },
-  ],
-};
+export const Default: Story = {
+  render: (args) => <div className="h-96">
+    <Steps {...args} />
+  </div>,
+  args: {
+    initial: 1,
+    labelPlacement: 'horizontal',
+    direction: 'horizontal',
+    items: [
+      {
+        title: 'Order Placed',
+        description: '12th Dec, 2022 | 10:34 AM',
+      },
+      {
+        title: 'Order Confirmed',
+        description: '-',
+      },
+      {
+        title: 'Delivery',
+        description: '-',
+      },
+      {
+        title: 'Delivered',
+        description: '-',
+      },
+    ],
+  }
+}
