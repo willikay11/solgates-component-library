@@ -32,7 +32,7 @@ Default.args = {
       </p>
       <Button
         onClick={() => console.log('click')}
-        className="h-[36px] mt-[5px] text-orange-600 font-semibold shadow-md"
+        className="h-[36px] mt-[5px] text-white font-semibold shadow-md"
         type={ButtonTypes.default}
       >
         Join Us
