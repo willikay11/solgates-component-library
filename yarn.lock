@@ -6137,6 +6137,7 @@ __metadata:
     "@willikay11/solgates-component-library": ^2.9.1
     autoprefixer: ^10.4.13
     babel-loader: ^9.1.0
+    chromatic: ^11.5.3
     clsx: ^2.1.1
     dts-cli: ^2.0.3
     eslint-plugin-storybook: ^0.6.14
@@ -7759,7 +7760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^11.4.0":
+"chromatic@npm:^11.4.0, chromatic@npm:^11.5.3":
   version: 11.5.3
   resolution: "chromatic@npm:11.5.3"
   peerDependencies:
