@@ -27,7 +27,7 @@ export const Checkbox = ({
 }: CheckboxProps) => {
   return (
     <>
-      <div className="flex items-start">
+      <div className="flex items-center">
         <input
           disabled={disabled}
           type="checkbox"
@@ -40,7 +40,7 @@ export const Checkbox = ({
           checked={checked}
           className={`${
             disabled ? 'cursor-not-allowed' : 'cursor-pointer'
-          } h-[14px] w-[14px] accent-orange-600 mr-1 border-gray-800`}
+          } h-[14px] w-[14px] accent-primary mr-1 border-gray-800`}
         />
         {label}
       </div>

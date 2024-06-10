@@ -85,20 +85,10 @@ const ProductTile = ({
         onClick={() => onClick?.()}
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
-          <div className="h-full relative">
-            {!imageLoaded && (
-              <img
-                alt="ImageLoader"
-                className="rounded"
-                style={{
-                  width: '100%',
-                  backgroundColor: '#f4f4f4',
-                  height: 'auto',
-                }}
-                loading="eager"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              />
-            )}
+          <div className="h-full w-full relative">
+            {/*{!imageLoaded && (*/}
+            {/*  <ImageLoader height="h-64" />*/}
+            {/*)}*/}
             <CarouselImages
               carouselImages={carouselImages}
               onAllCarouselImagesLoaded={(imageLoaded) =>
@@ -132,6 +122,7 @@ const ProductTile = ({
           </div>
         ) : (
           <>
+            {/*<ImageLoader height="auto" />*/}
             {!imageLoaded && <ImageLoader height="auto" />}
             <ImageTile
               image={imageUrl}

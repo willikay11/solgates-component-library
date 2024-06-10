@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: 'rgba(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgba(var(--color-secondary) / <alpha-value>)',
+      },
       margin: {
         '50px': '50px'
       },

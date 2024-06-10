@@ -1,10 +1,8 @@
-import React, { isValidElement, ReactNode, useEffect, useState } from 'react';
-import { useSwipeable } from 'react-swipeable';
-import {
-  ArrowLeftSLine,
-  ArrowRightSLine,
-  CheckboxBlankCircleFill,
-} from './Icons';
+import React, { isValidElement, ReactNode, useRef, useState } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { ArrowLeftSLine, ArrowRightSLine } from './Icons';
 import colors from './Colors';
 
 export enum ARROW_POSITION {
@@ -42,97 +40,10 @@ export const Carousel = ({
   id,
   showDots = true,
 }: CarouselProps) => {
-  const [viewableItemCount, setViewableItemCount] = useState(4);
-  const [lastVisibleItem, setLastVisibleItem] = useState<number>(0);
-  const [gridPercentage, setGridPercentage] = useState<number>(25);
+  let sliderRef = useRef(null);
   const [showButtons, setShowButtons] = useState<boolean>(
     arrowPosition !== ARROW_POSITION.center
   );
-
-  const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      handleClickScroll('next');
-    },
-    onSwipedRight: () => handleClickScroll('prev'),
-  });
-  // const [touchPosition, setTouchPosition] = useState<number | null>(null);
-
-  // const handleTouchStart = (event: any) => {
-  //   const touchDown: number = event.touches[0].clientX;
-  //   setTouchPosition(touchDown)
-  // }
-
-  // const handleTouchMove = (e: any) => {
-  //   const touchDown = touchPosition
-  //
-  //   if(touchDown === null) {
-  //     return
-  //   }
-  //
-  //   const currentTouch = e.touches[0].clientX
-  //   const diff = touchDown - currentTouch
-  //
-  //   if (diff > 1) {
-  //     handleClickScroll('next');
-  //   }
-  //
-  //   if (diff < -1) {
-  //     handleClickScroll('prev');
-  //   }
-  //
-  //   setTouchPosition(null)
-  // }
-
-  const handleWindowSizeChange = () => {
-    if (window.innerWidth <= 640) {
-      setGridPercentage(100 / itemsVisible.mobile);
-      setViewableItemCount(itemsVisible.mobile);
-    }
-    if (window.innerWidth > 640) {
-      setGridPercentage(100 / itemsVisible.tablet);
-      setViewableItemCount(itemsVisible.tablet);
-    }
-    if (window.innerWidth > 1024) {
-      setGridPercentage(100 / itemsVisible.large);
-      setViewableItemCount(itemsVisible.large);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowSizeChange);
-    return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
-    };
-  }, []);
-
-  useEffect(() => {
-    handleWindowSizeChange();
-  }, []);
-
-  const handleClickScroll = (type: 'prev' | 'next', moveBy: number = 1) => {
-    let scrollTo = lastVisibleItem;
-    if (type === 'prev') {
-      if (lastVisibleItem !== 0) {
-        scrollTo = lastVisibleItem - moveBy;
-      }
-    } else {
-      if (
-        lastVisibleItem < items.length - viewableItemCount &&
-        lastVisibleItem !== items.length - moveBy
-      ) {
-        scrollTo = lastVisibleItem + moveBy;
-      }
-    }
-    setLastVisibleItem(scrollTo);
-    const element = document.getElementById(`${id}-${scrollTo}`);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-      });
-    }
-  };
 
   let position = 'justify-start';
 
@@ -147,6 +58,38 @@ export const Carousel = ({
   if (arrowPosition === ARROW_POSITION.center) {
     position = 'absolute inset-y-1/2 px-2.5 w-full justify-between z-50';
   }
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: itemsVisible.large,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: itemsVisible.mobile,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: itemsVisible.tablet,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+    appendDots(dots: React.ReactNode): React.JSX.Element {
+      if (!showDots) return <></>;
+      return (
+        <div className="absolute bottom-[15px] flex flex-row w-full justify-center">
+          <ul style={{ margin: '0px' }}> {dots} </ul>
+        </div>
+      );
+    },
+  };
 
   return (
     <div
@@ -178,7 +121,7 @@ export const Carousel = ({
                   className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
                   onClick={(event) => {
                     event.stopPropagation();
-                    handleClickScroll('prev');
+                    sliderRef.slickPrev();
                   }}
                 >
                   <ArrowLeftSLine size={14} color={colors.orange['600']} />
@@ -187,7 +130,7 @@ export const Carousel = ({
                   className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
                   onClick={(event) => {
                     event.stopPropagation();
-                    handleClickScroll('next');
+                    sliderRef.slickNext();
                   }}
                 >
                   <ArrowRightSLine size={14} color={colors.orange['600']} />
@@ -197,60 +140,30 @@ export const Carousel = ({
           )}
         </div>
       ) : null}
-      <div
-        {...handlers}
-        id="carousel-item"
-        className="grid overflow-hidden gap-2"
-        style={{
-          gridTemplateColumns: `repeat(${items.length}, ${gridPercentage}%)`,
+      <Slider
+        ref={(slider) => {
+          sliderRef = slider;
         }}
-        // onTouchStart={(event) => handleTouchStart(event)}
-        // onTouchMove={handleTouchMove}
+        {...settings}
       >
         {items.map((item, index) => (
           <div
             key={index}
             id={`${id}-${index}`}
             style={{ transition: '250ms all' }}
+            className="pr-2"
           >
             {item.item}
           </div>
         ))}
-      </div>
-      {showDots && (
-        <div className="absolute bottom-[15px] flex flex-row w-full justify-center">
-          {items.map((_, index) => (
-            <div
-              className="cursor-pointer mr-1"
-              onClick={(event) => {
-                event.stopPropagation();
-                if (index > lastVisibleItem) {
-                  handleClickScroll('next', index - lastVisibleItem);
-                } else {
-                  handleClickScroll('prev', lastVisibleItem - index);
-                }
-              }}
-            >
-              <CheckboxBlankCircleFill
-                key={index}
-                size={10}
-                color={
-                  index === lastVisibleItem
-                    ? colors.orange['200']
-                    : colors.white
-                }
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      </Slider>
       {showButtons && (
         <div className={`flex flex-row ${position}`}>
           <button
             className="xs:max-sm:hidden rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
             onClick={(event) => {
               event.stopPropagation();
-              handleClickScroll('prev');
+              sliderRef.slickPrev();
             }}
           >
             <ArrowLeftSLine size={14} color={colors.orange['600']} />
@@ -259,7 +172,7 @@ export const Carousel = ({
             className="xs:max-sm:hidden rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
             onClick={(event) => {
               event.stopPropagation();
-              handleClickScroll('next');
+              sliderRef.slickNext();
             }}
           >
             <ArrowRightSLine size={14} color={colors.orange['600']} />

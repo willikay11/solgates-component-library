@@ -10,8 +10,8 @@ export interface TagProps {
 
 export const Tag = ({
   text,
-  tagColor = 'bg-orange-100',
-  textColor = 'text-orange-600',
+  tagColor = 'bg-primary/10',
+  textColor = 'text-primary',
   closeIcon,
   onClose,
 }: TagProps) => {

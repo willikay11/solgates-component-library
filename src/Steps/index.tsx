@@ -1,6 +1,7 @@
 import React from 'react';
 import Step from './components/Step';
 import { StepStatus } from './components/ProgressDot';
+import clsx from 'clsx';
 
 export interface StepsProps {
   initial: number;
@@ -20,9 +21,10 @@ export const Steps = ({
 }: StepsProps) => {
   return (
     <div
-      className={`flex h-full ${
-        direction === 'horizontal' ? 'flex-row' : 'flex-col'
-      } justify-between`}
+      className={clsx('flex justify-between', {
+        'flex-row w-full': direction === 'horizontal',
+        'flex-col h-full': direction === 'vertical',
+      })}
     >
       {items.map((step, index) => (
         <Step

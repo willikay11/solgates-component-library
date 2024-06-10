@@ -4,6 +4,10 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --color-primary: 234 88 12;
+        --color-secondary: 111 114 185;
+    },
     input[type='number']::-webkit-outer-spin-button,
     input[type='number']::-webkit-inner-spin-button,
     input[type='number'] {
@@ -13,12 +17,22 @@
     }
 }
 
-input:checked + div {
-    @apply border-orange-600;
+.slick-dots {
+    bottom: 15px !important;
 }
-input:checked + div svg {
-    @apply block;
+
+.slick-dots li button:before {
+    color: rgb(var(--color-primary)) !important;
 }
+.slick-dots li.slick-active button:before {
+    color: rgb(var(--color-primary)) !important;
+}
+/*input:checked + div {*/
+/*    @apply border-orange-600;*/
+/*}*/
+/*input:checked + div svg {*/
+/*    @apply block;*/
+/*}*/
 
 /*input[type="number"]::-webkit-outer-spin-button,*/
 /*input[type="number"]::-webkit-inner-spin-button {*/

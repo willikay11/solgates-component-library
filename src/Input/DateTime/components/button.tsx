@@ -9,7 +9,7 @@ interface ButtonProps {
 export const Button: FC<ButtonProps> = ({ className, children, ...props }) => {
   const buttonClassName = clsx(
     className,
-    'h-8 flex justify-center items-center hover:bg-orange-300 hover:text-white rounded'
+    'h-8 flex justify-center items-center hover:bg-primary/40 hover:text-white rounded'
   );
 
   return (

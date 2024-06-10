@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import clsx from 'clsx';
 
 export interface IconContainerProps {
   children: ReactNode;
@@ -13,11 +14,13 @@ export const IconContainer = ({
   borderRadius = 'rounded',
   size = '9',
 }: IconContainerProps) => {
-  return (
-    <div
-      className={`w-${size} h-${size} ${borderRadius} ${bgColor} inline-flex items-center justify-center p-2.5`}
-    >
-      {children}
-    </div>
+  const classNames = clsx(
+    `inline-flex items-center justify-center p-2.5 w-${size} h-${size}`,
+    {
+      'rounded-[50%]': borderRadius === 'rounded-full',
+      rounded: borderRadius !== 'rounded-full',
+    },
+    bgColor,
   );
+  return <div className={classNames}>{children}</div>;
 };

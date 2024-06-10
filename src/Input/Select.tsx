@@ -138,9 +138,9 @@ export const Select = ({
             style={style}
             className={`relative h-[3.125rem] w-full cursor-pointer rounded bg-white py-2 pl-3 pr-2 text-left ${
               border === 'bordered'
-                ? 'border border-gray-200 hover:border-orange-500 focus:border-orange-500'
+                ? 'border border-gray-200 hover:border-primary focus:border-primary'
                 : 'border border-transparent bg-transparent'
-            } focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300  invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500 sm:text-sm placeholder-opacity-100 focus-visible:placeholder-opacity-25`}
+            } focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-300  invalid:border-red-500 invalid:text-red-600 focus:invalid:border-red-500 focus:invalid:ring-red-500 sm:text-sm placeholder-opacity-100 focus-visible:placeholder-opacity-25`}
           >
             {({ open }) => (
               <div className="inline-flex items-center w-full h-full cursor-pointer">
@@ -160,9 +160,7 @@ export const Select = ({
                             }
                           });
                         }}
-                        closeIcon={
-                          <CloseLine size={14} color={Colors.orange['600']} />
-                        }
+                        closeIcon={<CloseLine size={14} color="currentColor" />}
                       />
                     ))}
                     {showSearch && open ? (
@@ -248,7 +246,7 @@ export const Select = ({
                       className={({ active }) =>
                         `relative cursor-pointer select-none py-2 pl-4 pr-4 ${
                           active
-                            ? 'bg-orange-100 text-orange-600'
+                            ? 'bg-primary/20 text-primary'
                             : item.disabled
                             ? 'bg-gray-100'
                             : 'text-gray-900'
@@ -268,7 +266,7 @@ export const Select = ({
                           <span
                             className={`block truncate text-xs text-gray-800 ${
                               selected
-                                ? 'font-medium text-orange-600'
+                                ? 'font-medium text-primary'
                                 : item.disabled
                                 ? 'text-gray-300'
                                 : 'font-normal'

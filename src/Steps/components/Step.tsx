@@ -1,5 +1,6 @@
 import React from 'react';
 import ProgressDot, { StepStatus } from './ProgressDot';
+import clsx from 'clsx';
 
 interface StepProps {
   title: string;
@@ -20,39 +21,35 @@ const Step = ({
 }: StepProps) => {
   return (
     <div
-      className={`flex flex-1 ${
-        labelPlacement === 'horizontal' ? 'flex-row' : 'flex-col'
-      } relative`}
+      className={clsx('flex relative', {
+        'flex-1': !isLastStep,
+        'flex-row': labelPlacement === 'horizontal',
+        'flex-col': labelPlacement === 'vertical',
+      })}
     >
       <div
-        className={`flex ${
-          labelPlacement === 'horizontal' ? 'flex-row' : 'flex-col'
-        } ${
-          !isLastStep
-            ? `w-full after:content-[''] after:absolute after:block ${
-                direction === 'horizontal'
-                  ? 'after:top-[20px] after:h-[1px] after:w-[100%]'
-                  : 'after:left-[20px] after:w-[1px] after:h-[100%]'
-              } ${
-                status === StepStatus.finished
-                  ? 'after:bg-orange-600'
-                  : 'after:bg-gray-300'
-              } after:start-full`
-            : 'w-full flex-row'
-        }`}
+        className={clsx('flex', {
+          'flex-row': labelPlacement === 'horizontal',
+          'flex-col': labelPlacement === 'vertical',
+        })}
       >
-        <ProgressDot status={status} />
+        <ProgressDot
+          status={status}
+          direction={direction}
+          isLastStep={isLastStep}
+        />
         <div
-          className={`flex ${
-            direction === 'horizontal' ? 'justify-center' : 'justify-start'
-          } bg-white z-10 flex-col ${
-            labelPlacement === 'horizontal' ? 'pl-2.5 pr-2' : 'pt-2'
-          }`}
+          className={clsx('flex bg-white z-10 flex-col', {
+            'justify-center': direction === 'horizontal',
+            'justify-start': direction === 'vertical',
+            'pl-2.5 pr-2': labelPlacement === 'horizontal',
+            'pt-2': labelPlacement === 'vertical',
+          })}
         >
           <p
             className={`${
               status === StepStatus.current
-                ? 'text-orange-600'
+                ? 'text-primary'
                 : status === StepStatus.finished
                 ? 'text-gray-900'
                 : 'text-gray-400'

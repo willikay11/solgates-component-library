@@ -10,7 +10,7 @@ export const getDayClassName = (
         className,
         range,
         {
-            'bg-orange-600 text-white hover:bg-slate-700 opacity-100': selected,
+            'bg-primary text-white hover:bg-slate-700 opacity-100': selected,
             'bg-gray-100 text-gray-300 rounded-[0px] cursor-not-allowed': disabled,
             'text-gray-300': !inCurrentMonth,
             'text-gray-800': !disabled && inCurrentMonth,
@@ -23,7 +23,7 @@ export const getMonthClassName = (
 ) => clsx(
     className,
     {
-        'bg-orange-600 text-white hover:bg-slate-700 opacity-100': selected,
+        'bg-primary text-white hover:bg-slate-700 opacity-100': selected,
         'opacity-25 cursor-not-allowed': disabled,
     }
 );
@@ -34,7 +34,7 @@ export const getYearsClassName = (
 ) => clsx(
     className,
     {
-        'bg-orange-600 text-white hover:bg-slate-700 opacity-100': selected,
+        'bg-primary text-white hover:bg-slate-700 opacity-100': selected,
         'opacity-25 cursor-not-allowed': disabled,
     }
 )

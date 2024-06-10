@@ -84,7 +84,7 @@ export const PhoneNumber = ({
   return (
     <>
       <div
-        className={`flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-orange-500 hover:border-orange-500 items-center ${errorClassName} ${className}`}
+        className={`flex w-full h-[3.125rem] p-2.5 rounded bg-white border border-gray-200 focus-within:border-primary hover:border-primary items-center ${errorClassName} ${className}`}
       >
         {prefixIcon && <div className="flex">{prefixIcon}</div>}
         <div className="w-fit">

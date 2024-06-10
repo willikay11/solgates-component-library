@@ -1,17 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import {
-//   AdvancedImage,
-//   lazyload,
-//   placeholder,
-//   responsive,
-// } from '@cloudinary/react';
-// import { Cloudinary } from '@cloudinary/base';
-
-// const cld = new Cloudinary({
-//   cloud: {
-//     cloudName: 'dp1buffig',
-//   },
-// });
 
 interface ImageTileProps {
   image: string;
@@ -38,7 +25,7 @@ const ImageTile = ({ image, onImageLoaded }: ImageTileProps) => {
     <img
       ref={imgRef}
       alt="product"
-      className={`rounded w-full ${imageLoaded ? 'visible' : 'hidden'}`}
+      className={`rounded w-full h-fit ${imageLoaded ? 'visible' : 'hidden'}`}
       onLoad={() => setImageLoaded(true)}
       src={image}
     />
