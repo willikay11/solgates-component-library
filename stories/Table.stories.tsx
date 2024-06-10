@@ -1,8 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { ArrowRightLine, Database, Table, Tag } from '../src';
+import { ArrowRightLine, Database, Table, Tag, notification } from '../src';
 import colors from 'tailwindcss/colors';
-import { notification } from '@willikay11/solgates-component-library';
 
 const meta: Meta = {
   title: 'Data Display/Table',

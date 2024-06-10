@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { CloseLine, Input } from '../src';
-import { User6Line } from '@willikay11/solgates-component-library';
+import { CloseLine, Input, User6Line } from '../src';
 const now = new Date();
 const M = now.getMonth();
 const Y = now.getFullYear();
