@@ -26,8 +26,7 @@
     "build-tailwind": "NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify",
     "lintfix": "yarn run lint -- --fix",
     "format": "prettier --write \"./src/**/*\" \"./stories/**/*.tsx\"",
-    "test-storybook": "test-storybook",
-    "chromatic": "npx chromatic --project-token=chpt_d4952778c6c4eeb"
+    "test-storybook": "test-storybook"
   },
   "publishConfig": {
     "@willikay11:registry": "https://npm.pkg.github.com"
@@ -79,6 +78,7 @@
     "@types/react-dom": "^18.0.10",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
+    "chromatic": "^11.5.3",
     "dts-cli": "^2.0.3",
     "eslint-plugin-storybook": "^0.6.14",
     "gh-pages": "^6.0.0",
