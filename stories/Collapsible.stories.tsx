@@ -1,11 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { ArrowUpSLine, Checkbox, Collapsible } from '../src';
-import {
-  ArrowDownSLine,
-  Button,
-  ButtonTypes,
-} from '@willikay11/solgates-component-library';
+import { Button, ButtonTypes, ArrowUpSLine, ArrowDownSLine, Checkbox, Collapsible } from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Collapse',
