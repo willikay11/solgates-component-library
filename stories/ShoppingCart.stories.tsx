@@ -1,7 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Card, ShoppingCart } from '../src';
-import { CART_TYPE } from '@willikay11/solgates-component-library';
+import { Card, CART_TYPE, ShoppingCart } from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Shopping Cart',
