@@ -25,7 +25,9 @@
     "deploy-storybook": "gh-pages -d storybook-static",
     "build-tailwind": "NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify",
     "lintfix": "yarn run lint -- --fix",
-    "format": "prettier --write \"./src/**/*\" \"./stories/**/*.tsx\""
+    "format": "prettier --write \"./src/**/*\" \"./stories/**/*.tsx\"",
+    "test-storybook": "test-storybook",
+    "chromatic": "npx chromatic --project-token=chpt_d4952778c6c4eeb"
   },
   "publishConfig": {
     "@willikay11:registry": "https://npm.pkg.github.com"
@@ -45,7 +47,9 @@
     "trailingComma": "es5"
   },
   "name": "@willikay11/solgates-component-library",
-  "author": "William Kamau",
+  "author": {
+    "name": "William Kamau"
+  },
   "module": "dist/solgates-component-library.esm.js",
   "size-limit": [
     {
@@ -59,6 +63,8 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.20.7",
+    "@chromatic-com/storybook": "^1.4.0",
+    "@playwright/test": "^1.44.0",
     "@size-limit/preset-small-lib": "^8.1.0",
     "@storybook/addon-essentials": "^7.4.5",
     "@storybook/addon-info": "^5.3.21",
@@ -67,6 +73,8 @@
     "@storybook/addons": "^7.4.5",
     "@storybook/builder-vite": "^7.4.5",
     "@storybook/react": "^7.4.5",
+    "@storybook/test-runner": "^0.18.1",
+    "@types/node": "^20.12.12",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "autoprefixer": "^10.4.13",
@@ -90,11 +98,14 @@
     "@babel/preset-react": "^7.22.15",
     "@cloudinary/base": "^1.0.0-beta.4",
     "@cloudinary/react": "^1.11.2",
-    "@headlessui/react": "^1.7.7",
+    "@headlessui/react": "^2.0.0",
     "@popperjs/core": "^2.11.7",
+    "@rehookify/datepicker": "^6.6.1",
     "@storybook/react-vite": "^7.4.5",
     "@tanstack/react-table": "^8.7.6",
     "@types/google-libphonenumber": "^7.4.30",
+    "@willikay11/solgates-component-library": "^2.9.1",
+    "clsx": "^2.1.1",
     "google-libphonenumber": "^3.2.34",
     "react-popper": "^2.3.0",
     "react-swipeable": "^7.0.1",
