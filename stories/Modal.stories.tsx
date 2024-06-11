@@ -1,15 +1,7 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import {
-  Button,
-  ButtonTypes,
-  IconContainer,
-  Modal,
-  MODAL_POSITION,
-  ModalProps,
-  User6Line,
-} from '../src';
-import colors from 'tailwindcss/colors';
+import {Meta, StoryObj} from '@storybook/react';
+import {Modal, MODAL_POSITION} from '../src';
+import {DefaultModal} from "./Modals";
 
 const meta: Meta = {
   title: 'Feedback/Modal',
@@ -17,50 +9,43 @@ const meta: Meta = {
 };
 
 export default meta;
+type Story = StoryObj<typeof Modal>;
 
-const Template: Story<ModalProps> = (args) => <Modal {...args} />;
+export const Default: Story = {
+    render: (args) => (<DefaultModal args={args} />),
+}
 
-// const [open, setOpen] = useState<boolean>(false);
-export const Default = Template.bind({});
-Default.args = {
-  open: true,
-  onClose: () => console.log(false),
-  position: MODAL_POSITION.TOP,
-  widthClass: 'w-full',
-  heightClass: 'h-fit',
-  roundedBorder: 'rounded-[0px]',
-  children: (
-    <div className="flex flex-col justify-center items-center">
-      <IconContainer bgColor="bg-red-50" borderRadius="rounded-full">
-        <User6Line color={colors.red['500']} />
-      </IconContainer>
+export const Top: Story = {
+    render: (args) => <DefaultModal args={args} />,
+    args: {
+        position: MODAL_POSITION.TOP
+    }
+}
 
-      <p className="text-xs leading-5 font-bold text-gray-800 mt-2.5">
-        Kindly note
-      </p>
+export const Bottom: Story = {
+    render: (args) => <DefaultModal args={args} />,
+    args: {
+        position: MODAL_POSITION.BOTTOM
+    }
+}
 
-      <p className="text-xs leading-4 font-normal text-gray-600 mt-2.5">
-        In order to place the bid, you will need to pay KES. 3,400.00 which is
-        20% of the total selling price of the item.
-      </p>
+export const EndToEndFullWidth: Story = {
+    render: (args) => <DefaultModal args={args} />,
+    args: {
+        position: MODAL_POSITION.BOTTOM,
+        widthClass: 'w-full',
+        fullWidth: true,
+    }
+}
 
-      <div className="w-full grid gap-4 grid-cols-2 mt-2.5 ">
-        <Button
-          onClick={() => console.log('clicked')}
-          type={ButtonTypes.primary}
-          block
-          ghost
-        >
-          Cancel
-        </Button>
-        <Button
-          onClick={() => console.log('clicked')}
-          type={ButtonTypes.primary}
-          block
-        >
-          Submit
-        </Button>
-      </div>
-    </div>
-  ),
-};
+export const WithoutRoundedBorders: Story = {
+    render: (args) => <DefaultModal args={args} />,
+    args: {
+        position: MODAL_POSITION.BOTTOM,
+        widthClass: 'w-full',
+        fullWidth: true,
+        roundedBorder: 'rounded-[0px]'
+    }
+}
+
+
