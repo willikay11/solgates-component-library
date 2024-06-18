@@ -86,9 +86,9 @@ const ProductTile = ({
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
           <div className="h-full w-full relative">
-            {/*{!imageLoaded && (*/}
-            {/*  <ImageLoader height="h-64" />*/}
-            {/*)}*/}
+            {!imageLoaded && (
+              <ImageLoader height="h-56" />
+            )}
             <CarouselImages
               carouselImages={carouselImages}
               onAllCarouselImagesLoaded={(imageLoaded) =>
@@ -122,8 +122,7 @@ const ProductTile = ({
           </div>
         ) : (
           <>
-            {/*<ImageLoader height="auto" />*/}
-            {!imageLoaded && <ImageLoader height="auto" />}
+            {!imageLoaded && <ImageLoader height="h-56" />}
             <ImageTile
               image={imageUrl}
               onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)}

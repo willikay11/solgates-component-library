@@ -9,7 +9,7 @@ interface ImageLoaderProps {
 const ImageLoader = ({ height = 'h-auto' }: ImageLoaderProps) => {
   return (
     <div className={`rounded ${height} w-full`}>
-      <Skeleton className="h-full" />
+      <Skeleton height="100%" />
     </div>
   );
 };
