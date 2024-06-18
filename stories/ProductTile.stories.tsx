@@ -33,6 +33,7 @@ export const Products: Story = {
       console.log('added to wishlist');
     },
     type: PRODUCT_TYPE.PRODUCTS,
+    loaderHeight: 'h-56'
   },
 };
 
@@ -46,6 +47,7 @@ export const Product: Story = {
     </div>
   ),
   args: {
+    loaderHeight: 'h-56',
     imageUrl:
       'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
     type: PRODUCT_TYPE.PRODUCT,
@@ -66,6 +68,7 @@ export const Carousel: Story = {
     addedToWishList: true,
     onAddToWishList: () => console.log('Added to wishlist'),
     onRemoveFromWishlist: () => console.log('Removed from wishlist'),
+    loaderHeight: 'h-56',
     carouselImages: [
       'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
       'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
@@ -73,3 +76,30 @@ export const Carousel: Story = {
     ],
   },
 };
+
+export const ImageFallback: Story = {
+  render: (args) => (
+      <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
+        <ProductTile {...args} />
+        <ProductTile {...args} />
+        <ProductTile {...args} />
+        <ProductTile {...args} />
+      </div>
+  ),
+  args: {
+    id: '1',
+    imageUrl:
+        'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbblajhsdkdshasd.webp',
+    name: 'Air Jordan 1 Retro High OG',
+    smallDescription: 'Dutch Green',
+    buttonName: 'Nike',
+    price: 'KSH 12,200',
+    releaseDate: 'Apr 20',
+    addedToWishList: false,
+    onAddToWishList: () => {
+      console.log('added to wishlist');
+    },
+    type: PRODUCT_TYPE.PRODUCTS,
+    loaderHeight: 'h-56'
+  },
+}

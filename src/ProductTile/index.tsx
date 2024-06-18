@@ -45,6 +45,7 @@ export interface ProductTileProps {
   // addingToCart?: boolean;
   showWishList?: boolean;
   isLoggedIn?: boolean;
+  loaderHeight?: string;
 }
 const ProductTile = ({
   id,
@@ -66,6 +67,7 @@ const ProductTile = ({
   onRemoveFromWishlist,
   addingToWishlist,
   isLoggedIn = false,
+    loaderHeight = 'h-auto'
 }: ProductTileProps) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [addedToWishlist, setAddedToWishlist] = useState<boolean>(false);
@@ -86,9 +88,9 @@ const ProductTile = ({
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
           <div className="h-full w-full relative">
-            {/*{!imageLoaded && (*/}
-            {/*  <ImageLoader height="h-64" />*/}
-            {/*)}*/}
+            {!imageLoaded && (
+              <ImageLoader height={loaderHeight} />
+            )}
             <CarouselImages
               carouselImages={carouselImages}
               onAllCarouselImagesLoaded={(imageLoaded) =>
@@ -96,7 +98,7 @@ const ProductTile = ({
               }
             />
             <div
-              className="absolute top-2.5 right-2.5"
+              className="absolute top-2.5 right-3.5"
               onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
@@ -122,8 +124,7 @@ const ProductTile = ({
           </div>
         ) : (
           <>
-            {/*<ImageLoader height="auto" />*/}
-            {!imageLoaded && <ImageLoader height="auto" />}
+            {!imageLoaded && <ImageLoader height={loaderHeight} />}
             <ImageTile
               image={imageUrl}
               onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)}
