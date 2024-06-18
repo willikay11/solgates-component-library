@@ -22,6 +22,7 @@ Default.args = {
             <ProductTile
               imageUrl="https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg"
               type={PRODUCT_TYPE.PRODUCT}
+              loaderHeight="h-10"
             />
           </div>
           <span className="ml-2.5 text-xs leading-4 font-normal text-gray-800">
@@ -44,6 +45,7 @@ Default.args = {
             <ProductTile
               imageUrl="https://secure-images.nike.com/is/image/DotCom/DZ2523_001?align=0,1&cropN=0,0,0,0&resMode=sharp&bgc=f5f5f5&wid=150&fmt=jpg"
               type={PRODUCT_TYPE.PRODUCT}
+              loaderHeight="h-10"
             />
           </div>
           <span className="ml-2.5 text-xs leading-4 font-normal text-gray-800">
