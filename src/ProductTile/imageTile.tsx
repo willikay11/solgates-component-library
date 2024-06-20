@@ -29,7 +29,7 @@ const ImageTile = ({ image, onImageLoaded }: ImageTileProps) => {
     const observer = new IntersectionObserver((entries) => {
       const [ entry ] = entries;
       if (entry.isIntersecting) {
-        setIsVisible(entry.isIntersecting);
+        setIsVisible(true);
       }
     }, { root: null, rootMargin: '0px', threshold: 0.5 });
 
