@@ -33,7 +33,7 @@ export const Products: Story = {
       console.log('added to wishlist');
     },
     type: PRODUCT_TYPE.PRODUCTS,
-    loaderHeight: 'h-56'
+    loaderHeight: 'h-64'
   },
 };
 
@@ -68,7 +68,7 @@ export const Carousel: Story = {
     addedToWishList: true,
     onAddToWishList: () => console.log('Added to wishlist'),
     onRemoveFromWishlist: () => console.log('Removed from wishlist'),
-    loaderHeight: 'h-56',
+    loaderHeight: 'h-64',
     carouselImages: [
       'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
       'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbbl.webp',
@@ -100,6 +100,6 @@ export const ImageFallback: Story = {
       console.log('added to wishlist');
     },
     type: PRODUCT_TYPE.PRODUCTS,
-    loaderHeight: 'h-56'
+    loaderHeight: 'h-64'
   },
 }

@@ -6147,6 +6147,7 @@ __metadata:
     postcss: ^8.4.20
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-intersection-observer: ^9.10.3
     react-is: ^18.2.0
     react-loading-skeleton: ^3.4.0
     react-popper: ^2.3.0
@@ -16863,6 +16864,19 @@ __metadata:
     react: ^16.6.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.6.0 || ^17.0.0 || ^18.0.0
   checksum: 7ca7e47f8af14ea186688b512a87ab912bf6041312b297f92516341b140b3f0f8aedf5a44d226d99e69ed067b0cc106e38aeb9c9b738ffcc63d10721c844db90
+  languageName: node
+  linkType: hard
+
+"react-intersection-observer@npm:^9.10.3":
+  version: 9.10.3
+  resolution: "react-intersection-observer@npm:9.10.3"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+  checksum: 482c89a432e582749f3cb3dd696e08638a92e41fbcb81bcb3dc3cadebcf8b40bc47e7a52d2a7e8c4f9eb2a3c1c29b4cb0f21007c1540da05893b5abb11d7a761
   languageName: node
   linkType: hard
 
