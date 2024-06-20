@@ -108,6 +108,7 @@
     "@willikay11/solgates-component-library": "^2.9.1",
     "clsx": "^2.1.1",
     "google-libphonenumber": "^3.2.34",
+    "react-intersection-observer": "^9.10.3",
     "react-loading-skeleton": "^3.4.0",
     "react-popper": "^2.3.0",
     "react-slick": "^0.30.2",

@@ -67,7 +67,7 @@ const ProductTile = ({
   onRemoveFromWishlist,
   addingToWishlist,
   isLoggedIn = false,
-    loaderHeight = 'h-auto'
+  loaderHeight = 'h-auto'
 }: ProductTileProps) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [addedToWishlist, setAddedToWishlist] = useState<boolean>(false);
