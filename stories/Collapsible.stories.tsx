@@ -1,6 +1,13 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Button, ButtonTypes, ArrowUpSLine, ArrowDownSLine, Checkbox, Collapsible } from '../src';
+import {
+  Button,
+  ButtonTypes,
+  ArrowUpSLine,
+  ArrowDownSLine,
+  Checkbox,
+  Collapsible,
+} from '../src';
 
 const meta: Meta = {
   title: 'Data Display/Collapse',

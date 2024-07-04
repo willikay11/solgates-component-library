@@ -1,28 +1,13 @@
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { ToggleSwitch, ToggleSwitchProps } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
+import { ToggleSwitch } from '../src';
 
 const meta: Meta = {
   title: 'Input/Toggle Switch',
   component: ToggleSwitch,
-  argTypes: {
-    onClick: { action: 'clicked' },
-    enabled: {
-      control: {
-        type: 'boolean',
-      },
-    },
-  },
-  parameters: {
-    controls: { expanded: true },
-  },
 };
 
 export default meta;
 
-const Template: Story<ToggleSwitchProps> = (args) => <ToggleSwitch {...args} />;
+type Story = StoryObj<typeof ToggleSwitch>;
 
-export const Default = Template.bind({});
-Default.args = {
-  enabled: true,
-};
+export const Default: Story = {};

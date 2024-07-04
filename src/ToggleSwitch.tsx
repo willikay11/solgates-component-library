@@ -1,23 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch } from '@headlessui/react';
+import clsx from 'clsx';
 
 export interface ToggleSwitchProps {
-  enabled: boolean;
+  label: string;
   onChange: (value: Boolean) => void;
 }
 
-export const ToggleSwitch = ({ enabled, onChange }: ToggleSwitchProps) => (
-  <Switch
-    checked={enabled}
-    onChange={onChange}
-    className={`${enabled ? 'bg-orange-600' : 'bg-gray-200'}
-          relative inline-flex flex-shrink-0 h-7 w-14 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-  >
-    <span className="sr-only">Use setting</span>
-    <span
-      aria-hidden="true"
-      className={`${enabled ? 'translate-x-7' : 'translate-x-0'}
-            pointer-events-none inline-block h-6 w-6 rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200`}
-    />
-  </Switch>
-);
+export const ToggleSwitch = ({ label, onChange }: ToggleSwitchProps) => {
+  const [enabled, setEnabled] = useState<boolean>(false);
+
+  return (
+    <Switch
+      checked={enabled}
+      onChange={(value) => {
+        setEnabled(value);
+        onChange(value);
+      }}
+      className={clsx(
+        'relative inline-flex items-center flex-shrink-0 h-7 w-14 px-2 border-1 border-transparent rounded-[30px] cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
+        {
+          'bg-primary': enabled,
+          'bg-primary/10': !enabled,
+        }
+      )}
+    >
+      <span className="sr-only">{label}</span>
+      <span
+        aria-hidden="true"
+        className={clsx(
+          ' h-4 w-4 pointer-events-none inline-block rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200',
+          {
+            'translate-x-6': enabled,
+            'translate-x-0': !enabled,
+          }
+        )}
+      />
+    </Switch>
+  );
+};

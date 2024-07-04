@@ -32,9 +32,9 @@ export const Rounded: Story = {
 
 export const BackgroundColor: Story = {
   render: (args) => (
-      <IconContainer {...args}>
-        <User6Line color={colors.green['600']} />
-      </IconContainer>
+    <IconContainer {...args}>
+      <User6Line color={colors.green['600']} />
+    </IconContainer>
   ),
   args: {
     borderRadius: 'rounded-full',
@@ -44,9 +44,9 @@ export const BackgroundColor: Story = {
 
 export const Size: Story = {
   render: (args) => (
-      <IconContainer {...args}>
-        <User6Line color={colors.green['600']} />
-      </IconContainer>
+    <IconContainer {...args}>
+      <User6Line color={colors.green['600']} />
+    </IconContainer>
   ),
   args: {
     size: '24',
