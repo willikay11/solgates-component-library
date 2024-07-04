@@ -33,7 +33,7 @@ export const Products: Story = {
       console.log('added to wishlist');
     },
     type: PRODUCT_TYPE.PRODUCTS,
-    loaderHeight: 'h-64'
+    loaderHeight: 'h-64',
   },
 };
 
@@ -79,17 +79,17 @@ export const Carousel: Story = {
 
 export const ImageFallback: Story = {
   render: (args) => (
-      <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
-        <ProductTile {...args} />
-        <ProductTile {...args} />
-        <ProductTile {...args} />
-        <ProductTile {...args} />
-      </div>
+    <div className="grid md:gap-4 md:grid-cols-4 lg:gap-4 lg:grid-cols-4">
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+      <ProductTile {...args} />
+    </div>
   ),
   args: {
     id: '1',
     imageUrl:
-        'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbblajhsdkdshasd.webp',
+      'https://res.cloudinary.com/dp1buffig/image/upload/v1695717367/solgates/Products/Shorts/Nike%20Club%20Fleece/jqlzmtwfer7ck0tqkbblajhsdkdshasd.webp',
     name: 'Air Jordan 1 Retro High OG',
     smallDescription: 'Dutch Green',
     buttonName: 'Nike',
@@ -100,6 +100,6 @@ export const ImageFallback: Story = {
       console.log('added to wishlist');
     },
     type: PRODUCT_TYPE.PRODUCTS,
-    loaderHeight: 'h-64'
+    loaderHeight: 'h-64',
   },
-}
+};

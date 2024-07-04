@@ -67,7 +67,7 @@ const ProductTile = ({
   onRemoveFromWishlist,
   addingToWishlist,
   isLoggedIn = false,
-  loaderHeight = 'h-auto'
+  loaderHeight = 'h-auto',
 }: ProductTileProps) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [addedToWishlist, setAddedToWishlist] = useState<boolean>(false);
@@ -88,9 +88,7 @@ const ProductTile = ({
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
           <div className="h-full w-full relative">
-            {!imageLoaded && (
-              <ImageLoader height={loaderHeight} />
-            )}
+            {!imageLoaded && <ImageLoader height={loaderHeight} />}
             <CarouselImages
               carouselImages={carouselImages}
               onAllCarouselImagesLoaded={(imageLoaded) =>

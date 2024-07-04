@@ -10,4 +10,4 @@ export default meta;
 
 type Story = StoryObj<typeof ToggleSwitch>;
 
-export const Default: Story = {}
+export const Default: Story = {};

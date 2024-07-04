@@ -441,14 +441,16 @@ export const SolgatesMenu = ({
                       </p>
                     </div>
                   ) : (
-                      <div className="inline-flex mr-[10px] text-gray-800 hover:text-orange-600">
-                        {/*<User6Line*/}
-                        {/*    className="cursor-pointer mr-1"*/}
-                        {/*    color={colors.gray['600']}*/}
-                        {/*    size={18}*/}
-                        {/*/>*/}
-                        <span className="text-xs font-medium hover:underline">Log in / Sign Up</span>
-                      </div>
+                    <div className="inline-flex mr-[10px] text-gray-800 hover:text-orange-600">
+                      {/*<User6Line*/}
+                      {/*    className="cursor-pointer mr-1"*/}
+                      {/*    color={colors.gray['600']}*/}
+                      {/*    size={18}*/}
+                      {/*/>*/}
+                      <span className="text-xs font-medium hover:underline">
+                        Log in / Sign Up
+                      </span>
+                    </div>
                   )}
                 </Popover.Button>
                 <Transition

@@ -20,7 +20,7 @@ export const IconContainer = ({
       'rounded-[50%]': borderRadius === 'rounded-full',
       rounded: borderRadius !== 'rounded-full',
     },
-    bgColor,
+    bgColor
   );
   return <div className={classNames}>{children}</div>;
 };
