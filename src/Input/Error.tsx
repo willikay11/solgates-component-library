@@ -1,4 +1,3 @@
-
 export interface InputErrorProps {
   name: string;
   error: string;

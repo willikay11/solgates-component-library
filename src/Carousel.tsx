@@ -30,6 +30,7 @@ export interface CarouselProps {
     | ARROW_POSITION.center;
   items: CarouselItem[];
   showDots?: boolean;
+  initialSlide?: number;
 }
 
 export const Carousel = ({
@@ -39,6 +40,7 @@ export const Carousel = ({
   title,
   id,
   showDots = true,
+  initialSlide = 0,
 }: CarouselProps) => {
   let sliderRef: any = useRef(null);
   const [showButtons, setShowButtons] = useState<boolean>(
@@ -60,6 +62,7 @@ export const Carousel = ({
   }
 
   const settings = {
+    initialSlide,
     dots: true,
     infinite: false,
     speed: 500,

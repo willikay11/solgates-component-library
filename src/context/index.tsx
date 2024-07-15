@@ -18,8 +18,8 @@ const ThemeContext = createContext({
   theme: {
     colors: {
       primary: '255 115 179',
-      secondary: '111 114 185'
-    }
+      secondary: '111 114 185',
+    },
   },
 });
 export default function ThemeProvider(props: Props) {

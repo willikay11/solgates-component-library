@@ -10,7 +10,7 @@ import {
   PhoneLine,
   QuestionLine,
   Search2Line,
-  Shop2Line,
+  Shop,
   ShoppingBagLine,
   User6Line,
 } from './Icons';
@@ -314,11 +314,7 @@ export const SolgatesMenu = ({
                 className="inline-flex text-[10px] text-orange-600 mr-2 cursor-pointer"
                 onClick={() => onOpenShopClick?.()}
               >
-                <Shop2Line
-                  color={colors.orange['600']}
-                  size={14}
-                  className="mr-2"
-                />
+                <Shop color={colors.orange['600']} size={14} className="mr-2" />
                 <span className="truncate w-[60px]">
                   {shopName ? shopName : 'Open Shop'}
                 </span>

@@ -1,10 +1,4 @@
-import {
-  Button,
-  ButtonTypes,
-  IconContainer,
-  Modal,
-  User6Line,
-} from '../src';
+import { Button, ButtonTypes, IconContainer, Modal, User6Line } from '../src';
 import colors from 'tailwindcss/colors';
 import { useState } from 'react';
 
