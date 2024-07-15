@@ -6105,7 +6105,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@willikay11/solgates-component-library@^2.9.1, @willikay11/solgates-component-library@workspace:.":
+"@willikay11/solgates-component-library@workspace:.":
   version: 0.0.0-use.local
   resolution: "@willikay11/solgates-component-library@workspace:."
   dependencies:
@@ -6134,7 +6134,6 @@ __metadata:
     "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.10
     "@types/react-slick": ^0.23.13
-    "@willikay11/solgates-component-library": ^2.9.1
     autoprefixer: ^10.4.13
     babel-loader: ^9.1.0
     chromatic: ^11.5.3
