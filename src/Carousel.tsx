@@ -1,5 +1,7 @@
 import { isValidElement, ReactNode, useRef, useState } from 'react';
 import Slider from 'react-slick';
+import './utils/slick.min.css';
+import './utils/slick-theme.min.css';
 import { ArrowLeftSLine, ArrowRightSLine } from './Icons';
 import colors from './Colors';
 
