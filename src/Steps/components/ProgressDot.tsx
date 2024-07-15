@@ -1,4 +1,3 @@
-import React from 'react';
 import { Checkline } from '../../Icons';
 import colors from '../../Colors';
 import clsx from 'clsx';

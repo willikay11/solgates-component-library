@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 
 export interface TextInputProps {
   name?: string;
@@ -13,6 +13,7 @@ export interface TextInputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   autoComplete?: boolean;
+  readOnly?: boolean;
 }
 
 export const Text: FC<TextInputProps> = ({

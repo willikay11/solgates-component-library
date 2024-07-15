@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import { Button, ButtonTypes } from '../Button';
 import { AddLine, Minus } from '../Icons';
 import colors from '../Colors';

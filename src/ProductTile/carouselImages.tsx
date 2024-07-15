@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { ARROW_POSITION, Carousel } from '../Carousel';
 import ImageTile from './imageTile';
 
@@ -14,13 +14,13 @@ const CarouselImages = ({
   const [carouselImagesLoaded, setCarouselImagesLoaded] = useState<boolean[]>(
     []
   );
-  const [showCarousel, setShowCarousel] = useState<boolean>(false);
+  // const [showCarousel, setShowCarousel] = useState<boolean>(false);
   const id = useId();
 
   useEffect(() => {
     if (carouselImagesLoaded.length > 0) {
       onAllCarouselImagesLoaded(true);
-      setShowCarousel(true);
+      // setShowCarousel(true);
     }
   }, [carouselImagesLoaded]);
 

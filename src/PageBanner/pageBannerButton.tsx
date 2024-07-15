@@ -1,5 +1,4 @@
 import { Button, ButtonTypes } from '../Button';
-import React from 'react';
 
 interface PageBannerButtonInterface {
   name?: string;

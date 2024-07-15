@@ -1,4 +1,3 @@
-import React from 'react';
 import Step from './components/Step';
 import { StepStatus } from './components/ProgressDot';
 import clsx from 'clsx';

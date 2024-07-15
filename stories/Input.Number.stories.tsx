@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { AddLine, Heart3Line, IconContainer, Input, Minus } from '../src';
-import React from 'react';
 import colors from '../src/Colors';
 
 const meta: Meta = {

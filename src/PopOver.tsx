@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { Popover } from '@headlessui/react';
 import { usePopper } from 'react-popper';
 
@@ -34,7 +34,7 @@ export const PopOver = ({
   placement = 'bottom',
 }: PopOverProps) => {
   let [referenceElement, setReferenceElement] = useState<any>(null);
-  let [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
+  let [popperElement, setPopperElement] = useState<any>(null);
   let { styles, attributes } = usePopper(referenceElement, popperElement, {
     strategy: 'fixed',
     placement,

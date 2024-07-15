@@ -1,8 +1,7 @@
-import React, { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
+import { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { Tag } from '../Tag';
 import { CloseLine } from '../Icons';
-import Colors from '../Colors';
 
 export interface selectItem {
   label: string;

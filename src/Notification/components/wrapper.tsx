@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { cloneElement } from "react";
 import { ElementType } from '../global';
 import { PositionType, resolvePosition } from '../utils/resolvePosition';
 
@@ -38,7 +38,7 @@ export const Wrapper: React.FC<WrapperType> = ({
 
         return (
           <div key={`${prefix}-${child.key}`}>
-            {React.cloneElement(child.content, {
+            {cloneElement(child.content, {
               id: child.key,
               closable: child.closable,
               className: `ant-${prefix}-notice ${child.animation} ${closableClass} ${className}`,

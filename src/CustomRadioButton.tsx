@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { Loading } from './Loading';
 import colors from './Colors';

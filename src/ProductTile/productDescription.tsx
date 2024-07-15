@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, ButtonTypes } from '../Button';
 import { PRODUCT_TYPE } from './index';
 

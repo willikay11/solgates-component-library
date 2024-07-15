@@ -1,5 +1,5 @@
 import ProductDescription from './productDescription';
-import React, { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
 import ImageLoader from './imageLoader';

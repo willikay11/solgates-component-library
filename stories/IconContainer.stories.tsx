@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import { IconContainer, User6Line } from '../src';
 import colors from 'tailwindcss/colors';

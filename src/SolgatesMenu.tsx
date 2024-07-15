@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef, ReactNode, useEffect } from 'react';
+import { Fragment, useState, useRef, ReactNode, useEffect } from 'react';
 import { Menu, Transition, Disclosure, Popover } from '@headlessui/react';
 import {
   AccountCircle,
