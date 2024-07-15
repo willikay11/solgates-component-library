@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useEffect, useMemo } from 'react';
 
 type colors = {
   primary: string;
@@ -6,15 +6,21 @@ type colors = {
 };
 
 type theme = {
-  colors;
+  colors: colors;
 };
+
 type Props = {
   children: React.ReactNode;
-  theme?: theme;
+  theme: theme;
 };
 
 const ThemeContext = createContext({
-  theme: {},
+  theme: {
+    colors: {
+      primary: '255 115 179',
+      secondary: '111 114 185',
+    },
+  },
 });
 export default function ThemeProvider(props: Props) {
   useEffect(() => {

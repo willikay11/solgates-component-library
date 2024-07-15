@@ -1,4 +1,4 @@
-import React, { isValidElement, ReactNode, useEffect, useState } from 'react';
+import { isValidElement, ReactNode, useEffect, useState, useRef } from 'react';
 import { AddCircle, CloseLine, FileUpload } from '../Icons';
 import colors from '../Colors';
 
@@ -38,8 +38,8 @@ export const Upload = ({
   disabled = false,
 }: UploadProps) => {
   const formats = 'image/*';
-  const hiddenFileInput = React.useRef<HTMLInputElement>(null);
-  const dropNDropInput = React.useRef<HTMLDivElement>(null);
+  const hiddenFileInput = useRef<HTMLInputElement>(null);
+  const dropNDropInput = useRef<HTMLDivElement>(null);
   const [uploadedImages, setUploadedImages] = useState<any[]>(imageUrls || []);
   // const [dragging, setDragging] = useState<boolean>(false);
 

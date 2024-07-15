@@ -1,4 +1,4 @@
-import React, { isValidElement, ReactNode } from 'react';
+import { isValidElement, ReactNode } from 'react';
 import { Input } from './Input';
 import { ArrowDownSLine } from './Icons';
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export interface RangeProps {
   name: string;
@@ -8,7 +8,7 @@ export interface RangeProps {
 }
 
 export const Range = ({ name, min = 0, max = 100, step = 1 }: RangeProps) => {
-  const ref = React.useRef<any>(null);
+  const ref = useRef<any>(null);
   const [range, setRange] = useState<any>(min);
   const [moveStep, setMoveStep] = useState(0);
   const onChange = (event: any) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PRODUCT_TYPE, ProductTile } from './ProductTile';
 import { Input } from './Input';
 import { IconContainer } from './IconContainer';

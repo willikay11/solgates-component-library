@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import {
   ARROW_POSITION,
@@ -52,7 +51,7 @@ export const Default: Story = {
             name="Air Jordan 1 Retro High OG"
             smallDescription="Dutch Green"
             buttonName="Nike"
-            price="KSH 12,200"
+            price="KSH 17,200"
             loaderHeight="h-56"
             imageUrl="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/a6bce3ef-bc25-4e3d-b45b-db8223745a49/air-force-1-react-mens-shoes-WSjfs8.png"
           />
@@ -138,5 +137,6 @@ export const Default: Story = {
       },
     ],
     showDots: false,
+    initialSlide: 1
   },
 };

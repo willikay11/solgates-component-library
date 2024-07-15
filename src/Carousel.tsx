@@ -1,4 +1,4 @@
-import React, { isValidElement, ReactNode, useRef, useState } from 'react';
+import { isValidElement, ReactNode, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -30,6 +30,7 @@ export interface CarouselProps {
     | ARROW_POSITION.center;
   items: CarouselItem[];
   showDots?: boolean;
+  initialSlide?: number;
 }
 
 export const Carousel = ({
@@ -39,8 +40,9 @@ export const Carousel = ({
   title,
   id,
   showDots = true,
+  initialSlide = 0,
 }: CarouselProps) => {
-  let sliderRef = useRef(null);
+  let sliderRef: any = useRef(null);
   const [showButtons, setShowButtons] = useState<boolean>(
     arrowPosition !== ARROW_POSITION.center
   );
@@ -60,6 +62,7 @@ export const Carousel = ({
   }
 
   const settings = {
+    initialSlide,
     dots: true,
     infinite: false,
     speed: 500,
@@ -130,7 +133,7 @@ export const Carousel = ({
                   className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
                   onClick={(event) => {
                     event.stopPropagation();
-                    sliderRef.slickNext();
+                    sliderRef?.slickNext();
                   }}
                 >
                   <ArrowRightSLine size={14} color={colors.orange['600']} />

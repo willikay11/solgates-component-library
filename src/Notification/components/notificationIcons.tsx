@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { ElementType } from '../global';
 import { CheckDoubleLine, Information, Error } from '../../Icons';
 import colors from '../../Colors';

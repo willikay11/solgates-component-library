@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowLeftLine, ArrowRightSLine } from './Icons';
 import colors from './Colors';
 import clsx from 'clsx';

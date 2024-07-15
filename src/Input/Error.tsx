@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface InputErrorProps {
   name: string;
   error: string;

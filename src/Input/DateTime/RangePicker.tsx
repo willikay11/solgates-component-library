@@ -1,9 +1,9 @@
-import React, { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import { useDatePicker } from '@rehookify/datepicker';
 import { Calendar } from './components';
 import { ArrowLeftRightLine } from '../../Icons';
 import colors from 'tailwindcss/colors';
-import { CloseButton, Popover, useClose } from '@headlessui/react';
+import { CloseButton, Popover } from '@headlessui/react';
 import { DatePreset, Presets } from './components/presets';
 
 interface Props {
@@ -17,7 +17,6 @@ export const RangePicker: FC<Props> = ({
   autoComplete = true,
   disabled = false,
   prefixIcon,
-  suffixIcon,
   presets,
 }) => {
   const closeButtonRef = useRef<HTMLElement | null>(null);
@@ -26,7 +25,7 @@ export const RangePicker: FC<Props> = ({
   const [offsetDate, onOffsetChange] = useState<Date>(now);
   const [closePopOver, setClosePopOver] = useState<boolean>(false);
   const {
-    data: { calendars, weekDays, formattedDates, months, years },
+    data: { calendars, weekDays, formattedDates },
     propGetters: { dayButton, addOffset, subtractOffset },
   } = useDatePicker({
     selectedDates,
@@ -98,7 +97,6 @@ export const RangePicker: FC<Props> = ({
             subtractOffset={subtractOffset}
             addOffset={addOffset}
             dayButton={dayButton}
-            close={false}
           />
           <Calendar
             removeArrow="left"
@@ -107,7 +105,6 @@ export const RangePicker: FC<Props> = ({
             subtractOffset={subtractOffset}
             addOffset={addOffset}
             dayButton={dayButton}
-            close={false}
           />
         </main>
       </Popover.Panel>

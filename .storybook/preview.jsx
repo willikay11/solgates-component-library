@@ -11,7 +11,6 @@ import '../tailwind.css';
 //     }
 //   }
 // };
-import React from 'react';
 import ThemeProvider from "../src/context";
 
 const preview = {

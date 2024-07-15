@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Switch } from '@headlessui/react';
 import clsx from 'clsx';
 

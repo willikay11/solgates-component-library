@@ -1,4 +1,3 @@
-import * as React from 'react';
 import StoreMessage from '../stores/StoreMessage';
 import Message, { MessageProps } from '../components/message';
 import { PositionType } from '../utils/resolvePosition';

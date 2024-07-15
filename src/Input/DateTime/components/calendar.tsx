@@ -1,10 +1,9 @@
-import { FC, ReactNode, useEffect, useRef, useState } from 'react';
-import { CloseButton } from '@headlessui/react';
+import { FC } from 'react';
 import { Section } from './section';
 import { SectionHeader } from './section-header';
 import { Button } from './button';
 import { ArrowLeftSLine, ArrowRightSLine } from '../../../Icons';
-import { getDayClassName } from '../../../../utils/classNames';
+import { getDayClassName } from '../../../utils/classNames';
 import { DPCalendar } from '@rehookify/datepicker/dist/types/calendar';
 
 import './calendar.css';
@@ -12,8 +11,8 @@ import './calendar.css';
 interface CalendarProps {
   calendar: DPCalendar;
   weekDays: string[];
-  subtractOffset: ReactNode;
-  addOffset: ReactNode;
+  subtractOffset: any;
+  addOffset: any;
   dayButton: any;
   removeArrow?: 'left' | 'right';
 }
@@ -26,7 +25,7 @@ export const Calendar: FC<CalendarProps> = ({
   dayButton,
   removeArrow,
 }) => {
-  const { month, year, days } = calendar;
+  const { month, days } = calendar;
 
   return (
     <Section>

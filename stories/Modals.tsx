@@ -1,13 +1,6 @@
-import {
-  Button,
-  ButtonTypes,
-  IconContainer,
-  Modal,
-  MODAL_POSITION,
-  User6Line,
-} from '../src';
+import { Button, ButtonTypes, IconContainer, Modal, User6Line } from '../src';
 import colors from 'tailwindcss/colors';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const DefaultModal = (props) => {
   const [open, setOpen] = useState<boolean>(false);

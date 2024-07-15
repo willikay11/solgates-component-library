@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { useDatePicker } from '@rehookify/datepicker';
 import { Input } from '../index';
 import { TextInputProps } from '../text';
@@ -21,7 +21,7 @@ export const SingleDatePicker: FC<DatePickerProps> = ({
   const [closePopOver, setClosePopOver] = useState<boolean>(false);
   const [selectedDates, onDatesChange] = useState<Date[]>([]);
   const {
-    data: { calendars, weekDays, formattedDates, months, years },
+    data: { calendars, weekDays, formattedDates },
     propGetters: { dayButton, addOffset, subtractOffset },
   } = useDatePicker({
     selectedDates,
