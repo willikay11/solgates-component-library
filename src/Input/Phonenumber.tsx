@@ -115,7 +115,11 @@ export const PhoneNumber = ({
           value={currentText || value}
           defaultValue={defaultValue}
           onChange={(e) => {
-            if (e.target.value && e.target.value.length > 1 && e.target.value.charAt(0) == '0') {
+            if (
+              e.target.value &&
+              e.target.value.length > 1 &&
+              e.target.value.charAt(0) == '0'
+            ) {
               setCurrentText(e.target.value.slice(1));
             } else {
               setCurrentText(e.target.value);

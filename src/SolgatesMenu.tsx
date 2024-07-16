@@ -10,7 +10,7 @@ import {
   PhoneLine,
   QuestionLine,
   Search2Line,
-  Shop2Line,
+  Shop2Fill,
   ShoppingBagLine,
   User6Line,
 } from './Icons';
@@ -314,7 +314,7 @@ export const SolgatesMenu = ({
                 className="inline-flex text-[10px] text-orange-600 mr-2 cursor-pointer"
                 onClick={() => onOpenShopClick?.()}
               >
-                <Shop2Line
+                <Shop2Fill
                   color={colors.orange['600']}
                   size={14}
                   className="mr-2"
@@ -441,14 +441,16 @@ export const SolgatesMenu = ({
                       </p>
                     </div>
                   ) : (
-                      <div className="inline-flex mr-[10px] text-gray-800 hover:text-orange-600">
-                        {/*<User6Line*/}
-                        {/*    className="cursor-pointer mr-1"*/}
-                        {/*    color={colors.gray['600']}*/}
-                        {/*    size={18}*/}
-                        {/*/>*/}
-                        <span className="text-xs font-medium hover:underline">Log in / Sign Up</span>
-                      </div>
+                    <div className="inline-flex mr-[10px] text-gray-800 hover:text-orange-600">
+                      {/*<User6Line*/}
+                      {/*    className="cursor-pointer mr-1"*/}
+                      {/*    color={colors.gray['600']}*/}
+                      {/*    size={18}*/}
+                      {/*/>*/}
+                      <span className="text-xs font-medium hover:underline">
+                        Log in / Sign Up
+                      </span>
+                    </div>
                   )}
                 </Popover.Button>
                 <Transition
