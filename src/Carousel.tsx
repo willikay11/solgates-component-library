@@ -2,6 +2,7 @@ import { isValidElement, ReactNode, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { ArrowLeftSLine, ArrowRightSLine } from './Icons';
 import colors from './Colors';
+import clsx from "clsx";
 
 export enum ARROW_POSITION {
   bottomLeft = 'bottomLeft',
@@ -41,6 +42,7 @@ export const Carousel = ({
   initialSlide = 0,
 }: CarouselProps) => {
   let sliderRef: any = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState<number>(initialSlide || 0);
   const [showButtons, setShowButtons] = useState<boolean>(
     arrowPosition !== ARROW_POSITION.center
   );
@@ -90,6 +92,9 @@ export const Carousel = ({
         </div>
       );
     },
+    afterChange(currentSlide: number) {
+      setCurrentSlide(currentSlide);
+    }
   };
 
   return (
@@ -120,21 +125,29 @@ export const Carousel = ({
               >
                 <button
                   className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center mr-2"
+                  disabled={currentSlide === 0}
                   onClick={(event) => {
                     event.stopPropagation();
                     sliderRef.slickPrev();
                   }}
                 >
-                  <ArrowLeftSLine size={14} color={colors.orange['600']} />
+                  <ArrowLeftSLine size={14} className={clsx('', {
+                    'text-orange-600': currentSlide !== 0,
+                    'text-gray-200': currentSlide === 0,
+                  })} />
                 </button>
                 <button
                   className="rounded-full bg-gray-50 h-[28px] w-[28px] inline-flex flex-row justify-center items-center"
+                  disabled={currentSlide === items.length - 1}
                   onClick={(event) => {
                     event.stopPropagation();
                     sliderRef?.slickNext();
                   }}
                 >
-                  <ArrowRightSLine size={14} color={colors.orange['600']} />
+                  <ArrowRightSLine size={14} className={clsx('', {
+                    'text-orange-600': currentSlide !== items.length - 1,
+                    'text-gray-200': currentSlide === items.length - 1,
+                  })} />
                 </button>
               </div>
             </div>
