@@ -11,22 +11,22 @@ import '../tailwind.css';
 //     }
 //   }
 // };
-import ThemeProvider from "../src/context";
+// import ThemeProvider from "../src/context";
 
 const preview = {
-  decorators: [
-    (Story, { parameters }) => {
-      return (
-          <ThemeProvider theme={
-              {
-                  colors: { primary: '91 33 182', secondary: '234 88 12' }
-              }
-          }>
-            <Story />
-          </ThemeProvider>
-      );
-    },
-  ],
+  // decorators: [
+  //   (Story, { parameters }) => {
+  //     return (
+  //         <ThemeProvider theme={
+  //             {
+  //                 colors: { primary: '91 33 182', secondary: '234 88 12' }
+  //             }
+  //         }>
+  //           <Story />
+  //         </ThemeProvider>
+  //     );
+  //   },
+  // ],
 }
 
 export default preview;
