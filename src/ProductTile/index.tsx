@@ -81,55 +81,47 @@ const ProductTile = ({
   return (
     <div className="group/product-tile w-full rounded">
       <div
-        className="w-full relative rounded flex justify-center items-center cursor-pointer"
+        className={`w-full relative rounded flex justify-center items-center ${type !== PRODUCT_TYPE.PRODUCT ? 'cursor-pointer' : ''}`}
         onClick={() => onClick?.()}
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
-          <div className="h-full relative">
-            {!imageLoaded && (
-              <img
-                alt="ImageLoader"
-                className="rounded"
-                style={{
-                  width: '100%',
-                  backgroundColor: '#f4f4f4',
-                  height: 'auto',
-                }}
-                loading="eager"
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          <>
+            {!imageLoaded ? (
+                <ImageLoader height="auto" />
+            ) : null}
+            <div className={`h-full relative ${imageLoaded ? 'visible' : 'invisible'}`}>
+              <CarouselImages
+                  carouselImages={carouselImages}
+                  onAllCarouselImagesLoaded={(imageLoaded) => {
+                    setImageLoaded(imageLoaded)
+                  }}
               />
-            )}
-            <CarouselImages
-              carouselImages={carouselImages}
-              onAllCarouselImagesLoaded={(imageLoaded) =>
-                setImageLoaded(imageLoaded)
-              }
-            />
-            <div
-              className="absolute top-2.5 right-2.5"
-              onClick={(event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                if (addedToWishList) {
-                  setAddedToWishlist(false);
-                  onRemoveFromWishlist?.(id);
-                } else {
-                  if (isLoggedIn) {
-                    setAddedToWishlist(true);
-                  }
-                  onAddToWishList?.(id);
-                }
-              }}
-            >
-              {addingToWishlist ? (
-                <Loading fillColor={colors.orange['600']} />
-              ) : addedToWishlist ? (
-                <Heart3LineFill color={colors.red['500']} />
-              ) : (
-                <Heart3Line color={colors.gray['600']} />
-              )}
+              <div
+                  className="absolute top-2.5 right-2.5"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if (addedToWishList) {
+                      setAddedToWishlist(false);
+                      onRemoveFromWishlist?.(id);
+                    } else {
+                      if (isLoggedIn) {
+                        setAddedToWishlist(true);
+                      }
+                      onAddToWishList?.(id);
+                    }
+                  }}
+              >
+                {addingToWishlist ? (
+                    <Loading fillColor={colors.orange['600']} />
+                ) : addedToWishlist ? (
+                    <Heart3LineFill color={colors.red['500']} />
+                ) : (
+                    <Heart3Line color={colors.gray['600']} />
+                )}
+              </div>
             </div>
-          </div>
+          </>
         ) : (
           <>
             {!imageLoaded && <ImageLoader height="auto" />}
