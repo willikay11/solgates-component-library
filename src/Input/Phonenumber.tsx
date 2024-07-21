@@ -18,7 +18,7 @@ export interface PhoneNumberProps {
   countryCodeFormName?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
-  onPhoneNumberValid?: (valid: boolean) => void;
+  onPhoneNumberValid?: (valid: boolean, number?: string) => void;
   autoComplete?: boolean;
 }
 export const PhoneNumber = ({
@@ -72,7 +72,7 @@ export const PhoneNumber = ({
           setCurrentError(currentError);
         } else {
           setCurrentError(undefined);
-          onPhoneNumberValid?.(true);
+          onPhoneNumberValid?.(true, `+${selectedCountryCode}${currentText}`);
         }
       }
     } catch (e) {
