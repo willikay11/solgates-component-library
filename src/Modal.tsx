@@ -15,6 +15,7 @@ export interface ModalProps {
   heightClass?: string;
   roundedBorder?: string;
   fullWidth?: boolean;
+  closable?: boolean;
 }
 
 export const Modal = ({

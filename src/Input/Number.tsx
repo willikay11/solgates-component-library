@@ -82,7 +82,7 @@ export const Number = ({
           }}
           className={`ml-2 ${width} ${
             centered ? 'text-center' : ''
-          } outline-0 placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-xs text-gray-800 focus:border-transparent focus:ring-0`}
+          } outline-0 placeholder:text-base md:placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 text-base md:text-xs text-gray-800 focus:border-transparent focus:ring-0`}
           disabled={disabled}
         />
         {!disabled ? (

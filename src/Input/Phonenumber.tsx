@@ -126,7 +126,7 @@ export const PhoneNumber = ({
             }
             onChange?.(e);
           }}
-          className={`ml-2 outline-0 w-full placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-xs text-gray-800 focus:border-transparent focus:ring-0`}
+          className={`ml-2 outline-0 w-full placeholder:text-base md:placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-base md:text-xs text-gray-800 focus:border-transparent focus:ring-0`}
           aria-invalid={Boolean(error) || undefined}
           aria-errormessage={error ? `${name}-error` : undefined}
           disabled={disabled}
