@@ -72,7 +72,7 @@ export const PhoneNumber = ({
           setCurrentError(currentError);
         } else {
           setCurrentError(undefined);
-          onPhoneNumberValid?.(true, `+${selectedCountryCode}${currentText}`);
+          onPhoneNumberValid?.(true, `+${selectedCountryCode}${currentText}`.replace(/\s+/g, ''));
         }
       }
     } catch (e) {
@@ -115,14 +115,15 @@ export const PhoneNumber = ({
           value={currentText || value}
           defaultValue={defaultValue}
           onChange={(e) => {
+            const value = e.target.value;
             if (
-              e.target.value &&
-              e.target.value.length > 1 &&
-              e.target.value.charAt(0) == '0'
+              value &&
+              value.length > 1 &&
+              value.charAt(0) == '0'
             ) {
-              setCurrentText(e.target.value.slice(1));
+              setCurrentText(value.slice(1));
             } else {
-              setCurrentText(e.target.value);
+              setCurrentText(value);
             }
             onChange?.(e);
           }}
