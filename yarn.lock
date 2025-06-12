@@ -4693,6 +4693,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/csf@npm:^0.1.0":
+  version: 0.1.11
+  resolution: "@storybook/csf@npm:0.1.11"
+  dependencies:
+    type-fest: ^2.19.0
+  checksum: ba2a265f62ad82a2853b069f77e974efe31bed263a640ca1dd8e6d7e194022018a67ad4a2587ae928f33ae45aaf6ffedd5925ba3fcf3fe5b7996667a918e22eb
+  languageName: node
+  linkType: hard
+
 "@storybook/csf@npm:^0.1.2, @storybook/csf@npm:^0.1.7":
   version: 0.1.7
   resolution: "@storybook/csf@npm:0.1.7"
@@ -4996,6 +5005,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/testing-react@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@storybook/testing-react@npm:2.0.1"
+  dependencies:
+    "@storybook/csf": ^0.1.0
+  peerDependencies:
+    "@storybook/client-logger": ^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0
+    "@storybook/preview-api": ^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0
+    "@storybook/react": ^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0
+    "@storybook/types": ^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: efc32621c0b606409b622887832a2c86bc94f1d1012957f59c4d804d4b9414146dae7e50c8419bba1c85c0fc08feafbc4a4179a21cbda05fdb3ca4b891892dac
+  languageName: node
+  linkType: hard
+
 "@storybook/theming@npm:5.3.21":
   version: 5.3.21
   resolution: "@storybook/theming@npm:5.3.21"
@@ -5246,6 +5270,26 @@ __metadata:
   version: 3.5.0
   resolution: "@tanstack/virtual-core@npm:3.5.0"
   checksum: e2eec72a6d7334625e9201f24a3e045c9c39f1fffda667d8a8a8b3906cdf22a2ab2605698dcffe6cf4438c6cc5934f43a04fae089221d3dd91a0d9fd925a8551
+  languageName: node
+  linkType: hard
+
+"@testing-library/react@npm:^16.0.1":
+  version: 16.0.1
+  resolution: "@testing-library/react@npm:16.0.1"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+  peerDependencies:
+    "@testing-library/dom": ^10.0.0
+    "@types/react": ^18.0.0
+    "@types/react-dom": ^18.0.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 1837db473ea018cf2b5d0cbfffb7a30d0d759e5a7f23aad431441c77bcc3d2533250cd003a61878fd908267df47404cedcb5914f12d79e413002c659652b37fd
   languageName: node
   linkType: hard
 
@@ -6128,7 +6172,9 @@ __metadata:
     "@storybook/react": ^7.4.5
     "@storybook/react-vite": ^7.4.5
     "@storybook/test-runner": ^0.18.1
+    "@storybook/testing-react": ^2.0.1
     "@tanstack/react-table": ^8.7.6
+    "@testing-library/react": ^16.0.1
     "@types/google-libphonenumber": ^7.4.30
     "@types/node": ^20.12.12
     "@types/react": ^18.0.26
