@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import clsx from 'clsx';
 // import {
 //   AdvancedImage,
 //   lazyload,
@@ -16,9 +17,11 @@ import React, { useEffect, useRef, useState } from 'react';
 interface ImageTileProps {
   image: string;
   onImageLoaded: (loaded: boolean) => void;
+  height?: string;
+  width?: string;
 }
 
-const ImageTile = ({ image, onImageLoaded }: ImageTileProps) => {
+const ImageTile = ({ image, onImageLoaded, height, width }: ImageTileProps) => {
   const imgRef = useRef<HTMLImageElement>(null);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
@@ -38,7 +41,10 @@ const ImageTile = ({ image, onImageLoaded }: ImageTileProps) => {
     <img
       ref={imgRef}
       alt="product"
-      className={`rounded w-full ${imageLoaded ? 'visible' : 'hidden'}`}
+      className={clsx('rounded w-full', height, width, {
+        'visible': imageLoaded,
+        'hidden': !imageLoaded,
+      })}
       onLoad={() => setImageLoaded(true)}
       src={image}
     />

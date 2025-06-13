@@ -6,6 +6,7 @@ import ImageLoader from './imageLoader';
 import { Heart3Line, Heart3LineFill } from '../Icons';
 import colors from '../Colors';
 import { Loading } from '../Loading';
+import clsx from 'clsx';
 
 export enum PRODUCT_TYPE {
   PRODUCTS = 'products',
@@ -45,6 +46,8 @@ export interface ProductTileProps {
   // addingToCart?: boolean;
   showWishList?: boolean;
   isLoggedIn?: boolean;
+  height?: string;
+  width?: string;
 }
 const ProductTile = ({
   id,
@@ -66,6 +69,8 @@ const ProductTile = ({
   onRemoveFromWishlist,
   addingToWishlist,
   isLoggedIn = false,
+  height,
+  width,
 }: ProductTileProps) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [addedToWishlist, setAddedToWishlist] = useState<boolean>(false);
@@ -79,9 +84,11 @@ const ProductTile = ({
   }, [addedToWishList]);
 
   return (
-    <div className="group/product-tile w-full rounded">
+    <div className={clsx('group/product-tile w-full rounded', height, width)}>
       <div
-        className={`w-full relative rounded flex justify-center items-center ${type !== PRODUCT_TYPE.PRODUCT ? 'cursor-pointer' : ''}`}
+        className={clsx('w-full relative rounded flex justify-center items-center', {
+          'cursor-pointer': type !== PRODUCT_TYPE.PRODUCT,
+        })}
         onClick={() => onClick?.()}
       >
         {type === PRODUCT_TYPE.CAROUSEL && carouselImages?.length ? (
@@ -89,7 +96,10 @@ const ProductTile = ({
             {!imageLoaded ? (
                 <ImageLoader height="auto" />
             ) : null}
-            <div className={`h-full relative ${imageLoaded ? 'visible' : 'invisible'}`}>
+            <div className={clsx('h-full relative', {
+              'visible': imageLoaded,
+              'invisible': !imageLoaded,
+            })}>
               <CarouselImages
                   carouselImages={carouselImages}
                   onAllCarouselImagesLoaded={(imageLoaded) => {
@@ -128,6 +138,8 @@ const ProductTile = ({
             <ImageTile
               image={imageUrl}
               onImageLoaded={(imageLoaded) => setImageLoaded(imageLoaded)}
+              height={height}
+              width={width}
             />
           </>
         )}

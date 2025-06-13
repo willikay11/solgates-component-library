@@ -12,10 +12,12 @@ import {
   Search2Line,
   Shop2Fill,
   ShoppingBagLine,
+  UserAddLine,
   User6Line,
 } from './Icons';
 import colors from './Colors';
 import { Modal, MODAL_POSITION } from './Modal';
+import clsx from 'clsx';
 
 const openIcon = <AddLine color={colors.gray['800']} size={18} />;
 const closeIcon = <Minus color={colors.gray['800']} size={18} />;
@@ -274,7 +276,10 @@ export const SolgatesMenu = ({
             <button
               key={menu.id}
               onClick={() => onClickMenuItem(menu)}
-              className="mr-[20px] mb-3 flex justify-start items-start h-full bg-white text-sm font-medium leading-4 text-gray-800 border-orange-600"
+              className={clsx('mr-[20px] mb-3 flex justify-start items-start h-full bg-white text-sm font-medium leading-4 border-orange-600', {
+                'text-orange-600': menu.active,
+                'text-gray-800': !menu.active,
+              })}
             >
               {menu.name}
             </button>
@@ -418,7 +423,10 @@ export const SolgatesMenu = ({
                   onClick={() => {
                     onClickMenuItem(menu);
                   }}
-                  className="mr-[20px] inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium text-gray-800 active:border-b border-orange-600 hover:border-b border-orange-600"
+                  className={clsx('mr-[20px] inline-flex justify-center items-center h-full bg-white text-xs leading-4 font-medium active:border-b border-orange-600 hover:border-b border-orange-600', {
+                    'text-orange-600': menu.active,
+                    'text-gray-800': !menu.active,
+                  })}
                 >
                   {menu.name}
                 </button>
@@ -426,57 +434,15 @@ export const SolgatesMenu = ({
             })}
           </div>
           <div className="col-span-2 inline-flex items-center justify-end">
-            <Popover>
-              <div className="relative flex items-center">
-                <Popover.Button className="outline-0 flex">
-                  {isLoggedIn ? (
-                    <div className="flex flex-row mr-1.5 items-center">
-                      <AccountCircle
-                        className="mr-[5px] cursor-pointer"
-                        color={colors.blue['500']}
-                        size={20}
-                      />
-                      <p className="text-xs font-normal leading-4 text-gray-800 truncate w-[60px]">
-                        Hi, {userName}
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="inline-flex mr-[10px] text-gray-800 hover:text-orange-600">
-                      {/*<User6Line*/}
-                      {/*    className="cursor-pointer mr-1"*/}
-                      {/*    color={colors.gray['600']}*/}
-                      {/*    size={18}*/}
-                      {/*/>*/}
-                      <span className="text-xs font-medium hover:underline">
-                        Log in / Sign Up
-                      </span>
-                    </div>
-                  )}
-                </Popover.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease duration-500 transform"
-                  enterFrom="opacity-0 -translate-y-6"
-                  enterTo="opacity-100 translate-y-0"
-                  leave="transition ease duration-300 transform"
-                  leaveFrom="opacity-100 translate-y-0"
-                  leaveTo="opacity-0 -translate-y-6"
-                >
-                  <Popover.Panel className="min-w-[220px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
-                    {userContent}
-                  </Popover.Panel>
-                </Transition>
-              </div>
-            </Popover>
-            {!isSeller && (
-              <>
+              {!isSeller && (
+              <div className="inline-flex mr-1">
                 <Menu>
                   <div className="relative flex items-center">
                     <div className="cursor-pointer" onClick={onClickWishList}>
                       <Heart3Line
                         className="mr-[10px] cursor-pointer"
                         color={colors.gray['600']}
-                        size={18}
+                        size={16}
                       />
                     </div>
                   </div>
@@ -490,7 +456,7 @@ export const SolgatesMenu = ({
                       <ShoppingBagLine
                         className="mr-[10px] cursor-pointer"
                         color={colors.gray['600']}
-                        size={18}
+                        size={16}
                       />
                       {newProductAdded && (
                         <div className="absolute -top-3 right-[8px]">
@@ -515,15 +481,57 @@ export const SolgatesMenu = ({
                     </Transition>
                   </div>
                 </Menu>
-                <div onClick={() => onSearchClick?.()}>
+                {/* <div onClick={() => onSearchClick?.()}>
                   <Search2Line
                     className="mr-[10px] cursor-pointer"
                     color={colors.gray['600']}
                     size={18}
                   />
-                </div>
-              </>
+                </div> */}
+              </div>
             )}
+            <Popover>
+              <div className="relative flex items-center">
+                <Popover.Button className="outline-0 flex">
+                  {isLoggedIn ? (
+                    <div className="flex flex-row mr-1.5 items-center">
+                      <AccountCircle
+                        className="mr-[5px] cursor-pointer"
+                        color={colors.blue['500']}
+                        size={14}
+                      />
+                      <p className="text-xs font-normal leading-4 text-gray-800 truncate w-[60px]">
+                        Hi, {userName}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="inline-flex mr-[10px] text-gray-800 items-center text-orange-600">
+                      <UserAddLine
+                        className="cursor-pointer mr-1"
+                        color={colors.orange['600']}
+                        size={14}
+                      />
+                      <span className="text-xs font-medium hover:underline">
+                        Join/Sign In
+                      </span>
+                    </div>
+                  )}
+                </Popover.Button>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease duration-500 transform"
+                  enterFrom="opacity-0 -translate-y-6"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease duration-300 transform"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 -translate-y-6"
+                >
+                  <Popover.Panel className="min-w-[220px] p-[15px] rounded z-50 absolute top-[40px] mt-2 -left-[100px] min-h-[100px] divide-y divide-gray-100 bg-white shadow-xl focus:outline-none">
+                    {userContent}
+                  </Popover.Panel>
+                </Transition>
+              </div>
+            </Popover>
           </div>
         </div>
         <div className="mx-3 flex md:hidden lg:hidden xl:hidden 2xl:hidden items-center h-[60px]">
