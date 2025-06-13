@@ -86,7 +86,7 @@ const ProductTile = ({
   return (
     <div className={clsx('group/product-tile w-full rounded', height, width)}>
       <div
-        className={clsx('w-full relative rounded flex justify-center items-center', {
+        className={clsx('w-full relative rounded flex justify-center items-center', height, width, {
           'cursor-pointer': type !== PRODUCT_TYPE.PRODUCT,
         })}
         onClick={() => onClick?.()}
