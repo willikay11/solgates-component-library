@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import ImageLoader from '../ProductTile/imageLoader';
+import { ImageLoader } from '../ProductTile/imageLoader';
 
 interface PageBannerImageInterface {
   image: string;
