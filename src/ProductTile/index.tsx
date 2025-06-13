@@ -2,7 +2,7 @@ import ProductDescription from './productDescription';
 import { ReactNode, useEffect, useState } from 'react';
 import CarouselImages from './carouselImages';
 import ImageTile from './imageTile';
-import ImageLoader from './imageLoader';
+import { ImageLoader } from './imageLoader';
 import { Heart3Line, Heart3LineFill } from '../Icons';
 import colors from '../Colors';
 import { Loading } from '../Loading';
@@ -47,7 +47,7 @@ export interface ProductTileProps {
   isLoggedIn?: boolean;
   loaderHeight?: string;
 }
-const ProductTile = ({
+export const ProductTile = ({
   id,
   name,
   price,
@@ -146,5 +146,3 @@ const ProductTile = ({
     </div>
   );
 };
-
-export { ProductTile };
