@@ -47,7 +47,7 @@ export interface ProductTileProps {
   isLoggedIn?: boolean;
   loaderHeight?: string;
 }
-const ProductTile = ({
+export const ProductTile = ({
   id,
   name,
   price,
@@ -146,5 +146,3 @@ const ProductTile = ({
     </div>
   );
 };
-
-export { ProductTile };
