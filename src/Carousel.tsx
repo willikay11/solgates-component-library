@@ -32,6 +32,10 @@ export interface CarouselProps {
   initialSlide?: number;
   autoplay?: boolean;
   autoplaySpeed?: number;
+  infinite?: boolean;
+  slidesToScroll?: number;
+  speed?: number;
+  rtl?: boolean;
 }
 
 export const Carousel = ({
@@ -42,8 +46,12 @@ export const Carousel = ({
   id,
   showDots = true,
   initialSlide = 0,
-  autoplay = false,
-  autoplaySpeed = 3000,
+  autoplay = true,
+  autoplaySpeed = 1000,
+  infinite = true,
+  slidesToScroll = 1,
+  speed = 500,
+  rtl = false,
   }: CarouselProps) => {
   let sliderRef: any = useRef(null);
   const [currentSlide, setCurrentSlide] = useState<number>(initialSlide || 0);
@@ -68,12 +76,14 @@ export const Carousel = ({
   const settings = {
     initialSlide,
     dots: true,
-    infinite: false,
-    speed: 500,
+    infinite,
+    speed: speed,
     slidesToShow: itemsVisible.large,
     autoplay,
     autoplaySpeed,
-    slidesToScroll: 1,
+    slidesToScroll,
+    cssEase: 'linear',
+    rtl,
     responsive: [
       {
         breakpoint: 640,

@@ -23,6 +23,8 @@ export const Default: Story = {
   ),
   args: {
     id: 'a',
+    speed: 1000,
+    autoplaySpeed: 1000,
     title: <span>Popular Right Now</span>,
     arrowPosition: ARROW_POSITION.topRight,
     itemsVisible: {
