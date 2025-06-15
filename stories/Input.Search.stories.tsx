@@ -15,5 +15,8 @@ export const Default: Story = {
   args: {
     name: 'search',
     placeholder: 'Search anything ...',
+    loading: true,
+    searchResults: <div>Hello</div>,
+    prefixIcon: <User6Line />,
   },
 };
