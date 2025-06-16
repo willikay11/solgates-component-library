@@ -7,13 +7,13 @@ import {
   Heart3Line,
   Menu4Line,
   Minus,
-  PhoneLine,
   QuestionLine,
   Search2Line,
   Shop2Fill,
   ShoppingBagLine,
   UserAddLine,
   User6Line,
+  WhatsappLine,
 } from './Icons';
 import colors from './Colors';
 import { Modal, MODAL_POSITION } from './Modal';
@@ -295,7 +295,7 @@ export const SolgatesMenu = ({
           <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
             <div className="md:col-start-2 md:col-span-8 lg:col-start-3 lg:col-span-8 flex w-full items-center justify-center md:justify-end lg:justify-end">
               <span className="inline-flex text-[10px] text-gray-600 mr-2">
-                <PhoneLine
+                <WhatsappLine
                   color={colors.gray['400']}
                   size={14}
                   className="mr-2"
