@@ -289,7 +289,7 @@ export const SolgatesMenu = ({
       <div
         className={`fixed relative w-full h-[80px] ${
           isSeller ? 'md:h-[90px]' : 'md:h-[128px]'
-        } bg-white items-center border-b border-gray-100`}
+        } bg-white items-center`}
       >
         {!isSeller ? (
           <div className="bg-gray-100 flex py-[4px] lg:grid lg:grid-cols-12 w-full">
