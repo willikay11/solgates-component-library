@@ -31,7 +31,7 @@ const ProductDescription = ({
     return (
       <div className="pt-0.5 h-full">
         <p
-          className="text-xs leading-4 font-semibold mt-2.5 text-gray-800 text-left cursor-pointer"
+          className="text-xs leading-4 font-semibold mt-1 text-gray-800 text-left cursor-pointer"
           onClick={() => onClick?.()}
         >
           {name}
