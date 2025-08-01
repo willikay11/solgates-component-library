@@ -23,6 +23,7 @@ export const Success: Story = {
         type: 'success',
         title: 'This is a Title',
         message: `This is a success notification`,
+        action: <Button type={ButtonTypes.link}>View more</Button>,
       });
     },
   },

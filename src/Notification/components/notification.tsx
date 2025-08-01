@@ -9,6 +9,7 @@ export interface NotificationProps {
   message?: React.ReactNode;
   icon?: React.ReactNode;
   type?: ElementType;
+  action?: React.ReactNode;
   id?: string;
   onRemove?: () => void;
   className?: string;
@@ -23,6 +24,7 @@ export const Notification: React.FC<NotificationProps> = ({
   onRemove,
   id,
   type = 'success',
+  action,
   className = '',
   ...rest
 }) => {
@@ -44,6 +46,7 @@ export const Notification: React.FC<NotificationProps> = ({
               {message}
             </div>
           ) : null}
+         {action ? <div className="mt-2">{action}</div> : null}
         </div>
       </div>
       <div
