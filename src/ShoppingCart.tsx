@@ -35,6 +35,7 @@ export interface ShoppingCartProps {
   loadingText?: string;
   deliveryCosts?: number;
   discountCosts?: number;
+  scrollable?: boolean;
 }
 
 export const ShoppingCart = ({
@@ -49,6 +50,7 @@ export const ShoppingCart = ({
   loadingText = 'Loading cart items',
   deliveryCosts = 0,
   discountCosts = 0,
+  scrollable = true,
 }: ShoppingCartProps) => {
   const [total, setTotal] = useState<number>(0);
 
@@ -72,12 +74,12 @@ export const ShoppingCart = ({
         <>
           <div
             className={`${
-              products?.length >= 3
+              scrollable && products?.length >= 3
                 ? 'h-[320px]'
-                : products?.length === 2
+                : scrollable && products?.length === 2
                 ? 'h-[240px]'
                 : 'h-[120px]'
-            } min-h-[120px] overflow-scroll`}
+            } min-h-[120px] ${scrollable ? 'overflow-scroll' : ''}`}
           >
             {products.map((product) => (
               <div
