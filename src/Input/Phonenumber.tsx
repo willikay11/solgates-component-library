@@ -116,15 +116,16 @@ export const PhoneNumber = ({
           defaultValue={defaultValue}
           onChange={(e) => {
             const value = e.target.value;
-            if (
-              value &&
-              value.length > 1 &&
-              value.charAt(0) == '0'
-            ) {
-              setCurrentText(value.slice(1));
-            } else {
-              setCurrentText(value);
-            }
+            // if (
+            //   value &&
+            //   value.length > 1 &&
+            //   value.charAt(0) == '0'
+            // ) {
+            //   setCurrentText(value.slice(1));
+            // } else {
+            //   setCurrentText(value);
+            // }
+            setCurrentText(value);
             onChange?.(e);
           }}
           className={`ml-2 outline-0 w-full placeholder:text-base md:placeholder:text-xs placeholder:font-normal placeholder:leading-4 placeholder:text-gray-500 bg-transparent text-base md:text-xs text-gray-800 focus:border-transparent focus:ring-0`}
