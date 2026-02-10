@@ -74,12 +74,10 @@ export const ShoppingCart = ({
         <>
           <div
             className={`${
-              scrollable && products?.length >= 3
-                ? 'h-[320px]'
-                : scrollable && products?.length === 2
+              scrollable 
                 ? 'h-[240px]'
-                : 'h-[120px]'
-            } min-h-[120px] ${scrollable ? 'overflow-scroll' : ''}`}
+                : 'h-fit'
+            } ${scrollable ? 'min-h-[120px] overflow-scroll' : ''}`}
           >
             {products.map((product) => (
               <div
